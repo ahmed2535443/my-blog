@@ -246,7 +246,7 @@ tsc hello.ts
               <br />
               1. أنشئ دالة <code>greet</code> تستقبل <code>name: string</code> و <code>age: number</code>
               <br />
-              2. الدالة ترجع نصاً مثل <code>"مرحباً {name}، عمرك {age} سنة"</code>
+              2. الدالة ترجع نصاً مثل <code>{'"مرحباً {name}، عمرك {age} سنة"'}</code>
               <br />
               3. أضف نوع الراجع (Return Type)
               <br />
