@@ -1,0 +1,92 @@
+const en = {
+  nav: {
+    home: "Home",
+    curriculum: "Curriculum",
+    startLearning: "Start Learning",
+    toggleTheme: "Toggle Theme",
+    lightMode: "Light Mode",
+    darkMode: "Dark Mode",
+  },
+  home: {
+    badge: "Learn programming from zero to professional in Arabic",
+    title1: "Learn ",
+    title2: "Programming",
+    title3: "From Zero",
+    title4: " To Professional",
+    subtitle: "A complete journey to learn HTML, CSS, JavaScript, React, Next.js and more\nWith real projects, interactive exercises, and interview questions",
+    startBtn: "Start Learning Free",
+    viewCurriculum: "View Curriculum",
+    stats: {
+      stages: "Learning Stages",
+      lessons: "Lessons",
+      projects: "Projects",
+      free: "100% Free",
+    },
+    roadmapTitle: "Learning Roadmap",
+    roadmapSubtitle: "Follow the curriculum in order from the first stage to the final project",
+    whyTitle: "Why CodeMaster?",
+    features: {
+      arabic: { title: "Arabic Content", desc: "All lessons are written in Arabic with English technical terms for deeper understanding" },
+      fromZero: { title: "From Absolute Zero", desc: "We assume no prior knowledge - we start from zero and reach professional projects" },
+      projects: { title: "Real Projects", desc: "After each stage, a practical project to solidify what you learned and boost your experience" },
+      exercises: { title: "Exercises & Challenges", desc: "Interactive exercises in every lesson with solutions you can review" },
+      progress: { title: "Progress Tracking", desc: "Track your progress in each stage and save your achievements" },
+      comparison: { title: "Beginner vs Professional", desc: "Compare beginner code with professional code to understand best practices" },
+    },
+    ctaTitle: "Ready to start your programming journey?",
+    ctaSubtitle: "Start now for free - no account or subscription needed",
+    ctaBtn: "Start First Lesson Now",
+  },
+  learn: {
+    title: "Learning Roadmap",
+    subtitle: "{stages} learning stages • {lessons} lessons • From zero to professional",
+    lessons: "lessons",
+  },
+  stage: {
+    backToRoadmap: "Back to Roadmap",
+    duration: "Duration",
+    minute: "min",
+    minutes: "min",
+    hour: "hour",
+    hours: "hours",
+  },
+  components: {
+    quiz: {
+      title: "Quiz",
+      checkAnswer: "Check Answer",
+      tryAgain: "Try Again",
+      correct: "Correct! Well done ✓",
+      wrong: "Wrong Answer ✗",
+    },
+    challenge: {
+      title: "Challenge",
+      showSolution: "Show Solution",
+      hideSolution: "Hide Solution",
+      solution: "Solution:",
+    },
+    exercise: {
+      title: "Exercise",
+      showSolution: "Show Solution",
+      hideSolution: "Hide Solution",
+      solution: "Solution:",
+      placeholder: "Write your code here...",
+    },
+    cheatSheet: {
+      title: "Cheat Sheet",
+    },
+  },
+  footer: {
+    platformDesc: "Programming learning platform from zero to professional in Arabic. Learn HTML, CSS, JavaScript, React, Next.js and more.",
+    quickLinks: "Quick Links",
+    techs: "Technologies We Teach",
+    copyright: "All rights reserved.",
+  },
+  languages: {
+    ar: "العربية",
+    en: "English",
+    fr: "Français",
+    de: "Deutsch",
+  },
+};
+
+export default en;

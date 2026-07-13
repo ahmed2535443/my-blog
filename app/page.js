@@ -1,24 +1,17 @@
-// =====================================================
-// ملف: page.js (الصفحة الرئيسية)
-// المكان: app/page.js
-// الوظيفة: الصفحة الرئيسية لمنصة CodeMaster
-// تعرض: بانر ترحيبي + إحصائيات + مراحل التعلم + مميزات المنصة
-// =====================================================
+"use client";
 
 import Link from "next/link";
 import { stages, getTotalLessons } from "./data/curriculum";
 import StageCard from "./components/StageCard";
+import { useLanguage } from "./components/LanguageProvider";
 
 export default function Home() {
   const totalLessons = getTotalLessons();
+  const { t } = useLanguage();
 
   return (
     <div className="min-h-screen">
-      {/* ========================================== */}
-      {/* القسم الترحيبي (Hero Section) */}
-      {/* ========================================== */}
       <section className="relative py-20 px-4 overflow-hidden">
-        {/* خلفية مزخرفة */}
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -28,28 +21,22 @@ export default function Home() {
         />
 
         <div className="container mx-auto text-center relative z-10">
-          {/* الشارة */}
           <div className="inline-block mb-6 px-4 py-2 rounded-full text-sm font-medium" style={{ background: "var(--primary)20", color: "var(--primary)" }}>
-            🚀 منصة تعليم البرمجة من الصفر إلى الاحتراف بالعربي
+            {t.home.badge}
           </div>
 
-          {/* العنوان الرئيسي */}
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
-            <span style={{ color: "var(--foreground)" }}>اتعلم </span>
-            <span style={{ color: "var(--primary)" }}>البرمجة</span>
+            <span style={{ color: "var(--foreground)" }}>{t.home.title1}</span>
+            <span style={{ color: "var(--primary)" }}>{t.home.title2}</span>
             <br />
-            <span style={{ color: "var(--secondary)" }}>من الصفر</span>
-            <span style={{ color: "var(--foreground)" }}> إلى الاحتراف</span>
+            <span style={{ color: "var(--secondary)" }}>{t.home.title3}</span>
+            <span style={{ color: "var(--foreground)" }}>{t.home.title4}</span>
           </h1>
 
-          {/* الوصف */}
           <p className="text-lg md:text-xl max-w-2xl mx-auto mb-10" style={{ color: "var(--muted)" }}>
-            رحلة متكاملة لتعلم HTML, CSS, JavaScript, React, Next.js والمزيد
-            <br />
-            مع مشاريع حقيقية وتمارين تفاعلية وأسئلة مقابلات
+            {t.home.subtitle}
           </p>
 
-          {/* أزرار الدعوة للعمل */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/learn/html/01-introduction-to-html"
@@ -59,7 +46,7 @@ export default function Home() {
                 color: "var(--background)",
               }}
             >
-              ابدأ التعلم مجاناً ←
+              {t.home.startBtn} ←
             </Link>
             <Link
               href="/learn"
@@ -69,56 +56,50 @@ export default function Home() {
                 color: "var(--foreground)",
               }}
             >
-              عرض المنهج
+              {t.home.viewCurriculum}
             </Link>
           </div>
 
-          {/* إحصائيات سريعة */}
           <div className="flex flex-wrap justify-center gap-8 mt-16">
             <div className="text-center">
               <p className="text-3xl font-extrabold" style={{ color: "var(--primary)" }}>
                 {stages.length}
               </p>
-              <p className="text-sm" style={{ color: "var(--muted)" }}>مرحلة تعليمية</p>
+              <p className="text-sm" style={{ color: "var(--muted)" }}>{t.home.stats.stages}</p>
             </div>
             <div className="text-center">
               <p className="text-3xl font-extrabold" style={{ color: "var(--secondary)" }}>
                 {totalLessons}
               </p>
-              <p className="text-sm" style={{ color: "var(--muted)" }}>درس مُعَلَّم</p>
+              <p className="text-sm" style={{ color: "var(--muted)" }}>{t.home.stats.lessons}</p>
             </div>
             <div className="text-center">
               <p className="text-3xl font-extrabold" style={{ color: "var(--accent)" }}>
                 +10
               </p>
-              <p className="text-sm" style={{ color: "var(--muted)" }}>مشاريع تطبيقية</p>
+              <p className="text-sm" style={{ color: "var(--muted)" }}>{t.home.stats.projects}</p>
             </div>
             <div className="text-center">
               <p className="text-3xl font-extrabold" style={{ color: "var(--danger)" }}>
                 100%
               </p>
-              <p className="text-sm" style={{ color: "var(--muted)" }}>مجاني بالكامل</p>
+              <p className="text-sm" style={{ color: "var(--muted)" }}>{t.home.stats.free}</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ========================================== */}
-      {/* قسم مراحل التعلم (Roadmap) */}
-      {/* ========================================== */}
       <section className="py-16 px-4">
         <div className="container mx-auto">
-          {/* عنوان القسم */}
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4" style={{ color: "var(--foreground)" }}>
-              مسار التعلم
+              {t.home.roadmapTitle}
             </h2>
             <p className="text-lg" style={{ color: "var(--muted)" }}>
-              اتبع المنهج بالترتيب من المرحلة الأولى إلى المشروع النهائي
+              {t.home.roadmapSubtitle}
             </p>
           </div>
 
-          {/* شبكة المراحل */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {stages.map((stage, index) => (
               <StageCard key={stage.id} stage={stage} index={index} />
@@ -127,121 +108,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================== */}
-      {/* قسم مميزات المنصة */}
-      {/* ========================================== */}
       <section className="py-16 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4" style={{ color: "var(--foreground)" }}>
-              لماذا CodeMaster؟
+              {t.home.whyTitle}
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* ميزة 1: شرح بالعربي */}
-            <div
-              className="p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02]"
-              style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-            >
+            <div className="p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02]" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
               <span className="text-3xl block mb-3">🌍</span>
-              <h3 className="font-bold text-lg mb-2" style={{ color: "var(--foreground)" }}>
-                شرح بالعربي
-              </h3>
-              <p className="text-sm" style={{ color: "var(--muted)" }}>
-                كل الدروس مكتوبة بالعربي مع المصطلحات التقنية بالإنجليزي لفهم أعمق
-              </p>
+              <h3 className="font-bold text-lg mb-2" style={{ color: "var(--foreground)" }}>{t.home.features.arabic.title}</h3>
+              <p className="text-sm" style={{ color: "var(--muted)" }}>{t.home.features.arabic.desc}</p>
             </div>
 
-            {/* ميزة 2: من الصفر */}
-            <div
-              className="p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02]"
-              style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-            >
+            <div className="p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02]" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
               <span className="text-3xl block mb-3">🎯</span>
-              <h3 className="font-bold text-lg mb-2" style={{ color: "var(--foreground)" }}>
-                من الصفر تماماً
-              </h3>
-              <p className="text-sm" style={{ color: "var(--muted)" }}>
-                لا نفترض أي معرفة مسبقة - نبدأ من الصفر ونصل للمشاريع الاحترافية
-              </p>
+              <h3 className="font-bold text-lg mb-2" style={{ color: "var(--foreground)" }}>{t.home.features.fromZero.title}</h3>
+              <p className="text-sm" style={{ color: "var(--muted)" }}>{t.home.features.fromZero.desc}</p>
             </div>
 
-            {/* ميزة 3: مشاريع حقيقية */}
-            <div
-              className="p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02]"
-              style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-            >
+            <div className="p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02]" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
               <span className="text-3xl block mb-3">💼</span>
-              <h3 className="font-bold text-lg mb-2" style={{ color: "var(--foreground)" }}>
-                مشاريع حقيقية
-              </h3>
-              <p className="text-sm" style={{ color: "var(--muted)" }}>
-                بعد كل مرحلة، مشروع تطبيقي يُثبّت ما تعلمته ويزيد خبرتك
-              </p>
+              <h3 className="font-bold text-lg mb-2" style={{ color: "var(--foreground)" }}>{t.home.features.projects.title}</h3>
+              <p className="text-sm" style={{ color: "var(--muted)" }}>{t.home.features.projects.desc}</p>
             </div>
 
-            {/* ميزة 4: تمارين تفاعلية */}
-            <div
-              className="p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02]"
-              style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-            >
+            <div className="p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02]" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
               <span className="text-3xl block mb-3">✏️</span>
-              <h3 className="font-bold text-lg mb-2" style={{ color: "var(--foreground)" }}>
-                تمارين وتحديات
-              </h3>
-              <p className="text-sm" style={{ color: "var(--muted)" }}>
-                تمارين تفاعلية في كل درس مع حلول يمكنك مراجعتها
-              </p>
+              <h3 className="font-bold text-lg mb-2" style={{ color: "var(--foreground)" }}>{t.home.features.exercises.title}</h3>
+              <p className="text-sm" style={{ color: "var(--muted)" }}>{t.home.features.exercises.desc}</p>
             </div>
 
-            {/* ميزة 5: تتبع التقدم */}
-            <div
-              className="p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02]"
-              style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-            >
+            <div className="p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02]" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
               <span className="text-3xl block mb-3">📊</span>
-              <h3 className="font-bold text-lg mb-2" style={{ color: "var(--foreground)" }}>
-                تتبع التقدم
-              </h3>
-              <p className="text-sm" style={{ color: "var(--muted)" }}>
-                تتبع تقدمك في كل مرحلة واحفظ إنجازاتك
-              </p>
+              <h3 className="font-bold text-lg mb-2" style={{ color: "var(--foreground)" }}>{t.home.features.progress.title}</h3>
+              <p className="text-sm" style={{ color: "var(--muted)" }}>{t.home.features.progress.desc}</p>
             </div>
 
-            {/* ميزة 6: مقارنة الكود */}
-            <div
-              className="p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02]"
-              style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-            >
+            <div className="p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02]" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
               <span className="text-3xl block mb-3">⚖️</span>
-              <h3 className="font-bold text-lg mb-2" style={{ color: "var(--foreground)" }}>
-                مبتدئ vs محترف
-              </h3>
-              <p className="text-sm" style={{ color: "var(--muted)" }}>
-                مقارنة بين كود المبتدئ وكود المحترف لفهم أفضل الممارسات
-              </p>
+              <h3 className="font-bold text-lg mb-2" style={{ color: "var(--foreground)" }}>{t.home.features.comparison.title}</h3>
+              <p className="text-sm" style={{ color: "var(--muted)" }}>{t.home.features.comparison.desc}</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ========================================== */}
-      {/* قسم الدعوة للعمل النهائي */}
-      {/* ========================================== */}
       <section className="py-20 px-4">
-        <div
-          className="container mx-auto text-center p-12 rounded-3xl border-2"
-          style={{
-            background: "var(--surface)",
-            borderColor: "var(--primary)",
-          }}
-        >
+        <div className="container mx-auto text-center p-12 rounded-3xl border-2" style={{ background: "var(--surface)", borderColor: "var(--primary)" }}>
           <h2 className="text-3xl md:text-4xl font-extrabold mb-4" style={{ color: "var(--foreground)" }}>
-            جاهز تبدأ رحلتك في عالم البرمجة؟
+            {t.home.ctaTitle}
           </h2>
           <p className="text-lg mb-8" style={{ color: "var(--muted)" }}>
-            ابدأ الآن مجاناً - لا حاجة لحساب أو اشتراك
+            {t.home.ctaSubtitle}
           </p>
           <Link
             href="/learn/html/01-introduction-to-html"
@@ -251,7 +172,7 @@ export default function Home() {
               color: "var(--background)",
             }}
           >
-            ابدأ الدرس الأول الآن ←
+            {t.home.ctaBtn} ←
           </Link>
         </div>
       </section>

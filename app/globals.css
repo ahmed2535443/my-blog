@@ -1,7 +1,7 @@
 /* ====== تنسيقات المنصة التعليمية CodeMaster ====== */
 @import "tailwindcss";
 
-/* ====== ألوان مخصصة ====== */
+/* ====== الوضع الداكن (الافتراضي) ====== */
 :root {
   --background: #0f172a;
   --foreground: #e2e8f0;
@@ -12,6 +12,26 @@
   --surface: #1e293b;
   --border: #334155;
   --muted: #64748b;
+  color-scheme: dark;
+}
+
+/* ====== الوضع الفاتح ====== */
+:root.light {
+  --background: #f8fafc;
+  --foreground: #1e293b;
+  --primary: #0284c7;
+  --secondary: #d97706;
+  --accent: #16a34a;
+  --danger: #dc2626;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --muted: #64748b;
+  color-scheme: light;
+}
+
+/* ====== انتقال سلس بين الوضعين ====== */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ====== تنسيقات عامة ====== */
@@ -20,6 +40,7 @@ body {
   color: var(--foreground);
   font-family: 'Segoe UI', Tahoma, 'Arial', sans-serif;
   line-height: 1.8;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 html {
@@ -48,6 +69,30 @@ html {
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
+}
+
+/* ====== فقرات النص ====== */
+.prose p {
+  color: var(--foreground);
+  margin-bottom: 1rem;
+  line-height: 1.9;
+}
+
+/* ====== عناصر strong ====== */
+.prose strong {
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+/* ====== عناصر code داخل النص ====== */
+.prose code {
+  background: var(--surface);
+  color: var(--secondary);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9em;
+  border: 1px solid var(--border);
 }
 
 /* ====== قوائم المحتوى ====== */
@@ -130,13 +175,13 @@ html {
 
 /* ====== Inline Code ====== */
 .inline-code {
-  background: #1e293b;
-  color: #fbbf24;
+  background: var(--surface);
+  color: var(--secondary);
   padding: 2px 8px;
   border-radius: 6px;
   font-family: 'Consolas', monospace;
   font-size: 14px;
-  border: 1px solid #334155;
+  border: 1px solid var(--border);
 }
 
 /* ====== تمييز النص المهم ====== */
@@ -146,6 +191,10 @@ html {
   padding: 2px 6px;
   border-radius: 4px;
   font-weight: 600;
+}
+
+.light .highlight {
+  background: rgba(2, 132, 199, 0.1);
 }
 
 /* ====== مقارنة الكود: مبتدئ vs محترف ====== */
@@ -187,14 +236,14 @@ html {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: var(--surface);
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: var(--border);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: var(--muted);
 }
 
 /* ====== تنسيقات خاصة بالطباعة ====== */

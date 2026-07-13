@@ -1,18 +1,10 @@
-// =====================================================
-// ملف: Challenge.js
-// المكان: app/components/Challenge.js
-// الوظيفة: مكون التحديات - يعرض تحدٍّ للمتعلم مع زر إظهار الحل
-// =====================================================
-
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Challenge({ title, description, children }) {
-  // =====================================================
-  // 💡 "showSolution" لتتبع حالة عرض الحل
-  //    المستخدم يضغط الزر ليظهر الحل
-  // =====================================================
+  const { t } = useLanguage();
   const [showSolution, setShowSolution] = useState(false);
 
   return (
@@ -23,23 +15,17 @@ export default function Challenge({ title, description, children }) {
         borderColor: "var(--secondary)",
       }}
     >
-      {/* عنوان التحدي */}
       <div className="flex items-center gap-2 mb-4">
         <span className="text-xl">🎯</span>
         <span className="font-bold text-lg" style={{ color: "var(--secondary)" }}>
-          {title || "تحدي"}
+          {title || t.components.challenge.title}
         </span>
       </div>
 
-      {/* وصف التحدي */}
       <div className="mb-4" style={{ color: "var(--foreground)" }}>
         {description}
       </div>
 
-      {/* محتوى إضافي (مثل توجيهات إضافية) */}
-      {children && <div className="mb-4">{children}</div>}
-
-      {/* زر إظهار الحل */}
       <button
         onClick={() => setShowSolution(!showSolution)}
         className="px-5 py-2 rounded-lg font-bold text-sm transition-all duration-200"
@@ -49,11 +35,10 @@ export default function Challenge({ title, description, children }) {
           cursor: "pointer",
         }}
       >
-        {showSolution ? "إخفاء الحل" : "اعرض الحل"}
+        {showSolution ? t.components.challenge.hideSolution : t.components.challenge.showSolution}
       </button>
 
-      {/* عرض الحل */}
-      {showSolution && (
+      {showSolution && children && (
         <div
           className="mt-4 p-4 rounded-lg border"
           style={{
@@ -62,7 +47,7 @@ export default function Challenge({ title, description, children }) {
           }}
         >
           <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
-            الحل:
+            {t.components.challenge.solution}
           </p>
           <div style={{ color: "var(--foreground)" }}>{children}</div>
         </div>

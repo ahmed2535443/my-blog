@@ -1,19 +1,10 @@
-// =====================================================
-// ملف: Exercise.js
-// المكان: app/components/Exercise.js
-// الوظيفة: مكون التمارين التفاعلية - يعرض تمرين مع مساحة للحلول
-// =====================================================
-
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Exercise({ title, description, initialCode, children }) {
-  // =====================================================
-  // 💡 الحالة:
-  //    - userCode: الكود الذي يكتبه المستخدم
-  //    - showSolution: هل يُظهر الحل أم لا
-  // =====================================================
+  const { t } = useLanguage();
   const [userCode, setUserCode] = useState(initialCode || "");
   const [showSolution, setShowSolution] = useState(false);
 
@@ -25,22 +16,19 @@ export default function Exercise({ title, description, initialCode, children }) 
         borderColor: "var(--border)",
       }}
     >
-      {/* عنوان التمرين */}
       <div className="flex items-center gap-2 mb-4">
         <span className="text-xl">✏️</span>
         <span className="font-bold text-lg" style={{ color: "var(--primary)" }}>
-          {title || "تمرين"}
+          {title || t.components.exercise.title}
         </span>
       </div>
 
-      {/* وصف التمرين */}
       {description && (
         <p className="mb-4" style={{ color: "var(--foreground)" }}>
           {description}
         </p>
       )}
 
-      {/* محرر الكود */}
       <textarea
         value={userCode}
         onChange={(e) => setUserCode(e.target.value)}
@@ -52,11 +40,10 @@ export default function Exercise({ title, description, initialCode, children }) 
           borderColor: "var(--border)",
           focusRingColor: "var(--primary)",
         }}
-        placeholder="اكتب الكود هنا..."
+        placeholder={t.components.exercise.placeholder}
         spellCheck={false}
       />
 
-      {/* أزرار التحكم */}
       <div className="flex gap-3 mt-4">
         <button
           onClick={() => setShowSolution(!showSolution)}
@@ -67,11 +54,10 @@ export default function Exercise({ title, description, initialCode, children }) 
             cursor: "pointer",
           }}
         >
-          {showSolution ? "إخفاء الحل" : "اعرض الحل"}
+          {showSolution ? t.components.exercise.hideSolution : t.components.exercise.showSolution}
         </button>
       </div>
 
-      {/* عرض الحل */}
       {showSolution && children && (
         <div
           className="mt-4 p-4 rounded-lg border"
@@ -81,7 +67,7 @@ export default function Exercise({ title, description, initialCode, children }) 
           }}
         >
           <p className="font-bold mb-2" style={{ color: "var(--accent)" }}>
-            الحل:
+            {t.components.exercise.solution}
           </p>
           {children}
         </div>

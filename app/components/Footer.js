@@ -1,12 +1,11 @@
-// =====================================================
-// ملف: Footer.js (المُحسَّن)
-// المكان: app/components/Footer.js
-// الوظيفة: الجزء السفلي من الموقع مع روابط مفيدة
-// =====================================================
+"use client";
 
 import Link from "next/link";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer
       className="border-t py-10 mt-auto"
@@ -14,7 +13,6 @@ export default function Footer() {
     >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* العمود الأول: معلومات المنصة */}
           <div>
             <h3 className="font-bold text-lg mb-3" style={{ color: "var(--primary)" }}>
               <span style={{ color: "var(--secondary)" }}>&lt;</span>
@@ -22,38 +20,36 @@ export default function Footer() {
               <span style={{ color: "var(--secondary)" }}> /&gt;</span>
             </h3>
             <p className="text-sm" style={{ color: "var(--muted)" }}>
-              منصة تعليم البرمجة من الصفر إلى الاحتراف بالعربي. تعلم HTML, CSS, JavaScript, React, Next.js والمزيد.
+              {t.footer.platformDesc}
             </p>
           </div>
 
-          {/* العمود الثاني: روابط سريعة */}
           <div>
             <h4 className="font-bold mb-3" style={{ color: "var(--foreground)" }}>
-              روابط سريعة
+              {t.footer.quickLinks}
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/" className="transition-colors hover:text-[var(--primary)]" style={{ color: "var(--muted)" }}>
-                  الرئيسية
+                  {t.nav.home}
                 </Link>
               </li>
               <li>
                 <Link href="/learn" className="transition-colors hover:text-[var(--primary)]" style={{ color: "var(--muted)" }}>
-                  المنهج
+                  {t.nav.curriculum}
                 </Link>
               </li>
               <li>
                 <Link href="/learn/html/01-introduction-to-html" className="transition-colors hover:text-[var(--primary)]" style={{ color: "var(--muted)" }}>
-                  ابدأ التعلم
+                  {t.nav.startLearning}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* العمود الثالث: التقنيات */}
           <div>
             <h4 className="font-bold mb-3" style={{ color: "var(--foreground)" }}>
-              التقنيات التي نتعلمها
+              {t.footer.techs}
             </h4>
             <div className="flex flex-wrap gap-2">
               {["HTML", "CSS", "Tailwind", "JavaScript", "React", "Next.js", "Supabase", "Clerk"].map((tech) => (
@@ -69,10 +65,9 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* الخط الفاصل */}
         <div className="mt-8 pt-6 border-t text-center" style={{ borderColor: "var(--border)" }}>
           <p className="text-sm" style={{ color: "var(--muted)" }}>
-            &copy; {new Date().getFullYear()} CodeMaster. جميع الحقوق محفوظة.
+            &copy; {new Date().getFullYear()} CodeMaster. {t.footer.copyright}
           </p>
         </div>
       </div>

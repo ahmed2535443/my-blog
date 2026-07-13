@@ -1,0 +1,92 @@
+const de = {
+  nav: {
+    home: "Startseite",
+    curriculum: "Lehrplan",
+    startLearning: "Lernen starten",
+    toggleTheme: "Thema wechseln",
+    lightMode: "Heller Modus",
+    darkMode: "Dunkler Modus",
+  },
+  home: {
+    badge: "Programmieren lernen von Null zum Profi auf Arabisch",
+    title1: "Lerne ",
+    title2: "Programmieren",
+    title3: "Von Null",
+    title4: " zum Profi",
+    subtitle: "Eine vollständige Reise zum Lernen von HTML, CSS, JavaScript, React, Next.js und mehr\nMit echten Projekten, interaktiven Übungen und Interviewfragen",
+    startBtn: "Kostenlos starten",
+    viewCurriculum: "Lehrplan ansehen",
+    stats: {
+      stages: "Lernphasen",
+      lessons: "Lektionen",
+      projects: "Projekte",
+      free: "100% Kostenlos",
+    },
+    roadmapTitle: "Lernweg",
+    roadmapSubtitle: "Folge dem Lehrplan in Reihenfolge von der ersten Phase bis zum Abschlussprojekt",
+    whyTitle: "Warum CodeMaster?",
+    features: {
+      arabic: { title: "Arabischer Inhalt", desc: "Alle Lektionen sind auf Arabisch mit englischen Fachbegriffen für ein tieferes Verständnis geschrieben" },
+      fromZero: { title: "Von absolutem Nullpunkt", desc: "Wir setzen kein Vorwissen voraus - wir beginnen bei Null und erreichen professionelle Projekte" },
+      projects: { title: "Echte Projekte", desc: "Nach jeder Phase ein Praxisprojekt, um das Gelernte zu festigen und deine Erfahrung zu steigern" },
+      exercises: { title: "Übungen & Herausforderungen", desc: "Interaktive Übungen in jeder Lektion mit Lösungen, die du überprüfen kannst" },
+      progress: { title: "Fortschrittsverfolgung", desc: "Verfolge deinen Fortschritt in jeder Phase und speichere deine Errungenschaften" },
+      comparison: { title: "Anfänger vs Profi", desc: "Vergleiche Anfängercode mit professionellem Code, um Best Practices zu verstehen" },
+    },
+    ctaTitle: "Bereit, deine Programmierreise zu beginnen?",
+    ctaSubtitle: "Starte jetzt kostenlos - kein Konto oder Abonnement nötig",
+    ctaBtn: "Erste Lektion starten",
+  },
+  learn: {
+    title: "Lernweg",
+    subtitle: "{stages} Lernphasen • {lessons} Lektionen • Von Null zum Profi",
+    lessons: "Lektionen",
+  },
+  stage: {
+    backToRoadmap: "Zurück zum Lernweg",
+    duration: "Dauer",
+    minute: "Min",
+    minutes: "Min",
+    hour: "Stunde",
+    hours: "Stunden",
+  },
+  components: {
+    quiz: {
+      title: "Quiz",
+      checkAnswer: "Antwort prüfen",
+      tryAgain: "Erneut versuchen",
+      correct: "Richtig! Gut gemacht ✓",
+      wrong: "Falsche Antwort ✗",
+    },
+    challenge: {
+      title: "Herausforderung",
+      showSolution: "Lösung zeigen",
+      hideSolution: "Lösung verbergen",
+      solution: "Lösung:",
+    },
+    exercise: {
+      title: "Übung",
+      showSolution: "Lösung zeigen",
+      hideSolution: "Lösung verbergen",
+      solution: "Lösung:",
+      placeholder: "Schreibe deinen Code hier...",
+    },
+    cheatSheet: {
+      title: "Spickzettel",
+    },
+  },
+  footer: {
+    platformDesc: "Programmiervon-Null-zum-Profi-Lernplattform auf Arabisch. Lerne HTML, CSS, JavaScript, React, Next.js und mehr.",
+    quickLinks: "Schnelllinks",
+    techs: "Technologien die wir lehren",
+    copyright: "Alle Rechte vorbehalten.",
+  },
+  languages: {
+    ar: "العربية",
+    en: "English",
+    fr: "Français",
+    de: "Deutsch",
+  },
+};
+
+export default de;

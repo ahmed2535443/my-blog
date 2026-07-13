@@ -1,33 +1,19 @@
-// =====================================================
-// ملف: Quiz.js
-// المكان: app/components/Quiz.js
-// الوظيفة: مكون تفاعلي للأسئلة الاختيارية (Quiz)
-// يعرض سؤالاً مع عدة خيارات، ويتحقق من الإجابة الصحيحة
-// =====================================================
-
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Quiz({ question, options, correctAnswer, explanation }) {
-  // =====================================================
-  // 💡 الحالة (State):
-  //    - selected: الخيار الذي اختاره المستخدم
-  //    - submitted: هل أجاب المستخدم أم لا
-  // =====================================================
+  const { t } = useLanguage();
   const [selected, setSelected] = useState(null);
   const [submitted, setSubmitted] = useState(false);
-
-  // التحقق من الإجابة
   const isCorrect = selected === correctAnswer;
 
-  // معالجة الضغط على زر التحقق
   function handleSubmit() {
     if (selected === null) return;
     setSubmitted(true);
   }
 
-  // إعادة تعيين السؤال
   function handleReset() {
     setSelected(null);
     setSubmitted(false);
@@ -41,23 +27,19 @@ export default function Quiz({ question, options, correctAnswer, explanation }) 
         borderColor: "var(--border)",
       }}
     >
-      {/* عنوان القسم */}
       <div className="flex items-center gap-2 mb-4">
         <span className="text-xl">❓</span>
         <span className="font-bold text-lg" style={{ color: "var(--secondary)" }}>
-          Quiz
+          {t.components.quiz.title}
         </span>
       </div>
 
-      {/* السؤال */}
       <p className="text-lg font-medium mb-4" style={{ color: "var(--foreground)" }}>
         {question}
       </p>
 
-      {/* الخيارات */}
       <div className="space-y-3 mb-6">
         {options.map((option, index) => {
-          // تحديد لون الخيار بناءً على الحالة
           let borderColor = "var(--border)";
           let bgColor = "transparent";
 
@@ -87,7 +69,6 @@ export default function Quiz({ question, options, correctAnswer, explanation }) 
                 cursor: submitted ? "default" : "pointer",
               }}
             >
-              {/* رقم الخيار */}
               <span
                 className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0"
                 style={{
@@ -99,7 +80,6 @@ export default function Quiz({ question, options, correctAnswer, explanation }) 
               </span>
               <span>{option}</span>
 
-              {/* عرض أيقونة النتيجة بعد التسليم */}
               {submitted && index === correctAnswer && (
                 <span className="mr-auto text-green-400">✓</span>
               )}
@@ -111,7 +91,6 @@ export default function Quiz({ question, options, correctAnswer, explanation }) 
         })}
       </div>
 
-      {/* أزرار التحكم */}
       <div className="flex gap-3">
         {!submitted ? (
           <button
@@ -124,26 +103,23 @@ export default function Quiz({ question, options, correctAnswer, explanation }) 
               cursor: selected !== null ? "pointer" : "not-allowed",
             }}
           >
-            تحقق من الإجابة
+            {t.components.quiz.checkAnswer}
           </button>
         ) : (
-          <>
-            <button
-              onClick={handleReset}
-              className="px-6 py-2 rounded-lg font-bold transition-all duration-200"
-              style={{
-                background: "var(--border)",
-                color: "var(--foreground)",
-                cursor: "pointer",
-              }}
-            >
-              أعد المحاولة
-            </button>
-          </>
+          <button
+            onClick={handleReset}
+            className="px-6 py-2 rounded-lg font-bold transition-all duration-200"
+            style={{
+              background: "var(--border)",
+              color: "var(--foreground)",
+              cursor: "pointer",
+            }}
+          >
+            {t.components.quiz.tryAgain}
+          </button>
         )}
       </div>
 
-      {/* شرح الإجابة بعد التسليم */}
       {submitted && explanation && (
         <div
           className="mt-4 p-4 rounded-lg border"
@@ -155,7 +131,7 @@ export default function Quiz({ question, options, correctAnswer, explanation }) 
           }}
         >
           <p className="font-bold mb-1" style={{ color: isCorrect ? "var(--accent)" : "var(--danger)" }}>
-            {isCorrect ? "أحسنت! إجابة صحيحة ✓" : "إجابة خاطئة ✗"}
+            {isCorrect ? t.components.quiz.correct : t.components.quiz.wrong}
           </p>
           <p style={{ color: "var(--foreground)" }}>{explanation}</p>
         </div>

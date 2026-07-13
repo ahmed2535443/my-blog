@@ -1,33 +1,27 @@
-// =====================================================
-// ملف: page.js (صفحة المنهج)
-// المكان: app/learn/page.js
-// الوظيفة: صفحة عرض المنهج الكامل مع Roadmap
-// URL: /learn
-// =====================================================
+"use client";
 
 import Link from "next/link";
 import { stages, getTotalLessons } from "../data/curriculum";
+import { useLanguage } from "../components/LanguageProvider";
 
 export default function LearnPage() {
   const totalLessons = getTotalLessons();
+  const { t } = useLanguage();
 
   return (
     <div className="container mx-auto px-4 py-12">
-      {/* رأس الصفحة */}
       <header className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4" style={{ color: "var(--foreground)" }}>
-          مسار التعلم
+          {t.learn.title}
         </h1>
         <p className="text-lg" style={{ color: "var(--muted)" }}>
-          {stages.length} مراحل تعليمية • {totalLessons} درس • من الصفر إلى الاحتراف
+          {t.learn.subtitle.replace("{stages}", stages.length).replace("{lessons}", totalLessons)}
         </p>
       </header>
 
-      {/* Roadmap */}
       <div className="max-w-4xl mx-auto">
         {stages.map((stage, index) => (
           <div key={stage.id} className="relative">
-            {/* خط الربط بين المراحل */}
             {index < stages.length - 1 && (
               <div
                 className="absolute right-6 top-[60px] w-0.5 h-[calc(100%-20px)]"
@@ -35,7 +29,6 @@ export default function LearnPage() {
               />
             )}
 
-            {/* بطاقة المرحلة */}
             <Link
               href={`/learn/${stage.id}`}
               className="flex items-start gap-6 p-6 rounded-2xl border-2 mb-4 transition-all duration-300 hover:scale-[1.01] hover:shadow-lg group relative z-10"
@@ -44,7 +37,6 @@ export default function LearnPage() {
                 borderColor: "var(--border)",
               }}
             >
-              {/* رقم المرحلة */}
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center text-lg font-bold shrink-0 z-10"
                 style={{
@@ -56,7 +48,6 @@ export default function LearnPage() {
                 {index + 1}
               </div>
 
-              {/* معلومات المرحلة */}
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-2xl">{stage.icon}</span>
@@ -68,7 +59,6 @@ export default function LearnPage() {
                   {stage.description}
                 </p>
 
-                {/* قائمة الدروس */}
                 <div className="flex flex-wrap gap-2">
                   {stage.lessons.map((lesson) => (
                     <span
@@ -84,13 +74,11 @@ export default function LearnPage() {
                   ))}
                 </div>
 
-                {/* مدة تقريبية */}
                 <p className="text-xs mt-3" style={{ color: "var(--muted)" }}>
-                  📚 {stage.lessons.length} درس
+                  📚 {stage.lessons.length} {t.learn.lessons}
                 </p>
               </div>
 
-              {/* سهم التوجيه */}
               <span
                 className="text-xl mt-4 transition-transform duration-300 group-hover:-translate-x-2"
                 style={{ color: "var(--muted)" }}

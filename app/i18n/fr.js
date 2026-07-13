@@ -1,0 +1,92 @@
+const fr = {
+  nav: {
+    home: "Accueil",
+    curriculum: "Programme",
+    startLearning: "Commencer",
+    toggleTheme: "Basculer le thème",
+    lightMode: "Mode clair",
+    darkMode: "Mode sombre",
+  },
+  home: {
+    badge: "Apprenez la programmation de zéro à professionnel en arabe",
+    title1: "Apprenez ",
+    title2: "la Programmation",
+    title3: "De Zéro",
+    title4: " à Professionnel",
+    subtitle: "Un parcours complet pour apprendre HTML, CSS, JavaScript, React, Next.js et plus\nAvec des projets réels, des exercices interactifs et des questions d'entretien",
+    startBtn: "Commencer gratuitement",
+    viewCurriculum: "Voir le programme",
+    stats: {
+      stages: "Étapes d'apprentissage",
+      lessons: "Leçons",
+      projects: "Projets",
+      free: "100% Gratuit",
+    },
+    roadmapTitle: "Parcours d'apprentissage",
+    roadmapSubtitle: "Suivez le programme dans l'ordre de la première étape au projet final",
+    whyTitle: "Pourquoi CodeMaster?",
+    features: {
+      arabic: { title: "Contenu en arabe", desc: "Toutes les leçons sont écrites en arabe avec les termes techniques en anglais pour une compréhension plus profonde" },
+      fromZero: { title: "De zéro absolu", desc: "Nous n'assumons aucune connaissance préalable - nous commençons de zéro et atteignons les projets professionnels" },
+      projects: { title: "Projets réels", desc: "Après chaque étape, un projet pratique pour consolider ce que vous avez appris" },
+      exercises: { title: "Exercices et défis", desc: "Exercices interactifs dans chaque leçon avec des solutions à consulter" },
+      progress: { title: "Suivi de progression", desc: "Suivez votre progression dans chaque étape et enregistrez vos réalisations" },
+      comparison: { title: "Débutant vs Professionnel", desc: "Comparez le code débutant avec le code professionnel pour comprendre les meilleures pratiques" },
+    },
+    ctaTitle: "Prêt à commencer votre parcours en programmation?",
+    ctaSubtitle: "Commencez maintenant gratuitement - aucun compte ni abonnement nécessaire",
+    ctaBtn: "Commencer la première leçon",
+  },
+  learn: {
+    title: "Parcours d'apprentissage",
+    subtitle: "{stages} étapes • {lessons} leçons • De zéro à professionnel",
+    lessons: "leçons",
+  },
+  stage: {
+    backToRoadmap: "Retour au parcours",
+    duration: "Durée",
+    minute: "min",
+    minutes: "min",
+    hour: "heure",
+    hours: "heures",
+  },
+  components: {
+    quiz: {
+      title: "Quiz",
+      checkAnswer: "Vérifier la réponse",
+      tryAgain: "Réessayer",
+      correct: "Correct! Bravo ✓",
+      wrong: "Mauvaise réponse ✗",
+    },
+    challenge: {
+      title: "Défi",
+      showSolution: "Voir la solution",
+      hideSolution: "Masquer la solution",
+      solution: "Solution :",
+    },
+    exercise: {
+      title: "Exercice",
+      showSolution: "Voir la solution",
+      hideSolution: "Masquer la solution",
+      solution: "Solution :",
+      placeholder: "Écrivez votre code ici...",
+    },
+    cheatSheet: {
+      title: "Fiche mémo",
+    },
+  },
+  footer: {
+    platformDesc: "Plateforme d'apprentissage de la programmation de zéro à professionnel en arabe. Apprenez HTML, CSS, JavaScript, React, Next.js et plus.",
+    quickLinks: "Liens rapides",
+    techs: "Technologies enseignées",
+    copyright: "Tous droits réservés.",
+  },
+  languages: {
+    ar: "العربية",
+    en: "English",
+    fr: "Français",
+    de: "Deutsch",
+  },
+};
+
+export default fr;
