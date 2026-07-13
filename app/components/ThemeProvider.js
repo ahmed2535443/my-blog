@@ -14,6 +14,9 @@ export function ThemeProvider({ children }) {
     if (saved) {
       setTheme(saved);
       document.documentElement.classList.toggle("light", saved === "light");
+      document.documentElement.classList.toggle("dark", saved === "dark");
+    } else {
+      document.documentElement.classList.add("dark");
     }
   }, []);
 
@@ -22,9 +25,9 @@ export function ThemeProvider({ children }) {
     setTheme(next);
     localStorage.setItem("theme", next);
     document.documentElement.classList.toggle("light", next === "light");
+    document.documentElement.classList.toggle("dark", next === "dark");
   }
 
-  // Prevent flash of wrong theme
   if (!mounted) {
     return (
       <ThemeContext.Provider value={{ theme: "dark", toggleTheme }}>

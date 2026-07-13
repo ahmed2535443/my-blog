@@ -16,7 +16,7 @@ function getHighlighter() {
   if (!highlighterPromise) {
     highlighterPromise = createHighlighter({
       themes: ['github-dark'],
-      langs: ['html', 'css', 'javascript', 'jsx', 'typescript', 'tsx', 'json', 'bash', 'markdown', 'sql', 'text'],
+      langs: ['html', 'css', 'javascript', 'jsx', 'typescript', 'tsx', 'json', 'bash', 'markdown', 'sql', 'text', 'yaml'],
     });
   }
   return highlighterPromise;
