@@ -479,3 +479,47 @@ html {
   body { background: white; color: black; }
   .code-block { background: #f5f5f5; color: #333; }
 }
+
+/* ====== تنسيقات CodeBlockWithPreview ====== */
+.preview-container {
+  background: #ffffff;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+.preview-iframe {
+  display: block;
+  width: 100%;
+  min-height: 200px;
+  border: none;
+}
+
+/* ====== تنسيقات ProblemCard ====== */
+.problem-card {
+  transition: border-color 0.2s ease;
+}
+
+.problem-card:hover {
+  border-color: var(--primary) !important;
+}
+
+/* ====== تنسيقات مسار التعلم ====== */
+.stage-path-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stage-path-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ====== تنسيقات عداد المسائل ====== */
+.problem-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}

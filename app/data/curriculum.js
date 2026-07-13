@@ -651,7 +651,90 @@ export const stages = [
   },
 
   // ==========================================
-  // المرحلة الثانية عشرة: المشروع النهائي
+  // المرحلة الثانية عشرة: حل المشاكل
+  // ==========================================
+  {
+    id: "problem-solving",
+    title: "حل المشاكل والخوارزميات",
+    description: "أساسيات حل المشاكل في مقابلات البرمجة - من التفكير المنطقي إلى الخوارزميات المتقدمة",
+    icon: "🧩",
+    color: "#8b5cf6",
+    lessons: [
+      {
+        id: "01-thinking-patterns",
+        title: "أنماط التفكير في حل المشاكل",
+        slug: "01-thinking-patterns",
+        description: "كيف تحلل المشاكل وتحللها إلى أجزاء أصغر",
+        duration: "25 دقيقة",
+      },
+      {
+        id: "02-arrays-strings",
+        title: "المصفوفات والنصوص",
+        slug: "02-arrays-strings",
+        description: "أساسيات التعامل مع المصفوفات والنصوص",
+        duration: "30 دقيقة",
+      },
+      {
+        id: "03-hash-maps-sets",
+        title: "Hash Maps والـ Sets",
+        slug: "03-hash-maps-sets",
+        description: "استخدام هيئات البيانات hashtable لحل المشاكل بكفاءة",
+        duration: "30 دقيقة",
+      },
+      {
+        id: "04-two-pointers-sliding-window",
+        title: "Two Pointers و Sliding Window",
+        slug: "04-two-pointers-sliding-window",
+        description: "تقنيات مؤشرات مزدوجة ونافذة منزلقة",
+        duration: "30 دقيقة",
+      },
+      {
+        id: "05-recursion-backtracking",
+        title: "Recursion & Backtracking",
+        slug: "05-recursion-backtracking",
+        description: "الاستدعاء الذاتي والعودة الخلفية لحل المشاكل المعقدة",
+        duration: "40 دقيقة",
+      },
+      {
+        id: "06-sorting-searching",
+        title: "الفرز والبحث",
+        slug: "06-sorting-searching",
+        description: "خوارزميات الفرز والبحث الأساسية والمتقدمة",
+        duration: "35 دقيقة",
+      },
+      {
+        id: "07-trees-graphs",
+        title: "الأشجار والرسوم البيانية",
+        slug: "07-trees-graphs",
+        description: "هياكل البيانات الشجرية والرسوم البيانية",
+        duration: "40 دقيقة",
+      },
+      {
+        id: "08-dynamic-programming",
+        title: "البرمجة الديناميكية",
+        slug: "08-dynamic-programming",
+        description: "حل المشاكل باستخدام تقنية البرمجة الديناميكية",
+        duration: "40 دقيقة",
+      },
+      {
+        id: "09-stack-queue",
+        title: "Stack و Queue",
+        slug: "09-stack-queue",
+        description: "استخدام مكدس وطابور لحل المشاكل",
+        duration: "30 دقيقة",
+      },
+      {
+        id: "10-interview-mix",
+        title: "مشاكل مختلطة للمقابلات",
+        slug: "10-interview-mix",
+        description: "مجموعة متنوعة من المشاكل للاستعداد للمقابلات",
+        duration: "45 دقيقة",
+      },
+    ],
+  },
+
+  // ==========================================
+  // المرحلة الثالثة عشرة: المشروع النهائي
   // ==========================================
   {
     id: "final-project",
