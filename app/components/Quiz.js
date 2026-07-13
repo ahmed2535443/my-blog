@@ -23,7 +23,7 @@ export default function Quiz({ question, options, correctAnswer, explanation }) 
     <div
       className="rounded-xl p-6 my-6 border"
       style={{
-        background: "var(--surface)",
+        background: "var(--surface-alt)",
         borderColor: "var(--border)",
       }}
     >

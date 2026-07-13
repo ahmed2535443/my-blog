@@ -11,7 +11,7 @@ export default function Challenge({ title, description, children }) {
     <div
       className="rounded-xl p-6 my-6 border-2"
       style={{
-        background: "var(--surface)",
+        background: "var(--surface-alt)",
         borderColor: "var(--secondary)",
       }}
     >
