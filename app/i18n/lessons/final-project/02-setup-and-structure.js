@@ -1,4 +1,87 @@
 const translations = {
+  ar: {
+    sections: [
+      {
+        title: "إنشاء مشروع Next.js جديد",
+        content: [
+          { type: "p", text: "الآن سنقوم فعليًا بإعداد المشروع. سنستخدم <code>create-next-app</code> لإنشاء مشروع Next.js جديد مع جميع الإعدادات اللازمة." },
+          { type: "p", text: "سيقوم هذا الأمر بإنشاء مجلد <code>my-blog</code> يحتوي على:" },
+          { type: "li", text: "مشروع Next.js جاهز مع TypeScript" },
+          { type: "li", text: "Tailwind CSS مثبت ومسّتى" },
+          { type: "li", text: "ESLint للتحقق من الكود" },
+          { type: "li", text: "هيكل app/ جاهز للاستخدام" },
+          { type: "li", text: "ملف package.json مع التبعيات الأساسية" },
+          { type: "callout", title: "شرح الخيارات", text: "--typescript لاستخدام TypeScript بدلاً من JavaScript العادي، --tailwind لتثبيت وإعداد Tailwind CSS تلقائيًا، --eslint لإضافة ESLint للتحقق من الكود، --app لاستخدام App Router (النهج الحديث)، --src-dir لوضع الكود في مجلد src/ (اختياري لكن أفضل)، --import-alias \"@/*\" لتبسيط الاستيراد باستخدام @" }
+        ]
+      },
+      {
+        title: "تثبيت التبعيات الإضافية",
+        content: [
+          { type: "p", text: "بعد إنشاء المشروع، نحتاج إلى تثبيت التبعيات الإضافية التي سنستخدمها في مشروع المدونة:" },
+          { type: "li", text: "<strong>@supabase/ssr:</strong> يوفر إعدادات Supabase للعرض من جانب الخادم. هذا يتيح لنا الوصول إلى قاعدة البيانات من الخادم بشكل آمن." },
+          { type: "li", text: "<strong>@supabase/supabase-js:</strong> العميل الرئيسي للعمل مع Supabase. يوفر API لاستعلامات قاعدة البيانات." },
+          { type: "li", text: "<strong>@clerk/nextjs:</strong> يوفر مكونات وأدوات Clerk لـ Next.js. يتضمن نماذج تسجيل الدخول وحماية المسارات وإدارة المستخدمين." }
+        ]
+      },
+      {
+        title: "إعداد هيكل المجلدات",
+        content: [
+          { type: "p", text: "بعد إنشاء المشروع وتثبيت التبعيات، نحتاج إلى إنشاء مجلدات وملفات إضافية. دعنا نرى هيكل المشروع النهائي:" },
+          { type: "callout", title: "لماذا نستخدم مجلد src/؟", text: " استخدام مجلد src/ يجعل هيكل المشروع أكثر تنظيمًا. جميع ملفات الكود تذهب داخل src/ بينما تظل ملفات الإعداد في الجذر. هذا نمط شائع في المشاريع الكبيرة." }
+        ]
+      },
+      {
+        title: "إعداد متغيرات البيئة",
+        content: [
+          { type: "p", text: "تُستخدم متغيرات البيئة لتخزين المعلومات السرية مثل مفاتيح API. هذه الملفات <strong>لا يجب رفعها إلى GitHub</strong> لأنها تحتوي على معلومات حساسة." },
+          { type: "p", text: "كيفية الحصول على هذه المفاتيح:" },
+          { type: "li", text: "<strong>مفاتيح Supabase:</strong> اذهب إلى dashboard.supabase.com، اختر مشروعك، انتقل إلى Settings > API، انسخ رابط المشروع ومفتاح anon العام." },
+          { type: "li", text: "<strong>مفاتيح Clerk:</strong> اذهب إلى dashboard.clerk.com، اختر مشروعك، انتقل إلى API Keys، انسخ Publishable Key و Secret Key." },
+          { type: "callout", title: "تنبيه أمني مهم", text: "أضف .env.local إلى ملف .gitignore لمنع رفعه إلى GitHub. أي شخص يحصل على هذه المفاتيح يمكنه الوصول إلى بياناتك!" }
+        ]
+      },
+      {
+        title: "ملف package.json",
+        content: [
+          { type: "p", text: "يحتوي ملف package.json على معلومات المشروع والتبعيات والأوامر المتاحة. بعد تثبيت التبعيات، سيبدو هكذا:" },
+          { type: "p", text: "الأمر المهم هو <code>npm run dev</code> الذي يقوم بتشغيل خادم التطوير. يمكنك تشغيله عن طريق الكتابة في الطرفية:" },
+          { type: "p", text: "بعد التشغيل، افتح المتصفح وانتقل إلى <code>http://localhost:3000</code> لرؤية مشروعك." }
+        ]
+      },
+      {
+        title: "تحسين الكود: هيكل Monorepo للتوسع",
+        content: [
+          { type: "p", text: "إذا كنت تخطط لتوسيع مشروعك في المستقبل (مثل إضافة تطبيق جوال أو API خارجي)، يمكنك استخدام هيكل <strong>Monorepo</strong>. هذا الهيكل يتيح لك مشاركة الكود بين مشاريع متعددة." },
+          { type: "p", text: "المكتبات التي تساعدك على إدارة Monorepo:" },
+          { type: "li", text: "<strong>Turborepo:</strong> أداة سريعة لإدارة مشاريع متعددة" },
+          { type: "li", text: "<strong>pnpm workspaces:</strong> إدارة التبعيات المشتركة" },
+          { type: "li", text: "<strong>Nx:</strong> إطار عمل قوي للمشاريع الكبيرة" },
+          { type: "callout", title: "متى تستخدم Monorepo؟", text: "استخدم Monorepo عندما يكون لديك أكثر من مشروع يشارك نفس الكود. للمشاريع الصغيرة (مثل مدونتنا)، الهيكل العادي (Single Repo) كافٍ ويبسط الأمور." }
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: "أي ملف يحتوي على مفاتيح API السرية ولا يجب رفعه إلى GitHub؟",
+        options: ["package.json", ".env.local", "next.config.js", "tailwind.config.js"],
+        correctAnswer: 1,
+        explanation: "يحتوي ملف .env.local على متغيرات البيئة الحساسة مثل مفاتيح API. يجب دائمًا إضافته إلى .gitignore لمنع رفعه إلى GitHub."
+      }
+    ],
+    challenge: {
+      title: "تحدي الإعداد: أعد إنشاء المشروع",
+      description: "حاول إنشاء مشروع Next.js جديد بنفسك باستخدام الأوامر التالية: 1. قم بتشغيل npx create-next-app@latest 2. ثبّت التبعيات الإضافية (@supabase/ssr, @clerk/nextjs) 3. أنشئ مجلد components/ مع ملف Header.js بسيط 4. أنشئ مجلد lib/ مع ملف utils.js بسيط 5. قم بتشغيل المشروع باستخدام npm run dev وتأكد من أنه يعمل. إذا واجهت أي مشكلة، راجع خطوات التثبيت أعلاه أو ابحث عن الحل على Google."
+    },
+    cheatSheet: {
+      title: "مرجع الإعداد السريع",
+      items: [
+        { title: "1. إنشاء المشروع", content: "npx create-next-app@latest my-blog" },
+        { title: "2. تثبيت التبعيات", content: "npm install @supabase/ssr @clerk/nextjs" },
+        { title: "3. إعداد .env.local", content: "أضف مفاتيح Supabase و Clerk" },
+        { title: "4. تشغيل المشروع", content: "npm run dev" }
+      ]
+    }
+  },
   en: {
     sections: [
       {

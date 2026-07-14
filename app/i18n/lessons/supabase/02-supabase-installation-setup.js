@@ -1,4 +1,45 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "تثبيت Supabase وإعداده", content: [
+        { type: "p", text: "بعد إنشاء مشروع Supabase الخاص بك، الخطوة التالية هي ربطه بتطبيق Next.js الخاص بك. في هذا الدرس، سنتعلم كيفية تثبيت وتكوين عميل Supabase في مشروعك." },
+      ]},
+      { title: "تثبيت عميل Supabase", content: [
+        { type: "code", text: "npm install @supabase/supabase-js" },
+        { type: "p", text: "هذه هي المكتبة الأساسية للتفاعل مع Supabase من جانب العميل." },
+      ]},
+      { title: "الحصول على مفاتيحك", content: [
+        { type: "p", text: "اذهب إلى لوحة تحكم مشروعك → الإعدادات → API. ستجد:" },
+        { type: "li", text: "رابط المشروع (مثل https://abc123.supabase.co)" },
+        { type: "li", text: "مفتاح Anon (مفتاح عام للاستخدام من جانب العميل)" },
+        { type: "li", text: "مفتاح Service Role (مفتاح إداري — أبقه سراً!)" },
+      ]},
+      { title: "إنشاء عميل Supabase", content: [
+        { type: "code", text: "import { createClient } from '@supabase/supabase-js';\n\nconst supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;\nconst supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;\n\nexport const supabase = createClient(supabaseUrl, supabaseAnonKey);" },
+      ]},
+      { title: "متغيرات البيئة", content: [
+        { type: "p", text: "أنشئ ملف <code>.env.local</code> في جذر مشروعك بيانات اعتماد Supabase. لا تُرسل هذا الملف إلى Git أبداً." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "ثبّت حزمة @supabase/supabase-js." },
+        { type: "li", text: "احصل على رابط المشروع ومفتاح Anon من لوحة التحكم." },
+        { type: "li", text: "أنشئ العميل باستخدام createClient()." },
+        { type: "li", text: "خزّن المفاتيح في .env.local للأمان." },
+      ]}
+    ],
+    quiz: [
+      { question: "أي حزمة npm تحتاج لتثبيتها لـ Supabase؟", options: ["supabase", "@supabase/supabase-js", "supabase-client", "next-supabase"], explanation: "الحزمة الرسمية هي @supabase/supabase-js." },
+      { question: "أين يجب تخزين مفاتيح Supabase؟", options: ["في الكود مباشرة", "ملف .env.local", "في قاعدة البيانات", "في localStorage"], explanation: "خزّن المفاتيح في .env.local ولا ترسلها إلى Git أبداً." },
+    ],
+    challenge: { title: "إعداد عميل Supabase", description: "ثبّت Supabase، احصل على مفاتيح المشروع، أنشئ ملف العميل، وتحقق من الاتصال بجلب بيانات من جدول." },
+    cheatSheet: { title: "ملخص مراجعة إعداد Supabase", items: [
+      { term: "npm install @supabase/supabase-js", definition: "تثبيت عميل Supabase" },
+      { term: "createClient(url, key)", definition: "إنشاء عميل Supabase" },
+      { term: "NEXT_PUBLIC_SUPABASE_URL", definition: "متغير بيئة للرابط" },
+      { term: "NEXT_PUBLIC_SUPABASE_ANON_KEY", definition: "متغير بيئة لمفتاح Anon" },
+      { term: ".env.local", definition: "ملف لتخزين متغيرات البيئة" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Supabase Installation and Setup", content: [

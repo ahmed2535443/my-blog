@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 2, 1, 1], fr: [1, 1, 2, 1, 1], de: [1, 1, 2, 1, 1] };
+const correctAnswers = { ar: [1, 1, 2, 1, 1], en: [1, 1, 2, 1, 1], fr: [1, 1, 2, 1, 1], de: [1, 1, 2, 1, 1] };
 
 const challengeCode = `"use server";
 export async function submitContactForm(prevState, formData) {
@@ -36,6 +36,30 @@ export async function submitContactForm(prevState, formData) {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص إجراءات الخادم",
+    columns: [
+      {
+        heading: "إجراء خادم أساسي:",
+        items: [
+          '"use server";',
+          "async function saveData(formData) {",
+          '  const name = formData.get("name");',
+          "  await db.insert(name);",
+          "}",
+        ],
+      },
+      {
+        heading: "في النموذج:",
+        items: [
+          "<form action={saveData}>",
+          '  <input name="name" />',
+          '  <button type="submit">Save</button>',
+          "</form>",
+        ],
+      },
+    ],
+  },
   en: {
     title: "Server Actions Cheat Sheet",
     columns: [

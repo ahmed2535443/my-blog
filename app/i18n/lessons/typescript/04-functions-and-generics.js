@@ -1,4 +1,56 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "أنواع الدوال", content: [
+        { type: "p", text: "في TypeScript، يمكنك كتابة المعاملات وقيمة الإرجاع للدوال:" },
+        { type: "code", text: "function add(a: number, b: number): number {\n  return a + b;\n}\n\nconst result = add(5, 3); // 8" },
+      ]},
+      { title: "المعاملات الاختيارية والافتراضية", content: [
+        { type: "p", text: "يمكن أن يكون لدى الدوال معاملات اختيارية وقيم افتراضية:" },
+        { type: "code", text: "function greet(name: string, greeting: string = 'Hello'): string {\n  return `${greeting}, ${name}!`;\n}\n\ngreet('Ahmed');           // 'Hello, Ahmed!'\ngreet('Salaam', 'Salaam'); // 'Salaam, Salaam!'" },
+      ]},
+      { title: "الدوال السهمية", content: [
+        { type: "p", text: "تدعم الدوال السهمية أيضاً تعليقات الأنواع:" },
+        { type: "code", text: "const multiply = (a: number, b: number): number => a * b;\n\nconst double = (x: number): number => x * 2;" },
+      ]},
+      { title: "إحلال الدوال", content: [
+        { type: "p", text: "يسمح إحلال الدوال للدالة بقبول أنواع مختلفة من المعاملات:" },
+        { type: "code", text: "function format(value: string): string;\nfunction format(value: number): string;\nfunction format(value: string | number): string {\n  if (typeof value === 'string') return value;\n  return value.toFixed(2);\n}" },
+      ]},
+      { title: "الدوال العامة", content: [
+        { type: "p", text: "تُمكّنك العامة من كتابة دوال تعمل مع أي نوع مع الحفاظ على أمان النوع:" },
+        { type: "code", text: "function identity<T>(arg: T): T {\n  return arg;\n}\n\nconst num = identity<number>(42);    // 42\nconst str = identity<string>('hello'); // 'hello'" },
+        { type: "callout", title: "لماذا العامة؟", text: "تُمكّنك العامة من كتابة دوال قابلة لإعادة الاستخدام دون فقدان معلومات النوع. يُحدد النوع عند استدعاء الدالة." },
+      ]},
+      { title: "حارس النوع", content: [
+        { type: "p", text: "يساعد حارس النوع على تضييق الأنواع داخل الكتل الشرطية:" },
+        { type: "code", text: "function process(value: string | number) {\n  if (typeof value === 'string') {\n    return value.toUpperCase();\n  }\n  return value.toFixed(2);\n}" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "يمكن أن يكون للدوال معاملات وقيم إرجاع مكتوبة بنوع" },
+        { type: "li", text: "تستخدم المعاملات الاختيارية ? والقيم الافتراضية =" },
+        { type: "li", text: "تدعم الدوال السهمية تعليقات الأنواع" },
+        { type: "li", text: "تتعامل إحلال الدوال مع أنواع معاملات متعددة" },
+        { type: "li", text: "تكتب العامة دوال آمنة النوع قابلة لإعادة الاستخدام" },
+        { type: "li", text: "يضيق حارس النوع الأنواع في الكتل الشرطية" },
+      ]}
+    ],
+    quiz: [
+      { question: "كيف تكتب نوعاً لمعامل الدالة؟", options: ["param: type", "type param", "(type) param", "param as type"], explanation: "تُكتب معاملات الدوال بالصيغة paramName: type." },
+      { question: "ما هي فائدة العامة؟", options: ["تنفيذ أسرع", "دوال قابلة لإعادة الاستخدام آمنة النوع", "حجم كود أصغر", "أداء أفضل"], explanation: "تُمكّنك العامة من كتابة دوال قابلة لإعادة الاستخدام تحافظ على أمان النوع لأي نوع." },
+      { question: "كيف تُحدّد قيمة معامل افتراضية؟", options: ["param = value", "param: value", "param ? value", "default param value"], explanation: "تُحدد المعاملات الافتراضية بالصيغة paramName = defaultValue." }
+    ],
+    challenge: { title: "بناء دوال أداة", description: "أنشئ دوال أداة عامة: identity، first، last، zip. اختبرها بأنواع مختلفة للتحقق من أمان النوع." },
+    cheatSheet: { title: "ملخص الدوال والعامة", items: [
+      { term: "function name(p: type): type", definition: "إعلان دالة مكتوبة بنوع" },
+      { term: "param?: type", definition: "معامل اختياري" },
+      { term: "param = value", definition: "قيمة معامل افتراضية" },
+      { term: "const fn = (p: type): type =>", definition: "دالة سهمية مكتوبة بنوع" },
+      { term: "<T>", definition: "معامل نوع عام" },
+      { term: "إحلال الدالة", definition: "توقيعات نوع متعددة" },
+      { term: "typeof value === 'string'", definition: "حارس نوع" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Function Types", content: [

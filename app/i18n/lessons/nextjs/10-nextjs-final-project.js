@@ -1,4 +1,55 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "ملخص شامل لمرحلة Next.js", content: [
+        { type: "p", text: "تهانينا! لقد وصلت إلى الدرس الأخير من مرحلة Next.js. دعنا نلخص كل ما تعلمناه في الدروس التسعة السابقة." },
+        { type: "li", text: "الدرس 1: مقدمة في Next.js والإعداد" },
+        { type: "li", text: "الدرس 2: التوجيه — الصفحات والتخطيطات" },
+        { type: "li", text: "الدرس 3: مكونات الخادم والعميل" },
+        { type: "li", text: "الدرس 4: جلب البيانات والبث" },
+        { type: "li", text: "الدرس 5: Server Actions والنماذج" },
+        { type: "li", text: "الدرس 6: Cache Components" },
+        { type: "li", text: "الدرس 7: معالجة الأخطاء" },
+        { type: "li", text: "الدرس 8: الصور والخطوط والبيانات الوصفية" },
+        { type: "li", text: "الدرس 9: Route Handlers والـ Proxy" },
+      ]},
+      { title: "المشروع النهائي: مدونة مع مصادقة", content: [
+        { type: "p", text: "في هذا المشروع، سنبني تطبيق مدونة كامل مع مصادقة، باستخدام جميع المفاهيم التي تعلمناها خلال المرحلة." },
+        { type: "li", text: "التوجيه المبني على الملفات مع صفحات ديناميكية" },
+        { type: "li", text: "مكونات الخادم لجلب البيانات" },
+        { type: "li", text: "مكونات العميل للتفاعلية" },
+        { type: "li", text: "Server Actions لعمليات CRUD" },
+        { type: "li", text: "معالجة الأخطاء مع error.js" },
+        { type: "li", text: "تحسين الصور مع next/image" },
+      ]},
+      { title: "ما الخطوة التالية؟", content: [
+        { type: "p", text: "بعد إكمال هذه المرحلة، لديك أساس متين في Next.js. يمكنك الآن الانتقال إلى Supabase لخدمات الخادم، أو Clerk للمصادقة، أو البدء في بناء مشاريعك الخاصة." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "أتقن أساسيات Next.js: التوجيه، المكونات، جلب البيانات." },
+        { type: "li", text: "تعلم Server Actions و Cache Components ومعالجة الأخطاء." },
+        { type: "li", text: "بنى مشروعامتكرياً يجمع جميع المفاهيم." },
+        { type: "li", text: "جاهز للمراحل التالية: Supabase و Clerk والمشروع النهائي." },
+      ]}
+    ],
+    quiz: [
+      { question: "ما هو الترتيب الصحيح للعرض في Next.js؟", options: ["العميل → الخادم → المتصفح", "الخادم → HTML → ترطيب العميل", "المتصفح → الخادم → العميل", "الثابت → الديناميكي → التفاعلي"], explanation: "الخادم يعرض إلى HTML، يرسله إلى المتصفح، ثم مكونات العميل تتماشى للتفاعلية." },
+      { question: "أيهم ليس اتفاقية ملف صحيحة في Next.js؟", options: ["page.js", "layout.js", "component.js", "loading.js"], explanation: "component.js ليست اتفاقية ملف قياسية. الملفات القياسية هي page.js و layout.js و loading.js و error.js و not-found.js." },
+    ],
+    challenge: { title: "ابنِ تطبيق المدونة الكامل", description: "اجمع جميع المفاهيم لبناء مدونة مع مصادقة وعمليات CRUD ومعالجة أخطاء وصور محسّنة." },
+    cheatSheet: { title: "ملخص مراجعة Next.js الكامل", items: [
+      { term: "npx create-next-app", definition: "إنشاء مشروع جديد" },
+      { term: "app/page.js", definition: "صفحة المسار" },
+      { term: "app/layout.js", definition: "التخطيط المشترك" },
+      { term: "'use client'", definition: "تعليمة مكون العميل" },
+      { term: "'use server'", definition: "تعليمة Server Action" },
+      { term: "'use cache'", definition: "تعليمة التخزين المؤقت" },
+      { term: "error.js", definition: "حدود الخطأ" },
+      { term: "loading.js", definition: "واجهة التحميل" },
+      { term: "route.js", definition: "نقطة نهاية API" },
+      { term: "proxy.ts", definition: "بديل الـ Middleware" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Comprehensive Next.js Stage Summary", content: [

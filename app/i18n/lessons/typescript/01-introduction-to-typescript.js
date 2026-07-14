@@ -1,4 +1,56 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "ما هو TypeScript؟", content: [
+        { type: "p", text: "<strong>TypeScript</strong> هو لغة برمجة مبنية فوق JavaScript، طورها <strong>Microsoft</strong> في عام 2012. هو ببساطة <strong>JavaScript + نظام الأنواع</strong>." },
+        { type: "callout", title: "تشبيه بسيط", text: "JavaScript مثل سيارة بدون لوحة معلومات — تسير لكنك لا تعرف سرعتك أو مستوى الوقود. TypeScript يضيف لوحة المعلومات! يخبرك أين المشكلة قبل أن ينهار." },
+        { type: "p", text: "مهم: لا يعمل TypeScript مباشرة في المتصفح أو Node.js. يتم تجميعه إلى JavaScript عادي عبر <strong>tsc (مترجم TypeScript)</strong>. المخرج النهائي هو JavaScript خالص — لا قيود وقت التشغيل!" },
+      ]},
+      { title: "لماذا نستخدم TypeScript؟", content: [
+        { type: "li", text: "<strong>اكتشاف الأخطاء مبكراً</strong> — يلتقط TypeScript أخطاء النوع في وقت التجميع، وليس وقت التشغيل." },
+        { type: "li", text: "<strong>دعم أفضل لمحرر الأكواد</strong> — إكمال تلقائي وتوثيق داخلي وأدوات إعادة الهيكلة." },
+        { type: "li", text: "<strong>كود يوثّق نفسه</strong> — تعمل الأنواع كتوثيق لكودك." },
+        { type: "li", text: "<strong>إعادة هيكلة أكثر أماناً</strong> — غيّر توقيع دالة ويخبرك TypeScript في كل مكان ينكسر." },
+        { type: "li", text: "<strong>أفضل للفرق</strong> — تعمل الأنواع كعقود بين المطورين." },
+      ]},
+      { title: "TypeScript مقابل JavaScript", content: [
+        { type: "p", text: "TypeScript هو مجموعة فرعية من JavaScript — كل ملف JavaScript صالح هو أيضاً ملف TypeScript صالح. الفرق الرئيسي هو أن TypeScript يضيف تعليقات نوع اختيارية." },
+        { type: "callout", title: "الفرق الرئيسي", text: "TypeScript = JavaScript + أنواع. يمكنك تبني TypeScript تدريجياً في مشاريع JavaScript الحالية." },
+      ]},
+      { title: "إعداد TypeScript", content: [
+        { type: "li", text: "تثبيت TypeScript عالمياً: npm install -g typescript" },
+        { type: "li", text: "تهيئة مشروع TypeScript: tsc --init" },
+        { type: "li", text: "تجميع TypeScript: tsc filename.ts" },
+        { type: "li", text: "ملف tsconfig.json يُكوّن مترجم TypeScript" },
+      ]},
+      { title: "أول كود TypeScript لك", content: [
+        { type: "p", text: "لنكتب أول كود TypeScript لك. ابدأ بإعلان متغير بسيط مع تعليق نوع." },
+        { type: "code", text: "let message: string = 'Hello TypeScript';\nlet count: number = 42;\nlet isActive: boolean = true;" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "TypeScript هو JavaScript مع نظام أنواع" },
+        { type: "li", text: "يكتشف الأخطاء في وقت التجميع، وليس وقت التشغيل" },
+        { type: "li", text: "يُجمع إلى JavaScript عادي عبر tsc" },
+        { type: "li", text: "كل JavaScript صالح هو TypeScript صالح" },
+        { type: "li", text: "يحسّن TypeScript دعم محرر الأكواد وجودة الكود" },
+      ]}
+    ],
+    quiz: [
+      { question: "ما هو TypeScript؟", options: ["بديل لـ JavaScript", "JavaScript مع نظام أنواع", "إطار عمل CSS", "لغة قواعد بيانات"], explanation: "TypeScript هو JavaScript مع نظام أنواع مضاف، طوره Microsoft." },
+      { question: "كيف يعمل TypeScript في المتصفح؟", options: ["مباشرةً", "يُجمع إلى JavaScript أولاً", "من خلال إضافة خاصة", "لا يعمل في المتصفحات"], explanation: "يُجمع TypeScript إلى JavaScript عادي عبر tsc قبل التشغيل في المتصفح." },
+      { question: "ما هي الفائدة الرئيسية لـ TypeScript؟", options: ["تنفيذ أسرع", "اكتشاف الأخطاء في وقت التجميع", "حجم ملفات أصغر", "SEO أفضل"], explanation: "الفائدة الرئيسية لـ TypeScript هي اكتشاف أخطاء النوع في وقت التجميع وليس وقت التشغيل." }
+    ],
+    challenge: { title: "إعداد أول مشروع TypeScript لك", description: "ثبّت TypeScript، أنشئ tsconfig.json، اكتب ملف .ts بسيطاً بمتغيرات بأنواع مختلفة، وقم بتجميعه إلى JavaScript." },
+    cheatSheet: { title: "ملخص مقدمة TypeScript", items: [
+      { term: "npm install -g typescript", definition: "تثبيت TypeScript عالمياً" },
+      { term: "tsc --init", definition: "تهيئة مشروع TypeScript" },
+      { term: "tsc file.ts", definition: "تجميع TypeScript إلى JavaScript" },
+      { term: "tsconfig.json", definition: "تكوين مترجم TypeScript" },
+      { term: ": string", definition: "تعليق نوع النص" },
+      { term: ": number", definition: "تعليق نوع الرقم" },
+      { term: ": boolean", definition: "تعليق نوع المنطقي" }
+    ]}
+  },
   en: {
     sections: [
       { title: "What is TypeScript?", content: [

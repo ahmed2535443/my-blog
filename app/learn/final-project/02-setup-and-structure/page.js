@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1], fr: [1], de: [1] };
+const correctAnswers = { en: [1], fr: [1], de: [1], ar: [1] };
 
 const cheatSheetData = {
   en: {
@@ -79,6 +79,29 @@ const cheatSheetData = {
           "<code className='inline-code'>package.json</code> - Abhängigkeiten und Skripte",
           "<code className='inline-code'>next.config.js</code> - Next.js-Konfiguration",
           "<code className='inline-code'>tailwind.config.js</code> - Tailwind CSS-Konfiguration",
+        ],
+      },
+    ],
+  },
+  ar: {
+    title: "مرجع الإعداد السريع",
+    columns: [
+      {
+        heading: "خطوات الإعداد:",
+        items: [
+          "1. إنشاء المشروع - <code className='inline-code'>npx create-next-app@latest my-blog</code>",
+          "2. تثبيت التبعيات - <code className='inline-code'>npm install @supabase/ssr @clerk/nextjs</code>",
+          "3. إعداد .env.local - أضف مفاتيح Supabase و Clerk",
+          "4. تشغيل المشروع - <code className='inline-code'>npm run dev</code>",
+        ],
+      },
+      {
+        heading: "الملفات الرئيسية:",
+        items: [
+          "<code className='inline-code'>.env.local</code> - متغيرات البيئة (لا تدفع أبدًا)",
+          "<code className='inline-code'>package.json</code> - التبعيات والسكربتات",
+          "<code className='inline-code'>next.config.js</code> - إعدادات Next.js",
+          "<code className='inline-code'>tailwind.config.js</code> - إعدادات Tailwind CSS",
         ],
       },
     ],

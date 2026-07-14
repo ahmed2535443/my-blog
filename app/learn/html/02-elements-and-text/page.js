@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2, 0], fr: [1, 2, 0], de: [1, 2, 0] };
+const correctAnswers = { ar: [1, 2, 0], en: [1, 2, 0], fr: [1, 2, 0], de: [1, 2, 0] };
 
 const challengeCode = `<h1>مقدمة في HTML</h1>
 <p>HTML هي لغة الويب الأساسية. تُستخدم لبناء صفحات الويب.</p>
@@ -40,6 +40,68 @@ const challengeCode = `<h1>مقدمة في HTML</h1>
 <p>هذا مثال على <code>النص المنسق</code> внутри فقرة.</p>`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص العناصر والنصوص",
+    columns: [
+      {
+        heading: "العناوين:",
+        items: [
+          '<code className="inline-code">&lt;h1&gt;</code> إلى <code className="inline-code">&lt;h6&gt;</code> - ستة مستويات عنوان',
+          '<code className="inline-code">&lt;h1&gt;</code> هو الأكبر، <code className="inline-code">&lt;h6&gt;</code> هو الأصغر',
+          "استخدم العناوين بالتسلسل، لا تتخطى المستويات",
+        ],
+      },
+      {
+        heading: "علامات النص:",
+        items: [
+          '<code className="inline-code">&lt;p&gt;</code> - فقرة',
+          '<code className="inline-code">&lt;strong&gt;</code> - عريض (أهمية دلالية)',
+          '<code className="inline-code">&lt;em&gt;</code> - مائل (تأكيد)',
+          '<code className="inline-code">&lt;code&gt;</code> - كود مضمّن',
+          '<code className="inline-code">&lt;blockquote&gt;</code> - اقتباس كتلي',
+          '<code className="inline-code">&lt;pre&gt;</code> - نص مُنسّق مسبقاً',
+        ],
+      },
+      {
+        heading: "القوائم:",
+        items: [
+          '<code className="inline-code">&lt;ul&gt;</code> - قائمة غير مرقمة',
+          '<code className="inline-code">&lt;ol&gt;</code> - قائمة مرقمة',
+          '<code className="inline-code">&lt;li&gt;</code> - عنصر قائمة',
+          '<code className="inline-code">&lt;dl&gt;</code> - قائمة وصفية',
+        ],
+      },
+      {
+        heading: "العناصر الفارغة:",
+        items: [
+          '<code className="inline-code">&lt;br&gt;</code> - سطر جديد',
+          '<code className="inline-code">&lt;hr&gt;</code> - خط أفقي',
+          '<code className="inline-code">&lt;img&gt;</code> - صورة (بدون علامة إغلاق)',
+        ],
+        code: `<!-- العناوين -->
+<h1>العنوان الرئيسي</h1>
+<h2>عنوان فرعي</h2>
+<h3>عنوان قسم</h3>
+
+<!-- النص -->
+<p>نص الفقرة</p>
+<strong>نص عريض</strong>
+<em>نص مائل</em>
+<code>كود مضمّن</code>
+
+<!-- القوائم -->
+<ul>
+  <li>عنصر 1</li>
+  <li>عنصر 2</li>
+</ul>
+<ol>
+  <li>الأول</li>
+  <li>الثاني</li>
+</ol>`,
+        codeLanguage: "html",
+      },
+    ],
+  },
   en: {
     title: "Elements and Text Cheat Sheet",
     columns: [
@@ -229,6 +291,19 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: {
+    title: "مشروع صغير: صفحة ملف شخصي",
+    description: "أنشئ صفحة ملف شخصي تتضمن:",
+    items: [
+      'اسمك كعنوان رئيسي <code>&lt;h1&gt;</code>',
+      'نبذة مختصرة في فقرة <code>&lt;p&gt;</code>',
+      'مهاراتك في قائمة غير مرقمة <code>&lt;ul&gt;</code>',
+      'تجاربك في قائمة مرقمة <code>&lt;ol&gt;</code>',
+      'اقتباس بمقالتك المفضلة',
+      'خط أفقي لفصل الأقسام',
+    ],
+    hint: "استخدم جميع العلامات التي تعلمتها في هذا الدرس. تذكر استخدام العناوين بالترتيب (h1، h2، h3) دون تخطي المستويات.",
+  },
   en: {
     title: "Mini Project: Personal Profile Page",
     description: "Create a personal profile page that includes:",

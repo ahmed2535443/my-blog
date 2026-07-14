@@ -1,4 +1,56 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "الأنواع الأولية", content: [
+        { type: "p", text: "يوفر TypeScript عدة أنواع أولية تشكل اللبنات الأساسية لنظام الأنواع الخاص بك." },
+        { type: "li", text: "<strong>string</strong> — للنصوص: let name: string = 'Ahmed'" },
+        { type: "li", text: "<strong>number</strong> — لجميع الأرقام (أعداد صحيحة، عائمة، عشرية): let age: number = 25" },
+        { type: "li", text: "<strong>boolean</strong> — لقيم صحيح/خطأ: let isActive: boolean = true" },
+        { type: "li", text: "<strong>null</strong> و <strong>undefined</strong> — يمثلان غياب القيمة" },
+      ]},
+      { title: "المصفوفات", content: [
+        { type: "p", text: "يمكن كتابة المصفوفات بطريقتين في TypeScript:" },
+        { type: "code", text: "let numbers: number[] = [1, 2, 3];\nlet names: Array<string> = ['Ali', 'Sara'];" },
+      ]},
+      { title: "الكائنات والواجهات", content: [
+        { type: "p", text: "يمكن كتابة الكائنات باستخدام الواجهات أو أسماء الأنواع البديلة:" },
+        { type: "code", text: "interface User {\n  name: string;\n  age: number;\n  email?: string; // اختياري\n}\n\nconst user: User = {\n  name: 'Ahmed',\n  age: 25\n};" },
+        { type: "callout", title: "نقطة رئيسية", text: "العلامة ? تُعيّن الخاصية كاختيارية. لن يطلب TypeScript توفيرها." },
+      ]},
+      { title: "أنواع الاتحاد", content: [
+        { type: "p", text: "تسمح أنواع الاتحاد للمتغير بحمل أحد عدة أنواع:" },
+        { type: "code", text: "let id: string | number;\nid = '123'; // مقبول\nid = 123;   // مقبول\nid = true;  // خطأ!" },
+      ]},
+      { title: "استنتاج الأنواع", content: [
+        { type: "p", text: "يمكن لـ TypeScript استنتاج الأنواع تلقائياً من القيمة المعينة. لا تحتاج دائماً إلى تحديد الأنواع صراحةً." },
+        { type: "code", text: "let message = 'Hello'; // يستنتج TypeScript نوع string\nlet count = 42;        // يستنتج TypeScript نوع number" },
+        { type: "callout", title: "أفضل ممارسة", text: "اترك TypeScript يستنتج الأنواع عندما يكون ممكناً. أضف أنواعاً صريحة فقط عندما يكون ذلك ضرورياً للوضوح أو عندما لا يكون الاستنتاج كافياً." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "الأنواع الأولية: string، number، boolean، null، undefined" },
+        { type: "li", text: "يمكن كتابة المصفوفات بـ T[] أو Array<T>" },
+        { type: "li", text: "تُكتب الكائنات بواجهات أو أسماء أنواع بديلة" },
+        { type: "li", text: "أنواع الاتحاد (|) تسمح بعدة أنواع لمتغير واحد" },
+        { type: "li", text: "يستنتج TypeScript الأنواع تلقائياً عندما يكون ممكناً" },
+      ]}
+    ],
+    quiz: [
+      { question: "كيف تُعرّف مصفوفة من الأرقام؟", options: ["number[]", "Array<number>", "كل من A و B", "number{}"], explanation: "كل من number[] و Array<number> طرق صالحة لكتابة مصفوفة أرقام في TypeScript." },
+      { question: "ماذا تعني العلامة ? في واجهة؟", options: ["خاصية مطلوبة", "خاصية اختيارية", "خاصية nullable", "خاصية للقراءة فقط"], explanation: "العلامة ? تُعيّن الخاصية كاختيارية، مما يعني أنه لا يجب توفيرها." },
+      { question: "ما هو استنتاج الأنواع؟", options: ["إعلان نوع يدوي", "يحدد TypeScript الأنواع تلقائياً", "أداة تصحيح", "علامة مترجم"], explanation: "استنتاج الأنواع هو عندما يحدد TypeScript نوع المتغير تلقائياً من قيمته المعينة." }
+    ],
+    challenge: { title: "تدرب على الأنواع الأساسية", description: "أنشئ متغيرات بأنواع مختلفة (string، number، boolean، مصفوفات، كائنات بواجهات، وأنواع اتحاد). اختبر أي القيم مقبولة وأيها تسبب أخطاء." },
+    cheatSheet: { title: "ملخص الأنواع الأساسية", items: [
+      { term: "string", definition: "نوع النص" },
+      { term: "number", definition: "نوع رقمي (صحيح، عائم، عشري)" },
+      { term: "boolean", definition: "نوع صحيح/خطأ" },
+      { term: "T[] أو Array<T>", definition: "نوع المصفوفة" },
+      { term: "interface", definition: "يُعرّف شكل الكائن" },
+      { term: "A | B", definition: "نوع اتحاد — A أو B" },
+      { term: "?:", definition: "خاصية اختيارية" },
+      { term: "استنتاج الأنواع", definition: "كشف تلقائي للنوع" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Primitive Types", content: [

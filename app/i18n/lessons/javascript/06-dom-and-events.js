@@ -1,4 +1,80 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "ما هو DOM؟", content: [
+        { type: "p", text: "<strong>DOM</strong> يعني <strong>نموذج كائن المستند (Document Object Model)</strong>. هو واجهة برمجة تطبيقات تمثل محتوى صفحة الويب كشجرة كائنات. يُحوّل المتصفح HTML إلى شجرة يمكن لجافاسكريبت التفاعل معها وتعديلها." },
+        { type: "callout", title: "تشبيه:", text: "DOM مثل شجرة عائلية: <code>document</code> هو الجذر، تحته الفروع (عناصر HTML)، وكل فرع يمكن أن يحتوي على فروع أخرى." },
+      ]},
+      { title: "لماذا نستخدم DOM؟", content: [
+        { type: "p", text: "بدون DOM، كانت صفحات الويب ثابتة وغير قابلة للتعديل. DOM يسمح بجعل الصفحات <strong>تفاعلية</strong>: تحديث المحتوى، إظهار/إخفاء العناصر، وإضافة عناصر جديدة دون إعادة تحميل الصفحة." },
+        { type: "callout", title: "ملاحظة حول React:", text: "في <strong>React</strong>، لا نعدّل DOM يدويًا - React يتعامل مع ذلك تلقائيًا. لكن فهم DOM يساعدك على فهم ما يفعله React خلف الكواليس." },
+      ]},
+      { title: "المشكلة التي يحلها DOM", content: [
+        { type: "p", text: "قبل DOM، كان المتصفحات تعرض HTML كنص ثابت فقط. DOM يوفر <strong>تمثيلًا شجريًا</strong> لكل عنصر وواجهة برمجة للبحث والتعديل والتفاعل معه." },
+      ]},
+      { title: "شرح بسيط", content: [
+        { type: "p", text: "ثلاث طرق رئيسية لاختيار العناصر:" },
+        { type: "p", text: "<strong>getElementById</strong>: البحث بالـ id فقط. <strong>querySelector</strong>: أكثر مرونة ويدعم أي محدد CSS." },
+      ]},
+      { title: "مثال بسيط: تعديل العناصر", content: [
+        { type: "p", text: "تغيير النص وHTML والنمط، إضافة/تبديل الفئات، وتعيين السمات." },
+      ]},
+      { title: "مثال عملي: قائمة مهام تفاعلية", content: [
+        { type: "p", text: "قائمة مهام تفاعلية كاملة مع وظائف الإضافة والحذف باستخدام addEventListener و createElement و appendChild." },
+      ]},
+      { title: "الأحداث", content: [
+        { type: "p", text: "الأحداث هي طريقة جافاسكريبت للاستجابة لتفاعلات المستخدم." },
+        { type: "li", text: "<code>click</code> / <code>dblclick</code> - النقر" },
+        { type: "li", text: "<code>input</code> / <code>change</code> - تغيير الحقول" },
+        { type: "li", text: "<code>submit</code> - إرسال النموذج" },
+        { type: "li", text: "<code>keydown</code> / <code>keyup</code> - المفاتيح" },
+        { type: "li", text: "<code>scroll</code> - التمرير" },
+      ]},
+      { title: "تفويض الأحداث - نمط مهم", content: [
+        { type: "p", text: "<strong>تفويض الأحداث:</strong> بدلاً من مستمع لكل عنصر، أضف مستمعًا واحدًا للأب وتحقق من <code>event.target</code>." },
+        { type: "callout", title: "لماذا مهم؟", text: "يعمل مع العناصر المنشأة ديناميكيًا. موفر للذاكرة: مستمع واحد بدلاً من المئات." },
+      ]},
+      { title: "ماذا يحدث خلف الكواليس؟", content: [
+        { type: "p", text: "عندما يحدث حدث، يمر بثلاث مراحل:" },
+        { type: "li", text: "<strong>التقاط:</strong> يهبط من الجذر إلى العنصر المستهدف" },
+        { type: "li", text: "<strong>الهدف:</strong> يصل إلى العنصر ويعمل المستمع" },
+        { type: "li", text: "<strong>الفقاعات:</strong> يصعد من الهدف إلى الجذر" },
+        { type: "p", text: "هذه الآلية تجعل <strong>تفويض الأحداث</strong> ممكنًا - الأحداث تنتقل من الأبناء إلى الآباء عبر مرحلة الفقاعات." },
+      ]},
+      { title: "الأخطاء الشائعة", content: [
+        { type: "li", text: "<strong>الخلط بين querySelector و querySelectorAll:</strong> querySelector يُرجع عنصرًا واحدًا، querySelectorAll يُرجع جميع العناصر المطابقة." },
+        { type: "li", text: "<strong>استخدام innerHTML مع نص المستخدم:</strong> يسمح بهجمات XSS. استخدم textContent بدلاً من ذلك." },
+        { type: "li", text: "<strong>نسيان removeEventListener:</strong> أزل المستمعين دائمًا عند الانتهاء لمنع تسرب الذاكرة." },
+      ]},
+      { title: "أفضل الممارسات", content: [
+        { type: "li", text: "<strong>فضل querySelector/All:</strong> أكثر مرونة." },
+        { type: "li", text: "<strong>استخدم textContent بدلاً من innerHTML:</strong> لتجنب XSS." },
+        { type: "li", text: "<strong>استخدم تفويض الأحداث:</strong> للعناصر الديناميكية." },
+        { type: "li", text: "<strong>أزل المستمعين عند الانتهاء:</strong> لمنع تسرب الذاكرة." },
+        { type: "li", text: "<strong>في React، لا تعدّل DOM يدويًا:</strong> دع React يتعامل مع ذلك." },
+      ]},
+      { title: "ملخص", content: [
+        { type: "li", text: "<strong>DOM</strong> هو تمثيل شجري لمحتوى الصفحة يمكن لجافاسكريبت التفاعل معه." },
+        { type: "li", text: "<strong>الاختيار:</strong> getElementById و querySelector و querySelectorAll." },
+        { type: "li", text: "<strong>التعديل:</strong> textContent و innerHTML و classList و style." },
+        { type: "li", text: "<strong>الإنشاء/الحذف:</strong> createElement و appendChild و remove." },
+        { type: "li", text: "<strong>الأحداث:</strong> addEventListener للاستجابة لتفاعلات المستخدم." },
+        { type: "li", text: "<strong>تفويض الأحداث:</strong> مستمع واحد على الأب يتعامل مع جميع الأبناء." },
+        { type: "li", text: "<strong>في React:</strong> لا نعدّل DOM مباشرة - React يستخدم DOM افتراضيًا." },
+      ]},
+    ],
+    quiz: [
+      { question: "ما هو الفرق بين querySelector و getElementById؟", options: ["لا يوجد فرق", "querySelector تبحث فقط بالـ id", "getElementById تبحث فقط بالـ id، بينما querySelector تدعم أي محدد CSS", "querySelector أسرع دائمًا"], correctAnswer: 2, explanation: "getElementById تبحث فقط بالـ id. querySelector تبحث عن أول عنصر يطابق أي محدد CSS. getElementById أسرع لكن querySelector أكثر مرونة." },
+      { question: "لماذا نستخدم تفويض الأحداث؟", options: ["لأنها أسرع وأسهل في المعالجة", "لأنها تسمح بمعالجة أحداث العناصر المنشأة ديناميكيًا توفر الذاكرة", "لأنها الطريقة الوحيدة", "لأنها تمنع preventDefault"], correctAnswer: 1, explanation: "تفويض الأحداث تستخدم مرحلة الفقاعات لالتقاط الأحداث على الأب. تعمل مع العناصر المنشأة ديناميكيًا وتوفر الذاكرة." },
+    ],
+    challenge: { title: "تحدي: عداد تفاعلي", description: "أنشئ عدادًا مع: عنصر يعرض العداد (يبدأ من 0)، زر +1، زر -1، وزر إعادة تعيين. استخدم querySelector و addEventListener." },
+    cheatSheet: { title: "ملخص DOM والأحداث", items: [
+      { label: "اختيار العناصر", description: "document.getElementById('id') | document.querySelector('.class') | document.querySelectorAll('li') | element.parentElement | element.children" },
+      { label: "الأحداث", description: "el.addEventListener('click', fn) | el.removeEventListener('click', fn) | 'click' 'input' 'submit' 'keydown' | event.target / event.preventDefault()" },
+      { label: "تعديل العناصر", description: "el.textContent = 'جديد' | el.innerHTML = '<b>جديد</b>' | el.style.color = 'أحمر' | el.classList.add('أ') | el.setAttribute('href', '#')" },
+      { label: "الإنشاء والحذف", description: "document.createElement('div') | parent.appendChild(div) | div.remove() | element.cloneNode(true)" },
+    ]},
+  },
   en: {
     sections: [
       { title: "What Is DOM?", content: [

@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [2], fr: [2], de: [2] };
+const correctAnswers = { en: [2], fr: [2], de: [2], ar: [2] };
 
 const cheatSheetData = {
   en: {
@@ -79,6 +79,29 @@ const cheatSheetData = {
           "ON DELETE SET NULL - Setzt Fremdschlüssel auf null",
           "RLS-Richtlinien - Zeilenebenensicherheit für Datenschutz",
           "Views - Gespeicherte Abfragen für komplexe Joins",
+        ],
+      },
+    ],
+  },
+  ar: {
+    title: "مرجع تصميم قاعدة البيانات السريع",
+    columns: [
+      {
+        heading: "الجداول الأساسية:",
+        items: [
+          "<code className='inline-code'>profiles</code> - ملفات تعريف المستخدمين المرتبطة بـ auth.users",
+          "<code className='inline-code'>categories</code> - تصنيفات المقالات مع slug واللون",
+          "<code className='inline-code'>posts</code> - المقالات مع العنوان والمحتوى والحالة",
+          "<code className='inline-code'>comments</code> - التعليقات المتداخلة مع parent_id",
+        ],
+      },
+      {
+        heading: "المفاهيم الرئيسية:",
+        items: [
+          "ON DELETE CASCADE - يحذف السجلات المرتبطة تلقائيًا",
+          "ON DELETE SET NULL - يضع المفتاح الأجنبي على null",
+          "سياسات RLS - أمان على مستوى الصفوف لحماية البيانات",
+          "العروض - استعلامات محفوظة للjoins المعقدة",
         ],
       },
     ],

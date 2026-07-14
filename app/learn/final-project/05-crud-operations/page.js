@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
+const correctAnswers = { en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1], ar: [1, 1, 1] };
 
 const cheatSheetData = {
   en: {
@@ -82,6 +82,30 @@ const cheatSheetData = {
           "<code className='inline-code'>FormData</code> als Parameter empfangen",
           "<code className='inline-code'>revalidatePath()</code> zum Cache-Update verwenden",
           "<code className='inline-code'>redirect()</code> nach Erfolg verwenden",
+        ],
+      },
+    ],
+  },
+  ar: {
+    title: "مرجع عمليات CRUD السريع",
+    columns: [
+      {
+        heading: "عمليات Supabase:",
+        items: [
+          "<code className='inline-code'>.insert([{}])</code> - إنشاء سجل جديد",
+          "<code className='inline-code'>.select()</code> - جلب البيانات",
+          "<code className='inline-code'>.update({})</code> - تحديث سجل موجود",
+          "<code className='inline-code'>.delete()</code> - حذف سجل",
+          "<code className='inline-code'>.eq('field', value)</code> - شرط الفلتر",
+        ],
+      },
+      {
+        heading: "Server Actions:",
+        items: [
+          "ابدأ بـ <code className='inline-code'>\"use server\"</code> توجيه",
+          "تلقّي <code className='inline-code'>FormData</code> كمعامل",
+          "استخدم <code className='inline-code'>revalidatePath()</code> لتحديث الذاكرة المؤقتة",
+          "استخدم <code className='inline-code'>redirect()</code> بعد النجاح",
         ],
       },
     ],

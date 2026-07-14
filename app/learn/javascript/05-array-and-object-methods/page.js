@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2], fr: [1, 2], de: [1, 2] };
+const correctAnswers = { ar: [1, 2], en: [1, 2], fr: [1, 2], de: [1, 2] };
 
 const challengeCode = `// بيانات المنتجات
 const products = [
@@ -31,6 +31,18 @@ const products = [
 // 5. تحويل المنتجات التي سعرها أقل من 500 لمصفوفة أسماء باستخدام filter() ثم map()`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ورقة مرجعية - مرجع سريع",
+    items: [
+      { label: "map()", description: "المدخل: مصفوفة | المخرج: مصفوفة جديدة (بنفس الطول) | تعدّل: لا" },
+      { label: "filter()", description: "المدخل: مصفوفة | المخرج: مصفوفة جديدة (مجموعة فرعية) | تعدّل: لا" },
+      { label: "reduce()", description: "المدخل: مصفوفة | المخرج: قيمة واحدة | تعدّل: لا" },
+      { label: "find()", description: "المدخل: مصفوفة | المخرج: عنصر أو undefined | تعدّل: لا" },
+      { label: "every() / some()", description: "المدخل: مصفوفة | المخرج: قيمة منطقية | تعدّل: لا" },
+      { label: "طرق الكائن", description: "Object.keys() المفاتيح | Object.values() القيم | Object.entries() أزواج المفتاح-القيمة" },
+      { label: "العمليات", description: "obj?.prop Optional Chaining | value ?? افتراضي Nullish Coalescing" },
+    ],
+  },
   en: {
     title: "Cheat Sheet - Quick Reference",
     items: [
@@ -68,6 +80,7 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: { title: "تحدي: بيانات متجر الإلكترونيات", description: "طبّق جميع الطرق التي تعلمتها في هذا الدرس لإيجاد بيانات متجر إلكترونيات." },
   en: { title: "Challenge: Electronics Store Data", description: "Apply all the methods you learned in this lesson to find electronics store data." },
   fr: { title: "Défi : Données Magasin d'Électronique", description: "Appliquez toutes les méthodes que vous avez apprises pour trouver des données de magasin d'électronique." },
   de: { title: "Herausforderung: Elektronikgeschäftsdaten", description: "Wenden Sie alle Methoden an, die Sie in dieser Lektion gelernt haben, um Elektronikgeschäftsdaten zu finden." },

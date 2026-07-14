@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2, 1], fr: [1, 2, 1], de: [1, 2, 1] };
+const correctAnswers = { ar: [1, 2, 1], en: [1, 2, 1], fr: [1, 2, 1], de: [1, 2, 1] };
 
 const challengeCode = `<!-- الحل المتوقع -->
 <header>
@@ -49,6 +49,59 @@ const challengeCode = `<!-- الحل المتوقع -->
 </footer>`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص HTML الدلالي",
+    columns: [
+      {
+        heading: "عناصر الهيكل:",
+        items: [
+          '<code className="inline-code">&lt;header&gt;</code> - ترويسة الصفحة/القسم',
+          '<code className="inline-code">&lt;nav&gt;</code> - روابط التنقل',
+          '<code className="inline-code">&lt;main&gt;</code> - المحتوى الرئيسي (واحد فقط للصفحة)',
+          '<code className="inline-code">&lt;section&gt;</code> - قسم منطقي مع عنوان',
+          '<code className="inline-code">&lt;article&gt;</code> - محتوى مستقل',
+          '<code className="inline-code">&lt;aside&gt;</code> - محتوى جانبي',
+          '<code className="inline-code">&lt;footer&gt;</code> - تذييل الصفحة/القسم',
+        ],
+      },
+      {
+        heading: "عناصر النص:",
+        items: [
+          '<code className="inline-code">&lt;figure&gt;</code> - حاوية صورة/محتوى',
+          '<code className="inline-code">&lt;figcaption&gt;</code> - تعليق الصورة',
+          '<code className="inline-code">&lt;blockquote&gt;</code> - اقتباس كتلي',
+          '<code className="inline-code">&lt;cite&gt;</code> - مصدر الاقتباس',
+          '<code className="inline-code">&lt;mark&gt;</code> - نص مُميّز',
+          '<code className="inline-code">&lt;time&gt;</code> - التواريخ والأوقات',
+        ],
+      },
+      {
+        heading: "القوائم والجداول:",
+        items: [
+          '<code className="inline-code">&lt;details&gt;</code> - محتوى قابل للتوسيع',
+          '<code className="inline-code">&lt;summary&gt;</code> - ملخص التفاصيل',
+          '<code className="inline-code">&lt;caption&gt;</code> - عنوان الجدول',
+          '<code className="inline-code">&lt;thead&gt;</code> - رأس الجدول',
+          '<code className="inline-code">&lt;tbody&gt;</code> - جسم الجدول',
+          '<code className="inline-code">&lt;tfoot&gt;</code> - تذييل الجدول',
+        ],
+      },
+      {
+        heading: "هيكل الصفحة:",
+        code: `<body>
+  <header>
+    <nav>...</nav>
+  </header>
+  <main>
+    <article>...</article>
+    <aside>...</aside>
+  </main>
+  <footer>...</footer>
+</body>`,
+        codeLanguage: "html",
+      },
+    ],
+  },
   en: {
     title: "Semantic HTML Cheat Sheet",
     columns: [
@@ -211,6 +264,19 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: {
+    title: "مشروع صغير: تخطيط مدونة دلالي",
+    description: "أنشئ صفحة مدونة باستخدام عناصر HTML الدلالية:",
+    items: [
+      '<code>&lt;header&gt;</code> بعنوان الموقع و<code>&lt;nav&gt;</code>',
+      '<code>&lt;main&gt;</code> يحتوي على <code>&lt;article&gt;</code> مع <code>&lt;section&gt;</code>s',
+      '<code>&lt;aside&gt;</code> للمقالات ذات الصلة أو الشريط الجانبي',
+      'استخدم <code>&lt;figure&gt;</code> و<code>&lt;figcaption&gt;</code> للصور',
+      'استخدم <code>&lt;time&gt;</code> لتواريخ المقالات',
+      '<code>&lt;footer&gt;</code> بمعلومات حقوق النشر',
+    ],
+    hint: "تذكر: <code>&lt;main&gt;</code> يجب أن يظهر مرة واحدة فقط لكل صفحة. كل <code>&lt;section&gt;</code> يجب أن يكون له عنوان. محتوى <code>&lt;article&gt;</code> يجب أن يكون قابلاً للتوزيع بشكل مستقل.",
+  },
   en: {
     title: "Mini Project: Semantic Blog Layout",
     description: "Create a blog page using semantic HTML elements:",

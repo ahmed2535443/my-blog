@@ -1,4 +1,213 @@
 const translations = {
+  ar: {
+    sections: [
+      {
+        title: "مقدمة المشروع",
+        content: [
+          { type: "p", text: "في هذا الدرس الأخير، سنبني معاً صفحة <strong>Landing Page</strong> احترافية تجمع <strong>كل ما تعلمناه</strong> في مرحلة CSS الحديثة. هذا المشروع ليس مجرد تمرين - بل هو تنفيذ حقيقي يمكنك استخدامه كأساس لأي مشروع مستقبلي." },
+          { type: "p", text: "سنستخدم جميع تقنيات CSS الحديثة: المتغيرات، تخطيطات الشبكة والمرونة، السمات الداكنة والفاتحة، الرسوم المتحركة، الخصائص المنطقية، الوحدات السائلة، والألوان المتقدمة." },
+          { type: "p", text: "لن نكتب HTML من الصفر - نركز على CSS فقط. لكننا سنبني الهيكل أولاً لفهم كيفية تنسيقه." }
+        ]
+      },
+      {
+        title: "ماذا سنتعلم",
+        content: [
+          { type: "li", text: "<strong>التصميم المتجاوب</strong> باستخدام <code>clamp()</code> بدلاً من العديد من Media Queries" },
+          { type: "li", text: "<strong>CSS Grid</strong> مع <code>auto-fit</code> و <code>minmax</code> للشبكات السائلة" },
+          { type: "li", text: "<strong>Flexbox</strong> لشريط التنقل والتوزيع السائل" },
+          { type: "li", text: "<strong>CSS Variables + light-dark()</strong> لنظام سمات متكامل" },
+          { type: "li", text: "<strong>الرسوم المتحركة والتأثيرات</strong> باستخدام Transitions و Keyframes" },
+          { type: "li", text: "<strong>Container Queries</strong> لجعل البطاقات تتكيف مع حاويتها" },
+          { type: "li", text: "<strong>الخصائص المنطقية</strong> (margin-inline, padding-block) لدعم RTL" },
+          { type: "li", text: "<strong>الألوان الحديثة</strong> باستخدام <code>oklch()</code> و <code>color-mix()</code>" },
+          { type: "li", text: "<strong>CSS Nesting</strong> لتنظيم الكود بشكل طبيعي" },
+          { type: "li", text: "<strong>@layer</strong> لتنظيم الأولويات وفصل القواعد" }
+        ]
+      },
+      {
+        title: "هيكل المشروع",
+        content: [
+          { type: "p", text: "يتبع هيكل ملفات CSS نمط طبقات منظم:" },
+          { type: "li", text: "<strong>layers.css</strong> — يحدد الطبقات بالترتيب" },
+          { type: "li", text: "<strong>base.css</strong> — إعادة التعيين والاستيراد" },
+          { type: "li", text: "<strong>variables.css</strong> — المتغيرات والألوان" },
+          { type: "li", text: "<strong>components.css</strong> — المكونات (البطاقات، الأزرار، شريط التنقل)" },
+          { type: "li", text: "<strong>layout.css</strong> — التخطيط العام (Grid + Flexbox)" },
+          { type: "li", text: "<strong>utilities.css</strong> — فئات المساعدة" },
+          { type: "li", text: "<strong>animations.css</strong> — الرسوم المتحركة والتأثيرات" },
+          { type: "p", text: "نستخدم <code>@layer</code> لتنظيم الأولويات: كل طبقة محددة مسبقاً، والطبقة الأعلى في الترتيب تفوز عند التعارض." }
+        ]
+      },
+      {
+        title: "الخطوة 1: الأساسيات",
+        content: [
+          { type: "p", text: "نبدأ بإعداد المتغيرات وإعادة التعيين الأساسية. هذه أساس كل مشروع CSS حديث." },
+          { type: "li", text: "<strong>تعريف الطبقات</strong> — @layer base, components, layout, utilities, animations" },
+          { type: "li", text: "<strong>رموز التصميم</strong> — ألوان oklch، light-dark()، طباعة سائلة بـ clamp()" },
+          { type: "li", text: "<strong>إعادة تعيين CSS</strong> — box-sizing، إعادة تعيين margin/padding، تمرير سلس، خطوط مooth" },
+          { type: "li", text: "<strong>تنسيق التحديد</strong> — color-mix() للون تحديد مخصص" }
+        ]
+      },
+      {
+        title: "الخطوة 2: التخطيط",
+        content: [
+          { type: "p", text: "الآن نبني التخطيط العام: شريط التنقل، قسم البطل، البطاقات، والتذييل." },
+          { type: "li", text: "<strong>شريط التنقل</strong> — Flexbox مع موضع ثابت، backdrop-filter blur، خصائص منطقية" },
+          { type: "li", text: "<strong>قسم البطل</strong> — CSS Grid مع place-items، clamp() للطباعة، خلفية radial-gradient" },
+          { type: "li", text: "<strong>شبكة البطاقات</strong> — Grid مع auto-fit/minmax للأعمدة المتجاوبة" },
+          { type: "li", text: "<strong>بطاقة الميزة</strong> — Container Queries للتخطيط التكيفي داخل الحاوية" },
+          { type: "li", text: "<strong>التذييل</strong> — Grid مع place-items، خصائص منطقية للحدود" }
+        ]
+      },
+      {
+        title: "الخطوة 3: السمات",
+        content: [
+          { type: "p", text: "نستخدم <code>CSS Variables</code> مع <code>light-dark()</code> لإنشاء نظام سمات ذكي دون JavaScript معقد." },
+          { type: "li", text: "<strong>light-dark()</strong> — تأخذ قيمتين، تختار تلقائياً بناءً على color-scheme" },
+          { type: "li", text: "<strong>color-scheme</strong> — يجب تعيينه على :root ليعمل light-dark()" },
+          { type: "li", text: "<strong>تبديل JavaScript</strong> — يحفظ التفضيل في localStorage" },
+          { type: "li", text: "<strong>سمات مخصصة</strong> — سمات ocean و forest عبر سمة data-theme" }
+        ]
+      },
+      {
+        title: "الخطوة 4: الرسوم المتحركة",
+        content: [
+          { type: "p", text: "تجلب الرسوم المتحركة الحياة للتصميم. نستخدم <code>Transitions</code> للتأثيرات البسيطة و <code>Keyframes</code> للرسوم المتحركة المعقدة." },
+          { type: "li", text: "<strong>تمرير الزر</strong> — تمرير احترافي مع translateY، ظل متوهج" },
+          { type: "li", text: "<strong>الظهور تدريجياً لأعلى</strong> — عناصر البطل تتحرك بالتناوب مع تأخيرات" },
+          { type: "li", text: "<strong>رسوم متحركة للتمرير</strong> — animation-timeline: view() لكشف عند التمرير" },
+          { type: "li", text: "<strong>رسوم متحركة للطيران</strong> — أيقونة البطاقة تطير باستمرار عند التمرير" }
+        ]
+      },
+      {
+        title: "الملخص والنصائح",
+        content: [
+          { type: "li", text: "1. ابدأ دائماً بـ <strong>CSS Variables</strong> — هي أساس كل شيء" },
+          { type: "li", text: "2. استخدم <code>@layer</code> لتنظيم الكود وتجنب مشاكل النوعية" },
+          { type: "li", text: "3. <code>clamp()</code> يلغي الحاجة إلى العديد من Media Queries — استخدمه للخطوط والأحجام" },
+          { type: "li", text: "4. <code>light-dark()</code> يجعل دعم السمات سهلاً للغاية" },
+          { type: "li", text: "5. الخصائص المنطقية (inline/block) تجعل الموقع جاهزاً للعربية والإنجليزية" },
+          { type: "li", text: "6. <code>Container Queries</code> تجعل المكونات مرنة حقاً بشكل مستقل عن الصفحة" },
+          { type: "li", text: "7. CSS Nesting يجعل الكود أكثر طبيعية في القراءة وأسهل في الصيانة" }
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: "ما الفرق بين CSS Grid و Flexbox في هذا المشروع؟",
+        options: [
+          "لا يوجد فرق، متساويان",
+          "Grid للتخطيطات ثنائية الأبعاد، Flexbox للعناصر في صف واحد",
+          "Grid أسرع دائماً في الأداء من Flexbox",
+          "Flexbox لا تدعم التصميم المتجاوب"
+        ],
+        correctAnswer: 1,
+        explanation: "CSS Grid مصمم للتخطيط ثنائي الأبعاد (صفوف وأعمدة معاً)، بينما Flexbox مصمم للتخطيط أحادي البعد (صف أو عمود واحد). في المشروع، نستخدم Grid لشبكة البطاقات والصفحة الكاملة، وFlexbox لشريط التنقل والداخل البطاقات."
+      },
+      {
+        question: "لماذا نستخدم oklch() بدلاً من hex أو rgb؟",
+        options: [
+          "oklch أقدم وأكثر دعماً في المتصفحات",
+          "oklch محسّن لإدراك humans البشري وينتج ألواناً أكثر توازناً",
+          "hex و rgb لا تدعم الشفافية",
+          "oklch أصغر في حجم الملف"
+        ],
+        correctAnswer: 1,
+        explanation: "oklch (OK Lightness-Chroma-Hue) مبني على نموذج لون محسّن لإدراك humans البشري. ينتج ألواناً أكثر توازناً واتساقاً عبر أجهزة مختلفة مقارنة بـ hex أو rgb. ويدعم أيضاً قناة alpha مباشرة."
+      },
+      {
+        question: "ما فائدة @layer في هذا المشروع؟",
+        options: [
+          "لإضافة تعليقات توضيحية في CSS",
+          "لتحديد ترتيب الأولويات بين مجموعات القواعد وتجنب مشاكل النوعية",
+          "لتحسين سرعة تحميل الملفات",
+          "لإنشاء تأثيرات ثلاثية الأبعاد"
+        ],
+        correctAnswer: 1,
+        explanation: "يحدد @layer ترتيب الأولويات بين مجموعات القواعد. تفوز الطبقات المعرفة لاحقاً عند التعارض. هذا يبسط إدارة النوعية ويمنع الحاجة إلى استخدام !important."
+      }
+    ],
+    challenge: {
+      title: "إضافة قسم شهادات",
+      description: "أنشئ قسماً جديداً بعنوان 'ماذا يقول عملاؤنا' مع 3 بطاقات شهادات متحركة. يجب أن تتضمن كل بطاقة: صورة المستخدم (بديل)، الاسم، المنصب، والشهيدة. استخدم CSS Grid مع auto-fit/minmax، وأضف رسوم متحركة لكشف عند التمرير، واجعل البطاقات تتكيف مع Container Queries."
+    },
+    cheatSheet: {
+      title: "مرجع CSS الحديث الكامل — جميع الدروس",
+      items: [
+        {
+          title: "الدرس 1: أساسيات CSS",
+          content: `box-sizing: border-box — احسب الحشو + الحد داخل العرض
+rem — نسبي للجذر، مثالي للخطوط
+em — نسبي للأب، يتراكم في التداخل
+clamp(min, preferred, max) — قيمة سائلة
+oklch(L C H) — لون محسّن لإدراك humans البشري
+color-mix(in oklch, c1, c2) — خلط لونين
+light-dark(#fff, #111) — لون تلقائي حسب السمة
+النوعية: element < class < id < inline < !important`
+        },
+        {
+          title: "الدرس 3: Flexbox",
+          content: `display: flex — تفعيل Flexbox
+flex-direction: row / column — اتجاه المحور الرئيسي
+justify-content: space-between / center — توزيع المحور الرئيسي
+align-items: center / stretch — محاذاة المحور المتقاطع
+gap: 1rem — مسافة بين العناصر
+flex: 1 1 auto — اختصار grow/shrink/basis`
+        },
+        {
+          title: "الدرس 4: CSS Grid",
+          content: `display: grid — تفعيل Grid
+grid-template-columns: repeat(3, 1fr) — تعريف الأعمدة
+auto-fit: repeat(auto-fit, minmax(250px, 1fr)) — أعمدة سائلة
+place-items: center — توسيط أفقي + عمودي (سطر واحد)
+grid-column: span 2 — امتداد عمودين`
+        },
+        {
+          title: "الدرس 5: Media Queries والاستجابة",
+          content: `min-width: @media (width >= 768px) — شاشات كبيرة+
+Container Queries: @container (min-width: 400px) — التكيف مع الحاوية
+container-type: inline-size — تفعيل الاستعلام
+clamp() — بديل عن Media Queries
+الخصائص المنطقية: margin-inline / padding-block — دعم RTL`
+        },
+        {
+          title: "الدرس 6: الألوان والسمات",
+          content: `CSS Variables: --name: value; — تعريف متغير
+var(--name, fallback) — استخدام متغير
+oklch(0.65 0.19 145) — لون حديث
+color-mix(in oklch, blue 50%, red) — خلط
+light-dark(#fff, #111) — ألوان السمة
+color-scheme: light dark — تفعيل كلا الوضعين
+@layer: @layer base, components; — تنظيم الأولويات`
+        },
+        {
+          title: "الدرس 7: الرسوم المتحركة والتأثيرات",
+          content: `transition: all 0.3s ease — انتقال سلس
+cubic-bezier(0.4, 0, 0.2, 1) — منحنى حركة مخصص
+@keyframes name { from {} to {} } — رسوم متحركة مخصصة
+animation: fade-in 0.5s ease both — تطبيق رسوم متحركة
+transform: translateY(-4px) / scale(1.05) — تحويل بصري
+animation-timeline: view() — رسوم متحركة مدفوعة بالتمرير
+will-change: transform — تلميح أداء الرسوم المتحركة
+prefers-reduced-motion: reduce — احترام الحركة المخفضة`
+        },
+        {
+          title: "الدرس 8: المشروع التطبيقي",
+          content: `CSS Nesting — تنظيم الكود الطبيع داخل القواعد
+@layer — فصل base / components / layout / utilities
+clamp() — طباعة وأحجام سائلة
+CSS Grid + auto-fit/minmax — شبكة بطاقات متجاوبة
+Flexbox — شريط التنقل وتوزيع العناصر
+Container Queries — البطاقات تتكيف مع حاويتها
+الخصائص المنطقية: margin-inline / padding-block لـ RTL
+light-dark() + Variables — نظام سمات متكامل
+oklch + color-mix — ألوان حديثة وتدرجات
+Transitions + Keyframes — رسوم متحركة وتأثيرات سلسة
+backdrop-filter — تأثير ضباب على شريط التنقل`
+        }
+      ]
+    }
+  },
   en: {
     sections: [
       {

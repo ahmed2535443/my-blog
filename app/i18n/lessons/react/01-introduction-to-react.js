@@ -1,4 +1,68 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "المقدمة", content: [
+        { type: "p", text: "React هو أحد أكثر مكتبات JavaScript شعبية لبناء واجهات المستخدم. تم إنشاؤه من قبل Facebook (الآن Meta) في عام 2013، وأصبح الأساس لملايين تطبيقات الويب في جميع أنحاء العالم." },
+        { type: "p", text: "في هذا الدرس، سنتعلم ما هو React، ولماذا يُستخدم، وكيف تُنشئ مشروع React أساسي." },
+      ]},
+      { title: "ما هو React؟", content: [
+        { type: "p", text: "React هو مكتبة JavaScript لبناء واجهات المستخدم. يسمح لك بإنشاء مكونات واجهة مستخدم قابلة لإعادة الاستخدام يمكن دمجها معاً لبناء واجهات معقدة." },
+        { type: "p", text: "الخصائص الأساسية لـ React:" },
+        { type: "li", text: "<strong>مبني على المكونات:</strong> واجهة المستخدم مبنية من مكونات صغيرة قابلة لإعادة الاستخدام" },
+        { type: "li", text: "<strong>صرفي (Declarative):</strong> أنت تصف ما تريد، وReact يتعامل مع تحديثات DOM" },
+        { type: "li", text: "<strong>DOM افتراضي:</strong> يستخدم تمثيلاً في الذاكرة لـ DOM الحقيقي لأداء أفضل" },
+        { type: "li", text: "<strong>تدفق بيانات أحادي الاتجاه:</strong> البيانات تتدفق من الأصل إلى المكونات الفرعية" },
+      ]},
+      { title: "لماذا تستخدم React؟", content: [
+        { type: "p", text: "هناك أسباب كثيرة لشعبية React:" },
+        { type: "li", text: "<strong>سهل التعلم:</strong> API بسيط وصيغة JSX تجعله متاحاً للجميع" },
+        { type: "li", text: "<strong>نظام بيئي غني:</strong> آلاف المكتبات والأدوات المتاحة" },
+        { type: "li", text: "<strong>مجتمع كبير:</strong> توثيق شامل ودروس ودعم مجتمعي" },
+        { type: "li", text: "<strong>سوق العمل:</strong> طلب كبير على مطوري React" },
+        { type: "li", text: "<strong>الأداء:</strong> DOM افتراضي وعرض محسّن" },
+      ]},
+      { title: "إعداد مشروع React", content: [
+        { type: "p", text: "أسهل طريقة لبدء مشروع React هي استخدام Create React App:" },
+        { type: "li", text: "ثبّت Node.js من nodejs.org" },
+        { type: "li", text: "افتح الطرفية وشغّل: npx create-react-app my-app" },
+        { type: "li", text: "انتقل إلى مجلد المشروع: cd my-app" },
+        { type: "li", text: "شغّل خادم التطوير: npm start" },
+        { type: "p", text: "سيُنشئ هذا مشروع React جديد بجميع الإعدادات اللازمة." },
+      ]},
+      { title: "JSX - لغة الترميز الموسعة", content: [
+        { type: "p", text: "JSX هو امتداد صيغة لـ JavaScript يبدو مشابهاً لـ HTML. يجعل كتابة مكونات React أكثر سهولة ووضوحاً." },
+        { type: "p", text: "يسمح لك JSX بكتابة كود يشبه HTML في ملفات JavaScript. يتم تحويله إلى استدعاءات دوال JavaScript عادية." },
+        { type: "callout", title: "ملاحظة", text: "JSX غير مطلوب لاستخدام React، لكنه مُوصى به بشدة لأنه يجعل الكود أسهل بكثير للكتابة والفهم." },
+      ]},
+      { title: "مكونك الأول في React", content: [
+        { type: "p", text: "في React، كل شيء مكون. المكون هو جزء قابل لإعادة الاستخدام من واجهة المستخدم يمكنه إدارة حالته ودورة حياته الخاصة." },
+        { type: "p", text: "يمكن تعريف المكونات كـ:" },
+        { type: "li", text: "<strong>مكونات الدوال:</strong> دوال بسيطة تُرجع JSX (النهج الحديث)" },
+        { type: "li", text: "<strong>مكونات الفئات:</strong> فئات ES6 تُوسع React.Component (النهج القديم)" },
+      ]},
+      { title: "React مقابل المكتبات الأخرى", content: [
+        { type: "p", text: "كيف يقارن React بالإطارات الأخرى الشائعة؟" },
+        { type: "li", text: "<strong>React vs Angular:</strong> React مكتبة، Angular إطار عمل كامل" },
+        { type: "li", text: "<strong>React vs Vue:</strong> كلاهما متشابه، لكن React لديه نظام بيئي أكبر" },
+        { type: "li", text: "<strong>React vs jQuery:</strong> React مبني على المكونات، jQuery للتعامل مع DOM" },
+        { type: "p", text: "مرونة React ونظامه البيئي يجعلانه خياراً رائعاً لمعظم المشاريع." },
+      ]},
+    ],
+    quiz: [
+      { question: "ما هو React؟", options: ["لغة برمجة", "مكتبة JavaScript لبناء واجهة المستخدم", "نظام إدارة قواعد بيانات", "نظام تشغيل"], explanation: "React هو مكتبة JavaScript أنشأها Facebook لبناء واجهات المستخدم. يسمح لك بإنشاء مكونات واجهة مستخدم قابلة لإعادة الاستخدام." },
+    ],
+    challenge: { title: "تحدي: أنشئ مكونك الأول", description: "أنشئ مكون React بسيط يعرض رسالة ترحيب وزر. عند النقر على الزر، يعرض تنبيهاً." },
+    cheatSheet: { title: "ملخص مقدمة React", items: [
+      { term: "React", definition: "مكتبة JavaScript لبناء واجهات المستخدم" },
+      { term: "مبني على المكونات", definition: "واجهة مستخدم مبنية من مكونات صغيرة قابلة لإعادة الاستخدام" },
+      { term: "صرفي", definition: "صف ما تريد، React يتعامل مع DOM" },
+      { term: "DOM افتراضي", definition: "تمثيل في الذاكرة لأداء أفضل" },
+      { term: "JSX", definition: "امتداد صيغة JavaScript يبدو مثل HTML" },
+      { term: "Create React App", definition: "أداة لإنشاء مشروع React جديد بسرعة" },
+      { term: "مكونات الدوال", definition: "نهج حديث لكتابة المكونات باستخدام الدوال" },
+      { term: "تدفق بيانات أحادي الاتجاه", definition: "البيانات تتدفق من المكون الأصل إلى الفرعي" },
+    ]}
+  },
   en: {
     sections: [
       { title: "Introduction", content: [

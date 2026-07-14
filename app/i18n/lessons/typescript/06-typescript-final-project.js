@@ -1,4 +1,56 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "نظرة عامة على المشروع", content: [
+        { type: "p", text: "في هذا المشروع الأخير، سندمج كل ما تعلمته عن TypeScript لبناء <strong>تطبيق إدارة المهام</strong> كامل مع Next.js." },
+        { type: "li", text: "<strong>CRUD للمهام</strong> — إنشاء وقراءة وتعديل وحذف المهام" },
+        { type: "li", text: "<strong>حالة آمنة النوع</strong> — كل الحالة مُدارة بأنواع مناسبة" },
+        { type: "li", text: "<strong>معالجة النماذج</strong> — أحداث نموذج مكتوبة بنوع وتحقق" },
+        { type: "li", text: "<strong>تركيب المكونات</strong> — مكونات قابلة لإعادة الاستخدام مكتوبة بنوع" },
+      ]},
+      { title: "تعريف أنواعك", content: [
+        { type: "p", text: "ابدأ بتعريف جميع الأنواع التي يحتاجها تطبيقك:" },
+        { type: "code", text: "interface Task {\n  id: string;\n  title: string;\n  description: string;\n  status: 'todo' | 'in-progress' | 'done';\n  priority: 'low' | 'medium' | 'high';\n  createdAt: Date;\n}\n\ntype TaskAction =\n  | { type: 'ADD'; payload: Task }\n  | { type: 'UPDATE'; payload: { id: string; updates: Partial<Task> } }\n  | { type: 'DELETE'; payload: { id: string } };" },
+      ]},
+      { title: "بناء مكونات مكتوبة بنوع", content: [
+        { type: "p", text: "ابنِ مكونات قابلة لإعادة الاستخدام مع تعريفات نوع صارمة:" },
+        { type: "li", text: "TaskCard — يعرض مهمة واحدة بجميع خصائصها" },
+        { type: "li", text: "TaskForm — نموذج لإنشاء وتعديل المهام" },
+        { type: "li", text: "TaskList — يعرض قائمة مهام مع التصفية" },
+        { type: "li", text: "StatusFilter — تصفية المهام حسب الحالة" },
+      ]},
+      { title: "إدارة حالة آمنة النوع", content: [
+        { type: "p", text: "استخدم useReducer مع أحداث مكتوبة بنوع لإدارة حالة متوقعة:" },
+        { type: "code", text: "function taskReducer(state: Task[], action: TaskAction): Task[] {\n  switch (action.type) {\n    case 'ADD':\n      return [...state, action.payload];\n    case 'UPDATE':\n      return state.map(task =>\n        task.id === action.payload.id\n          ? { ...task, ...action.payload.updates }\n          : task\n      );\n    case 'DELETE':\n      return state.filter(task => task.id !== action.payload.id);\n    default:\n      return state;\n  }\n}" },
+      ]},
+      { title: "إضافة التحقق", content: [
+        { type: "p", text: "استخدم TypeScript لإنشاء دوال تحقق آمنة النوع:" },
+        { type: "code", text: "function validateTask(task: Partial<Task>): string[] {\n  const errors: string[] = [];\n  if (!task.title || task.title.length < 3) {\n    errors.push('يجب أن يكون العنوان 3 أحرف على الأقل');\n  }\n  if (!task.description) {\n    errors.push('الوصف مطلوب');\n  }\n  return errors;\n}" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "عرّف جميع الأنواع قبل بناء التطبيق" },
+        { type: "li", text: "استخدم الاتحادات المميزة لأنواع الإجراءات" },
+        { type: "li", text: "ابنِ مكونات قابلة لإعادة الاستخدام مكتوبة بنوع" },
+        { type: "li", text: "استخدم useReducer لإدارة حالة آمنة النوع" },
+        { type: "li", text: "أنشئ دوال تحقق بـ TypeScript" },
+      ]}
+    ],
+    quiz: [
+      { question: "أي نمط يُستخدم لإجراءات المهام (ADD، UPDATE، DELETE)؟", options: ["كائنات حرفية", "اتحادات مميزة", "مصفوفات", "خرائط"], explanation: "تستخدم الاتحادات المميزة خاصية 'type' مشتركة للتمييز بين أشكال الإجراءات المختلفة." },
+      { question: "ما هي فائدة استخدام useReducer مع TypeScript؟", options: ["عرض أسرع", "إدارة حالة آمنة النوع", "كود أقل", "تنسيق أفضل"], explanation: "يضمن useReducer مع TypeScript أن جميع انتقالات الحالة مُفحوصة النوع ومتوقعة." },
+      { question: "ماذا يعني Partial<Task>؟", options: ["جميع الخصائص مطلوبة", "جميع الخصائص اختيارية", "بعض الخصائص للقراءة فقط", "Task مصفوفة"], explanation: "يجعل Partial<Task> جميع خصائص واجهة Task اختيارية." }
+    ],
+    challenge: { title: "توسيع التطبيق", description: "أضف ميزات: تصفية المهام حسب الأولوية، إعادة ترتيب بالسحب والإفلات، حفظ التخزين المحلي، وتبديل الوضع الداكن." },
+    cheatSheet: { title: "ملخص المشروع الأخير لـ TypeScript", items: [
+      { term: "interface Task {}", definition: "تعريف شكل المهمة" },
+      { term: "'todo' | 'in-progress' | 'done'", definition: "اتحاد حرفي للحالة" },
+      { term: "Partial<Task>", definition: "جميع الخصائص اختيارية" },
+      { term: "{ type: 'ADD'; payload: Task }", definition: "إجراء اتحاد مميز" },
+      { term: "useReducer<Task[], TaskAction>", definition: "محّffel آمن النوع" },
+      { term: "Partial<Task>", definition: "لإدخال التحقق" },
+      { term: "string[]", definition: "نوع الإرجاع لأخطاء التحقق" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Project Overview", content: [

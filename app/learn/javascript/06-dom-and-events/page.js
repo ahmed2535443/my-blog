@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [2, 1], fr: [2, 1], de: [2, 1] };
+const correctAnswers = { ar: [2, 1], en: [2, 1], fr: [2, 1], de: [2, 1] };
 
 const challengeCode = `const countEl = document.getElementById("count");
 let count = 0;
@@ -32,6 +32,41 @@ document.getElementById("reset").addEventListener("click", () => {
 });`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ورقة مرجعية DOM والأحداث",
+    columns: [
+      {
+        heading: "اختيار العناصر:",
+        code: `document.getElementById("id")
+document.querySelector(".class")
+document.querySelectorAll("li")
+element.parentElement
+element.children`,
+      },
+      {
+        heading: "الأحداث:",
+        code: `el.addEventListener("click", fn)
+el.removeEventListener("click", fn)
+"click" "input" "submit" "keydown"
+event.target / event.preventDefault()`,
+      },
+      {
+        heading: "تعديل العناصر:",
+        code: `el.textContent = "جديد"
+el.innerHTML = "<b>جديد</b>"
+el.style.color = "red"
+el.classList.add("أ")
+el.setAttribute("href", "#")`,
+      },
+      {
+        heading: "الإنشاء والحذف:",
+        code: `document.createElement("div")
+parent.appendChild(div)
+div.remove()
+element.cloneNode(true)`,
+      },
+    ],
+  },
   en: {
     title: "DOM & Events Cheat Sheet",
     columns: [

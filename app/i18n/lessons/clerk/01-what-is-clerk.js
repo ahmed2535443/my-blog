@@ -1,4 +1,45 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "ما هو Clerk؟", content: [
+        { type: "p", text: "<strong>Clerk</strong> هو منصة مصادقة وإدارة مستخدمين كاملة مصممة خصيصاً لتطبيقات الويب الحديثة. يوفر كل ما تحتاجه للتعامل مع تسجيل المستخدمين وتسجيل الدخول وإدارة الملفات الشخصية." },
+        { type: "p", text: "على عكس Supabase Auth الذي جزء من منصة BaaS أكبر، Clerk يركز فقط على المصادقة وإدارة المستخدمين، مما يوفر ميزات أعمق وأكثر تخصصاً." },
+      ]},
+      { title: "لماذا Clerk؟", content: [
+        { type: "li", text: "مكونات جاهزة — واجهة مستخدم جميلة لتسجيل الدخول والتسجيل والملف الشخصي" },
+        { type: "li", text: "مزودون متعددون — البريد الإلكتروني و Google و GitHub و Facebook والمزيد" },
+        { type: "li", text: "مصادقة متعددة العوامل (MFA) — دعم مدمج" },
+        { type: "li", text: "Webhooks — تلقي إشعارات بأحداث المستخدمين" },
+        { type: "li", text: "إدارة المستخدمين — لوحة إدارية لإدارة المستخدمين" },
+      ]},
+      { title: "Clerk مقابل Supabase Auth", content: [
+        { type: "p", text: "استخدم Supabase Auth عندما تريد خادماً مTEGRATED مع قاعدة البيانات. استخدم Clerk عندما تريد تجربة مصادقة ممتازة مع مكونات جاهزة." },
+      ]},
+      { title: "إنشاء تطبيق Clerk", content: [
+        { type: "li", text: "اذهب إلى clerk.com وأنشئ حساباً" },
+        { type: "li", text: "انقر على 'Create Application'" },
+        { type: "li", text: "اختر طرق المصادقة (البريد الإلكتروني، Google، إلخ)" },
+        { type: "li", text: "احصل على مفاتيح API من لوحة التحكم" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "Clerk هو منصة مصادقة وإدارة مستخدمين متخصصة." },
+        { type: "li", text: "يوفر مكونات جاهزة ومزودي مصادقة متعددين." },
+        { type: "li", text: "إنشاء التطبيق يستغرق ثوانٍ فقط." },
+      ]}
+    ],
+    quiz: [
+      { question: "ما هو الاستخدام الرئيسي لـ Clerk؟", options: ["إدارة قاعدة البيانات", "المصادقة وإدارة المستخدمين", "تخزين الملفات", "تطوير API"], explanation: "Clerk يركز على المصادقة وإدارة المستخدمين." },
+      { question: "ما هي ميزة Clerk على Supabase Auth؟", options: ["قاعدة بيانات أفضل", "مكونات واجهة مستخدم جاهزة وميزات مصادقة أعمق", "تخزين أكثر", "استعلامات أسرع"], explanation: "يوفر Clerk مكونات واجهة مستخدم جاهزة وميزات مصادقة متخصصة مثل MFA." },
+    ],
+    challenge: { title: "أنشئ تطبيق Clerk الأول", description: "أنشئ حساباً Clerk مجانياً، وأعداد تطبيق، واستكشف لوحة التحكم." },
+    cheatSheet: { title: "ملخص مراجعة البدء مع Clerk", items: [
+      { term: "clerk.com", definition: "إنشاء حساب وتطبيق" },
+      { term: "Publishable Key", definition: "مفتاح عام لجانب العميل" },
+      { term: "Secret Key", definition: "مفتاح جانب الخادم (أبقه سراً)" },
+      { term: "Dashboard", definition: "إدارة المستخدمين والإعدادات" },
+      { term: "Providers", definition: "طرق المصادقة (البريد الإلكتروني، Google، إلخ)" }
+    ]}
+  },
   en: {
     sections: [
       { title: "What is Clerk?", content: [

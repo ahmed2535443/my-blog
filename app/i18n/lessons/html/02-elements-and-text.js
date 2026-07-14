@@ -1,4 +1,135 @@
 const translations = {
+  ar: {
+    sections: [
+      {
+        title: "ما هي العناصر؟",
+        content: [
+          { type: "p", text: "في الدرس السابق تعلمنا أن HTML مكون من \"علامات\". لكن في الواقع، العلامة وحدها ليست العنصر. <strong>العنصر</strong> يتكون من ثلاثة أجزاء:" },
+          { type: "li", text: "<strong>علامة الفتح</strong>" },
+          { type: "li", text: "<strong>المحتوى</strong>" },
+          { type: "li", text: "<strong>علامة الإغلاق</strong>" },
+          { type: "p", text: "بعض العناصر <strong>لا تحتوي على محتوى</strong> وتسمى \"عناصر فارغة\" مثل:" },
+          { type: "callout", title: "تشبيه بسيط", text: "العلامة مثل الأقواس <code>( )</code>، والمحتوى هو ما بداخلها. لكن بعض العناصر مثل <code>&lt;br&gt;</code> و<code>&lt;img&gt;</code> لا تحتاج محتوى بين الأقواس - إنها مثل <code>( )</code> فارغة." }
+        ]
+      },
+      {
+        title: "عناصر النص الأساسية",
+        content: [
+          { type: "p", text: "هناك العديد من العلامات للعمل مع النص. إليك أهمها:" },
+          { type: "h3", text: "العناوين" },
+          { type: "p", text: "HTML يوفر 6 مستويات من العناوين من <code>&lt;h1&gt;</code> (الأكبر) إلى <code>&lt;h6&gt;</code> (الأصغر):" },
+          { type: "callout", title: "قاعدة مهمة", text: "لا تقفز من <code>&lt;h1&gt;</code> مباشرة إلى <code>&lt;h3&gt;</code>! العناوين يجب أن تكون تسلسلية. <code>&lt;h1&gt;</code> ثم <code>&lt;h2&gt;</code> ثم <code>&lt;h3&gt;</code> وهكذا. تخطي المستويات خطأ شائع." },
+          { type: "h3", text: "الفقرات" },
+          { type: "p", text: "لفقرة نصية عادية، نستخدم علامة <code>&lt;p&gt;</code>:" },
+          { type: "h3", text: "النص العريض والمائل" },
+          { type: "p", text: "الفرق بين <code>&lt;strong&gt;</code> و<code>&lt;b&gt;</code>: الأولى تشير إلى <strong>الأهمية الدلالية</strong> للنص، بينما الثانية فقط تعطي <strong>عريضاً مرئياً</strong>. يُفضل استخدام <code>&lt;strong&gt;</code> لأسباب تتعلق بالإمكانية." }
+        ]
+      },
+      {
+        title: "القوائم",
+        content: [
+          { type: "p", text: "HTML يوفر ثلاثة أنواع من القوائم:" },
+          { type: "h3", text: "1. قائمة غير مرقمة" },
+          { type: "p", text: "تُستخدم عندما لا يكون ترتيب العناصر مهماً:" },
+          { type: "h3", text: "2. قائمة مرقمة" },
+          { type: "p", text: "تُستخدم عندما يكون الترتيب مهماً:" },
+          { type: "h3", text: "3. قائمة وصفية" },
+          { type: "p", text: "تُستخدم لعرض أزواج من المصطلحات والتعريفات:" },
+          { type: "h3", text: "قوائم متداخلة" },
+          { type: "p", text: "يمكنك وضع قائمة داخل قائمة أخرى:" }
+        ]
+      },
+      {
+        title: "علامات نصية مفيدة أخرى",
+        content: [
+          { type: "p", text: "HTML يوفر عدة علامات مفيدة أخرى لتنسيق النص وهيكلته." }
+        ]
+      },
+      {
+        title: "مثال عملي: صفحة مقال بسيطة",
+        content: [
+          { type: "p", text: "دعنا نرى كيف نستخدم كل ما تعلمناه في صفحة مقال حقيقية:" }
+        ]
+      },
+      {
+        title: "ماذا يحدث خلف الكواليس؟",
+        content: [
+          { type: "p", text: "عندما يقرأ المتصفح علامات النص، يحدث ما يلي:" },
+          { type: "li", text: "يحول <code>&lt;h1&gt;</code> إلى نص كبير (عادة <strong>32px</strong> أو أكثر) بوزن عريض." },
+          { type: "li", text: "يحول <code>&lt;p&gt;</code> إلى نص في فقرة منفصلة بهامش سفلي." },
+          { type: "li", text: "يحول <code>&lt;ul&gt;</code> و<code>&lt;ol&gt;</code> إلى قوائم نقطية أو مرقمة تلقائياً." },
+          { type: "li", text: "يحول <code>&lt;strong&gt;</code> إلى نص <strong>عريض</strong>." },
+          { type: "li", text: "يحول <code>&lt;code&gt;</code> إلى نص بخط خاص (Monospace) وخلفية رمادية." },
+          { type: "callout", title: "هل تعلم؟", text: "المتصفح يعطي كل علامة <strong>أبعاداً افتراضية</strong>. مثلاً، <code>&lt;h1&gt;</code> تحصل على <code>font-size: 2em</code> و<code>margin: 0.67em 0</code>. يمكنك رؤية هذه القيم في أدوات المطورين (F12)." }
+        ]
+      },
+      {
+        title: "أخطاء شائعة",
+        content: [
+          { type: "li", text: "<strong>تخطي مستويات العناوين:</strong> استخدام <code>&lt;h1&gt;</code> يتبعه مباشرة <code>&lt;h3&gt;</code> بدون <code>&lt;h2&gt;</code>. هذا يضعف هيكل الصفحة ويسبب مشاكل SEO والإمكانية." },
+          { type: "li", text: "<strong>استخدام العناوين لتنسيق النص فقط:</strong> استخدام <code>&lt;h3&gt;</code> لأنك تريد نصاً أصغر. العناوين فقط للهيكل الدلالي، التنسيق دور CSS." },
+          { type: "li", text: "<strong>وضع عناصر السطر في أماكن خاطئة:</strong> مثل وضع <code>&lt;p&gt;</code> داخل <code>&lt;p&gt;</code> آخر. هذا غير صالح في HTML." },
+          { type: "li", text: "<strong>استخدام <code>&lt;br&gt;</code> لإنشاء مسافة:</strong> استخدام <code>&lt;br&gt;&lt;br&gt;&lt;br&gt;</code> لإنشاء مسافة بين الفقرات. استخدم هامش CSS بدلاً من ذلك." }
+        ]
+      },
+      {
+        title: "أفضل الممارسات",
+        content: [
+          { type: "li", text: "<strong>استخدم h1 مرة واحدة فقط لكل صفحة:</strong> لأنه يمثل العنوان الرئيسي للصفحة." },
+          { type: "li", text: "<strong>استخدم strong وem بدلاً من b وi:</strong> لأنه يوفران دلالة إضافية." },
+          { type: "li", text: "<strong>افصل العناصر بمسافة بصرية:</strong> استخدم سطور فارغة بين الكتل المنطقية في ملفات HTML لسهولة القراءة." },
+          { type: "li", text: "<strong>استخدم القوائم عند الحاجة:</strong> لا تحول كل مجموعة نقاط إلى فقرات." }
+        ]
+      },
+      {
+        title: "ملخص الدرس",
+        content: [
+          { type: "li", text: "<strong>العنصر</strong> = علامة فتح + محتوى + علامة إغلاق" },
+          { type: "li", text: "العناوين من <code>&lt;h1&gt;</code> إلى <code>&lt;h6&gt;</code> - لا تخطي المستويات" },
+          { type: "li", text: "الفقرات: <code>&lt;p&gt;</code>" },
+          { type: "li", text: "نص عريض: <code>&lt;strong&gt;</code> | مائل: <code>&lt;em&gt;</code>" },
+          { type: "li", text: "القوائم: <code>&lt;ul&gt;</code> (غير مرقمة) | <code>&lt;ol&gt;</code> (مرقمة) | <code>&lt;dl&gt;</code> (وصفية)" },
+          { type: "li", text: "العناصر الفارغة: <code>&lt;br&gt;</code> و<code>&lt;hr&gt;</code> و<code>&lt;img&gt;</code> (بدون علامة إغلاق)" }
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: "كم عدد مستويات العناوين في HTML؟",
+        options: ["4 مستويات", "5 مستويات", "6 مستويات", "3 مستويات"],
+        explanation: "HTML يوفر 6 مستويات عناوين من h1 (الأكبر) إلى h6 (الأصغر)."
+      },
+      {
+        question: "ما الفرق بين <strong>strong</strong> و<strong>b</strong>؟",
+        options: [
+          "لا يوجد فرق بينهما",
+          "strong للنص العريض، b للنص المائل",
+          "strong تدل على الأهمية الدلالية، b تعطي عرياً مرئياً فقط",
+          "strong يُستخدم في CSS، b فقط في HTML"
+        ],
+        explanation: "strong تدل على أن النص له أهمية دلالية، بينما b تعطي مظهراً عريضاً فقط بدون دلالة إضافية. يُفضل استخدام strong لأسباب تتعلق بالإمكانية."
+      }
+    ],
+    challenge: {
+      title: "تحدي: صفحة مقال مكتملة",
+      description: "أنشئ صفحة HTML تحتوي على مقال مكتمل بـ: 1. عنوان رئيسي <code>&lt;h1&gt;</code>، 2. فقرة مقدمة، 3. عنوان فرعي <code>&lt;h2&gt;</code> مع فقرة، 4. قائمة مرقمة بالخطوات، 5. قائمة غير مرقمة، 6. اقتباس، 7. خط أفقي، 8. فقرة ختامية بنص عريض ومائل."
+    },
+    cheatSheet: {
+      title: "ملخص العناصر والنصوص",
+      items: [
+        { term: "<code>&lt;h1&gt;</code> إلى <code>&lt;h6&gt;</code>", definition: "العناوين (h1 الأكبر، h6 الأصغر)" },
+        { term: "<code>&lt;p&gt;</code>", definition: "فقرة" },
+        { term: "<code>&lt;strong&gt;</code>", definition: "عريض (أهمية دلالية)" },
+        { term: "<code>&lt;em&gt;</code>", definition: "مائل (تأكيد)" },
+        { term: "<code>&lt;ul&gt;</code>", definition: "قائمة غير مرقمة" },
+        { term: "<code>&lt;ol&gt;</code>", definition: "قائمة مرقمة" },
+        { term: "<code>&lt;li&gt;</code>", definition: "عنصر قائمة" },
+        { term: "<code>&lt;code&gt;</code>", definition: "كود مضمّن" },
+        { term: "<code>&lt;blockquote&gt;</code>", definition: "اقتباس كتلي" },
+        { term: "<code>&lt;pre&gt;</code>", definition: "نص مُنسّق مسبقاً" }
+      ]
+    }
+  },
   en: {
     sections: [
       {

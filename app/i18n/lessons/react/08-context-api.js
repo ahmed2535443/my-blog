@@ -1,4 +1,50 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "ما هي Context API؟", content: [
+        { type: "p", text: "Context API هو آلية تسمح لك بمشاركة البيانات بين المكونات <strong>دون تمرير الخصائص يدوياً</strong> في كل مستوى." },
+        { type: "p", text: "يحل مشكلة <strong>تنقل الخصائص (prop drilling)</strong> حيث يجب أن تمر البيانات عبر العديد من المكونات الوسيطة." },
+        { type: "p", text: "فكّر في Context كـ \"حالة عامة\" يمكن لأي مكون الوصول إليها." },
+      ]},
+      { title: "لماذا تستخدم Context API؟", content: [
+        { type: "li", text: "تجنب تنقل الخصائص عبر مكونات كثيرة" },
+        { type: "li", text: "مشاركة بيانات عامة مثل السمة أو اللغة أو المصادقة" },
+        { type: "li", text: "جعل البيانات متاحة لأي مكون في الشجرة" },
+        { type: "li", text: "تبسيط إدارة الحالة للبيانات العامة" },
+      ]},
+      { title: "إنشاء Context", content: [
+        { type: "p", text: "استخدم <code>createContext</code> لإنشاء كائن Context جديد. يمكنك توفير قيمة افتراضية." },
+        { type: "callout", title: "مهم", text: "تُستخدم القيمة الافتراضية عندما لا يمتلك المكون مزوداً مطابقاً فوقه." },
+      ]},
+      { title: "توفير Context", content: [
+        { type: "p", text: "استخدم مكون <code>Provider</code> لتفريغ أجزاء الشجرة التي تحتاج إلى الوصول إلى السياق." },
+        { type: "p", text: "تحتوي خاصية <code>value</code> للمزود على البيانات المراد مشاركتها." },
+      ]},
+      { title: "استهلاك Context", content: [
+        { type: "p", text: "استخدم خطاف <code>useContext</code> لاستهلاك السياق في مكونات الدالة." },
+        { type: "p", text: "انقل كائن السياق إلى useContext وسيرجع القيمة الحالية." },
+      ]},
+      { title: "Context مع useReducer", content: [
+        { type: "p", text: "اجمع Context مع <code>useReducer</code> لإدارة الحالة المعقدة، مشابهاً لـ Redux." },
+        { type: "li", text: "يدير useReducer منطق الحالة المعقدة" },
+        { type: "li", text: "يوفر Context الحالة والتحويل إلى جميع المكونات" },
+        { type: "li", text: "مثالي للتطبيقات متوسطة الحجم" },
+      ]},
+    ],
+    quiz: [
+      { question: "أي مشكلة تحل Context API؟", options: ["مشاكل الأداء", "تنقل الخصائص", "تسريب الذاكرة", "مشاكل التنسيق"], correctAnswer: 1, explanation: "تحل Context API مشكلة تنقل الخصائص بتمرير البيانات دون المرور بكل مكون وسيط." },
+      { question: "كيف تنشئ Context؟", options: ["useContext()", "createContext()", "new Context()", "Context.create()"], correctAnswer: 1, explanation: "استخدم createContext() لإنشاء كائن Context جديد." },
+      { question: "كيف تستهلك Context في مكون دالة؟", options: ["this.context", "useContext()", "Context.Consumer", "getContext()"], correctAnswer: 1, explanation: "استخدم خطاف useContext لاستهلاك السياق في مكونات الدالة." },
+      { question: "ماذا تحتوي خاصية value في Provider؟", options: ["شجرة المكونات", "البيانات المراد مشاركتها", "مُحوّل الحالة", "اسم السياق"], correctAnswer: 1, explanation: "تحتوي خاصية value على البيانات التي سيتم مشاركتها مع جميع المكونات المستهلكة." },
+      { question: "متى تُستخدم القيمة الافتراضية لـ createContext؟", options: ["دائماً", "عند عدم وجود مزود أعلى", "عندما لا يمتلك المزود قيمة", "أبداً"], correctAnswer: 1, explanation: "تُستخدم القيمة الافتراضية عندما لا يمتلك المكون مزوداً مطابقاً فوقه في الشجرة." },
+    ],
+    challenge: { title: "ابنِ مُبدّل السمة", description: "أنشئ سياق سمة يسمح بالتبديل بين السمات الفاتحة والداكنة عبر التطبيق." },
+    cheatSheet: { title: "ملخص Context API", columns: [
+      { heading: "إنشاء Context:", items: ['const ThemeContext = createContext("light");'] },
+      { heading: "توفير Context:", items: ['<ThemeContext.Provider value={theme}>', '  {children}', '</ThemeContext.Provider>'] },
+      { heading: "استهلاك Context:", items: ['const theme = useContext(ThemeContext);'] },
+    ]},
+  },
   en: {
     sections: [
       { title: "What is Context API?", content: [

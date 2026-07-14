@@ -1,4 +1,69 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "المقدمة", content: [
+        { type: "p", text: "التسمية الواضحة والمتسقة هي واحدة من أهم عناصر الكود النظيف. أنت تقرأ الكود أكثر مماكتبه، لذا الأسماء الجيدة توفر عليك الوقت والجهد وتجعل الكود سهل الصيانة والفهم." },
+        { type: "p", text: "في هذا الدرس، سنتعلم أفضل الممارسات لتسمية المتغيرات والدوال والثوابت والملفات، وسنرى كيف يمكن للأسماء السيئة تحويل كود بسيط إلى كابوس." },
+      ]},
+      { title: "المتغيرات", content: [
+        { type: "p", text: "المتغيرات هي حاويات تخزين للبيانات. القاعدة الذهبية هي: <strong>سمّ متغيرك ليصف محتواه بدقة</strong>." },
+        { type: "p", text: "في JavaScript، نستخدم <code>camelCase</code> لأسماء المتغيرات: الكلمة الأولى بحرف صغير، والكلمات التالية تبدأ بحرف كبير." },
+        { type: "p", text: "استخدام حرف واحد مثل <code>x</code> أو <code>y</code> يجعل الكود صعب الفهم. استخدم أسماء وصفية حتى في الحلقات." },
+        { type: "callout", title: "استثناء: الحلقات", text: "استخدام <code>i</code> و <code>j</code> و <code>k</code> في الحلقات مقبول في JavaScript، لكن تأكد أن الحلحة لها معنى واضح من السياق المحيط." },
+      ]},
+      { title: "الدوال", content: [
+        { type: "p", text: "الدوال تنفيذ إجراءات أو حسابات. القاعدة هنا: <strong>ابدأ اسم الدالة بفعل</strong> يصف ما تفعله." },
+        { type: "p", text: "أفعال مقترحة للدوال:" },
+        { type: "li", text: "<code>get</code> / <code>fetch</code> / <code>retrieve</code> - للحصول على بيانات" },
+        { type: "li", text: "<code>create</code> / <code>add</code> / <code>insert</code> - لإنشاء عنصر جديد" },
+        { type: "li", text: "<code>update</code> / <code>modify</code> / <code>change</code> - لتعديل البيانات" },
+        { type: "li", text: "<code>delete</code> / <code>remove</code> / <code>destroy</code> - لحذف عنصر" },
+        { type: "li", text: "<code>validate</code> / <code>check</code> / <code>verify</code> - للتحقق من شرط" },
+        { type: "li", text: "<code>calculate</code> / <code>compute</code> - لتنفيذ الحسابات" },
+        { type: "li", text: "<code>render</code> / <code>display</code> / <code>show</code> - لعرض واجهة مستخدم" },
+      ]},
+      { title: "الفئات", content: [
+        { type: "p", text: "الفئات هي \"قوالب\" لإنشاء الأشياء. نستخدم <strong>PascalCase</strong> (الكلمة الأولى تبدأ بحرف كبير) والأسماء هي <strong>اسماء</strong>." },
+      ]},
+      { title: "الثوابت", content: [
+        { type: "p", text: "الثوابت هي قيم لا تتغير. نستخدم <strong>UPPER_SNAKE_CASE</strong> (أحرف كبيرة مع شرطات سفلية) للتميز بوضوح بينها وبين المتغيرات العادية." },
+        { type: "p", text: "استثناء: الثوابت المحلية داخل الدوال لا تحتاج إلى UPPER_CASE." },
+      ]},
+      { title: "الملفات", content: [
+        { type: "p", text: "تسمية الملفات هي جزء أساسي من تنظيم المشروع. هناك نهجان رئيسيان مقبولان في مجتمع JavaScript:" },
+        { type: "li", text: "<strong>kebab-case (شائع)</strong>: user-profile.js, shopping-cart.js" },
+        { type: "li", text: "<strong>camelCase (بديل)</strong>: userProfile.js, shoppingCart.js" },
+        { type: "callout", title: "نصيحة مهمة", text: "اختر نمطاً واحداً والتزم به طوال مشروعك. معظم مكتبات JavaScript تستخدم kebab-case (مثل react-router-dom)، لذا هو الخيار الأ أكثر أماناً للمشاركب الكبيرة." },
+      ]},
+      { title: "الأسماء السيئة مقابل الأسماء الجيدة", content: [
+        { type: "p", text: "دعنا نرى بعض الأمثلة الواقعية للأسماء السيئة وكيفية تحسينها:" },
+        { type: "p", text: "القواعد الذهبية للتسمية:" },
+        { type: "li", text: "<strong>لا تختصر:</strong> <code>button</code> وليس <code>btn</code>، <code>user</code> وليس <code>usr</code>" },
+        { type: "li", text: "<strong>استخدم كلمات كاملة:</strong> <code>first</code> و <code>second</code> وليس <code>f</code> و <code>s</code>" },
+        { type: "li", text: "<strong>لا تستخدم لواحق رقمية:</strong> <code>userData</code> و <code>productData</code> وليس <code>data1</code> و <code>data2</code>" },
+        { type: "li", text: "<strong>استخدم مصطلحات متسقة:</strong> لا تخلط بين <code>get</code> و <code>fetch</code> و <code>retrieve</code> للمفهوم نفسه" },
+        { type: "li", text: "<strong>اجعل الأسماء تصف المحتوى:</strong> <code>isValid</code> وليس <code>check</code> أو <code>flag</code>" },
+      ]},
+    ],
+    quiz: [
+      { question: "أي من الأسماء التالية هو الاسم الصحيح لدالة تتحقق من البريد الإلكتروني؟", options: ["email", "check", "validateEmail", "emailValidator"], explanation: "الدالة تبدأ بفعل (validate) وتنتهي بالموضوع (Email). هذا النمط يجعل الكود واضحاً ومتسقاً." },
+    ],
+    challenge: { title: "تحدي: حسّن أسماء الكود أدناه", description: "أعد كتابة الكود التالي بأسماء أفضل ووضوح أعلى. اجعل الكود مقروءاً وسهلاً للفهم." },
+    cheatSheet: { title: "ملخص اتفاقيات التسمية", columns: [
+      { heading: "النمط لكل عنصر:", items: [
+        '<code className="inline-code">userName</code>, <code className="inline-code">isActive</code>, <code className="inline-code">maxRetryCount</code> - المتغيرات: camelCase',
+        '<code className="inline-code">getUserData()</code>, <code className="inline-code">calculateTotal()</code> - الدوال: camelCase + فعل',
+        '<code className="inline-code">ShoppingCart</code>, <code className="inline-code">PaymentProcessor</code> - الفئات: PascalCase',
+        '<code className="inline-code">MAX_RETRY_COUNT</code>, <code className="inline-code">API_URL</code> - الثوابت: UPPER_SNAKE_CASE',
+      ]},
+      { heading: "القواعد الذهبية:", items: [
+        '<code className="inline-code">button</code> وليس <code className="inline-code">btn</code> - لا تختصر',
+        '<code className="inline-code">get</code>, <code className="inline-code">create</code>, <code className="inline-code">validate</code> - استخدم أفعالاً للدوال',
+        '<code className="inline-code">isValid</code> وليس <code className="inline-code">check</code> - الأسماء تصف المحتوى',
+        'التزم بنمط واحد طوال المشروع - كن متسقاً',
+      ]},
+    ]}
+  },
   en: {
     sections: [
       { title: "Introduction", content: [

@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1], fr: [1, 1], de: [1, 1] };
+const correctAnswers = { ar: [1, 1], en: [1, 1], fr: [1, 1], de: [1, 1] };
 
 const challengeCode = `function greetUser(name, timeOfDay) {
   let greeting;
@@ -62,6 +62,29 @@ console.log("هل 7 زوجي؟", isEven(7));
 console.log("هل 10 زوجي؟", isEven(10));`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ورقة مرجعية لجافاسكريبت - الدرس 2",
+    columns: [
+      {
+        heading: "الجمل الشرطية:",
+        items: [
+          '<code className="inline-code">if (condition) {"{}"}</code> - ينفذ الكتلة إذا كان الشرط صحيحًا',
+          '<code className="inline-code">else if (condition) {"{}"}</code> - شرط بديل',
+          '<code className="inline-code">else {"{}"}</code> - الكتلة الافتراضية',
+          '<code className="inline-code">switch (value) {"{}"}</code> - مطابقة حالات متعددة',
+        ],
+      },
+      {
+        heading: "الدوال:",
+        items: [
+          '<code className="inline-code">function name() {"{}"}</code> - تعريف الدالة (مرفوعة)',
+          '<code className="inline-code">const name = () =&gt; {}</code> - دالة السهم',
+          '<code className="inline-code">return value</code> - إرجاع من الدالة',
+          "المعاملات: مدخلات | الإرجاع: مخرجات",
+        ],
+      },
+    ],
+  },
   en: {
     title: "JavaScript Cheat Sheet - Lesson 2",
     columns: [
@@ -134,6 +157,18 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: {
+    title: "مشروع صغير: حاسبة الدرجات",
+    description: "أنشئ برنامجًا:",
+    items: [
+      'يأخذ درجات الطلاب كمدخل',
+      'يستخدم if-else لتحديد درجات الحروف (A, B, C, D, F)',
+      'ينشئ دالة تُرجع الدرجة',
+      'يستخدم جملة switch لأوصاف الدرجات',
+      'يكرر عبر عدة طلاب ويطبع درجاتهم',
+    ],
+    hint: "اجمع مفاهيم if-else و switch والدوال.",
+  },
   en: {
     title: "Mini Project: Grade Calculator",
     description: "Create a program that:",

@@ -1,4 +1,70 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "نظام التخطيط في Tailwind", content: [
+        { type: "p", text: "يوفر Tailwind CSS نظام تخطيط مبنياً على فئات مساعدة تغطي جميع خصائص CSS المتعلقة بالتخطيط والقياس والتباعد." },
+        { type: "p", text: "يستخدم Tailwind مقياس تباعد موحداً يُستخدم في الحشو والهامش والتباعد والأحجام. يبدأ هذا المقياس من 0 ويصل إلى 96، مع قيم نصفية." },
+      ]},
+      { title: "نظام التباعد", content: [
+        { type: "li", text: "<strong>الحشو:</strong> المسافة بين محتوى العنصر وحدوده. يدعم اختصارات الاتجاه: px (أفقي)، py (عمودي)، pt/pr/pb/pl (جوانب محددة)." },
+        { type: "li", text: "<strong>الهامش:</strong> المسافة خارج العنصر. يدعم اختصارات الحشو نفسها بالإضافة إلى mx-auto للتوسيط." },
+        { type: "li", text: "<strong>الفجوة:</strong> تعمل فقط داخل حاويات Flexbox أو Grid. تعيّن التباعد بين العناصر الفرعية." },
+      ]},
+      { title: "Flexbox مع Tailwind", content: [
+        { type: "p", text: "يوفر Tailwind مجموعة شاملة من فئات Flexbox. يمكنك التحكم في الاتجاه والتوزيع والمحاذاة بسهولة." },
+        { type: "li", text: "flex / inline-flex لتفعيل Flexbox" },
+        { type: "li", text: "flex-row / flex-col للاتجاه" },
+        { type: "li", text: "justify-start/center/end/between/around/evenly للتوزيع الأفقي" },
+        { type: "li", text: "items-start/center/end/baseline/stretch للمحاذاة العمودية" },
+      ]},
+      { title: "CSS Grid مع Tailwind", content: [
+        { type: "p", text: "CSS Grid هو أقوى نظام تخطيط في CSS. يوفر Tailwind فئات سهلة لإنشاء شبكات معقدة." },
+        { type: "li", text: "grid / inline-grid لتفعيل Grid" },
+        { type: "li", text: "grid-cols-1 إلى grid-cols-12 لعدد الأعمدة" },
+        { type: "li", text: "col-span-* لامتداد الأعمدة" },
+        { type: "li", text: "grid-rows-* لتكوين الصفوف" },
+      ]},
+      { title: "القياس", content: [
+        { type: "p", text: "يوفر Tailwind فئات للتحكم في العرض والارتفاع والأحجام الصغيرة/الكبيرة. يمكنك استخدام مقياس التباعد أو قيم مخصصة." },
+        { type: "li", text: "w-* للعرض (w-full، w-1/2، w-64، إلخ)" },
+        { type: "li", text: "h-* للارتفاع (h-full، h-screen، h-48، إلخ)" },
+        { type: "li", text: "min-w-*، max-w-*، min-h-*، max-h-* للقيود" },
+        { type: "li", text: "size-* يعين العرض والارتفاع معاً" },
+      ]},
+      { title: "الموضع", content: [
+        { type: "p", text: "تحكم فئات الموضع في كيفية وضع العنصر في تدفق الصفحة أو بالنسبة لحاويته." },
+        { type: "li", text: "static، relative، absolute، fixed، sticky" },
+        { type: "li", text: "top-*، right-*، bottom-*، left-* للإزاحات" },
+        { type: "li", text: "inset-* لتعيين جميع الجوانب دفعة واحدة" },
+        { type: "li", text: "z-* لترتيب التراكم (z-index)" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "يوفر Tailwind مقياس تباعد موحداً من 0-96" },
+        { type: "li", text: "تغطي فئات Flexbox الاتجاه والمحاذاة والتوزيع" },
+        { type: "li", text: "تتعامل فئات Grid مع الأعمدة والصفوف والامتداد" },
+        { type: "li", text: "تحكم فئات القياس في العرض والارتفاع والقيود" },
+        { type: "li", text: "تدير فئات الموضع التثبيت النسبي والمطلق والثابت واللزج" },
+      ]}
+    ],
+    quiz: [
+      { question: "ماذا يفعل mx-auto؟", options: ["يُعيّن الهامش على جميع الجوانب", "يُوسط العنصر أفقياً", "يُعيّن margin-left و margin-right إلى auto", "كل من B و C"], explanation: "يُعيّن mx-auto margin-left و margin-right إلى auto، مما يُوسط العنصر أفقياً." },
+      { question: "ما الفرق بين gap و margin؟", options: ["لا فرق", "Gap لا يضيف مساحة على الحواف الخارجية للحاوية", "Margin لا يعمل مع Flexbox", "Gap يعمل فقط مع Grid"], explanation: "Gap لا يضيف مساحة على الحواف الخارجية للحاوية، مما يجعله أنظف من margin للتباعد بين العناصر." },
+      { question: "كيف تجعل العنصر يمتد عمودين في شبكة؟", options: ["grid-cols-2", "col-span-2", "span-2", "width-2"], explanation: "col-span-2 يجعل العنصر يمتد عمودين في تخطيط CSS Grid." }
+    ],
+    challenge: { title: "بناء تخطيط لوحة تحكم متجاوبة", description: "أنشئ تخطيط لوحة تحكم مع شريط جانبي ورأس ومحتوى رئيسي باستخدام Flexbox و Grid. يجب إخفاء الشريط الجانبي على الهاتف وعرضه على سطح المكتب." },
+    cheatSheet: { title: "ملخص التخطيط والقياس", items: [
+      { term: "flex", definition: "display: flex" },
+      { term: "grid", definition: "display: grid" },
+      { term: "p-4 / m-4", definition: "padding / margin: 1rem" },
+      { term: "gap-4", definition: "gap: 1rem" },
+      { term: "grid-cols-3", definition: "شبكة 3 أعمدة" },
+      { term: "col-span-2", definition: "يمتد عمودين" },
+      { term: "w-full", definition: "width: 100%" },
+      { term: "h-screen", definition: "height: 100vh" },
+      { term: "sticky top-0", definition: "تثبيت في الأعلى" },
+      { term: "z-10", definition: "z-index: 10" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Layout System in Tailwind", content: [

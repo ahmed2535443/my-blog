@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1, 2, 1], fr: [1, 1, 1, 2, 1], de: [1, 1, 1, 2, 1] };
+const correctAnswers = { ar: [1, 1, 1, 2, 1], en: [1, 1, 1, 2, 1], fr: [1, 1, 1, 2, 1], de: [1, 1, 1, 2, 1] };
 
 const challengeCode = `// Enhanced TaskInput with categories and priorities
 function TaskInput() {
@@ -46,6 +46,29 @@ function TaskInput() {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص المشروع الأخير لـ React",
+    columns: [
+      {
+        heading: "المفاهيم الأساسية:",
+        items: [
+          "إعداد المشروع - Create React App + ESLint + Prettier",
+          "نموذج البيانات - هيكل المهمة وتفضيلات المستخدم",
+          "SContext + Reducer - إدارة الحالة العامة",
+          "عمليات CRUD - إنشاء وقراءة وتحديث وحذف",
+          "النماذج - مكونات محكومة مع التحقق",
+        ],
+      },
+      {
+        heading: "الميزات:",
+        items: [
+          "القوائم - عرض وتصفية وترتيب المهام",
+          "التخزين المحلي - حفظ المهام والتفضيلات",
+          "تبديل السمة - فاتحة/داكنة مع متغيرات CSS",
+        ],
+      },
+    ],
+  },
   en: {
     title: "React Final Project Cheat Sheet",
     columns: [

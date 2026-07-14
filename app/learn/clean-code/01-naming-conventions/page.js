@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [2], fr: [2], de: [2] };
+const correctAnswers = { ar: [2], en: [2], fr: [2], de: [2] };
 
 const challengeCode = `// ❌ Bad code
 function fn(d, n) {
@@ -32,6 +32,29 @@ function getAdultNames(people, minAge) {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص اتفاقيات التسمية",
+    columns: [
+      {
+        heading: "النمط لكل عنصر:",
+        items: [
+          '<code className="inline-code">userName</code>, <code className="inline-code">isActive</code>, <code className="inline-code">maxRetryCount</code> - المتغيرات: camelCase',
+          '<code className="inline-code">getUserData()</code>, <code className="inline-code">calculateTotal()</code> - الدوال: camelCase + فعل',
+          '<code className="inline-code">ShoppingCart</code>, <code className="inline-code">PaymentProcessor</code> - الفئات: PascalCase',
+          '<code className="inline-code">MAX_RETRY_COUNT</code>, <code className="inline-code">API_URL</code> - الثوابت: UPPER_SNAKE_CASE',
+        ],
+      },
+      {
+        heading: "القواعد الذهبية:",
+        items: [
+          '<code className="inline-code">button</code> وليس <code className="inline-code">btn</code> - لا تختصر',
+          '<code className="inline-code">get</code>, <code className="inline-code">create</code>, <code className="inline-code">validate</code> - استخدم أفعالاً للدوال',
+          '<code className="inline-code">isValid</code> وليس <code className="inline-code">check</code> - الأسماء تصف المحتوى',
+          'التزم بنمط واحد طوال المشروع - كن متسقاً',
+        ],
+      },
+    ],
+  },
   en: {
     title: "Naming Conventions Cheat Sheet",
     columns: [

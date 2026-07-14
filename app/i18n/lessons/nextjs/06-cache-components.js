@@ -1,4 +1,35 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "نظرة عامة: التخزين المؤقت في Next.js 16", content: [
+        { type: "p", text: "Next.js 16 يقدم <strong>نموذج تخزين مؤقت جديد تماماً</strong>. لا شيء يُخزّن مؤقتاً إلا إذا طلبته صراحةً باستخدام <code>'use cache'</code>." },
+        { type: "p", text: "كل مكون ودالة تنفذ في كل مرة إلا إذا أضفت <code>'use cache'</code>." },
+      ]},
+      { title: "تعليمة 'use cache'", content: [
+        { type: "p", text: "أضف <code>'use cache'</code> في أعلى دالة أو مكون لتمكين التخزين المؤقت. يمكنك التخزين على مستوى الدالة أو المكون أو مع وسوم محددة." },
+      ]},
+      { title: "أوضاع التخزين المؤقت", content: [
+        { type: "li", text: "<code>'use cache'</code> — تخزين مؤقت للقيمة المُعادة من الدالة." },
+        { type: "li", text: "<code>'use cache' مع وسوم</code> — تخزين مؤقت مع وسوم للإبطال المستهدف." },
+        { type: "li", text: "بدون 'use cache' — تنفيذ دائماً بشكل طازج (السلوك الافتراضي)." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "Next.js 16 يستخدم التخزين المؤقت الاختياري مع 'use cache'." },
+        { type: "li", text: "لا شيء يُخزّن مؤقتاً بشكل افتراضي." },
+        { type: "li", text: "استخدم الوسوم لإبطال التخزين المؤقت المستهدف." },
+      ]}
+    ],
+    quiz: [
+      { question: "ما هو سلوك التخزين المؤقت الافتراضي في Next.js 16؟", options: ["كل شيء يُخزّن مؤقتاً", "لا شيء يُخزّن مؤقتاً إلا إذا استخدمت 'use cache'", "الصفحات الثابتة فقط تُخزّن مؤقتاً", "التخزين المؤقت معطل"], explanation: "في Next.js 16، لا شيء يُخزّن مؤقتاً إلا إذا استخدمت 'use cache' صراحةً." },
+      { question: "كيف تخزّن دالة مؤقتاً في Next.js 16؟", options: ["استخدم cache: true", "أضف 'use cache' في أعلى الدالة", "استخدم useMemo", "التخزين المؤقت تلقائي"], explanation: "أضف 'use cache' في أعلى الدالة لتمكين التخزين المؤقت." },
+    ],
+    challenge: { title: "تنفيذ استراتيجية التخزين المؤقت", description: "أضف 'use cache' إلى المكونات واختبر سلوك التخزين المؤقت مع سيناريوهات مختلفة." },
+    cheatSheet: { title: "ملخص مراجعة Cache Components", items: [
+      { term: "'use cache'", definition: "تمكين التخزين المؤقت للدالة/المكون" },
+      { term: "بدون تعليمة", definition: "دائماً طازج (الافتراضي)" },
+      { term: "tags", definition: "إبطال التخزين المؤقت المستهدف" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Overview: Caching in Next.js 16", content: [

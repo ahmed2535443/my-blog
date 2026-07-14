@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1], fr: [1], de: [1] };
+const correctAnswers = { ar: [1], en: [1], fr: [1], de: [1] };
 
 const challengeCode = `function handleUserAction(action, userData) {
   if (action === "register") {
@@ -33,6 +33,27 @@ const challengeCode = `function handleUserAction(action, userData) {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص تنظيم الكود",
+    columns: [
+      {
+        heading: "المبادئ الأساسية:",
+        items: [
+          "1. المسؤولية الفردية (SRP) - كل دالة تفعل شيئاً واحداً",
+          "2. ترتيب الاستيراد - المكتبات الخارجية ← المكونات المحلية ← الأدوات المساعدة",
+          "3. تنظيم الملفات - استخدم تصدير الأسطوانة، organize حسب الميزات",
+          "4. مبدأ أقل معرفة - لا تسلسل طرق طويل",
+          "5. تجميع الكود المترابط - اجمع الدوال المتشابهة، لا تكرر (DRY)",
+        ],
+      },
+      {
+        heading: "القاعدة الذهبية:",
+        items: [
+          "الكود الجيد هو الكود الذي يمكن لشخص آخر قراءته وفهمه في أقصر وقت ممكن.",
+        ],
+      },
+    ],
+  },
   en: {
     title: "Code Organization Cheat Sheet",
     columns: [

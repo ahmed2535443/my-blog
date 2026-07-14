@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1, 2, 2], fr: [1, 1, 1, 2, 2], de: [1, 1, 1, 2, 2] };
+const correctAnswers = { ar: [1, 1, 1, 2, 2], en: [1, 1, 1, 2, 2], fr: [1, 1, 1, 2, 2], de: [1, 1, 1, 2, 2] };
 
 const challengeCode = `function SmartCounter() {
   const [count, setCount] = useState(0);
@@ -37,6 +37,28 @@ const challengeCode = `function SmartCounter() {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص الحالة والخطافات",
+    columns: [
+      {
+        heading: "المفاهيم الأساسية:",
+        items: [
+          "الحالة - بيانات تتغير مع الوقت وتؤثر على العرض",
+          "useState - خطاف لإدارة الحالة في مكونات الدوال",
+          "الخصائص من الأصل (خارجية)، الحالة داخل المكون (داخلية)",
+          "الخطافات في المستوى الأعلى فقط",
+        ],
+      },
+      {
+        heading: "الأوامر:",
+        items: [
+          "const [count, setCount] = useState(0)",
+          "setCount(count + 1) - تحديث الحالة",
+          "setCount(prev => prev + 1) - تحديث بناءً على السابق",
+        ],
+      },
+    ],
+  },
   en: {
     title: "State and Hooks Cheat Sheet",
     columns: [

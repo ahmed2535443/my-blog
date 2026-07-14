@@ -1,4 +1,39 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "ميزات Clerk المتقدمة", content: [
+        { type: "p", text: "يقدم Clerk عدة ميزات متقدمة تعزز الأمان وتجربة المستخدم." },
+      ]},
+      { title: "حماية المسارات باستخدام Middleware", content: [
+        { type: "code", text: "// middleware.js\nimport { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';\n\nconst isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)', '/']);\n\nexport default clerkMiddleware(async (req, auth) => {\n  if (!isPublicRoute(req)) {\n    await auth.protect();\n  }\n});\n\nexport const config = [\n  '/((?!_next|[^?]*\\\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',\n  '/(api|trpc)(.*)',\n];" },
+      ]},
+      { title: "دمج Clerk + Supabase", content: [
+        { type: "p", text: "استخدم Clerk للمصادقة و Supabase لقاعدة البيانات. أرسل رمز JWT من Clerk إلى Supabase للتحقق من المستخدمين." },
+        { type: "code", text: "// الحصول على رمز Clerk لـ Supabase\nimport { auth } from '@clerk/nextjs/server';\n\nexport async function getSupabaseUser() {\n  const { userId } = await auth();\n  // استخدم userId للاستعلام من Supabase\n}" },
+      ]},
+      { title: "السمات المخصصة", content: [
+        { type: "p", text: "يمكن تسمية مكونات Clerk باستخدام أنساق Tailwind CSS أو خاصية appearance." },
+        { type: "code", text: "<SignIn\n  appearance={{\n    elements: {\n      rootBox: 'mx-auto',\n      card: 'shadow-xl rounded-lg',\n    },\n  }}\n/>" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "استخدم middleware.js لحماية المسارات عالمياً." },
+        { type: "li", text: "يمكن لـ Clerk الدمج مع Supabase للمصادقة + قاعدة البيانات." },
+        { type: "li", text: "يمكن تخصيص المكونات بخاصية appearance." },
+      ]}
+    ],
+    quiz: [
+      { question: "ماذا يفعل clerkMiddleware؟", options: ["يحمي جميع المسارات", "يتعامل مع فحوصات المصادقة على المسارات", "ينشئ اتصالات قاعدة البيانات", "إدارة رفع الملفات"], explanation: "clerkMiddleware يتعامل مع فحوصات المصادقة على المسارات المحددة." },
+      { question: "كيف تخصيص مظهر مكونات Clerk؟", options: ["بملفات CSS", "بخاصية appearance", "بأنماط داخلية", "لا يمكن التخصيص"], explanation: "استخدم خاصية appearance مع أنساق العناصر لتخصيص مكونات Clerk." },
+    ],
+    challenge: { title: "إعداد حماية المسارات", description: "نفذ middleware.js لحماية جميع المسارات ما عدا العامة. أضف سمة مخصصة لمكون تسجيل الدخول." },
+    cheatSheet: { title: "ملخص مراجعة Clerk المتقدم", items: [
+      { term: "clerkMiddleware", definition: "حماية المسارات عالمياً" },
+      { term: "createRouteMatcher()", definition: "تحديد المسارات العامة" },
+      { term: "auth.protect()", definition: "طلب المصادقة" },
+      { term: "appearance={{}}", definition: "تخصيص أنماط المكونات" },
+      { term: "Clerk + Supabase", definition: "دمج المصادقة + قاعدة البيانات" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Advanced Clerk Features", content: [

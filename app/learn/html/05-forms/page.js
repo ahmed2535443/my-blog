@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [2, 1, 1], fr: [2, 1, 1], de: [2, 1, 1] };
+const correctAnswers = { ar: [2, 1, 1], en: [2, 1, 1], fr: [2, 1, 1], de: [2, 1, 1] };
 
 const challengeCode = `<form action="/api/comments" method="POST">
     <fieldset>
@@ -41,6 +41,72 @@ const challengeCode = `<form action="/api/comments" method="POST">
 </form>`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص النماذج",
+    columns: [
+      {
+        heading: "النموذج وأنواع الإدخال:",
+        code: `<!-- نموذج أساسي -->
+<form action="/url" method="POST">
+  ...
+</form>
+
+<!-- أنواع الإدخال -->
+<input type="text" name="x" />
+<input type="email" name="x" />
+<input type="password" name="x" />
+<input type="number" name="x" />
+<input type="tel" name="x" />
+<input type="url" name="x" />
+<input type="date" name="x" />
+<input type="color" name="x" />
+<input type="range" name="x" />
+<input type="file" name="x" />
+<input type="hidden" name="x" />
+
+<!-- منطقة النص -->
+<textarea name="msg" rows="5"></textarea>`,
+        codeLanguage: "html",
+      },
+      {
+        heading: "التحقق والتجميع:",
+        code: `<!-- تسمية (إلزامية) -->
+<label for="id">التسمية</label>
+<input type="text" id="id" name="n" />
+
+<!-- التحقق -->
+<input required minlength="3"
+       maxlength="50" />
+<input type="number" min="0"
+       max="100" />
+<input pattern="[A-Za-z]{3}" />
+
+<!-- قائمة منسدلة -->
+<select name="x">
+  <option value="1">واحد</option>
+</select>
+
+<!-- مجموعة حقول -->
+<fieldset>
+  <legend>العنوان</legend>
+  <!-- الحقول -->
+</fieldset>`,
+        codeLanguage: "html",
+      },
+      {
+        heading: "الخصائص الأساسية:",
+        items: [
+          '<code className="inline-code">name</code> - مطلوب لإرسال النموذج',
+          '<code className="inline-code">required</code> - الحقل إجباري',
+          '<code className="inline-code">placeholder</code> - نص تلميحي',
+          '<code className="inline-code">minlength</code> / <code className="inline-code">maxlength</code> - حدود طول النص',
+          '<code className="inline-code">min</code> / <code className="inline-code">max</code> - حدود نطاق الأرقام',
+          '<code className="inline-code">pattern</code> - تحقق بنمط منتظم',
+          '<code className="inline-code">autocomplete</code> - تلميحملء تلقائي',
+        ],
+      },
+    ],
+  },
   en: {
     title: "Forms Cheat Sheet",
     columns: [
@@ -242,6 +308,21 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: {
+    title: "مشروع صغير: نموذج تقديم فريق",
+    description: "أنشئ نموذج تقديم فريق يتضمن:",
+    items: [
+      'قسم معلومات شخصية (الاسم، تاريخ الميلاد، الجنس) باستخدام <code>&lt;fieldset&gt;</code>',
+      'معلومات الاتصال (البريد، الهاتف) بإكمال تلقائي مناسب',
+      'قسم المهارات باستخدام مربعات الاختيار (HTML، CSS، JS، React، Node)',
+      'مستوى الخبرة بأزرار الاختيار (مبتدئ، متوسط، متقدم، خبير)',
+      '<code>&lt;textarea&gt;</code> لخطاب التقديم مع <code>minlength</code>',
+      'حقل رفع السيرة الذاتية (PDF فقط) باستخدام <code>accept</code>',
+      'تحقق من الحقول الإجبارية باستخدام <code>required</code>',
+      'الشروط والأحكام مع مربع اختيار إجباري',
+    ],
+    hint: "استخدم <code>&lt;fieldset&gt;</code> و<code>&lt;legend&gt;</code> لتجميع كل قسم، وتأكد من أن كل حقل له <code>&lt;label&gt;</code> بـ <code>for</code> يطابق الـ <code>id</code>.",
+  },
   en: {
     title: "Mini Project: Team Application Form",
     description: "Create a team application form that includes:",

@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2], fr: [1, 2], de: [1, 2] };
+const correctAnswers = { ar: [1, 2], en: [1, 2], fr: [1, 2], de: [1, 2] };
 
 const challengeCode = `// بيانات المستخدم
 const userName = "أحمد";
@@ -41,6 +41,28 @@ console.log("typeof hobbies:", typeof hobbies);
 console.log("typeof user:", typeof user);`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ورقة مرجعية لجافاسكريبت - الدرس 1",
+    columns: [
+      {
+        heading: "مقارنة المتغيرات:",
+        items: [
+          '<code className="inline-code">var</code> - نطاق الدالة | إعادة التعيين: نعم | الرفع: نعم (undefined)',
+          '<code className="inline-code">let</code> - نطاق الكتلة | إعادة التعيين: نعم | الرفع: نعم (منطقة الموت المؤقتة)',
+          '<code className="inline-code">const</code> - نطاق الكتلة | إعادة التعيين: لا | الرفع: نعم (منطقة الموت المؤقتة)',
+        ],
+      },
+      {
+        heading: "العمليات الشائعة:",
+        items: [
+          "حسابية: <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code> <code>**</code>",
+          "مقارنة: <code>===</code> <code>!==</code> <code>==</code> <code>!=</code> <code>&gt;</code> <code>&lt;</code>",
+          "منطقية: <code>&&</code> <code>||</code> <code>!</code>",
+          "تعيين: <code>=</code> <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code>",
+        ],
+      },
+    ],
+  },
   en: {
     title: "JavaScript Cheat Sheet - Lesson 1",
     columns: [
@@ -110,6 +132,18 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: {
+    title: "مشروع صغير: آلة حاسبة بسيطة",
+    description: "أنشئ ملف جافاسكريبت جديدًا يحتوي على:",
+    items: [
+      'متغيرات لتخزين اسم المستخدم والعمر باستخدام <code>const</code>',
+      'مصفوفة تحتوي على 3 هوايات للمستخدم',
+      'كائن يمثل المستخدم بالخصائص: الاسم والعمر والهوايات',
+      'استخدم console.log لطباعة معلومات المستخدم',
+      'استخدم console.log لطباعة نوع كل متغير باستخدام typeof',
+    ],
+    hint: "ستحتاج إلى استخدام المتغيرات والمصفوفات والكائنات وعملية typeof.",
+  },
   en: {
     title: "Mini Project: Simple Calculator",
     description: "Create a new JavaScript file that contains:",

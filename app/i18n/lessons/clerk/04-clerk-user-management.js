@@ -1,4 +1,38 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "إدارة المستخدمين", content: [
+        { type: "p", text: "يوفر Clerk نظاماً كاملاً لإدارة المستخدمين يشمل الملفات الشخصية للمستخدمين والمنظمات وإدارة الجلسات." },
+      ]},
+      { title: "الملفات الشخصية للمستخدمين", content: [
+        { type: "code", text: "import { useUser } from '@clerk/nextjs';\n\nfunction UserProfile() {\n  const { isLoaded, isSignedIn, user } = useUser();\n  \n  if (!isLoaded) return <div>جاري التحميل...</div>;\n  if (!isSignedIn) return null;\n  \n  return (\n    <div>\n      <p>الاسم: {user.fullName}</p>\n      <p>البريد الإلكتروني: {user.primaryEmailAddress}</p>\n    </div>\n  );\n}" },
+      ]},
+      { title: "المنظمات", content: [
+        { type: "p", text: "المنظمات تسمح للمستخدمين بالانتماء إلى فرق أو شركات مع تحكم في الوصول بالأدوار." },
+        { type: "code", text: "import { useOrganization } from '@clerk/nextjs';\n\nconst { organization } = useOrganization();" },
+      ]},
+      { title: "Webhooks", content: [
+        { type: "p", text: "Webhooks تُبلغ تطبيقك عندما تحدث أحداث في Clerk (إنشاء مستخدم، تحديث، حذف). قم بتكوينها في لوحة التحكم تحت Webhooks." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "يوفر Clerk hook useUser للوصول إلى بيانات المستخدم." },
+        { type: "li", text: "المنظمات تمكّن التحكم في الوصول القائم على الفرق." },
+        { type: "li", text: "Webhooks تُبلغ تطبيقك بأحداث المستخدمين." },
+      ]}
+    ],
+    quiz: [
+      { question: "كيف تصل إلى بيانات المستخدم الحالي في Clerk؟", options: ["useAuth()", "useUser()", "getUser()", "currentUser()"], explanation: "استخدم hook useUser() للوصول إلى بيانات المستخدم الحالي." },
+      { question: "ما هي المنظمات في Clerk؟", options: ["جداول قواعد بيانات", "فرق/شركات مع تحكم في الوصول بالأدوار", "مجلدات ملفات", "نقاط نهاية API"], explanation: "المنظمات تسمح للمستخدمين بالانتماء إلى فرق أو شركات مع تحكم في الوصول بالأدوار." },
+    ],
+    challenge: { title: "نفذ إدارة المستخدمين", description: "أنشئ صفحة ملف شخصي للمستخدم ونفذ منظمات لإدارة الفريق." },
+    cheatSheet: { title: "ملخص مراجعة إدارة المستخدمين", items: [
+      { term: "useUser()", definition: "الوصول إلى بيانات المستخدم الحالي" },
+      { term: "user.fullName", definition: "الاسم الكامل للمستخدم" },
+      { term: "user.primaryEmailAddress", definition: "البريد الإلكتروني الأساسي" },
+      { term: "useOrganization()", definition: "الوصول إلى بيانات المنظمة" },
+      { term: "Webhooks", definition: "إشعارات الأحداث" }
+    ]}
+  },
   en: {
     sections: [
       { title: "User Management", content: [

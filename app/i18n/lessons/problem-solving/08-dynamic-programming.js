@@ -1,4 +1,52 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "مقدمة في البرمجة الديناميكية", content: [
+        { type: "p", text: "حل البرمجة الديناميكية (DP) المشكلات المعقدة عن طريق تقسيمها إلى مشكلات فرعية متراكبة وتخزين النتائج لتجنب الحساب التكراري." },
+        { type: "callout", title: "ما سنتعلمه", text: "أساسيات DP، تعريف الحالة، معادلات الانتقال، Memorization مقابل Tabulation، ومشاكل DP الكلاسيكية." }
+      ]},
+      { title: "ما هي البرمجة الديناميكية؟",
+      content: [
+        { type: "p", text: "DP هي تقنية تحسين لمشاكل تحتوي على مشكلات فرعية متراكبة وبنية فرعية مثالية." },
+        { type: "callout", title: "شرطان", text: "1. مشكلات فرعية متراكبة (نفس المشاكل تُحل بشكل متكرر). 2. بنية فرعية مثالية (الحل المثالي يحتوي على حلول فرعية مثالية)." }
+      ]},
+      { title: "Memorization (من الأعلى إلى الأسفل)", content: [
+        { type: "p", text: "تستخدم Memorization التكرار الذاتي مع ذاكرة مؤقتة لتخزين النتائج المحسوبة، مما يتجنب الحسابات التكرارية." },
+        { type: "callout", title: "النمط", text: "تحقق من الذاكرة المؤقتة قبل الحساب. إذا كانت مخزنة، أعد. وإلا احسب واحفظ وأعد." }
+      ]},
+      { title: "Tabulation (من الأسفل إلى الأعلى)", content: [
+        { type: "p", text: "تملأ Tabulation جدول DP بشكل تكراري من الحالات الأساسية إلى الإجابة النهائية." },
+        { type: "callout", title: "النمط", text: "بادر بالحالات الأساسية. لكل حالة، احسب من الحالات المحسوبة مسبقًا. أعد dp[target]." }
+      ]},
+      { title: "مشاكل DP أحادية البعد", content: [
+        { type: "p", text: "مشاكل مثل Climbing Stairs و House Robber و Coin Change تستخدم جدول DP أحادي البعد." },
+        { type: "callout", title: "أمثلة", text: "Climbing Stairs: dp[i] = dp[i-1] + dp[i-2]. House Robber: dp[i] = max(dp[i-1], dp[i-2] + nums[i])." }
+      ]},
+      { title: "مشاكل DP ثنائية البعد", content: [
+        { type: "p", text: "مشاكل مثل Edit Distance و Regular Expression Matching تستخدم جدول DP ثنائي البعد." },
+        { type: "callout", title: "أمثلة", text: "Edit Distance: dp[i][j] بناءً على تطابق/ عدم تطابق الأحرف. LCS: dp[i][j] من الحالات السابقة." }
+      ]}
+    ],
+    quiz: [
+      { question: "ما هما الشرطان للبرمجة الديناميكية؟",
+        options: ["بيانات مرتبة وعناصر فريدة", "مشكلات فرعية متراكبة وبنية فرعية مثالية", "تكرار ذاتي وتكرار", "مصفوفات ونصوص"],
+        correctAnswer: 1, explanation: "تتطلب DP مشكلات فرعية متراكبة (حل متكرر) وبنية فرعية مثالية (الحل المثالي يحتوي على حلول فرعية مثالية)." },
+      { question: "ما الفرق بين Memorization و Tabulation؟",
+        options: ["لا يوجد فرق", "Memorization من الأعلى إلى الأسفل (تكراري)، Tabulation من الأسفل إلى الأعلى (تكراري)", "Memorization أسرع", "Tabulator تستخدم أكثر من الذاكرة"],
+        correctAnswer: 1, explanation: "تستخدم Memorization التكرار الذاتي مع التخزين المؤقت (من الأعلى إلى الأسفل)، تملا Tabulation جدولًا بشكل تكراري (من الأسفل إلى الأعلى)." },
+      { question: "ما هو تعقيد الوقت لـ Climbing Stairs؟",
+        options: ["O(2^n)", "O(n)", "O(n²)", "O(1)"],
+        correctAnswer: 1, explanation: "مع DP، Climbing Stairs هو O(n) لأن كل حالة تُحسب مرة واحدة فقط." }
+    ],
+    challenge: { title: "تحدي: البرمجة الديناميكية",
+      description: "حل Climbing Stairs و Coin Change و Longest Increasing Subsequence باستخدام Memorization و Tabulation." },
+    cheatSheet: { title: "مرجع البرمجة الديناميكية السريع", items: [
+      { title: "الحالة", content: "ماذا تمثل dp[i] أو dp[i][j]؟" },
+      { title: "الانتقال", content: "كيفية حساب dp[i] من الحالات السابقة؟" },
+      { title: "الحالة الأساسية", content: "ما هي القيم الأولية لـ dp؟" },
+      { title: "Memorization", content: "خزن النتائج تكراريًا. Tabulation: ملأ الجدول تكراريًا." }
+    ]}
+  },
   en: {
     sections: [
       { title: "Introduction to Dynamic Programming", content: [

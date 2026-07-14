@@ -1,4 +1,184 @@
 const translations = {
+  ar: {
+    sections: [
+      {
+        title: "ما هي متغيرات CSS",
+        content: [
+          { type: "p", text: "متغيرات CSS (تُعرف أيضاً بـ <strong>CSS Custom Properties</strong>) هي متغيرات حقيقية معرّفة ومُستخدمة مباشرة داخل CSS نفسه. وهي واحدة من أقوى الميزات التي أضافتها مواصفات CSS الحديثة." },
+          { type: "p", text: "تبدأ دائماً بـ <code>--</code> وتُستدعى باستخدام الدالة <code>var()</code>. على عكس متغيرات Sass/Less، تعمل متغيرات CSS مباشرة في المتصفح دون أي معالجة مسبقة." },
+          { type: "p", text: "الفرق الرئيسي مع متغيرات Sass: متغيرات CSS <strong>ديناميكية</strong> وتعمل أثناء التشغيل. يمكنك تغييرها باستخدام JavaScript في أي وقت، وتورث عبر شجرة DOM مثل خصائص CSS الأخرى." }
+        ]
+      },
+      {
+        title: "لماذا نستخدمها",
+        content: [
+          { type: "p", text: "تحل متغيرات CSS عدة مشاكل حرجة في تطوير الواجهة الأمامية:" },
+          { type: "li", text: "<strong>إعادة الاستخدام</strong> — حدد قيمة مرة واحدة واستخدمها في مئات الأماكن" },
+          { type: "li", text: "<strong>السمات</strong> — غيّر مظهر الموقع بالكامل بتغيير متغير واحد" },
+          { type: "li", text: "<strong>الصيانة</strong> — تغيير لون واحد في مكان واحد يحدث جميع النسخ" },
+          { type: "li", text: "<strong>الاستجابة</strong> — أعد تعريف المتغيرات في Media Queries لتغيير التصميم" },
+          { type: "li", text: "<strong>تكامل JavaScript</strong> — تفاعل مباشر بين CSS و JS عبر المتغيرات" },
+          { type: "li", text: "<strong>بدون خطوة بناء</strong> — تعمل مباشرة في المتصفح دون Sass أو معالجة مسبقة" }
+        ]
+      },
+      {
+        title: "المشكلة التي تحلها",
+        content: [
+          { type: "p", text: "تخيل أن لديك نظام تصميم بألوان وخطوط ومسافات محددة. بدون المتغيرات، عليك تكرار هذه القيم في كل ملف CSS:" },
+          { type: "callout-accent", title: "مشكلة التكرار", text: "إذا أردت تغيير لون الحد من #e5e7eb إلى #d1d5db، ستحتاج لتعديل كل ملف يدوياً! مع المتغيرات، غيّره مرة واحدة في التعريف وانتهيت." },
+          { type: "p", text: "مع المتغيرات، جميع القيم تُجمع في مكان واحد وتُستخدم في كل مكان آخر. إذا أردت تغيير أي قيمة، فقط غيّر التعريف." }
+        ]
+      },
+      {
+        title: "شرح بسيط",
+        content: [
+          { type: "p", text: "دعنا نشرح كل مفهوم ببساطة قبل الغوص في الكود:" },
+          { type: "li", text: "<strong>التعريف</strong> — استخدم -- لتعريف متغير داخل { } محدد أو :root للنطاق العام" },
+          { type: "li", text: "<strong>الاستخدام مع var()</strong> — اقرأ قيمة المتغير؛ يمكنك تمرير اسم + قيمة احتياطية" },
+          { type: "li", text: "<strong>النطاق</strong> — تتبع المتغيرات قواعد نطاق CSS؛ العناصر الفرعية ترث من الأصل" },
+          { type: "li", text: "<strong>القيم الاحتياطية</strong> — var(--name, fallback) تمنع الأخطاء عند عدم تعريف المتغير" },
+          { type: "li", text: "<strong>دالة Light-Dark()</strong> — تختار تلقائياً القيمة الفاتحة أو الداكنة بناءً على color-scheme" }
+        ]
+      },
+      {
+        title: "خلف الكواليس",
+        content: [
+          { type: "p", text: "إليك ما يحدث في المتصفح عند استخدام متغيرات CSS:" },
+          { type: "li", text: "<strong>المعالجة الأولية:</strong> يقرأ المتصفح CSS ويخزن المتغيرات مع نطاقها - لم تُحسب بعد" },
+          { type: "li", text: "<strong>الحل والوراثة:</strong> عند الوصول إلى var()، يبحث المتصفح في النطاق الحالي → الأب → :root → الاحتياطي" },
+          { type: "li", text: "<strong>إعادة الحساب التلقائية:</strong> عند تغيير متغير CSS، يحسب المتصفح جميع الخصائص التابعة من جديد" },
+          { type: "li", text: "<strong>مقارنة بمتغيرات Sass:</strong> تحسب Sass أثناء البناء (قيم ثابتة)، تحسب CSS أثناء التشغيل (ديناميكية)" }
+        ]
+      },
+      {
+        title: "الأخطاء الشائعة",
+        content: [
+          { type: "li", text: "<strong>الخطأ 1: نسيان الشرطة المزدوجة (--)</strong> — primary: #2563eb هي خاصية CSS عادية، ليست متغيراً" },
+          { type: "li", text: "<strong>الخطأ 2: خطأ إملائي في اسم المتغير</strong> — var(--primary-colour) لن تجد --primary-color" },
+          { type: "li", text: "<strong>الخطأ 3: استخدام القيمة مباشرة بدون var()</strong> — background: --primary CSS غير صالح" },
+          { type: "li", text: "<strong>الخطأ 4: استخدام !important مع المتغيرات</strong> — يسبب مشاكل الصيانة؛ استخدم النوعية الصحيحة بدلاً من ذلك" },
+          { type: "li", text: "<strong>الخطأ 5: عدم توفير قيم احتياطية</strong> — var(--undefined) تجعل الخاصية غير صالحة" },
+          { type: "li", text: "<strong>الخطأ 6: استخدام var() لأسماء الخصائص أو المحددات</strong> — var() تعمل فقط كقيمة" }
+        ]
+      },
+      {
+        title: "أفضل الممارسات",
+        content: [
+          { type: "li", text: "1. استخدم نظام تسمية متسق للمتغيرات (دلالي، مبني على الحالة)" },
+          { type: "li", text: "2. فصل ملفات التعريف (tokens.css) عن ملفات الاستخدام (components.css)" },
+          { type: "li", text: "3. استخدم color-mix() لتوليد درجات الألوان تلقائياً" },
+          { type: "li", text: "4. استخدم light-dark() لتبسيط تبديل السمة" },
+          { type: "li", text: "5. استخدم data-attributes لتبديل السمات" },
+          { type: "li", text: "6. استخدم مكونات معزولة بنطاق محلي" }
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: "ما الفرق الأساسي بين متغيرات CSS ومتغيرات Sass؟",
+        options: [
+          "متغيرات Sass تعمل مباشرة في المتصفح، متغيرات CSS تحتاج معالجاً مسبقاً",
+          "تُحسب متغيرات CSS أثناء التشغيل ويمكن تغييرها باستخدام JavaScript، بينما تُحسب متغيرات Sass أثناء البناء",
+          "متغيرات CSS لا تدعم القيم الاحتياطية بينما متغيرات Sass تدعمها",
+          "لا يوجد فرق جوهري - كلاهما يخدم نفس الغرض"
+        ],
+        correctAnswer: 1,
+        explanation: "الفرق الرئيسي هو أن CSS Custom Properties تعمل أثناء التشغيم ويمكن تغييرها ديناميكياً عبر JavaScript. تُحوّل Sass Variables إلىقيم ثابتة أثناء البناء ولا يمكن تغييرها أثناء التشغيل."
+      },
+      {
+        question: "متى تستخدم light-dark() ومتى تستخدم prefers-color-scheme؟",
+        options: [
+          "light-dark() للألوان الدلالية، prefers-color-scheme للخطوط",
+          "light-dark() تبسط ضبط لونين في مكان واحد، prefers-color-scheme تحتاج Media Query لكل خاصية",
+          "prefers-color-scheme أحدث من light-dark() لذا استخدمها دائماً",
+          "كلاهما متطابق تماماً دون فرق"
+        ],
+        correctAnswer: 1,
+        explanation: "تأخذ light-dark() لونين (فاتح وداكن) وتختار تلقائياً بناءً على color-scheme. هذا يبسط الكود بشكل كبير مقارنة باستخدام Media Query (prefers-color-scheme: dark) لكل خاصية على حدة."
+      }
+    ],
+    challenge: {
+      title: "بناء نظام سمات كامل لموقع تعليمي",
+      description: "أنشئ نظام سمات يتضمن: 1) رموز تصميم باستخدام CSS Variables في :root. 2) السمة الداكنة عبر data-theme='dark'. 3) استخدام color-mix() لدرجات الألوان. 4) تفاعل JavaScript لتبديل السمة. 5) احترام prefers-color-scheme كافتراضي. 6) استخدام light-dark() في بعض الأماكن لتقليل الكود."
+    },
+    cheatSheet: {
+      title: "مرجع سريع لمتغيرات CSS والسمات",
+      items: [
+        {
+          title: "تعريف المتغيرات واستخدامها",
+          content: `/* التعريف */
+:root {
+  --color-primary: #2563eb;
+  --spacing-md: 1rem;
+}
+
+/* الاستخدام */
+.element {
+  color: var(--color-primary);
+  padding: var(--spacing-md);
+}
+
+/* مع احتياطي */
+.element {
+  color: var(--color-primary, #3b82f6);
+}`
+        },
+        {
+          title: "color-mix() — خلط الألوان",
+          content: `/* الشكل العام */
+color-mix(in color-space, color1 percentage, color2 percentage)
+
+/* أمثلة عملية */
+--primary-100: color-mix(in oklch, var(--primary) 20%, white);
+--primary-500: var(--primary);
+--primary-900: color-mix(in oklch, var(--primary) 80%, black);`
+        },
+        {
+          title: "light-dark() — ألوان تلقائية",
+          content: `/* يتطلب color-scheme */
+body { color-scheme: light dark; }
+
+/* الصيغة */
+property: light-dark(light-value, dark-value);
+
+/* أمثلة */
+.card {
+  background: light-dark(#ffffff, #1e293b);
+  color: light-dark(#111827, #e5e7eb);
+  border: 1px solid light-dark(#e5e7eb, #334151);
+}`
+        },
+        {
+          title: "نمط تبديل السمة",
+          content: `/* النمط المثالي */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ffffff;
+  --text: #111827;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --text: #e2e8f0;
+}
+
+/* احترام تفضيلات النظام تلقائياً */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg: #0f172a;
+    --text: #e2e8f0;
+  }
+}
+
+/* JavaScript: تبديل السمة */
+document.documentElement.setAttribute('data-theme', 'dark');`
+        }
+      ]
+    }
+  },
   en: {
     sections: [
       {

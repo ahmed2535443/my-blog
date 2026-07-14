@@ -1,4 +1,45 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "ما هي مكونات الخادم؟", content: [
+        { type: "p", text: "مكونات الخادم هي مكونات React تعمل <strong>فقط على الخادم</strong>. لا تنقل JavaScript أبداً إلى العميل، مما يجعل تطبيقك أسرع وأخف." },
+        { type: "p", text: "في Next.js 13+، جميع المكونات في مجلد <code>app/</code> هي مكونات خادم افتراضياً." },
+        { type: "p", text: "يمكن لمكونات الخادم الوصول مباشرة إلى قواعد البيانات وأنظمة الملفات والموارد الخادم الأخرى." },
+      ]},
+      { title: "مكونات الخادم مقابل مكونات العميل", content: [
+        { type: "li", text: "<strong>مكونات الخادم:</strong> تعمل على الخادم، لا تفاعلية، يمكنها الوصول مباشرة إلى الخلفية" },
+        { type: "li", text: "<strong>مكونات العميل:</strong> تعمل في المتصفح، يمكنها استخدام خطافات مثل useState/useEffect، تتعامل مع تفاعلات المستخدم" },
+        { type: "callout", title: "الفرق الجوهري", text: "إذا كان المكون يحتاج إلى useState أو useEffect أو معالجات أحداث، فيجب أن يكون مكون عميل." },
+      ]},
+      { title: "متى تستخدم مكونات الخادم", content: [
+        { type: "li", text: "جلب البيانات من قواعد البيانات أو واجهات البرمجة" },
+        { type: "li", text: "الوصول مباشرة إلى موارد الخلفية" },
+        { type: "li", text: "إبقاء البيانات الحساسة على الخادم" },
+        { type: "li", text: "تقليل حزمة JavaScript من جانب العميل" },
+      ]},
+      { title: "متى تستخدم مكونات العميل", content: [
+        { type: "li", text: "استخدام خطافات مثل useState و useEffect و useContext" },
+        { type: "li", text: "إضافة مستمعي أحداث والتعامل مع التفاعلات" },
+        { type: "li", text: "استخدام APIs المتصفح فقط" },
+        { type: "li", text: "إنشاء عناصر واجهة مستخدم تفاعلية" },
+      ]},
+      { title: "كيف تجعل المكون مكون عميل", content: [
+        { type: "p", text: "أضف التوجيه <code>\"use client\"</code> في أعلى الملف لجعله مكون عميل." },
+        { type: "callout", title: "مهم", text: "استورد مكونات العميل فقط في مكونات العميل الأخرى، وليس العكس." },
+      ]},
+    ],
+    quiz: [
+      { question: "ماذا يحدث لـ JavaScript مكونات الخادم على العميل؟", options: ["يُرسل ويُنفذ على العميل", "يُرسل لكن لا يُنفذ", "لا يُرسل إلى العميل على الإطلاق", "يُرسل كنص غير متزامن"], correctAnswer: 2, explanation: "مكونات الخادم لا تنقل JavaScript إلى العميل أبداً، مما يجعل التطبيق أسرع وأخف." },
+      { question: "متى تستخدم مكون العميل؟", options: ["جلب البيانات من API", "استخدام useState أو useEffect", "الوصول إلى قاعدة بيانات", "قراءة ملفات على الخادم"], correctAnswer: 1, explanation: "مكونات العميل مطلوبة عند استخدام خطافات مثل useState و useEffect أو التعامل مع تفاعلات المستخدم." },
+      { question: "كيف تجعل المكون مكون عميل؟", options: ["أضف توجيه 'use server'", "أضف توجيه 'use client'", "صدّره كافتراضي", "استخدم خاصية client"], correctAnswer: 1, explanation: "أضف التوجيه 'use client' في أعلى الملف." },
+      { question: "ما هي الفائدة الرئيسية لمكونات الخادم؟", options: ["SEO أفضل", "تقليل حزمة JavaScript من جانب العميل", "إدارة حالة أسهل", "إعادة عرض أسرع"], correctAnswer: 1, explanation: "مكونات الخادم تقلل من كمية JavaScript المُرسلة إلى العميل، مما يجعل التطبيق أسرع." },
+    ],
+    challenge: { title: "ابنِ مكون عرض بيانات", description: "أنشئ مكون خادم يجلب ويعرض البيانات دون نقل JavaScript إلى العميل." },
+    cheatSheet: { title: "ملخص مكونات الخادم", columns: [
+      { heading: "مكون الخادم:", items: ['// الافتراضي في مجلد app/', 'async function ServerComponent() {', '  const data = await fetchData();', '  return <div>{data.title}</div>;', '}'] },
+      { heading: "مكون العميل:", items: ['"use client";', 'import { useState } from "react";', 'function ClientComponent() {', '  const [count, setCount] = useState(0);', '}'] },
+    ]},
+  },
   en: {
     sections: [
       { title: "What are Server Components?", content: [

@@ -1,4 +1,53 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "ما هي Server Actions؟", content: [
+        { type: "p", text: "<strong>Server Actions</strong> هي دوال تنفذ على الخادم وتُستدعى من مكونات العميل. هي الطريقة الأساسية لتعديل البيانات في Next.js." },
+        { type: "p", text: "بدلاً من إنشاء مسارات API منفصلة لكل تعديل، تكتب الدالة مباشرة في ملف المكون." },
+      ]},
+      { title: "تعليمة 'use server'", content: [
+        { type: "p", text: "أضف <code>'use server'</code> في بداية الدالة لتحويلها إلى Server Action. يجب أن تكون غير متزامنة (async)." },
+      ]},
+      { title: "النماذج مع Server Actions", content: [
+        { type: "p", text: "مرر Server Action إلى خاصية <code>action</code> في النموذج. Next.js يتعامل مع الاتصال بالخادم تلقائياً." },
+      ]},
+      { title: "Hook useActionState", content: [
+        { type: "p", text: "<code>useActionState</code> من React 19 يدير حالة النموذج مع Server Actions. يعيد الحالة الحالية، ودالة الإجراء، وحالة isPending." },
+      ]},
+      { title: "التحقق من الصلابة بعد التعديل", content: [
+        { type: "p", text: "بعد تعديل البيانات، استخدم <code>revalidatePath</code> أو <code>revalidateTag</code> لتحديث البيانات المخزنة مؤقتاً." },
+      ]},
+      { title: "الأمان في Server Actions", content: [
+        { type: "li", text: "تحقق دائماً من البيانات على الخادم" },
+        { type: "li", text: "لا تثق أبداً في مدخلات العميل" },
+        { type: "li", text: "تحقق من صلاحية المستخدم" },
+        { type: "li", text: "لا تُعد تفاصيل الأخطاء إلى العميل" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "Server Actions تنفذ على الخادم وتُستدعى من مكونات العميل." },
+        { type: "li", text: "أضف 'use server' في أعلى الدالة لجعلها Server Action." },
+        { type: "li", text: "استخدم مع form action أو onClick عبر startTransition." },
+        { type: "li", text: "useActionState يدير حالة النموذج مع isPending." },
+        { type: "li", text: "استخدم revalidatePath أو revalidateTag بعد كل تعديل للبيانات." },
+        { type: "li", text: "redirect() يُعيد توجيه المستخدم بعد العمليات الناجحة." },
+      ]}
+    ],
+    quiz: [
+      { question: "ما هي الطريقة الصحيحة لتعيين دالة كـ Server Action؟", options: ["إضافة @server decorator", "إضافة 'use server' في أعلى جسم الدالة", "تسمية الدالة serverAction", "تمريرها إلى runOnServer()"], explanation: "أضف 'use server' في أعلى جسم الدالة أو في أعلى الملف." },
+      { question: "ماذا يحدث عند استدعاء revalidatePath('/') بعد تعديل البيانات؟", options: ["تُحذف جميع البيانات المخزنة مؤقتاً", "تُحدّث الصفحة الرئيسية والبيانات المخزنة مؤقتاً", "يُعاد تشغيل الخادم", "يُعيد توجيه المستخدم إلى الصفحة الرئيسية"], explanation: "revalidatePath('/') يخبر Next.js بحذف التخزين المؤقت للصفحة الرئيسية وجلب بيانات جديدة." },
+      { question: "ما هو الدور الرئيسي لـ useActionState في React 19؟", options: ["إنشاء Server Actions جديدة", "إدارة حالة النموذج مع Server Actions", "التحقق من البيانات", "إدارة التخزين المؤقت"], explanation: "useActionState يعيد الحالة الحالية، ودالة الإجراء، وisPending لإدارة النماذج." },
+    ],
+    challenge: { title: "ابنِ نموذج CRUD مع التحقق", description: "ابنِ تطبيق Todo كامل مع Server Actions للإضافة والحذف والتبديل." },
+    cheatSheet: { title: "ملخص مراجعة Server Actions", items: [
+      { term: "'use server'", definition: "تعيين كـ Server Action" },
+      { term: "formData.get('name')", definition: "الحصول على قيمة حقل النموذج" },
+      { term: "revalidatePath('/')", definition: "تحديث الصفحة المخزنة مؤقتاً" },
+      { term: "revalidateTag('tag')", definition: "التحديث حسب الوسم" },
+      { term: "redirect('/path')", definition: "إعادة التوجيه بعد النجاح" },
+      { term: "useActionState()", definition: "إدارة حالة النموذج" },
+      { term: "useTransition()", definition: "تتبع الحالة المعلقة" }
+    ]}
+  },
   en: {
     sections: [
       { title: "What are Server Actions?", content: [

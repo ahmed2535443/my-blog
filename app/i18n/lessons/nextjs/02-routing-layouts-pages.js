@@ -1,4 +1,58 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "التوجيه المبني على الملفات", content: [
+        { type: "p", text: "في Next.js، <strong>التوجيه</strong> تلقائي بناءً على هيكل الملفات والمجلدات. كل مجلد داخل <code>app/</code> يمثل مقطعاً في الرابط." },
+        { type: "li", text: "<code>app/page.js</code> → <code>/</code> (الصفحة الرئيسية)" },
+        { type: "li", text: "<code>app/about/page.js</code> → <code>/about</code>" },
+        { type: "li", text: "<code>app/blog/page.js</code> → <code>/blog</code>" },
+      ]},
+      { title: "الصفحات", content: [
+        { type: "p", text: "<strong>page.js</strong> يحدد واجهة المستخدم لكل مسار. كل مجلد يحتوي على <code>page.js</code> يصبح مساراً قابل للزيارة." },
+        { type: "p", text: "يجب أن يكون اسم الملف بالضبط <code>page.js</code> (أو <code>page.tsx</code> مع TypeScript)." },
+      ]},
+      { title: "التخطيطات", content: [
+        { type: "p", text: "<strong>layout.js</strong> يحدد تخطيطاً مشتركاً بين عدة صفحات. يلف الصفحات الفرعية ويبقى ثابتاً أثناء التنقل بينها." },
+        { type: "li", text: "<strong>مشترك:</strong> يلف جميع الصفحات الفرعية." },
+        { type: "li", text: "<strong>ثابت:</strong> لا يُعاد تحميله عند التنقل (يحافظ على الحالة)." },
+        { type: "li", text: "<strong>متداخل:</strong> يمكن تداخل التخطيطات (مثلاً، لوحة التحكم لها تخطيطها الخاص)." },
+      ]},
+      { title: "المسارات الديناميكية", content: [
+        { type: "p", text: "عندما لا تعرف اسم المسار مسبقاً، استخدم <strong>المسارات الديناميكية</strong> مع الأقواس المربعة <code>[slug]</code>." },
+        { type: "code", text: "app/blog/[slug]/page.js" },
+        { type: "p", text: "في Next.js 16، <code>params</code> هو Promise ويجب استخدام <code>await</code> للوصول إلى قيمته." },
+      ]},
+      { title: "مجموعات المسارات", content: [
+        { type: "p", text: "استخدم الأقواس <code>()</code> لتنظيم الملفات دون التأثير على مسار الرابط." },
+        { type: "code", text: "app/(marketing)/about/page.js  → /about\napp/(dashboard)/settings/page.js  → /settings" },
+      ]},
+      { title: "مكون Link", content: [
+        { type: "p", text: "<strong>&lt;Link&gt;</strong> هو مكون التنقل في Next.js. يوفر التحميل المسبق، والتنقل من جانب العميل، والتعامل التلقائي مع التمرير." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "التوجيه المبني على الملفات: المسارات محددة بهيكل الملفات في app/." },
+        { type: "li", text: "page.js هو ملف الصفحة، layout.js هو التخطيط المشترك." },
+        { type: "li", text: "المسارات الديناميكية تستخدم [slug] للمسارات غير المعروفة." },
+        { type: "li", text: "مجموعات المسارات () تنظّم دون تغيير المسار." },
+        { type: "li", text: "استخدم Link للتنقل وuseRouter للتنقل البرمجي." },
+      ]}
+    ],
+    quiz: [
+      { question: "كيف تحدد المسار /about في App Router؟", options: ["app/page.js", "app/about.js", "app/about/page.js", "app/about/index.js"], explanation: "في App Router، كل مجلد داخل app/ يمثل مقطعاً في الرابط. ملف page.js يحدد واجهة المستخدم." },
+      { question: "ما هو الفرق الرئيسي بين layout.js و page.js؟", options: ["layout.js للـ APIs فقط", "layout.js مشترك بين الصفحات، page.js يحدد محتوى الصفحة", "layout.js يعمل فقط في الإنتاج", "لا يوجد فرق"], explanation: "layout.js يلف الصفحات الفرعية ويبقى ثابتاً. page.js يحدد المحتوى لكل مسار." },
+      { question: "كيف تنشئ مساراً ديناميكياً لمنشور المدونة؟", options: ["app/blog/page/[slug].js", "app/blog/[slug]/page.js", "app/blog/dynamic/slug.js", "app/blog/page.js مع useParams"], explanation: "المسارات الديناميكية تستخدم [slug] كاسم مجلد مع page.js داخله." },
+    ],
+    challenge: { title: "ابنِ موقعاً متعدد الصفحات مع تخطيط", description: "أنشئ هيكل ملفات مع تخطيط رئيسي، وصفحة رئيسية، وصفحة حول، ومدونة مع منشورات ديناميكية، وقسم لوحة تحكم." },
+    cheatSheet: { title: "ملخص مراجعة التوجيه", items: [
+      { term: "page.js", definition: "صفحة المسار" },
+      { term: "layout.js", definition: "التخطيط المشترك" },
+      { term: "[slug]/page.js", definition: "مسار ديناميكي" },
+      { term: "(group)/page.js", definition: "مجموعة مسارات" },
+      { term: "<Link href='/about'>", definition: "رابط التنقل" },
+      { term: "router.push()", definition: "تنقل برمجي" },
+      { term: "generateStaticParams", definition: "إنشاء مسارات ثابتة" }
+    ]}
+  },
   en: {
     sections: [
       { title: "File-based Routing", content: [

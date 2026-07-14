@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1], fr: [1], de: [1] };
+const correctAnswers = { ar: [1], en: [1], fr: [1], de: [1] };
 
 const codeSingleton = `class DatabaseConnection {
   static instance = null;
@@ -199,6 +199,26 @@ cart.setStrategy("vip");
 console.log(cart.calculateTotal()); // 112.5 (25% VIP discount)`;
 
 const cheatSheetData = {
+  ar: {
+    title: "مرجع سريع لأنماط التصميم",
+    columns: [
+      {
+        heading: "أنماط الإنشاء:",
+        items: [
+          '<strong style={{ color: "var(--primary)" }}>Singleton</strong> - نسخة واحدة فقط. للموارد المشتركة.',
+          '<strong style={{ color: "var(--primary)" }}>Factory</strong> - ينشئ أشياءً بناءً على المدخلات. يفصل الإنشاء عن الاستخدام.',
+        ],
+      },
+      {
+        heading: "الأنماط الهيكلية والسلوكية:",
+        items: [
+          '<strong style={{ color: "var(--primary)" }}>Observer</strong> - يُبلغ المُراقبين عند تغيير الحالة. يُستخدم في الأحداث.',
+          '<strong style={{ color: "var(--primary)" }}>Module</strong> - يُغلّف البيانات والدوال. يخفي التفاصيل الداخلية.',
+          '<strong style={{ color: "var(--primary)" }}>Strategy</strong> - يجعل الخوارزميات قابلة للتبديل. يُستخدم في سلوكيات مختلفة.',
+        ],
+      },
+    ],
+  },
   en: {
     title: "Design Patterns Quick Reference",
     columns: [

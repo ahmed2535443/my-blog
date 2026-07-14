@@ -1,4 +1,73 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "ما هو Next.js؟", content: [
+        { type: "p", text: "<strong>Next.js</strong> هو إطار عمل مبني على React، تم تطويره بواسطة <strong>Vercel</strong>. يجمع بين قوة React في الواجهة الأمامية وميزات متقدمة من جانب الخادم لبناء تطبيقات الويب الحديثة." },
+        { type: "p", text: "Next.js ليس مجرد مكتبة — بل هو إطار عمل كامل يوفر حلولاً جاهزة لتحسين محركات البحث (SEO)، وأداء التحميل الأولي، والتوجيه، وتحسين الصور." },
+        { type: "callout", title: "شركات عالمية تستخدم Next.js", text: "Netflix و TikTok و Nike و Twitch و Notion و Hulu جميعها اختارت Next.js بسبب أدائه العالي وتجربة المطور الممتازة." },
+      ]},
+      { title: "لماذا تستخدم Next.js؟", content: [
+        { type: "p", text: "<strong>المشكلة:</strong> تطبيقات React العادية (SPAs) ترسل حزمة JavaScript ضخمة للمتصفح، مما يسبب ضعف SEO، وبطء التحميل الأولي، وأداء سيء على الأجهزة الضعيفة." },
+        { type: "p", text: "<strong>الحل:</strong> Next.js يحل هذه المشاكل باستخدام SSR (العرض من جانب الخادم)، و SSG (إنشاء الموقع الثابت)، والتوجيه المبني على الملفات، وتحسين الصور والخطوط المدمج." },
+      ]},
+      { title: "ما الجديد في Next.js 16؟", content: [
+        { type: "li", text: "<strong>Turbopack كافتراضي:</strong> حزمة أسرع 2-5 مرات مع Fast Refresh أسرع 10 مرات." },
+        { type: "li", text: "<strong>Cache Components:</strong> تعليمة 'use cache' جديدة للتحكم الدقيق في التخزين المؤقت." },
+        { type: "li", text: "<strong>React Compiler مستقر:</strong> يحسّن الأداء تلقائياً." },
+        { type: "li", text: "<strong>Proxy بدلاً من Middleware:</strong> proxy.ts يحل محل Middleware بميزات أقوى." },
+        { type: "li", text: "<strong>Partial Prerendering (PPR):</strong> يجمع بين الثابت والديناميكي في نفس الصفحة." },
+      ]},
+      { title: "إنشاء مشروع Next.js جديد", content: [
+        { type: "code", text: "npx create-next-app@latest" },
+        { type: "p", text: "بعد التثبيت، انتقل إلى المجلد وشغّل:" },
+        { type: "code", text: "cd my-app\nnpm run dev" },
+        { type: "p", text: "افتح http://localhost:3000 لرؤية صفحة الترحيب الافتراضية." },
+      ]},
+      { title: "هيكل الملفات في App Router", content: [
+        { type: "code", text: "my-app/\n  app/\n    layout.js        # التخطيط الرئيسي\n    page.js          # الصفحة الرئيسية (/)\n    loading.js       # حالة التحميل\n    error.js         # معالجة الأخطاء\n    not-found.js     # صفحة 404" },
+        { type: "li", text: "<code>layout.js</code>: التخطيط الرئيسي الذي يلف جميع الصفحات." },
+        { type: "li", text: "<code>page.js</code>: محتوى الصفحة الأساسي." },
+        { type: "li", text: "<code>loading.js</code>: يعرض أثناء تحميل الصفحة." },
+        { type: "li", text: "<code>error.js</code>: يعرض عند حدوث أخطاء." },
+      ]},
+      { title: "Turbopack - الحزمة الافتراضية الجديدة", content: [
+        { type: "li", text: "<strong>أسرع 2-5 مرات</strong> في البناء مقارنة بـ Webpack." },
+        { type: "li", text: "<strong>أسرع 10 مرات</strong> في Fast Refresh." },
+        { type: "li", text: "<strong>لا يحتاج إعداد:</strong> يعمل تلقائياً." },
+        { type: "li", text: "<strong>متوافق مع Webpack Loaders.</strong>" },
+      ]},
+      { title: "متغيرات البيئة", content: [
+        { type: "li", text: "<code>.env</code>: متغيرات عامة تُحمّل في جميع البيئات." },
+        { type: "li", text: "<code>.env.local</code>: متغيرات محلية — لا تُرفع إلى GitHub." },
+        { type: "li", text: "<code>.env.development</code>: متغيرات خاصة بالتطوير." },
+        { type: "li", text: "<code>.env.production</code>: متغيرات خاصة بالإنتاج." },
+        { type: "callout", title: "قاعدة مهمة", text: "استخدم البادئة NEXT_PUBLIC_ للوصول إلى المتغيرات من المتصفح (من جانب العميل). المتغيرات بدون هذه البادئة خاصة بالخادم فقط." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "Next.js هو إطار عمل مبني على React من Vercel." },
+        { type: "li", text: "يحل مشاكل SPAs مثل ضعف SEO والبطء." },
+        { type: "li", text: "Next.js 16 يجلب Turbopack و Cache Components و React Compiler و Proxy و PPR." },
+        { type: "li", text: "أنشئ مشروعك باستخدام npx create-next-app@latest." },
+        { type: "li", text: "استخدم App Router مع هيكل app/ للتوجيه التلقائي." },
+        { type: "li", text: "استخدم NEXT_PUBLIC_ للمتغيرات المتاحة في المتصفح." },
+      ]}
+    ],
+    quiz: [
+      { question: "ما هو Next.js؟", options: ["مكتبة CSS", "إطار عمل مبني على React من Vercel", "نظام قواعد بيانات", "لغة برمجة جديدة"], explanation: "Next.js هو إطار عمل مبني على React، تم تطويره بواسطة Vercel، ويوفر SSR و SSG و File-based Routing." },
+      { question: "أي مشكلة يحل Next.js في SPAs؟", options: ["بطء تحرير الكود", "صعوبة تعلم React", "ضعف SEO وبطء التحميل الأولي", "لا يوجد دعم TypeScript"], explanation: "SPAs ترسل كميات ضخمة من JavaScript مما يسبب البطء وضعف SEO. Next.js يحل هذا بـ SSR و SSG." },
+      { question: "ما هي الحزمة الافتراضية في Next.js 16؟", options: ["Webpack", "Parcel", "Turbopack", "Rollup"], explanation: "Turbopack هو الحزمة الافتراضية في Next.js 16، أسرع 2-5 مرات من Webpack." },
+    ],
+    challenge: { title: "أنشئ مشروع Next.js الأول الخاص بك", description: "شغّل npx create-next-app@latest، أدخل اسم المشروع، اختر Yes لجميع الخيارات، شغّل npm run dev، وافتح http://localhost:3000." },
+    cheatSheet: { title: "ملخص مراجعة مقدمة Next.js", items: [
+      { term: "npx create-next-app@latest", definition: "إنشاء مشروع جديد" },
+      { term: "npm run dev", definition: "تشغيل وضع التطوير" },
+      { term: "npm run build", definition: "بناء نسخة الإنتاج" },
+      { term: "app/layout.js", definition: "التخطيط الرئيسي" },
+      { term: "app/page.js", definition: "الصفحة الرئيسية" },
+      { term: "NEXT_PUBLIC_", definition: "بادئة متغيرات العميل" },
+      { term: "Turbopack", definition: "الحزمة الافتراضية - أسرع 5 مرات" }
+    ]}
+  },
   en: {
     sections: [
       { title: "What is Next.js?", content: [

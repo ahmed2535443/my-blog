@@ -1,4 +1,103 @@
 const translations = {
+  ar: {
+    sections: [
+      {
+        title: "ما هو HTML الدلالي؟",
+        content: [
+          { type: "p", text: "HTML الدلالي هو استخدام علامات HTML التي تحمل دلالات ذات معنى لمحتواها، بدلاً من استخدام علامات عامة مثل <div> و<span> لكل شيء." },
+          { type: "p", text: "كلمة \"دلالي\" تعني \"له معنى\". عندما نستخدم علامة مثل <header>، نخبر المتصفح (والمحررين ومحركات البحث وقارئات الشاشة) أن هذا المحتوى هو ترويسة الصفحة. هذا أوضح بكثير من استخدام <div class=\"header\">." },
+          { type: "callout", title: "تشبيه بسيط", text: "تخيّل أنك تكتب رسالة لعمى. هل ستقول \"افتح الصندوق رقم 5\" أم \"افتح صندوق البريد\"؟ الثاني أوضح لأنه يحمل معنى. HTML الدلالي يفعل نفس الشيء — يعطي كل قسم في صفحتك اسماً دلالياً." }
+        ]
+      },
+      {
+        title: "لماذا نستخدم HTML الدلالي؟",
+        content: [
+          { type: "p", text: "HTML الدلالي مهم لأسباب أساسية عدة:" },
+          { type: "li", text: "تحسين إمكانية الوصول: قارئات الشاشة تستخدم العناصر الدلالية لفهم هيكل الصفحة ونقلها بشكل صحيح للمستخدمين ذوي الإعاقة." },
+          { type: "li", text: "تحسين SEO: محركات البحث مثل Google تفضل المواقع التي تستخدم HTML الدلالي لأنها تفهم المحتوى بشكل أفضل." },
+          { type: "li", text: "سهولة القراءة والصيانة: الكود الدلالي أسهل في القراءة والفهم للمطورين الآخرين (ولك أنت في المستقبل)." },
+          { type: "li", text: "التوافق مع الأجهزة المختلفة: الأجهزة الذكية والمتصفحات الأحدث تفهم HTML الدلالي وتعامل معه بشكل أفضل." }
+        ]
+      },
+      {
+        title: "العلامات الدلالية الأساسية",
+        content: [
+          { type: "h3", text: "1. الترويسة والتذييل" },
+          { type: "li", text: "<code>&lt;header&gt;</code>: ترويسة الصفحة أو القسم" },
+          { type: "li", text: "<code>&lt;footer&gt;</code>: تذييل الصفحة أو القسم" },
+          { type: "li", text: "<code>&lt;nav&gt;</code>: قسم التنقل" },
+          { type: "h3", text: "2. المحتوى الرئيسي" },
+          { type: "li", text: "<code>&lt;main&gt;</code>: المحتوى الرئيسي للصفحة (يجب أن يكون واحداً فقط)" },
+          { type: "li", text: "<code>&lt;article&gt;</code>: محتوى مستقل (مقال، منشور)" },
+          { type: "li", text: "<code>&lt;section&gt;</code>: قسم منطقي داخل الصفحة" },
+          { type: "li", text: "<code>&lt;aside&gt;</code>: محتوى جانبي" },
+          { type: "h3", text: "3. عناصر أخرى" },
+          { type: "li", text: "<code>&lt;figure&gt;</code> و<code>&lt;figcaption&gt;</code>: للصور والوصف" },
+          { type: "li", text: "<code>&lt;time&gt;</code>: للتواريخ والأوقات" },
+          { type: "li", text: "<code>&lt;mark&gt;</code>: للنص المُميّز" }
+        ]
+      },
+      {
+        title: "مقارنة: كود غير دلالي مقابل دلالي",
+        content: [
+          { type: "p", text: "دعنا نرى الفرق:" },
+          { type: "h3", text: "بدون HTML الدلالي (عام):" },
+          { type: "p", text: "في هذا المثال، كل شيء هو <code>&lt;div&gt;</code> — المتصفح لا يفهم أي جزء هو الترويسة أو المحتوى أو التنقل." },
+          { type: "h3", text: "مع HTML الدلالي:" },
+          { type: "p", text: "الكود الثاني أوضح بكثير! كل علامة تخبرك بدورها فوراً. قارئ الشاشة يستطيع الآن أن يقول \"أنت الآن في قسم التنقل\" بدلاً من \"أنت في div رقم 3\"." }
+        ]
+      },
+      {
+        title: "أفضل الممارسات",
+        content: [
+          { type: "li", text: "<strong>استخدم header وfooter في كل صفحة:</strong> لإنشاء هيكل أساسي." },
+          { type: "li", text: "<strong>استخدم nav للتنقل الرئيسي فقط:</strong> لا لكل مجموعة روابط." },
+          { type: "li", text: "<strong>استخدم main مرة واحدة فقط:</strong> لكل صفحة." },
+          { type: "li", text: "<strong>استخدم article للمحتوى المستقل:</strong> مثل المقالات والمنشورات." },
+          { type: "li", text: "<strong>استخدم section للأقسام المنطقية:</strong> بدلاً من div لكل شيء." },
+          { type: "li", text: "<strong>لا تبالغ في الاستخدام:</strong> لا تحتاج علامة دلالية لكل عنصر صغير." }
+        ]
+      },
+      {
+        title: "ملخص الدرس",
+        content: [
+          { type: "li", text: "HTML الدلالي = استخدام علامات تحمل معنى" },
+          { type: "li", text: "العلامات الأساسية: header، footer، nav، main، article، section، aside" },
+          { type: "li", text: "الفائدة: تحسين إمكانية الوصول وSEO وسهولة الصيانة" },
+          { type: "li", text: "لا تستخدم div لكل شيء — استخدم العلامات الدلالية عندما يكون مناسباً" }
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: "ما هو الفرق الرئيسي بين HTML الدلالي وغير الدلالي؟",
+        options: [
+          "HTML الدلالي أقصر في الكتابة",
+          "HTML الدلالي يستخدم علامات تحمل معنى للمحتوى",
+          "HTML الدلالي فقط يعمل في المتصفحات الحديثة",
+          "HTML الدلالي لا يحتاج CSS"
+        ],
+        explanation: "HTML الدلالي يستخدم علامات تحمل دلالات ذات معنى (مثل header وnav) بدلاً من علامات عامة مثل div، مما يحسن إمكانية الوصول وSEO."
+      }
+    ],
+    challenge: {
+      title: "تحدي: صفحة دلالية",
+      description: "أنشئ صفحة \"من نحن\" باستخدام HTML الدلالي: 1. header مع شعار وعنوان، 2. nav بالتنقل، 3. main، 4. article للمحتوى الرئيسي، 5. section لقسم الميزات، 6. aside لمعلومة جانبية، 7. footer."
+    },
+    cheatSheet: {
+      title: "ملخص HTML الدلالي",
+      items: [
+        { term: "<code>&lt;header&gt;</code>", definition: "ترويسة الصفحة أو القسم" },
+        { term: "<code>&lt;footer&gt;</code>", definition: "تذييل الصفحة أو القسم" },
+        { term: "<code>&lt;nav&gt;</code>", definition: "قسم التنقل الرئيسي" },
+        { term: "<code>&lt;main&gt;</code>", definition: "المحتوى الرئيسي للصفحة" },
+        { term: "<code>&lt;article&gt;</code>", definition: "محتوى مستقل (مقال، منشور)" },
+        { term: "<code>&lt;section&gt;</code>", definition: "قسم منطقي" },
+        { term: "<code>&lt;aside&gt;</code>", definition: "محتوى جانبي" },
+        { term: "<code>&lt;figure&gt;</code>", definition: "حاوية للصورة أو الرسم" }
+      ]
+    }
+  },
   en: {
     sections: [
       {

@@ -1,4 +1,49 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "تثبيت Clerk وإعداده", content: [
+        { type: "p", text: "بعد إنشاء تطبيق Clerk الخاص بك، دعنا نثبّته ونُكيّنه في مشروع Next.js الخاص بك." },
+      ]},
+      { title: "تثبيت التبعيات", content: [
+        { type: "code", text: "npm install @clerk/nextjs" },
+        { type: "p", text: "هذه الحزمة توفر كل ما يلزم لدمج Clerk مع Next.js." },
+      ]},
+      { title: "متغيرات البيئة", content: [
+        { type: "p", text: "أضف مفاتيح Clerk إلى <code>.env.local</code>:" },
+        { type: "code", text: "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...\nCLERK_SECRET_KEY=sk_test_..." },
+      ]},
+      { title: "لف تطبيقك", content: [
+        { type: "code", text: "// app/layout.js\nimport { ClerkProvider } from '@clerk/nextjs';\n\nexport default function RootLayout({ children }) {\n  return (\n    <ClerkProvider>\n      <html>\n        <body>{children}</body>\n      </html>\n    </ClerkProvider>\n  );\n}" },
+      ]},
+      { title: "إضافة تسجيل الدخول/التسجيل", content: [
+        { type: "code", text: "import { SignIn, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';\n\n// في مكونك:\n<SignedOut>\n  <SignInButton />\n</SignedOut>\n<SignedIn>\n  <UserButton />\n</SignedIn>" },
+      ]},
+      { title: "حماية الصفحات", content: [
+        { type: "code", text: "import { auth } from '@clerk/nextjs/server';\n\nexport default async function ProtectedPage() {\n  const { userId } = await auth();\n  if (!userId) redirect('/sign-in');\n  return <div>محتوى محمي</div>;\n}" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "ثبّت حزمة @clerk/nextjs." },
+        { type: "li", text: "أضف متغيرات البيئة للمفاتيح." },
+        { type: "li", text: "لف التطبيق بـ ClerkProvider." },
+        { type: "li", text: "استخدم مكونات SignInButton و SignedIn و SignedOut و UserButton." },
+        { type: "li", text: "احمِ الصفحات بـ auth() من الخادم." },
+      ]}
+    ],
+    quiz: [
+      { question: "أي حزمة تحتاجها لـ Clerk مع Next.js؟", options: ["clerk", "@clerk/nextjs", "next-clerk", "clerk-sdk"], explanation: "الحزمة الرسمية هي @clerk/nextjs." },
+      { question: "كيف تحمي صفحة بـ Clerk؟", options: ["بأنساق CSS", "باستخدام auth() للتحقق من userId", "بعلامة meta", "في package.json"], explanation: "استخدم auth() من @clerk/nextjs/server للتحقق من userId على الخادم." },
+    ],
+    challenge: { title: "ادمج Clerk في تطبيقك", description: "ثبّت Clerk، أضف متغيرات البيئة، لف تطبيقك بـ ClerkProvider، وأضف أزرار تسجيل الدخول/التسجيل." },
+    cheatSheet: { title: "ملخص مراجعة إعداد Clerk", items: [
+      { term: "npm install @clerk/nextjs", definition: "تثبيت حزمة Clerk" },
+      { term: "ClerkProvider", definition: "لف التطبيق لسياق Clerk" },
+      { term: "SignInButton", definition: "مكون زر تسجيل الدخول" },
+      { term: "SignedIn / SignedOut", definition: "عرض شرطي حسب حالة المصادقة" },
+      { term: "UserButton", definition: "زر الملف الشخصي للمستخدم" },
+      { term: "auth()", definition: "الحصول على userId على الخادم" },
+      { term: "protect()", definition: "حماية المسار على الخادم" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Clerk Installation and Setup", content: [

@@ -1,4 +1,55 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "ما هو Supabase؟", content: [
+        { type: "p", text: "<strong>Supabase</strong> هو منصة Backend-as-a-Service (BaaS) مفتوحة المصدر توفر خادماً كاملاً لتطبيقاتك، بما في ذلك قاعدة البيانات والمصادقة والتخزين والاشتراكات الفورية." },
+        { type: "p", text: "فكر في Supabase كخادم جاهز للاستخدام يوفر عليك كتابة مئات الأسطر من الكود لمنطق الخادم." },
+      ]},
+      { title: "لماذا Supabase؟", content: [
+        { type: "li", text: "مفتوح المصدر — تحكم كامل في بياناتك" },
+        { type: "li", text: "مبني على PostgreSQL — أكثر قواعد البيانات تقدماً في العالم" },
+        { type: "li", text: "اشتراكات فورية — تحديثات البيانات فورية" },
+        { type: "li", text: "مصادقة جاهزة — تسجيل دخول اجتماعي، روابط سحرية، بريد/كلمة مرور" },
+        { type: "li", text: "التخزين — رفع وتقديم الملفات مع CDN" },
+        { type: "li", text: "لوحة تحكم — لوحة إدارة مرئية لبياناتك" },
+      ]},
+      { title: "Supabase مقابل Firebase", content: [
+        { type: "p", text: "كلاهما منصات BaaS شائعة، لكن Supabase يستخدم قاعدة بيانات علائقية (PostgreSQL) بينما Firebase يستخدم NoSQL (Firestore). Supabase مفتوح المصدر ويعطيك تحكماً أكبر." },
+      ]},
+      { title: "Supabase مقابل خادم مخصص", content: [
+        { type: "p", text: "مع خادم مخصص (Node.js، Django، إلخ)، تكتب جميع منطق الخادم بنفسك. Supabase يوفر APIs جاهزة لجميع عمليات قاعدة البيانات من خلال عميل JavaScript الخاص به." },
+      ]},
+      { title: "إنشاء أول مشروع لك", content: [
+        { type: "li", text: "اذهب إلى supabase.com وأنشئ حساباً" },
+        { type: "li", text: "انقر على 'New Project' واختر مؤسستك" },
+        { type: "li", text: "حدد اسم المشروع وكلمة مرور قاعدة البيانات والمنطقة" },
+        { type: "li", text: "انتظر ثوانٍ قليلة لإنشاء المشروع" },
+      ]},
+      { title: "لوحة تحكم Supabase", content: [
+        { type: "p", text: "تتكون لوحة التحكم من عدة أقسام: محرر الجداول، محرر SQL، المصادقة، التخزين، Edge Functions، السجلات، والإعدادات." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "Supabase هو BaaS مفتوح المصدر مبني على PostgreSQL." },
+        { type: "li", text: "يوفر قاعدة البيانات والمصادقة والتخزين والوقت الفوري." },
+        { type: "li", text: "إنشاء المشروع يستغرق ثوانٍ فقط." },
+        { type: "li", text: "لوحة التحكم تعطيك تحكماً كاملاً في خادمك." },
+      ]}
+    ],
+    quiz: [
+      { question: "ما نوع قاعدة البيانات التي يستخدمها Supabase؟", options: ["MySQL", "MongoDB", "PostgreSQL", "SQLite"], explanation: "Supabase مبني على PostgreSQL، وهي قاعدة بيانات علائقية قوية." },
+      { question: "ما هي الميزة الرئيسية لـ Supabase على Firebase؟", options: ["أداء أسرع", "Supabase مفتوح المصدر", "توثيق أفضل", "مستخدمون أكثر"], explanation: "Supabase مفتوح المصدر، يعطيك تحكماً كاملاً في كود الخادم وبياناتك." },
+      { question: "هل يتطلب Supabase كتابة كود خادم؟", options: ["نعم، جميع منطق الخادم", "لا، يوفر APIs جاهزة", "للمصادقة فقط", "للاستعلامات المعقدة فقط"], explanation: "Supabase يوفر APIs جاهزة لجميع عمليات قاعدة البيانات." },
+    ],
+    challenge: { title: "أنشئ مشروع Supabase الأول", description: "أنشئ حساباً ومتجراً Supabase مجانياً. استكشف لوحة التحكم: أنشئ جدولاً وأضف بياناتاً وتحقق من ظهورها في محرر الجداول." },
+    cheatSheet: { title: "ملخص مراجعة البدء مع Supabase", items: [
+      { term: "supabase.com", definition: "إنشاء حساب ومشروع" },
+      { term: "Table Editor", definition: "إدارة مرئية لقاعدة البيانات" },
+      { term: "SQL Editor", definition: "تنفيذ استعلامات SQL خام" },
+      { term: "Project URL", definition: "نقطة نهاية API الخاصة بك (https://xxx.supabase.co)" },
+      { term: "Anon Key", definition: "مفتاح API عام لجانب العميل" },
+      { term: "Service Role Key", definition: "مفتاح وصول كامل (أبقه سراً)" }
+    ]}
+  },
   en: {
     sections: [
       { title: "What is Supabase?", content: [

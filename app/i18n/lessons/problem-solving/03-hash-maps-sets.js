@@ -1,4 +1,51 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "مقدمة في Hash Maps والمجموعات", content: [
+        { type: "p", text: "Hash Maps والمجموعات هي هياكل بيانات قوية للبحث السريع والإزالة المزدوجة وعد التكرارات. توفر O(1) في المتوسط للإدراج والحذف والبحث." },
+        { type: "callout", title: "ما سنتعلمه", text: "عمليات Hash Map، عمليات Set، أنماط عد التكرارات، نمط Two Sum، ومشاكل المقابلات الشائعة." }
+      ]},
+      { title: "أساسيات Hash Map", content: [
+        { type: "p", text: "يربط Hash Map المفاتيح بالقيم باستخدام دالة التجزئة. في JavaScript، استخدم Objects العادية أو فئة Map للأزواج المفتاح-القيمة." },
+        { type: "callout", title: "Map مقابل Object", text: "Map: أي نوع مفتاح، يحافظ على ترتيب الإدراج، له .size. Object: مفاتيح نصية فقط، بنية أبسط." }
+      ]},
+      { title: "أساسيات Set", content: [
+        { type: "p", text: "تخزن Set القيم الفريدة فقط. توفر بحثًا متوسطًا O(1 وهي مثالية للإزالة المزدوجة واختبار العضوية." },
+        { type: "callout", title: "عمليات Set", text: "add()، has()، delete()، size. تزيل المجموعات التكرارات تلقائيًا من المجموعات." }
+      ]},
+      { title: "نمط عد التكرارات", content: [
+        { type: "p", text: "عد تكرارات كل عنصر باستخدام Hash Map. يُستخدم هذا النمط في مشاكل التناظر وتحليل تكرارات الأحرف وأكثر." },
+        { type: "callout", title: "النمط", text: "iterate وزيادة العداد: count[item] = (count[item] || 0) + 1. ثم iterate الخريطة لإيجاد النتائج." }
+      ]},
+      { title: "نمط Two Sum", content: [
+        { type: "p", text: "لكل عنصر، تحقق مما إذا كان مكمله (target - الحالي) موجودًا في Hash Map. هذا يتجنب نهج القوة الغاشمة O(n²)." },
+        { type: "callout", title: "النمط", text: "for num in array: complement = target - num. إذا كان المكمل موجودًا في الخريطة: أعد الزوج. وإلا: احفظ العدد في الخريطة." }
+      ]},
+      { title: "المجموع التراكمي مع Hash Map", content: [
+        { type: "p", text: "ادمج المجموعات التراكمية مع Hash Maps لإيجاد مجموعات فرعية بمجموع معين في وقت O(n)." },
+        { type: "callout", title: "النمط", text: "تتبع المجموع التراكمي. إذا وُجد (currentSum - k) في الخريطة، فهناك مجموعة فرعية بمجموع k." }
+      ]}
+    ],
+    quiz: [
+      { question: "ما هو تعقيد الوقت المتوسط لعمليات Hash Map؟",
+        options: ["O(n)", "O(log n)", "O(1)", "O(n²)"],
+        correctAnswer: 2, explanation: "إدراج Hash Map وحذفه وبحثه O(1) في المتوسط بسبب توزيع دالة التجزئة." },
+      { question: "ما الفرق بين Map و Set؟",
+        options: ["لا يوجد فرق", "Map يخزن أزواج مفتاح-قيمة، Set يخزن قيمًا فريدة فقط", "Map أسرع", "Set يستخدم更多 ذاكرة"],
+        correctAnswer: 1, explanation: "يحتفظ Map بأزواج مفتاح-قيمة للربط، بينما تحتفظ Set بالقيم الفريدة فقط لاختبار العضوية." },
+      { question: "كيف تتحقق مما إذا كانت قيمة موجودة في Set؟",
+        options: ["set.get(value)", "set.has(value)", "set.contains(value)", "set.find(value)"],
+        correctAnswer: 1, explanation: "تحقق دالة has() مما إذا كانت قيمة موجودة في Set وترجع true أو false." }
+    ],
+    challenge: { title: "تحدي: Hash Maps والمجموعات",
+      description: "نفّذ Two Sum في O(n) باستخدام Hash Map، ثم حل مشكلة أطول تسلسل متتالي باستخدام Set." },
+    cheatSheet: { title: "مرجع Hash Maps والمجموعات السريع", items: [
+      { title: "Hash Map", content: "O(1) بحث/إدراج/حذف متوسط، أزواج مفتاح-قيمة" },
+      { title: "Set", content: "O(1) بحث متوسط، قيم فريدة فقط، إزالة مزدوجة" },
+      { title: "Two Sum", content: "تحقق من المكمل في الخريطة أثناء الـ iterate" },
+      { title: "المجموع التراكمي + Map", content: "ابحث عن مجموعات فرعية بمجموع مستهدف في O(n)" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Introduction to Hash Maps & Sets", content: [

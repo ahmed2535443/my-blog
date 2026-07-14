@@ -1,4 +1,52 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "ما هي الخطافات المخصصة؟", content: [
+        { type: "p", text: "الخطافات المخصصة هي دوال JavaScript تبدأ بـ <code>use</code> ويمكنها استخدام خطافات أخرى داخلها." },
+        { type: "p", text: "تسمح لك باستخراج منطق المكون في دوال قابلة لإعادة الاستخدام، وتجنب تكرار الكود." },
+        { type: "p", text: "الخطافات المخصصة هي طريقة لإعادة استخدام المنطق الم满的状态 بين مكونات مختلفة." },
+      ]},
+      { title: "لماذا تنشئ خطافات مخصصة؟", content: [
+        { type: "li", text: "إعادة استخدام المنطق عبر مكونات متعددة" },
+        { type: "li", text: "استخراج المنطق المعقد من المكونات" },
+        { type: "li", text: "جعل الكود أكثر وضوحاً وقابلية للصيانة" },
+        { type: "li", text: "تغليف التأثيرات الجانبية ومنطق الحالة" },
+      ]},
+      { title: "اتفاقية التسمية", content: [
+        { type: "p", text: "يجب أن تبدأ الخطافات المخصصة بكلمة <code>use</code> (مثل useCounter و useFetch و useLocalStorage)." },
+        { type: "callout", title: "مهم", text: "هذه الاتفاقية تخبر React بأن الدالة تتبع قواعد الخطافات." },
+      ]},
+      { title: "مثال: خطاف useCounter", content: [
+        { type: "p", text: "خطاف بسيط يغلف منطق العداد: الحالة، الزائد، الناقص، وإعادة التعيين." },
+        { type: "li", text: "يدير حالة العدد داخلياً" },
+        { type: "li", text: "يكشف دوال الزائد والناقص وإعادة التعيين" },
+        { type: "li", text: "يُرجع قيمة العدد الحالية" },
+      ]},
+      { title: "مثال: خطاف useFetch", content: [
+        { type: "p", text: "خطاف يغلف منطق جلب البيانات مع حالات التحميل والأخطاء." },
+        { type: "li", text: "يدير بيانات وحالات التحميل والأخطاء" },
+        { type: "li", text: "يجلب البيانات من رابط URL" },
+        { type: "li", text: "يُرجع جميع الحالات لاستخدامها من قبل المكون" },
+      ]},
+      { title: "قواعد الخطافات المخصصة", content: [
+        { type: "li", text: "يجب أن تبدأ بكلمة 'use'" },
+        { type: "li", text: "يمكنها استدعاء خطافات أخرى داخلها" },
+        { type: "li", text: "كل مكون يحصل على نسخته الخاصة من الخطاف" },
+        { type: "li", text: "يجب اتباع قواعد الخطافات" },
+      ]},
+    ],
+    quiz: [
+      { question: "بماذا يجب أن تبدأ الخطافة المخصصة؟", options: ["get", "use", "create", "make"], correctAnswer: 1, explanation: "يجب أن تبدأ الخطافات المخصصة بكلمة 'use' لاتباع قواعد الخطافات." },
+      { question: "ماذا يمكنك فعله داخل خطافة مخصصة؟", options: ["استخدام خطافات أخرى", "استخدام مكونات الفئات", "استخدام طرق دورة الحياة", "استخدام this.setState"], correctAnswer: 0, explanation: "يمكن للخطافات المخصصة استدعاء خطافات أخرى مثل useState و useEffect." },
+      { question: "ما هي الفائدة الرئيسية للخطافات المخصصة؟", options: ["أداء أفضل", "إعادة استخدام الكود", "حجم حزمة أصغر", "SEO أفضل"], correctAnswer: 1, explanation: "تتيح الخطافات المخصصة إعادة استخدام المنط满的状态 بين مكونات مختلفة." },
+      { question: "هل تشارك المكونات الحالة في الخطافات المخصصة؟", options: ["نعم، جميع المكونات تشارك نفس الحالة", "لا، كل مكون يحصل على نسخته الخاصة", "فقط إذا استخدم نفس الخطاف", "فقط في مكونات الخادم"], correctAnswer: 1, explanation: "كل مكون يستخدم خطافة مخصصة يحصل على نسخته المستقلة من حالة الخطاف." },
+    ],
+    challenge: { title: "أنشئ خطاف useLocalStorage", description: "ابنِ خطافة مخصصة تُزامن الحالة مع localStorage." },
+    cheatSheet: { title: "ملخص الخطافات المخصصة", columns: [
+      { heading: "الهيكل الأساسي:", items: ['function useCounter(initialValue = 0) {', '  const [count, setCount] = useState(initialValue);', '  const increment = () => setCount(c => c + 1);', '  return { count, increment };', '}'] },
+      { heading: "الاستخدام:", items: ['const { count, increment } = useCounter(0);'] },
+    ]},
+  },
   en: {
     sections: [
       { title: "What are Custom Hooks?", content: [

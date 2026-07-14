@@ -1,4 +1,139 @@
 const translations = {
+  ar: {
+    sections: [
+      {
+        title: "ما هو Flexbox",
+        content: [
+          { type: "p", text: "<strong>Flexbox</strong> (تخطيط صندوق مرن) هو نظام تخطيط CSS مصمم لترتيب العناصر بسهولة داخل حاوية واحدة، سواء أفقياً أو عمودياً، مع معالجة ذكية للمساحة المتاحة والفراغات." },
+          { type: "p", text: "يتم تفعيل Flexbox بإضافة <code>display: flex</code> إلى الحاوية. أي عناصر فرعية داخلها تصبح تلقائياً عناصر مرنة." },
+          { type: "callout", title: "ملاحظة مهمة", text: "يعمل Flexbox على محورين: المحور الرئيسي والمحور المتقاطع. اتجاه المحور الرئيسي يعتمد على قيمة <code>flex-direction</code>." }
+        ]
+      },
+      {
+        title: "لماذا نستخدم Flexbox",
+        content: [
+          { type: "p", text: "قبل Flexbox، كان ترتيب العناصر على صفحة ويب يعتمد على تقنيات قديمة ومعقدة. إليك الأسباب الرئيسية لاستخدام Flexbox:" },
+          { type: "li", text: "<strong>التوسيط السهل</strong> - توسيط عنصر أفقياً وعمودياً في سطر واحد" },
+          { type: "li", text: "<strong>التوزيع المرن</strong> - توزيع المساحة بين العناصر بسهولة مع justify-content" },
+          { type: "li", text: "<strong>أعمدة بارتفاع متساوٍ</strong> - إنشاء أعمدة بارتفاع متساوٍ تلقائياً" },
+          { type: "li", text: "<strong>ترتيب مرن</strong> - تغيير ترتيب العناصر باستخدام الخاصية order دون تعديل HTML" },
+          { type: "li", text: "<strong>الاستجابة</strong> - تكييف التصميم مع أحجام شاشات مختلفة باستخدام flex-wrap" },
+          { type: "li", text: "<strong>تبسيط الكود</strong> - كود CSS أقل وأوضح مقارنة بالطرق القديمة" }
+        ]
+      },
+      {
+        title: "المشكلة التي يحلها",
+        content: [
+          { type: "p", text: "قبل Flexbox، واجه المطورون مشاكل كثيرة في تخطيط صفحات الويب:" },
+          { type: "callout-accent", title: "المشكلة 1: التوسيط الصعب", text: "كان توسيط عنصر أفقياً وعمودياً يتطلب كوداً معقداً مع position و transform." },
+          { type: "callout-accent", title: "المشكلة 2: أعمدة بارتفاع متساوٍ", text: "كان إنشاء أعمدة بارتفاع متساوٍ يتطلب display: table أو حسابات يدوية معقدة." },
+          { type: "callout-accent", title: "المشكلة 3: العناصر العائمة", text: "استخدام float: left تسبب في مشاكل تدفق المحتوى ونقص clearfix hacks." }
+        ]
+      },
+      {
+        title: "شرح بسيط",
+        content: [
+          { type: "p", text: "تخيل أن لديك صندوقاً (حاوية) بعدة كرات (عناصر) داخلها. يتيح لك Flexbox تحكم كامل في كيفية توزيع هذه الكرات داخل الصندوق:" },
+          { type: "li", text: "<strong>خصائص الحاوية:</strong> flex-direction, flex-wrap, justify-content, align-items, gap" },
+          { type: "li", text: "<strong>خصائص العنصر:</strong> flex-grow, flex-shrink, flex-basis, flex, align-self, order" },
+          { type: "callout", title: "مفهوم أساسي", text: "الخصائص المضافة إلى الحاوية تتحكم في جميع العناصر الفرعية بشكل جماعي. الخصائص المضافة إلى عنصر محدد تتحكم فقط في سلوك ذلك العنصر." }
+        ]
+      },
+      {
+        title: "خلف الكواليس",
+        content: [
+          { type: "p", text: "عند تطبيق Flexbox على حاوية، يفعل محرك المتصفح ما يلي:" },
+          { type: "li", text: "<strong>الخطوة 1: تعريف المحور</strong> - يحدد المتصفح المحور الرئيسي بناءً على flex-direction (الافتراضي: row = أفقي)" },
+          { type: "li", text: "<strong>الخطوة 2: حساب المساحة</strong> - يحسب المتصفح المساحة المتاحة، ويطرح الحشو والحدود" },
+          { type: "li", text: "<strong>الخطوة 3: توزيع المساحة</strong> - يتم توزيع المساحة الإضافية عبر flex-grow، والمساحة الناقصة تتم معالجتها بـ flex-shrink" },
+          { type: "li", text: "<strong>الخطوة 4: المحاذاة</strong> - يتم محاذاة العناصر على المحور المتقاطع باستخدام align-items" }
+        ]
+      },
+      {
+        title: "الأخطاء الشائعة",
+        content: [
+          { type: "li", text: "<strong>الخطأ 1: نسيان flex-wrap</strong> - بدونه، لن تتلف العناصر على الشاشات الصغيرة" },
+          { type: "li", text: "<strong>الخطأ 2: استخدام margin بدلاً من gap</strong> - gap أنظف وأكثر موثوقية" },
+          { type: "li", text: "<strong>الخطأ 3: خلط justify-content و align-items</strong> - المحور الرئيسي مقابل المتقاطع" },
+          { type: "li", text: "<strong>الخطأ 4: نسيان flex-basis</strong> - استخدام flex-grow بدون flex-basis قد يسبب نتائج غير متوقعة" },
+          { type: "li", text: "<strong>الخطأ 5: استخدام position للتوسيط</strong> - Flexbox أو place-items أسهل" }
+        ]
+      },
+      {
+        title: "أفضل الممارسات",
+        content: [
+          { type: "li", text: "1. استخدم دائماً اختصار flex بدلاً من الخصائص الفردية" },
+          { type: "li", text: "2. استخدم gap بدلاً من margin للمسافات بين العناصر" },
+          { type: "li", text: "3. فكر في المحورين أولاً - حدد المحورين قبل كتابة الكود" },
+          { type: "li", text: "4. أضف flex-wrap: wrap للتصميم المتجاوب" },
+          { type: "li", text: "5. استخدم place-items: center للتوسيط الكامل" },
+          { type: "li", text: "6. تجنب التداخل المفرط - احفظ مستويات التداخل منخفضة" }
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: "في Flexbox، أي محور يتحكم justify-content؟",
+        options: [
+          "المحور العمودي فقط",
+          "المحور الأفقي فقط",
+          "المحور الرئيسي - أفقي أو عمودي حسب flex-direction",
+          "كلا المحورين في نفس الوقت"
+        ],
+        correctAnswer: 2,
+        explanation: "يتحكم justify-content في توزيع العناصر على المحور الرئيسي. هذا المحور يعتمد على flex-direction: إذا كان row، المحور الرئيسي أفقي؛ إذا كان column، المحور الرئيسي عمودي."
+      },
+      {
+        question: "ما الفرق بين flex: 1 و flex-grow: 1؟",
+        options: [
+          "لا يوجد فرق، متساويان تماماً",
+          "flex: 1 يساوي flex-grow: 1 + flex-shrink: 1 + flex-basis: 0%",
+          "flex: 1 يساوي flex-grow: 1 + flex-shrink: 0 + flex-basis: auto",
+          "flex-grow: 1 تتضمن flex-shrink أيضاً"
+        ],
+        correctAnswer: 1,
+        explanation: "flex اختصار لثلاث خصائص: flex-grow و flex-shrink و flex-basis. flex: 1 يعني flex-grow: 1, flex-shrink: 1, و flex-basis: 0%. flex-grow: 1 وحده لن يغير قيم flex-shrink و flex-basis."
+      }
+    ],
+    challenge: {
+      title: "بناء شريط تنقل كامل بـ Flexbox",
+      description: "أنشئ شريط تنقل بشعار على اليسار، وروابط في الوسط، وزر تسجيل دخول على اليمين. استخدم خصائص Flexbox لتحقيق هذا التخطيط."
+    },
+    cheatSheet: {
+      title: "مرجع Flexbox + place-items",
+      items: [
+        {
+          title: "خصائص حاوية Flex",
+          content: `| الخاصية | القيم | الوصف |
+|---------|-------|------|
+| display: flex | - | يفعّل Flexbox |
+| flex-direction | row | column | اتجاه المحور الرئيسي |
+| justify-content | center | space-between | توزيع على المحور الرئيسي |
+| align-items | center | stretch | محاذاة على المحور المتقاطع |
+| gap | <طول> | مسافة بين العناصر (أفضل من margin) |`
+        },
+        {
+          title: "خصائص عنصر Flex",
+          content: `| الخاصية | القيم | الوصف |
+|---------|-------|------|
+| flex-grow | 0 (افتراضي) | قدرة العنصر على النمو |
+| flex-shrink | 1 (افتراضي) | قدرة العنصر على التقلص |
+| flex-basis | auto | الحجم الأساسي قبل flex-grow/shrink |
+| flex | اختصار: grow shrink basis | اختصار للثلاثة |
+| align-self | center | تجاوز align-items |
+| order | 0 (افتراضي) | تغيير ترتيب العنصر |`
+        },
+        {
+          title: "الأنماط الشائعة",
+          content: `التوسيط الكامل: display: flex; justify-content: center; align-items: center;
+التوسيط البسيط: display: grid; place-items: center;
+شريط التنقل: display: flex; justify-content: space-between; align-items: center;
+أعمدة متساوية: display: flex; align-items: stretch;
+التفاف المحتوى: display: flex; flex-wrap: wrap; gap: 1rem;`
+        }
+      ]
+    }
+  },
   en: {
     sections: [
       {

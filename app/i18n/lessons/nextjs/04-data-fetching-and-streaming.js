@@ -1,4 +1,50 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "جلب البيانات في مكونات الخادم", content: [
+        { type: "p", text: "واحدة من أكبر ميزات <strong>مكونات الخادم</strong> في Next.js هي القدرة على جلب البيانات <strong>مباشرة داخل المكون</strong> بدون أي hooks مثل useEffect." },
+        { type: "p", text: "تصبح الدالة <code>async</code> وتستخدم <code>await</code> مباشرة. لا يوجد useEffect، لا يوجد useState، لا تحتاج حالات تحميل." },
+      ]},
+      { title: "fetch() المحسّن في Next.js", content: [
+        { type: "p", text: "Next.js يحسّن <code>fetch()</code> الأصلي بميزات التخزين المؤقت والتحقق من الصلابة." },
+        { type: "li", text: "<code>force-cache</code> — الافتراضي للمكونات الثابتة: يخزّن إلى أجل غير مسمى." },
+        { type: "li", text: "<code>no-store</code> — لا يخزّن أبداً: يجلب بيانات طازجة في كل طلب." },
+        { type: "li", text: "<code>next: { revalidate: seconds }</code> — يحدّث التخزين المؤقت بعد الثواني المحددة (ISR)." },
+        { type: "li", text: "<code>next: { tags: [...] }</code> — وسوم للتحقق المستهدف." },
+      ]},
+      { title: "البث باستخدام Suspense", content: [
+        { type: "p", text: "<strong>البث</strong> يسمح لـ Next.js بإرسال أجزاء الصفحة تدريجياً. استخدم <code>Suspense</code> من React للف المكونات البطيئة." },
+        { type: "p", text: "تظهر المكونات السريعة فوراً بينما تعرض المكونات البطيئة حالة تحميل بديلة." },
+      ]},
+      { title: "loading.js - واجهة تحميل تلقائية", content: [
+        { type: "p", text: "Next.js يوفر ملف <code>loading.js</code> لكل مجلد يعرض تلقائياً أثناء تحميل الصفحة." },
+      ]},
+      { title: "الجلب المتوازي", content: [
+        { type: "p", text: "استخدم <code>Promise.all()</code> أو <code>Promise.allSettled()</code> لجلب مصادر بيانات متعددة بالتوازي بدلاً من التسلسلي." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "في مكونات الخادم، اجلب البيانات مباشرة باستخدام async/await بدون useEffect." },
+        { type: "li", text: "fetch() في Next.js محسّن بالتخزين المؤقت والتحقق من الصلابة." },
+        { type: "li", text: "Suspense يمكّن البث — تسليم المحتوى التدريجي." },
+        { type: "li", text: "loading.js يوفر واجهة تحميل تلقائية لكل مسار." },
+        { type: "li", text: "استخدم Promise.all() للجلب المتوازي و Promise.allSettled() للأمان." },
+      ]}
+    ],
+    quiz: [
+      { question: "ما هي الميزة الرئيسية لجلب البيانات في مكونات الخادم؟", options: ["تنفيذ أبطأ", "يمكن استخدام async/await مباشرة بدون useEffect أو useState", "لا يمكن الجلب من APIs خارجية", "لا يوجد فرق حقيقي"], explanation: "في مكونات الخادم، يمكنك استخدام async/await مباشرة لجلب البيانات بدون useEffect أو useState." },
+      { question: "ما هو الغرض الرئيسي من استخدام Suspense مع جلب البيانات؟", options: ["تحسين الأمان", "جعل الكود أسهل في القراءة", "تمكين البث لعرض المحتوى التدريجي", "تقليل حجم JavaScript"], explanation: "Suspense يمكّن البث — عرض المكونات السريعة فوراً مع تحميل للبطيئة." },
+      { question: "أي خيار fetch() يحدّث البيانات كل 5 دقائق؟", options: ["cache: force-cache", "cache: no-store", "next: { revalidate: 300 }", "next: { tags: ['data'] }"], explanation: "revalidate: 300 يعني 300 ثانية = 5 دقائق. يخزّن ويحدّث تلقائياً كل 5 دقائق." },
+    ],
+    challenge: { title: "ابنِ لوحة تحكم مع البث", description: "أنشئ لوحة تحكم تستخدم البث لعرض المحتوى التدريجي مع Suspense و loading.js." },
+    cheatSheet: { title: "ملخص مراجعة جلب البيانات والبث", items: [
+      { term: "async function Page()", definition: "جلب مباشر في مكون الخادم" },
+      { term: "next: { revalidate: 3600 }", definition: "تخزين مؤقت لمدة ساعة" },
+      { term: "cache: 'no-store'", definition: "لا تخزين مؤقت أبداً" },
+      { term: "<Suspense fallback={...}>", definition: "حدود البث" },
+      { term: "loading.js", definition: "واجهة تحميل تلقائية" },
+      { term: "Promise.all()", definition: "جلب بيانات متوازي" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Data Fetching in Server Components", content: [

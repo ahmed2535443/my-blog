@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2, 1, 1], fr: [1, 2, 1, 1], de: [1, 2, 1, 1] };
+const correctAnswers = { ar: [1, 2, 1, 1], en: [1, 2, 1, 1], fr: [1, 2, 1, 1], de: [1, 2, 1, 1] };
 
 const challengeCode = `function AdvancedTimer() {
   const [seconds, setSeconds] = useState(60);
@@ -39,6 +39,28 @@ const challengeCode = `function AdvancedTimer() {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص useEffect",
+    columns: [
+      {
+        heading: "المفاهيم الأساسية:",
+        items: [
+          "useEffect - لتشغيل التأثيرات الجانبية بعد العرض",
+          "مصفوفة التبعيات [] - تتحكم في متى يُنفذ التأثير",
+          "مصفوفة فارغة = مرة واحدة فقط",
+          "بدون مصفوفة = بعد كل عرض",
+        ],
+      },
+      {
+        heading: "الأوامر:",
+        items: [
+          "useEffect(() => {}, []) - تنفيذ مرة واحدة",
+          "useEffect(() => {}, [dep]) - عند تغيير التبعية",
+          "return () => {} - دالة التنظيف",
+        ],
+      },
+    ],
+  },
   en: {
     title: "useEffect Cheat Sheet",
     columns: [

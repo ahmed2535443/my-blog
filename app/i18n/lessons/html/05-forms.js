@@ -1,4 +1,125 @@
 const translations = {
+  ar: {
+    sections: [
+      {
+        title: "ما هي النماذج ولماذا نستخدمها؟",
+        content: [
+          { type: "p", text: "النماذج هي الطريقة الأساسية لجمع بيانات المستخدم على الويب. في كل مرة تملأ فيها حقل بحث، أو تنشئ حساباً جديداً، أو ترسل رسالة، أو تسجل الدخول — أنت تستخدم نموذج HTML." },
+          { type: "p", text: "بدون النماذج، الويب سيكون محتوى للقراءة فقط بدون أي تفاعل. النماذج هي الجسر الذي يربط المستخدم بالخادم." },
+          { type: "callout", title: "تشبيه", text: "النموذج مثل استمارة ورقية في بنك. لها حقامل تملؤها (الاسم، العنوان، رقم الهوية)، وأزرار لإرسال أو إلغاء. نموذج HTML يفعل نفس الشيء لكن رقمياً." },
+          { type: "h3", text: "أمثلة على النماذج في حياتنا اليومية:" },
+          { type: "li", text: "نموذج تسجيل الدخول: بريد إلكتروني + كلمة مرور" },
+          { type: "li", text: "نموذج البحث: حقل بحث واحد مع زر" },
+          { type: "li", text: "نموذج الشراء: معلومات الشحن + معلومات الدفع" },
+          { type: "li", text: "نموذج اتصل بنا: اسم + بريد + موضوع + رسالة" },
+          { type: "li", text: "نموذج التعليقات: نص التعليق" }
+        ]
+      },
+      {
+        title: "أنواع حقول الإدخال",
+        content: [
+          { type: "p", text: "HTML يوفر أكثر من 20 نوعاً من حقول الإدخال:" },
+          { type: "li", text: "<code>text</code>: حقل نصي عادي" },
+          { type: "li", text: "<code>password</code>: حقل كلمة مرور (يُخفي النص)" },
+          { type: "li", text: "<code>email</code>: حقل بريد إلكتروني (يتحقق من الصيغة)" },
+          { type: "li", text: "<code>number</code>: حقل أرقام فقط" },
+          { type: "li", text: "<code>tel</code>: حقل رقم هاتف" },
+          { type: "li", text: "<code>url</code>: حقل رابط URL" },
+          { type: "li", text: "<code>date</code>: منتقي تاريخ" },
+          { type: "li", text: "<code>time</code>: منتقي وقت" },
+          { type: "li", text: "<code>datetime-local</code>: منتقي تاريخ ووقت معاً" },
+          { type: "li", text: "<code>color</code>: منتقي ألوان" },
+          { type: "li", text: "<code>file</code>: رفع ملفات" },
+          { type: "li", text: "<code>range</code>: شريط تمرير" },
+          { type: "li", text: "<code>checkbox</code>: مربع اختيار" },
+          { type: "li", text: "<code>radio</code>: زر اختيار واحد" },
+          { type: "li", text: "<code>select</code>: قائمة منسدلة" },
+          { type: "li", text: "<code>textarea</code>: منطقة نص متعددة الأسطر" },
+          { type: "li", text: "<code>hidden</code>: حقل مخفي" },
+          { type: "li", text: "<code>submit</code>: زر إرسال" },
+          { type: "li", text: "<code>reset</code>: زر إعادة تعيين" },
+          { type: "li", text: "<code>button</code>: زر عادي" }
+        ]
+      },
+      {
+        title: "بناء نموذج تسجيل دخول",
+        content: [
+          { type: "p", text: "دعنا نرى كيف نبني نموذج تسجيل دخول كامل:" }
+        ]
+      },
+      {
+        title: "التحقق من صحة البيانات",
+        content: [
+          { type: "p", text: "HTML يوفر خصائص للتحقق من البيانات قبل الإرسال:" },
+          { type: "li", text: "<code>required</code>: إجباري - لا يمكن الإرسال بدونه" },
+          { type: "li", text: "<code>minlength</code> و <code>maxlength</code>: الحد الأدنى والأقصى لطول النص" },
+          { type: "li", text: "<code>min</code> و <code>max</code>: الحد الأدنى والأقصى للأرقام" },
+          { type: "li", text: "<code>pattern</code>: نمط مخصص للتحقق (Regular Expression)" },
+          { type: "callout", title: "ملاحظة", text: "التحقق من HTML كافي للنماذج البسيطة. للتحقق المتقدم، استخدم JavaScript." }
+        ]
+      },
+      {
+        title: "إمكانية الوصول في النماذج",
+        content: [
+          { type: "li", text: "استخدم <code>&lt;label&gt;</code> لكل حقل — فهو يربط النص بالحقل للscreen readers." },
+          { type: "li", text: "استخدم <code>fieldset</code> و <code>legend</code> لتجميع الحقول الم.relatedة." },
+          { type: "li", text: "أضف رسائل خطأ واضحة ووصفيه." },
+          { type: "li", text: "تأكد من أن جميع الحقول قابلة للوصول بلوحة المفاتيح." }
+        ]
+      },
+      {
+        title: "أفضل الممارسات",
+        content: [
+          { type: "li", text: "<strong>استخدم دائماً label:</strong> لكل حقل إدخال." },
+          { type: "li", text: "<strong>استخدم الخصائص الم built-in:</strong> مثل required و email و pattern." },
+          { type: "li", text: "<strong>أضف placeholder:</strong> كتلميح فقط، ليس كبديل عن label." },
+          { type: "li", text: "<strong>.group related fields:</strong> باستخدام fieldset و legend." }
+        ]
+      },
+      {
+        title: "ملخص الدرس",
+        content: [
+          { type: "li", text: "النماذج تجمع بيانات المستخدم" },
+          { type: "li", text: "<code>&lt;form&gt;</code> تحيط بالنموذج" },
+          { type: "li", text: "أنواع الإدخال: text، email، password، number، date، checkbox، radio، select..." },
+          { type: "li", text: "تحقق: required، minlength، maxlength، pattern" },
+          { type: "li", text: "إجباري: <code>&lt;label&gt;</code> لكل حقل لإمكانية الوصول" }
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: "أي الحقول يتحقق تلقائياً من صيغة البريد الإلكتروني؟",
+        options: ["text", "email", "url", "tel"],
+        explanation: "حقل email يتحقق تلقائياً من أن النص المُدخل يطابق صيغة البريد الإلكتروني الصحيحة."
+      },
+      {
+        question: "أي العلامات تُستخدم لتجميع مجموعة من الحقول الم relatedة؟",
+        options: ["<group>", "<fieldset>", "<section>", "<div>"],
+        explanation: "fieldset تُستخدم لتجميع الحقول الم relatedة في النموذج، وtitle تُستخدم لعنوان المجموعة."
+      }
+    ],
+    challenge: {
+      title: "تحدي: نموذج اتصال كامل",
+      description: "أنشئ نموذج \"اتصل بنا\" يتضمن: 1. حقل اسم مطلوب، 2. حقل بريد إلكتروني مطلوب، 3. قائمة منسدلة للموضوع، 4. حقل رسالة متعدد الأسطر، 5. زر إرسال، 6. labels لكل حقل."
+    },
+    cheatSheet: {
+      title: "ملخص النماذج",
+      items: [
+        { term: "<code>&lt;form&gt;</code>", definition: "حاوية النموذج" },
+        { term: "<code>&lt;label&gt;</code>", definition: "تسمية الحقل (إجباري لإمكانية الوصول)" },
+        { term: "<code>input type=\"text\"</code>", definition: "حقل نصي عادي" },
+        { term: "<code>input type=\"email\"</code>", definition: "حقل بريد إلكتروني (يتحقق تلقائياً)" },
+        { term: "<code>input type=\"password\"</code>", definition: "حقل كلمة مرور" },
+        { term: "<code>input type=\"checkbox\"</code>", definition: "مربع اختيار" },
+        { term: "<code>input type=\"radio\"</code>", definition: "زر اختيار واحد" },
+        { term: "<code>&lt;select&gt;</code>", definition: "قائمة منسدلة" },
+        { term: "<code>&lt;textarea&gt;</code>", definition: "منطقة نص متعددة الأسطر" },
+        { term: "<code>required</code>", definition: "الحقل إجباري" },
+        { term: "<code>&lt;fieldset&gt;</code>", definition: "تجميع الحقول الم relatedة" }
+      ]
+    }
+  },
   en: {
     sections: [
       {

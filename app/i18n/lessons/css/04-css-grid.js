@@ -1,4 +1,140 @@
 const translations = {
+  ar: {
+    sections: [
+      {
+        title: "ما هو CSS Grid",
+        content: [
+          { type: "p", text: "<strong>CSS Grid Layout</strong> هو نظام تخطيط ثنائي الأبعاد في CSS يتيح لك تنظيم العناصر في صفوف وأعمدة في نفس الوقت. يتم تفعيله بإضافة <code>display: grid</code> إلى الحاوية." },
+          { type: "p", text: "على عكس Flexbox الذي يعمل على محور واحد، يوفر Grid تحكماً كاملاً في كلا المحورين (أفقي وعمودي) في نفس الوقت. هذا يجعله مثالياً لإنشاء تخطيطات معقدة مثل صفحات الويب الكاملة ولوحات المعلومات وشبكات الأعمدة المتعددة." },
+          { type: "callout", title: "ملاحظة مهمة", text: "عند تطبيق <code>display: grid</code> على حاوية، تصبح العناصر المباشرة تلقائياً عناصر شبكة. العناصر المتداخلة لن تتأثر ما لم يتم تعريفها أيضاً كحاويات شبكة." }
+        ]
+      },
+      {
+        title: "لماذا نستخدم CSS Grid",
+        content: [
+          { type: "p", text: "يوفر CSS Grid حلولاً قوية لمشاكل التخطيط التي واجهها المطورون لسنوات:" },
+          { type: "li", text: "<strong>تخطيط ثنائي الأبعاد</strong> - تحكم كامل في الصفوف والأعمدة معاً" },
+          { type: "li", text: "<strong>مناطق مسماة</strong> - تسمية مناطق التخطيط ووضع العناصر بسهولة" },
+          { type: "li", text: "<strong>متجاوب دون Media Queries</strong> - خصائص مثل auto-fit و minmax() تجعل التصميم متجاوباً تلقائياً" },
+          { type: "li", text: "<strong>محاذاة دقيقة</strong> - align و justify يعملان على كلا المحورين مع تحكم متقدم" },
+          { type: "li", text: "<strong>تبسيط</strong> - كود أقل وأوضح مقارنة بالطرق القديمة (float, position, table)" },
+          { type: "li", text: "<strong>Subgrid</strong> - القدرة على محاذاة شبكات متداخلة مع الشبكة الأب" }
+        ]
+      },
+      {
+        title: "المشكلة التي يحلها",
+        content: [
+          { type: "p", text: "قبل CSS Grid، واجه المطورون مشاكل كبيرة في إنشاء تخطيطات ثنائية الأبعاد:" },
+          { type: "callout-accent", title: "المشكلة 1: تخطيط الصفحة الكاملة", text: "إنشاء تخطيط مع رأس وشريط جانبي ومحتوى رئيسي وتذييل كان يتطلب CSS معقداً مع float وحسابات العرض." },
+          { type: "callout-accent", title: "المشكلة 2: شبكات الأعمدة المتعددة", text: "إنشاء شبكة بطاقات متجاوبة بعدد أعمدة متغير كان يتطلب حسابات يدوية معقدة." },
+          { type: "callout-accent", title: "المشكلة 3: تراكب العناصر", text: "جعل عنصر يراكب آخر كان يتطلب position: absolute وحسابات transform معقدة." }
+        ]
+      },
+      {
+        title: "شرح بسيط",
+        content: [
+          { type: "p", text: "تخيل أن لديك لوح شطرنج فارغاً. تحدد عدد الصفوف والأعمدة، ثم تضع القطع في أماكنها المحددة. يعمل CSS Grid بنفس الطريقة:" },
+          { type: "li", text: "<strong>الحاوية:</strong> grid-template-columns, grid-template-rows, gap, grid-template-areas" },
+          { type: "li", text: "<strong>العنصر:</strong> grid-column, grid-row, grid-area, span" },
+          { type: "callout-primary", title: "القاعدة الذهبية", text: "الخصائص المضافة إلى الحاوية تتحكم في الشبكة بالكامل. الخصائص المضافة إلى عنصر تتحكم فقط في موقع ذلك العنصر." }
+        ]
+      },
+      {
+        title: "خلف الكواليس",
+        content: [
+          { type: "p", text: "عند تطبيق CSS Grid على حاوية، يتبع المتصفح هذه الخطوات:" },
+          { type: "li", text: "<strong>الخطوة 1: تكوين الشبكة</strong> - يحدد المتصفح خطوط الشبكة بناءً على grid-template-columns و grid-template-rows" },
+          { type: "li", text: "<strong>الخطوة 2: وضع العناصر</strong> - يتم وضع العناصر في الخلايا المتاحة (تلقائياً أو حسب grid-column/grid-row الصريح)" },
+          { type: "li", text: "<strong>الخطوة 3: حساب الأحجام</strong> - يتم حساب أحجام الأعمدة/الصفوف (px ثابتة، fr مشاعر، auto محتوى)" },
+          { type: "li", text: "<strong>الخطوة 4: الوضع التلقائي</strong> - العناصر بدون وضع صريح تملأ الخلايا الفارغة تلقائياً" }
+        ]
+      },
+      {
+        title: "الأخطاء الشائعة",
+        content: [
+          { type: "li", text: "<strong>الخطأ 1: استخدام margin بدلاً من gap</strong> - نفس مشكلة Flexbox، مسافات غير متساوية عند الحواف" },
+          { type: "li", text: "<strong>الخطأ 2: استخدام النسب المئوية مع grid-template-rows</strong> - النسب المئوية لا تعمل مباشرة، استخدم fr أو minmax()" },
+          { type: "li", text: "<strong>الخطأ 3: نسيان grid-auto-rows</strong> - بدونه، قد تظهر العناصر بأحجام غير متوقعة" },
+          { type: "li", text: "<strong>الخطأ 4: خلط Grid و Flexbox على نفس العنصر</strong> - اختر واحداً؛ Grid للخارج و Flex للداخل جيد" },
+          { type: "li", text: "<strong>الخطأ 5: عدم استخدام minmax() مع auto-fit/auto-fill</strong> - لن يعطي التصميم المتجاوب المتوقع" }
+        ]
+      },
+      {
+        title: "أفضل الممارسات",
+        content: [
+          { type: "li", text: "1. استخدم grid-template-areas للتخطيطات المعقدة - المناطق المسماة تجعل الكود مقروءاً" },
+          { type: "li", text: "2. استخدم repeat(auto-fit, minmax()) للشبكات المتجاوبة دون Media Queries" },
+          { type: "li", text: "3. فكر بالأبعاد: Grid لـ 2D (صفوف+أعمدة)، Flexbox لـ 1D (صف أو عمود)" },
+          { type: "li", text: "4. استخدم minmax() لضمان الحد الأدنى من الأحجام" },
+          { type: "li", text: "5. استخدم دائماً gap للمسافات بين العناصر" },
+          { type: "li", text: "6. استخدم place-items: center للتوسيط السريع" }
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: "ما الفرق بين auto-fit و auto-fill في دالة repeat()؟",
+        options: [
+          "لا يوجد فرق، متساويان تماماً",
+          "auto-fit يوسّع العناصر لملء المساحة الفارغة، بينما auto-fill يحتفظ بالأعمدة الفارغة",
+          "auto-fill أحدث من auto-fit ويعمل فقط في المتصفحات الحديثة",
+          "auto-fit يعمل فقط مع minmax() بينما auto-fill يعمل مع أي وحدة"
+        ],
+        correctAnswer: 1,
+        explanation: "يقوم auto-fit بدمج الخلايا الفارغة وتوسيع العناصر المتاحة لملء المساحة الفارغة. يحتفظ auto-fit بعدد الأعمدة المحدد حتى لو كانت فارغة. يظهر الفرق عندما لا تملأ العناصر جميع الأعمدة."
+      },
+      {
+        question: "متى تستخدم CSS Grid بدلاً من Flexbox؟",
+        options: [
+          "عندما تريد ترتيب العناصر في صف واحد فقط",
+          "عندما تحتاج تخطيط ثنائي الأبعاد (صفوف وأعمدة معاً) مع تحكم دقيق في الوضع",
+          "عندما تريد فقط إضافة مسافات بين العناصر",
+          "Flexbox أفضل دائماً من Grid في جميع الحالات"
+        ],
+        correctAnswer: 1,
+        explanation: "CSS Grid مصمم للتخطيط ثنائي الأبعاد حيث تتحكم في الصفوف والأعمدة معاً. Flexbox يعمل بشكل أفضل للتخطيط أحادي البعد. إذا كنت بحاجة لترتيب العناصر في صفوف وأعمدة مع تحكم دقيق، Grid هو الأفضل."
+      }
+    ],
+    challenge: {
+      title: "بناء تخطيط لوحة معلومات بـ CSS Grid",
+      description: "أنشئ لوحة معلومات برأس وشريط جانبي ومحتوى رئيسي وتذييل باستخدام CSS Grid مع مناطق مسماة."
+    },
+    cheatSheet: {
+      title: "مرجع CSS Grid + Subgrid",
+      items: [
+        {
+          title: "خصائص حاوية Grid",
+          content: `| الخاصية | القيم | الوصف |
+|---------|-------|------|
+| display | grid | inline-grid | يفعّل Grid |
+| grid-template-columns | [قيم] | يحدد عدد الأعمدة وعرضها |
+| grid-template-rows | [قيم] | يحدد عدد الصفوف وارتفاعها |
+| grid-template-areas | "اسم اسم" | يحدد المناطق المسماة |
+| gap | <طول> | مسافة بين خلايا الشبكة |
+| justify-items | start | end | center | stretch | محاذاة أفقي |
+| align-items | start | end | center | stretch | محاذاة عمودي |
+| grid-auto-flow | row | column | dense | اتجاه الوضع التلقائي |`
+        },
+        {
+          title: "خصائص عنصر Grid",
+          content: `| الخاصية | القيم | الوصف |
+|---------|-------|------|
+| grid-column | start / end | span N | الوضع الأفقي |
+| grid-row | start / end | span N | الوضع العمودي |
+| grid-area | اسم | وضع حسب الاسم أو الأرقام |
+| justify-self | start | end | center | stretch | محاذاة عنصر أفقي |
+| align-self | start | end | center | stretch | محاذاة عنصر عمودي |`
+        },
+        {
+          title: "الأنماط الشائعة",
+          content: `شبكة بطاقات متجاوبة: repeat(auto-fit, minmax(250px, 1fr))
+التوسيط الكامل: display: grid; place-items: center;
+شريط جانبي + محتوى: grid-template-columns: 250px 1fr;
+الكأس المقدسة: grid-template: "header header header" auto "nav main aside" 1fr "footer footer footer" auto / 200px 1fr 200px;`
+        }
+      ]
+    }
+  },
   en: {
     sections: [
       {

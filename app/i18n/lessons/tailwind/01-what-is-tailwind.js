@@ -1,4 +1,122 @@
 const translations = {
+  ar: {
+    sections: [
+      {
+        title: "ما هو Tailwind CSS؟",
+        content: [
+          { type: "p", text: "<strong>Tailwind CSS</strong> هو إطار عمل CSS يعتمد على الفئات المساعدة — يوفر لك مجموعة من الفئات المصغرة الجاهزة للاستخدام يمكنك دمجها مباشرة في عناصر HTML لتصميم واجهات المستخدم بسرعة وكفاءة." },
+          { type: "callout", title: "حقائق سريعة عن Tailwind CSS", text: "أنشأه Adam Wathan كمشروع مفتوح المصدر. الإصدار الحالي: v4 الذي يستخدم تكوين CSS أولاً بدلاً من ملفات JavaScript التقليدية. الفلسفة: الفئات المساعدة — فئات صغيرة مخصصة لكل خاصية CSS. وهو أحد أكثر أطر عمل CSS استخداماً في المشاريع الحديثة." },
+          { type: "p", text: "في الإصدار 4 (v4)، لم يعد Tailwind يحتاج إلى ملف tailwind.config.js تقليدي. بدلاً من ذلك، يمكنك تكوين الإطار مباشرة من ملف CSS باستخدام التوجيه @theme." },
+        ]
+      },
+      {
+        title: "لماذا الفئات المساعدة أولاً؟",
+        content: [
+          { type: "p", text: "لفهم لماذا اختار مطورو Tailwind نموذج الفئات المساعدة أولاً، لنلقي نظرة على المشكلة التي يواجهها المطورون مع النهج التقليدي:" },
+          { type: "p", text: "في المشاريع الكبيرة، تصبح ملفات CSS من المستحيل تقريباً إدارتها. مع Tailwind، يعيش التصميم بالكامل في ملف واحد — ملف المكون نفسه." },
+          { type: "callout", title: "ملاحظة هامة", text: "قد يبدو الكود أطول قليلاً في HTML، لكن الفائدة هي أنك لا تحتاج أبداً إلى فتح ملف CSS وإنشاء فئة جديدة والانتظار حتى يكتمل البناء. كل ما تحتاجه أمامك — ولهياكل الإنتاج، يزيل Tailwind الفئات غير المستخدمة تلقائياً." },
+        ]
+      },
+      {
+        title: "المشكلات التي يحلها Tailwind",
+        content: [
+          { type: "li", text: "<strong>لا تبديل سياق:</strong> مع CSS التقليدي، تقوم بالتبديل باستمرار بين ملفات HTML/JSX وملفات CSS. مع Tailwind، يعيش التصميم بالكامل في ملف واحد." },
+          { type: "li", text: "<strong>لا CSS ميت:</strong> تمسح خطوة البناء ملفاتك وتولد فقط الفئات التي تستخدمها فعلياً. النتيجة: ملف CSS إنتاجي صغير جداً." },
+          { type: "li", text: "<strong>نظام تصميم متسق:</strong> يأتي Tailwind مع نظام تصميم مبني مسبقاً: ألوان متسقة، تباعد متسق، أحجام خطوط متسقة." },
+          { type: "li", text: "<strong>تصميم متجاوب بدون تعقيد:</strong> لا حاجة لكتابة Media Queries في ملف منفصل. فقط أضف البادئة المناسبة أمام الفئة." },
+        ]
+      },
+      {
+        title: "كيف يعمل Tailwind خلف الكواليس؟",
+        content: [
+          { type: "li", text: "<strong>مترجم JIT:</strong> يستخدم Tailwind v4 محرك JIT (Just-In-Time) — يولّد CSS عند الطلب بدلاً من توليد جميع الفئات مسبقاً." },
+          { type: "li", text: "<strong>لا حاجة لملف تكوين في v4:</strong> في الإصدارات السابقة، كنت بحاجة إلى إنشاء ملف tailwind.config.js. في v4، كل شيء في ملف CSS الرئيسي." },
+          { type: "li", text: "<strong>إ裁اغ الأشجار = CSS صغير جداً:</strong> يزيل Tailwind v4 تلقائياً جميع الفئات غير المستخدمة." },
+        ]
+      },
+      {
+        title: "مثال بسيط — بطاقة مع Tailwind",
+        content: [
+          { type: "p", text: "لنشئ بطاقة بسيطة باستخدام Tailwind فقط. لاحظ كيف ندمج الفئات لتحقيق تصميم احترافي." },
+        ]
+      },
+      {
+        title: "الأخطاء الشائعة",
+        content: [
+          { type: "li", text: "<strong>خطأ 1: خلط Tailwind مع CSS مخصص كثير</strong> — الخطأ الأكبر هو إنشاء ملف CSS بفئات مخصصة وخلطها مع Tailwind." },
+          { type: "li", text: "<strong>خطأ 2: الإفراط في استخدام @apply</strong> — التوجيه @apply هو مخرج طوارئ، وليس الطريقة الافتراضية. الإفراط في استخدامه ي defeats الغرض من Tailwind." },
+          { type: "li", text: "<strong>خطأ 3: عدم تعلم نمط التسمية</strong> — تتبع فئات Tailwind نمطاً ثابتاً. إذا حفظت النمط، يمكنك التنبؤ بأي فئة." },
+          { type: "li", text: "<strong>خطأ 4: نسيان التصميم المتجاوب</strong> — Tailwind يعتمد على الهاتف أولاً. البادئة مثل md: و lg: تضيف أنماط للشاشات الأكبر." },
+        ]
+      },
+      {
+        title: "أفضل الممارسات",
+        content: [
+          { type: "li", text: "<strong>استخدم Tailwind حصرياً</strong> — لا تكتب CSS مخصصاً إلا إذا كان ضرورياً تماماً." },
+          { type: "li", text: "<strong>قم بتثبيت إضافة Tailwind CSS IntelliSense</strong> — توفر إكمالاً تلقائياً ذكياً ومعاينة الألوان والتنقل السريع بين الفئات." },
+          { type: "li", text: "<strong>اجعل className المصدر الوحيد للحقيقة</strong> — يجب أن تكون جميع الأنماط مباشرة في className." },
+          { type: "li", text: "<strong>استخدم clsx أو cva للشروط المعقدة</strong> — عند دمج الفئات بشكل شرطي." },
+          { type: "li", text: "<strong>استخدم إضافة Prettier لـ Tailwind</strong> — ترتب الفئات تلقائياً بالترتيب القياسي." },
+        ]
+      },
+      {
+        title: "ملخص الدرس",
+        content: [
+          { type: "li", text: "<strong>Tailwind CSS</strong> هو إطار عمل CSS يعتمد على الفئات المساعدة." },
+          { type: "li", text: "يحل مشاكل CSS التقليدية (CSS الميت، تعارضات الأولوية، غياب التصميم المتسق)." },
+          { type: "li", text: "v4 يستخدم تكوين CSS أولاً بدون ملف JS." },
+          { type: "li", text: "مترجم JIT يولّد فقط الفئات المستخدمة." },
+          { type: "li", text: "تتبع الفئات نمطاً يمكن التنبؤ به وسهل الحفظ." },
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: "ما هو النوع الأساسي لـ Tailwind CSS؟",
+        options: ["إطار عمل CSS يعتمد على المكونات", "إطار عمل CSS يعتمد على الفئات المساعدة", "مكتبة JavaScript CSS-in-JS", "معالج مسبق مثل Sass"],
+        explanation: "Tailwind CSS هو إطار عمل CSS يعتمد على الفئات المساعدة — يوفر فئات مساعدة صغيرة يمكنك دمجها مباشرة في HTML لتصميم واجهات المستخدم."
+      },
+      {
+        question: "ما هو التغيير الأكبر في Tailwind v4 مقارنة بالإصدارات السابقة؟",
+        options: ["إضافة دعم TypeScript", "الانتقال إلى تكوين CSS أولاً بدلاً من tailwind.config.js", "إزالة مترجم JIT", "إضافة نظام مكونات مدمج"],
+        explanation: "في Tailwind v4، تم استبدال ملف tailwind.config.js بتكوين CSS مباشر باستخدام @theme في ملف CSS الرئيسي."
+      },
+      {
+        question: "ماذا يفعل مترجم JIT في Tailwind؟",
+        options: ["يولّد جميع الفئات المحتملة مسبقاً ثم يحذف غير المستخدمة", "يولّد CSS فقط للفئات المستخدمة فعلياً في ملفات المصدر", "يترجم كود JavaScript إلى CSS", "يحسّن ملفات الصور"],
+        explanation: "يمسح مترجم JIT ملفات HTML/JSX ويولّد CSS فقط للفئات المستخدمة فعلياً."
+      },
+      {
+        question: "ما هو النمط الصحيح لكتابة فئة Tailwind للحصول على حشو 2rem؟",
+        options: ["padding-8", "p-8", "pad-2", "spacing-2"],
+        explanation: "في Tailwind، P = padding و 8 = 8 × 0.25rem = 2rem. النمط هو [بادئة]-[قيمة]."
+      }
+    ],
+    challenge: {
+      title: "تحدي: إنشاء بطاقة ملف شخصي",
+      description: "أنشئ مكون React يعرض ملفاً شخصياً باستخدام Tailwind CSS فقط (بدون CSS مخصص). يجب أن تتضمن البطاقة: صورة أفاتار دائرية، اسم المستخدم، نبذة شخصية، زر 'متابعة', تأثير hover، وتصميم متجاوب."
+    },
+    cheatSheet: {
+      title: "ملخص Tailwind CSS — الدرس 1",
+      items: [
+        { term: "flex", definition: "display: flex" },
+        { term: "grid", definition: "display: grid" },
+        { term: "p-4", definition: "padding: 1rem" },
+        { term: "m-4", definition: "margin: 1rem" },
+        { term: "mx-auto", definition: "margin-left: auto; margin-right: auto" },
+        { term: "items-center", definition: "align-items: center" },
+        { term: "justify-between", definition: "justify-content: space-between" },
+        { term: "gap-4", definition: "gap: 1rem" },
+        { term: "text-lg", definition: "font-size: 1.125rem" },
+        { term: "font-bold", definition: "font-weight: 700" },
+        { term: "rounded-lg", definition: "border-radius: 0.5rem" },
+        { term: "shadow-md", definition: "ظل صندوق متوسط" },
+        { term: "hover:bg-blue-600", definition: "الخلفية عند التمرير" },
+        { term: "transition-colors", definition: "انتقال سلس للألوان" },
+        { term: "md: / lg:", definition: "نقاط توقف متجاوبة" }
+      ]
+    }
+  },
   en: {
     sections: [
       {

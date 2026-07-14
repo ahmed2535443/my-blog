@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [2], fr: [2], de: [2] };
+const correctAnswers = { ar: [2], en: [2], fr: [2], de: [2] };
 
 const challengeCode = `// تحدي 1: ترتيب الطلاب
 const sortByAverage = (studentsList) => {
@@ -59,6 +59,16 @@ const advancedSearch = (studentsList, criteria) => {
 };`;
 
 const cheatSheetData = {
+  ar: {
+    title: "نظام إدارة الطلاب - مرجع كامل",
+    items: [
+      { label: "ثراء البيانات", description: "calculateAverage(grades) باستخدام reduce | getGradeLabel(average) باستخدام if/else | enrichStudent(student) باستخدام spread" },
+      { label: "البحث والتصفية", description: "getActiveStudents() باستخدام filter | getTopStudents() باستخدام filter | findByName() باستخدام find | searchStudents() باستخدام filter مع includes" },
+      { label: "الإحصائيات", description: "getStatistics() باستخدام reduce لبناء كائن إحصائيات كامل مع count و average و highest و lowest و active" },
+      { label: "إدارة البيانات", description: "addStudent() باستخدام spread | removeStudent() باستخدام filter | updateGrades() باستخدام map مع spread" },
+      { label: "أنماط غير المتزامنة", description: "fetchStudentsFromAPI() باستخدام Promise | async/await مع try/catch/finally | processStudentData() تجمع map و reduce و async" },
+    ],
+  },
   en: {
     title: "Student Management System - Complete Reference",
     items: [

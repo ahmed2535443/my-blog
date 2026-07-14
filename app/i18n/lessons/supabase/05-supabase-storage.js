@@ -1,4 +1,44 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "تخزين Supabase", content: [
+        { type: "p", text: "يسمح لك Supabase Storage برفع وإدارة وتقديم الملفات (الصور، الفيديوهات، المستندات) مع CDN وتحكم في الوصول مدمجين." },
+      ]},
+      { title: "إنشاء نبضة (Bucket)", content: [
+        { type: "li", text: "اذهب إلى التخزين في لوحة التحكم" },
+        { type: "li", text: "انقر على 'Create Bucket'" },
+        { type: "li", text: "اختر اسماً واجعله عاماً أو خاصاً" },
+      ]},
+      { title: "رفع الملفات", content: [
+        { type: "code", text: "const { data, error } = await supabase.storage\n  .from('images')\n  .upload('folder/file.jpg', file);" },
+      ]},
+      { title: "تنزيل/عرض الملفات", content: [
+        { type: "code", text: "const { data } = supabase.storage\n  .from('images')\n  .getPublicUrl('folder/file.jpg');" },
+      ]},
+      { title: "الأمان على مستوى الصف (RLS)", content: [
+        { type: "p", text: "RLS هي ميزة في PostgreSQL تتحكم في الصفوف التي يمكن للمستخدمين الوصول إليها. كل جدول يمكن أن يكون له سياسات تحدد من يمكنه القراءة أو الإدراج أو التحديث أو حذف البيانات." },
+        { type: "p", text: "فعّل RLS دائماً على الجداول التي تحتوي على بيانات المستخدمين. أنشئ سياسات لكل عملية." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "Supabase Storage يتعامل مع رفع الملفات وتقديمها." },
+        { type: "li", text: "النبضات تنظم الملفات في حاويات." },
+        { type: "li", text: "الأمان على مستوى الصف يحمي بياناتك." },
+      ]}
+    ],
+    quiz: [
+      { question: "ما هو الغرض من Supabase Storage؟", options: ["إدارة قاعدة البيانات", "رفع الملفات وتقديمها", "مصادقة المستخدمين", "الاشتراكات الفورية"], explanation: "Supabase Storage لرفع وإدارة وتقديم الملفات." },
+      { question: "ما هو RLS (الأمان على مستوى الصف)؟", options: ["ميزة جدار حماية", "تحكم في الصفوف التي يمكن للمستخدمين الوصول إليها", "تشفير البيانات المخزنة", "إدارة مفاتيح API"], explanation: "RLS هي ميزة في PostgreSQL تتحكم في الوصول إلى البيانات على مستوى الصف." },
+    ],
+    challenge: { title: "تنفيذ رفع الملفات", description: "أنشئ نموذج رفع ملفات، وخزّن الملفات في Supabase Storage، واعرضها مع تحكم مناسب في الوصول." },
+    cheatSheet: { title: "ملخص مراجعة التخزين و RLS", items: [
+      { term: ".from('bucket')", definition: "تحديد نبضة التخزين" },
+      { term: ".upload('path', file)", definition: "رفع ملف" },
+      { term: ".getPublicUrl('path')", definition: "الحصول على رابط الملف" },
+      { term: "RLS", definition: "الأمان على مستوى الصف" },
+      { term: "CREATE POLICY", definition: "تحديد قواعد الوصول" },
+      { term: "ENABLE ROW LEVEL SECURITY", definition: "تشغيل RLS للجدول" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Supabase Storage", content: [

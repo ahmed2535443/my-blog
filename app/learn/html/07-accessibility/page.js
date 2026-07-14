@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
+const correctAnswers = { ar: [1, 1, 1], en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
 
 const challengeCode = `<!-- الحل المتوقع -->
 <a href="#login-form" class="skip-link">
@@ -79,6 +79,56 @@ const challengeCode = `<!-- الحل المتوقع -->
 </main>`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص إمكانية الوصول (A11y)",
+    columns: [
+      {
+        heading: "أساسيات إمكانية الوصول:",
+        items: [
+          'كل صورة تحتاج نص <code className="inline-code">alt</code>',
+          'كل حقل نموذج يحتاج <code className="inline-code">&lt;label&gt;</code>',
+          'استخدم <code className="inline-code">روابط التخطي</code> لمستخدمي لوحة المفاتيح',
+          'استخدم فئة <code className="inline-code">.sr-only</code> لنص قارئ الشاشة',
+          'جميع العناصر التفاعلية يجب أن تعمل بزر Tab',
+        ],
+      },
+      {
+        heading: "التنقل بلوحة المفاتيح:",
+        items: [
+          '<code className="inline-code">tabindex="0"</code> - إضافة لتسلسل Tab الافتراضي',
+          '<code className="inline-code">tabindex="-1"</code> - وصول программي فقط',
+          "تجنب قيم tabindex الموجبة",
+          "العناصر التفاعلية: button, a, input, select, textarea",
+        ],
+      },
+      {
+        heading: "سمات ARIA الشائعة:",
+        items: [
+          '<code className="inline-code">role="alert"</code> - تنبيه عاجل',
+          '<code className="inline-code">role="status"</code> - تحديث غير عاجل',
+          '<code className="inline-code">role="button"</code> - زر مخصص',
+          '<code className="inline-code">role="navigation"</code> - قسم التنقل',
+          '<code className="inline-code">role="main"</code> - المحتوى الرئيسي',
+          '<code className="inline-code">aria-label</code> - اسم مسموع',
+          '<code className="inline-code">aria-describedby</code> - وصف إضافي',
+          '<code className="inline-code">aria-required</code> - حقل إجباري',
+          '<code className="inline-code">aria-invalid</code> - بيانات غير صالحة',
+          '<code className="inline-code">aria-live</code> - تحديثات مباشرة',
+          '<code className="inline-code">aria-hidden</code> - مخفي عن قارئ الشاشة',
+        ],
+      },
+      {
+        heading: "القاعدة الذهبية لـ ARIA:",
+        items: [
+          "1. استخدم HTML الدلالي أولاً",
+          "2. لا تكسر ما يعمل في HTML",
+          "3. جميع العناصر التفاعلية يجب أن تعمل بـ Tab",
+          "4. كل صورة لها alt",
+          "5. كل حقل له label",
+        ],
+      },
+    ],
+  },
   en: {
     title: "Accessibility (A11y) Cheat Sheet",
     columns: [
@@ -232,6 +282,20 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: {
+    title: "مشروع صغير: نموذج تسجيل دخول متوافق مع إمكانية الوصول",
+    description: "أنشئ نموذج تسجيل دخول متوافق مع إمكانية الوصول يتضمن:",
+    items: [
+      'رابط تخطي في أعلى الصفحة',
+      'هيكل HTML دلالي (header, main, footer)',
+      '<code>&lt;label&gt;</code> لكل حقل إدخال',
+      '<code>aria-required</code> للحقول الإجبارية',
+      'رسائل خطأ مع <code>role="alert"</code>',
+      'تسلسل عنوان صحيح (h1، h2، h3)',
+      'سمات الإكمال التلقائي للحقول الشائعة',
+    ],
+    hint: "اختبر نموذجك بالتنقل بلوحة المفاتيح فقط (بدون ماوس). كل حقل يجب أن يكون قابلاً للوصول وله label مرئي. استخدم <code>aria-describedby</code> لربط نص المساعدة بالحقول.",
+  },
   en: {
     title: "Mini Project: Accessible Registration Form",
     description: "Create an accessible registration form that includes:",

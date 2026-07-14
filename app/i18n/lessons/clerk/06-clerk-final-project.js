@@ -1,4 +1,69 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "ملخص المرحلة", content: [
+        { type: "p", text: "تهانينا على إكمال مرحلة Clerk! لقد أتقنت المصادقة المتقدمة وإدارة المستخدمين." },
+        { type: "li", text: "الدرس 1: ما هو Clerk" },
+        { type: "li", text: "الدرس 2: التثبيت والإعداد" },
+        { type: "li", text: "الدرس 3: طرق المصادقة" },
+        { type: "li", text: "الدرس 4: إدارة المستخدمين" },
+        { type: "li", text: "الدرس 5: الميزات المتقدمة" },
+      ]},
+      { title: "ما أتقنته", content: [
+        { type: "li", text: "إعداد مصادقة Clerk في Next.js" },
+        { type: "li", text: "تنفيذ البريد الإلكتروني/كلمة المرور وتسجيل الدخول الاجتماعي" },
+        { type: "li", text: "تكوين المصادقة متعددة العوامل (MFA)" },
+        { type: "li", text: "إدارة المستخدمين والمنظمات" },
+        { type: "li", text: "حماية المسارات باستخدام Middleware" },
+        { type: "li", text: "دمج Clerk مع Supabase" },
+        { type: "li", text: "تخصيص سمات المكونات" },
+      ]},
+      { title: "المشروع النهائي: تطبيق إدارة المهام", content: [
+        { type: "p", text: "في هذا المشروع، سنبني تطبيقاً كاملاً لإدارة المهام باستخدام جميع مفاهيم Clerk التي تعلمناها." },
+        { type: "li", text: "تسجيل/تسجيل دخول بمزودين متعددين" },
+        { type: "li", text: "المصادقة متعددة العوامل للأمان" },
+        { type: "li", text: "المنظمات لمساحات عمل الفريق" },
+        { type: "li", text: "تحكم في الوصول بالأدوار" },
+        { type: "li", text: "الملفات الشخصية للمستخدمين والإعدادات" },
+        { type: "li", text: "المسارات المحمية بـ Middleware" },
+      ]},
+      { title: "أفضل الممارسات", content: [
+        { type: "li", text: "استخدم Middleware لحماية المسارات عالمياً" },
+        { type: "li", text: "فعّل MFA للتطبيقات الحساسة" },
+        { type: "li", text: "استخدم المنظمات للميزات القائمة على الفرق" },
+        { type: "li", text: "تعامل مع حالات التحميل باستخدام isLoaded" },
+        { type: "li", text: "أبقِ مفاتيح Clerk في متغيرات البيئة" },
+      ]},
+      { title: "ما الخطوة التالية؟", content: [
+        { type: "p", text: "بعد إكمال جميع المراحل — TypeScript و Tailwind CSS و HTML و Next.js و Supabase و Clerk — لديك مجموعة أدوات كاملة لبناء تطبيقات الويب الحديثة. ابدأ مشروعك النهائي!" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "أتقن Clerk: المصادقة وإدارة المستخدمين وMFA والمنظمات." },
+        { type: "li", text: "بنى تطبيق إدارة مهام كامل." },
+        { type: "li", text: "جاهز للمشاريع الحقيقية بجميع التقنيات." },
+      ]}
+    ],
+    quiz: [
+      { question: "ما هي الطريقة الموصى بها لحماية المسارات في Clerk؟", options: ["التحقق من المصادقة في كل صفحة", "استخدام clerkMiddleware في middleware.js", "استخدام CSS لإخفاء المحتوى", "إضافة علامة meta"], explanation: "استخدم clerkMiddleware في middleware.js لحماية المسارات عالمياً." },
+      { question: "لماذا تستخدم المنظمات في Clerk؟", options: ["لتخزين قاعدة البيانات", "للتحكم في الوصول القائم على الفرق", "لرفع الملفات", "لإرسال البريد الإلكتروني"], explanation: "المنظمات تمكّن مساحات عمل الفريق مع التحكم في الوصول بالأدوار." },
+      { question: "كيف تتعامل مع حالات التحميل مع Clerk؟", options: ["استخدم isLoading", "استخدم isLoaded من useUser()", "استخدم setTimeout", "استخدم useEffect"], explanation: "استخدم خاصية isLoaded من hooks useUser() أو useAuth()." },
+    ],
+    challenge: { title: "ابنِ تطبيق إدارة المهام", description: "أنشئ تطبيق إدارة مهام كاملاً مع مصادقة متعددة المزودين وMFA ومنظمات وأدوار ومسارات محمية." },
+    cheatSheet: { title: "ملخص مراجعة Clerk الكامل", items: [
+      { term: "<ClerkProvider>", definition: "لف التطبيق لسياق Clerk" },
+      { term: "<SignIn /> / <SignUp />", definition: "مكونات واجهة المصادقة" },
+      { term: "<SignedIn> / <SignedOut>", definition: "عرض شرطي" },
+      { term: "<UserButton />", definition: "زر الملف الشخصي للمستخدم" },
+      { term: "useUser()", definition: "الوصول إلى بيانات المستخدم" },
+      { term: "useAuth()", definition: "الوصول إلى حالة المصادقة" },
+      { term: "useOrganization()", definition: "الوصول إلى بيانات المنظمة" },
+      { term: "auth()", definition: "فحص المصادقة من جانب الخادم" },
+      { term: "clerkMiddleware", definition: "حماية المسارات عالمياً" },
+      { term: "MFA", definition: "المصادقة متعددة العوامل" },
+      { term: "Organizations", definition: "مساحات عمل الفريق" },
+      { term: "Webhooks", definition: "إشعارات الأحداث" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Stage Summary", content: [

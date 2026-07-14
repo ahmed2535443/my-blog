@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
+const correctAnswers = { en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1], ar: [1, 1, 1] };
 
 const cheatSheetData = {
   en: {
@@ -76,6 +76,28 @@ const cheatSheetData = {
           "Promise.all für parallele Abfragen",
           "useOptimistic für sofortige UI-Updates",
           "useTransition für Hintergrundoperationen",
+        ],
+      },
+    ],
+  },
+  ar: {
+    title: "مرجع لوحة التحكم والإدارة السريع",
+    columns: [
+      {
+        heading: "Supabase Storage:",
+        items: [
+          "<code className='inline-code'>.from('bucket').upload(path, file)</code> - رفع ملف",
+          "<code className='inline-code'>.getPublicUrl(path)</code> - الحصول على رابط عام",
+          "<code className='inline-code'>.from('bucket').remove([path])</code> - حذف ملف",
+        ],
+      },
+      {
+        heading: "المفاهيم الرئيسية:",
+        items: [
+          "<code className='inline-code'>.range(start, end)</code> - نطاق التقسيم",
+          "Promise.all للاستعلامات المتوازية",
+          "useOptimistic لتحديثات واجهة المستخدم الفورية",
+          "useTransition للعمليات في الخلفية",
         ],
       },
     ],

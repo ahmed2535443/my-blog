@@ -1,4 +1,70 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "الطباعة", content: [
+        { type: "p", text: "يوفر Tailwind CSS مجموعة شاملة من الأدوات للتحكم الكامل في مظهر النص. من أحجام الخطوط إلى ارتفاعات الأسطر والتباعد — كل شيء متاح كفئات مساعدة جاهزة للاستخدام." },
+        { type: "li", text: "أحجام الخطوط من text-xs (0.75rem) إلى text-9xl (8rem)" },
+        { type: "li", text: "أوزان الخطوط من font-thin (100) إلى font-black (900)" },
+        { type: "li", text: "عائلات الخطوط: font-sans، font-serif، font-mono" },
+        { type: "li", text: "ارتفاعات الأسطر، تباعد الأحرف، محاذاة النص، وزخرفة النص" },
+      ]},
+      { title: "الألوان", content: [
+        { type: "p", text: "يحتوي Tailwind على إحدى أقوى مجموعات الألوان من بين أي إطار عمل CSS. أكثر من 50 لوناً مع 11 درجة لكل منها، بالإضافة إلى أدوات شفافية متقدمة." },
+        { type: "li", text: "ألوان الخلفية: bg-white، bg-blue-500، إلخ" },
+        { type: "li", text: "ألوان النص: text-gray-900، text-red-500، إلخ" },
+        { type: "li", text: "ألوان الحدود: border-gray-300، border-blue-500، إلخ" },
+        { type: "li", text: " معدلات الشفافية: bg-blue-500/75 لشفافية 75%" },
+      ]},
+      { title: "الخلفيات والحدود", content: [
+        { type: "p", text: "يوفر Tailwind تحديداً دقيقاً على الخلفيات والحدود، بما في ذلك التدرجات والأحجام والأشكال." },
+        { type: "li", text: "تدرجات الخلفية: bg-gradient-to-r from-blue-500 to-purple-500" },
+        { type: "li", text: "عرض الحدود: border، border-2، border-4" },
+        { type: "li", text: "نصف قطر الحدود: rounded، rounded-lg، rounded-xl، rounded-full" },
+      ]},
+      { title: "الظلال والتدرجات", content: [
+        { type: "p", text: "تضيف الظلال والتدرجات عمقاً وحيوية للعناصر. يوفر Tailwind مجموعة منظمة من الظلال الجاهزة وأدوات التدرج القوية." },
+        { type: "li", text: "ظلال الصندوق: shadow-sm، shadow، shadow-md، shadow-lg، shadow-xl، shadow-2xl" },
+        { type: "li", text: "اتجاهات التدرج: to-r، to-l، to-t، to-b، to-br، to-tr" },
+        { type: "li", text: "تدرجات متعددة الألوان باستخدام via-*" },
+      ]},
+      { title: "الشفافية ووضع الدمج", content: [
+        { type: "p", text: "تحكم في الشفافية ودمج الألوان للتأثيرات البصرية المتقدمة." },
+        { type: "li", text: "الشفافية: opacity-0 إلى opacity-100" },
+        { type: "li", text: "دمج الخلفية: bg-blend-multiply، bg-blend-overlay" },
+        { type: "li", text: "دمج المزج: mix-blend-overlay، mix-blend-difference" },
+      ]},
+      { title: "الانتقالات والرسوم المتحركة", content: [
+        { type: "p", text: "تجعل الرسوم المتحركة واجهتك أكثر حيوية وتفاعلية." },
+        { type: "li", text: "الانتقالات: transition-all، transition-colors، transition-opacity، transition-shadow، transition-transform" },
+        { type: "li", text: "المدة: duration-75 إلى duration-1000" },
+        { type: "li", text: "رسوم متحركة مدمجة: animate-spin، animate-pulse، animate-bounce، animate-ping" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "تغطي فئات الطباعة حجم الخط ووزنه وعائلته وارتفاعه وتباعده" },
+        { type: "li", text: "أكثر من 50 لوناً مع 11 درجة ومعدلات شفافية" },
+        { type: "li", text: "تضيف التدرجات والظلال ووضع الدمج عمقاً بصرياً" },
+        { type: "li", text: "تخلق الانتقالات والرسوم المتحركة تفاعلات سلسة" },
+      ]}
+    ],
+    quiz: [
+      { question: "كيف تعيّن لون خلفية بشفافية 50%؟", options: ["bg-blue-500 opacity-50", "bg-blue-500/50", "bg-opacity-50 blue", "transparent-blue-50"], explanation: "استخدم صيغة معدل الشفافية: bg-blue-500/50 تعيّن لون blue-500 بشفافية 50%." },
+      { question: "أي فئة تنشئ تدرجاً من اليسار إلى اليمين؟", options: ["bg-gradient-to-l", "bg-gradient-to-r", "bg-gradient-horizontal", "gradient-r"], explanation: "bg-gradient-to-r تنشئ تدرجاً خطيياً من اليسار إلى اليمين." },
+      { question: "ماذا يفعل transition-all؟", options: ["يُحوّل جميع خصائص CSS بسلاسة", "يجعل كل شيء يدور", "يفعّل الرسوم المتحركة", "يُغيّر جميع الألوان"], explanation: "يُطبق transition-all انتقالات سلسة على جميع تغييرات خصائص CSS." }
+    ],
+    challenge: { title: "إنشاء بطاقة منتج بتأثيرات", description: "ابنِ بطاقة منتج تستخدم التسلسل الطباعي وخلفيات التدرج والظلال وانتقالات التمرير وتناقض الألوان المناسب." },
+    cheatSheet: { title: "ملخص الطباعة والألوان والتأثيرات", items: [
+      { term: "text-sm / text-lg / text-xl", definition: "أحجام الخطوط" },
+      { term: "font-bold / font-semibold", definition: "أوزان الخطوط" },
+      { term: "text-gray-700", definition: "لون النص" },
+      { term: "bg-blue-500", definition: "لون الخلفية" },
+      { term: "bg-blue-500/75", definition: "خلفية بشفافية 75%" },
+      { term: "rounded-lg / rounded-full", definition: "نصف قطر الحدود" },
+      { term: "shadow-lg", definition: "ظل صندوق كبير" },
+      { term: "bg-gradient-to-r", definition: "تدرج من اليسار إلى اليمين" },
+      { term: "transition-colors", definition: "انتقال الألوان" },
+      { term: "animate-spin", definition: "دوران مستمر" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Typography", content: [

@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [0, 2, 1], fr: [0, 2, 1], de: [0, 2, 1] };
+const correctAnswers = { ar: [0, 2, 1], en: [0, 2, 1], fr: [0, 2, 1], de: [0, 2, 1] };
 
 const challengeCode = `<table border="1">
   <caption>جدول رواتب الموظفين</caption>
@@ -43,6 +43,60 @@ const challengeCode = `<table border="1">
 </table>`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص الخصائص والجداول",
+    columns: [
+      {
+        heading: "الخصائص العامة:",
+        items: [
+          '<code className="inline-code">id</code> - معرف فريد للعنصر',
+          '<code className="inline-code">class</code> - اسم فئة CSS (قابل للمشاركة)',
+          '<code className="inline-code">style</code> - أنماط CSS مباشرة',
+          '<code className="inline-code">title</code> - نص تلميحي عند المرور',
+          '<code className="inline-code">hidden</code> - يخفي العنصر',
+        ],
+      },
+      {
+        heading: "هيكل الجدول:",
+        items: [
+          '<code className="inline-code">&lt;table&gt;</code> - حاوية الجدول',
+          '<code className="inline-code">&lt;caption&gt;</code> - عنوان الجدول',
+          '<code className="inline-code">&lt;thead&gt;</code> - مجموعة رأس الجدول',
+          '<code className="inline-code">&lt;tbody&gt;</code> - مجموعة جسم الجدول',
+          '<code className="inline-code">&lt;tfoot&gt;</code> - مجموعة تذييل الجدول',
+          '<code className="inline-code">&lt;tr&gt;</code> - صف جدول',
+          '<code className="inline-code">&lt;th&gt;</code> - خلية رأس',
+          '<code className="inline-code">&lt;td&gt;</code> - خلية بيانات',
+        ],
+        code: `<!-- جدول بخصائص -->
+<table border="1" style="width:100%">
+  <caption>جدول الموظفين</caption>
+  <thead>
+    <tr>
+      <th scope="col">الاسم</th>
+      <th scope="col">الوظيفة</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>أحمد</td>
+      <td>مطور</td>
+    </tr>
+  </tbody>
+</table>`,
+        codeLanguage: "html",
+      },
+      {
+        heading: "دمج الأعمدة والصفوف:",
+        items: [
+          '<code className="inline-code">colspan="n"</code> - دمج n أعمدة',
+          '<code className="inline-code">rowspan="n"</code> - دمج n صفوف',
+          '<code className="inline-code">scope="col"</code> - رأس لعمود',
+          '<code className="inline-code">scope="row"</code> - رأس لصف',
+        ],
+      },
+    ],
+  },
   en: {
     title: "Attributes and Tables Cheat Sheet",
     columns: [
@@ -208,6 +262,18 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: {
+    title: "مشروع صغير: جدول درجات الدورة",
+    description: "أنشئ جدول يعرض درجات الطلاب:",
+    items: [
+      '<code>&lt;caption&gt;</code> بعنوان "درجات الطلاب"',
+      'صف رأس: الاسم، رياضيات، علوم، إنجليزي، المتوسط',
+      '3 صفوف طلاب على الأقل ببيانات الدرجات',
+      'صف تذييل بالمتوسط العام باستخدام <code>colspan</code>',
+      'استخدم خاصية <code>scope</code> على جميع عناصر <code>&lt;th&gt;</code>',
+    ],
+    hint: "استخدم <code>&lt;thead&gt;</code> و<code>&lt;tbody&gt;</code> و<code>&lt;tfoot&gt;</code> لتنظيم الجدول بشكل صحيح. يمكن حساب المتوسط كمتوسط الدرجات الثلاث.",
+  },
   en: {
     title: "Mini Project: Course Grades Table",
     description: "Create a table that displays student grades:",

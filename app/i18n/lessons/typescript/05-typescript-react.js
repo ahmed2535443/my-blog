@@ -1,4 +1,52 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "لماذا TypeScript مع React؟", content: [
+        { type: "p", text: "TypeScript شائع جداً مع React. يساعد في اكتشاف الأخطاء مبكراً وتحسين تجربة المطور بالإكمال التلقائي وجعل إعادة الهيكلة أكثر أماناً." },
+        { type: "callout", title: "المعيار الصناعي", text: "معظم مشاريع React الجديدة تستخدم TypeScript افتراضياً. تعلم TypeScript + React معاً ضروري لتطوير الويب الحديث." },
+      ]},
+      { title: "إعداد TypeScript مع Next.js", content: [
+        { type: "li", text: "Next.js يدعم TypeScript بشكل مدمج" },
+        { type: "li", text: "فقط أضف tsconfig.json إلى جذر مشروعك" },
+        { type: "li", text: "غيّر اسم الملفات .js/.jsx إلى .ts/.tsx" },
+        { type: "li", text: "سيقوم Next.js بتكوين TypeScript تلقائياً" },
+      ]},
+      { title: "كتابة أنواع خصائص المكون", content: [
+        { type: "p", text: "في React مع TypeScript، تُعرّف أنواع الخصائص التي يقبلها مكونك:" },
+        { type: "code", text: "interface ButtonProps {\n  label: string;\n  onClick: () => void;\n  variant?: 'primary' | 'secondary';\n}\n\nfunction Button({ label, onClick, variant = 'primary' }: ButtonProps) {\n  return (\n    <button onClick={onClick} className={`btn btn-${variant}`}>\n      {label}\n    </button>\n  );\n}" },
+      ]},
+      { title: "كتابة نوع الحالة", content: [
+        { type: "p", text: "يمكن كتابة نوع لـ useState hook للتأكد من أن الحالة具有correct نوع:" },
+        { type: "code", text: "const [count, setCount] = useState<number>(0);\nconst [name, setName] = useState<string>('');\nconst [user, setUser] = useState<User | null>(null);" },
+      ]},
+      { title: "كتابة أنواع الأحداث", content: [
+        { type: "p", text: "يمكن كتابة أنواع لأحداث React لأمان نوع أفضل:" },
+        { type: "code", text: "function handleSubmit(e: React.FormEvent<HTMLFormElement>) {\n  e.preventDefault();\n  // منطق النموذج\n}\n\nfunction handleChange(e: React.ChangeEvent<HTMLInputElement>) {\n  const value = e.target.value;\n}" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "يكتشف TypeScript الأخطاء مبكراً في مكونات React" },
+        { type: "li", text: "Next.js يدعم TypeScript بشكل مدمج" },
+        { type: "li", text: "تُكتب الخصائص بواجهات أو أنواع" },
+        { type: "li", text: "يقبل useState معامل نوع عام" },
+        { type: "li", text: "يمكن كتابة أنواع الأحداث لأمان أفضل" },
+      ]}
+    ],
+    quiz: [
+      { question: "كيف تكتب نوعاً للخصائص في مكون React؟", options: ["بـ PropTypes", "بواجهات/أنواع", " بأسماء فئات", "بتعليقات"], explanation: "في TypeScript React، تُكتب الخصائص باستخدام واجهات أو أسماء أنواع بديلة كمعاملات عامة." },
+      { question: "كيف تكتب نوعاً لـ useState hook؟", options: ["useState<type>(initialValue)", "useState(type, initialValue)", "useState: type = initialValue", "useType(state)"], explanation: "يقبل useState معامل نوع عام مثل useState<number>(0)." },
+      { question: "أي امتداد ملف يُستخدم لمكونات React في TypeScript؟", options: [".jsx", ".tsx", ".ts.jsx", ".react.ts"], explanation: "تستخدم مكونات React في TypeScript امتداد الملف .tsx." }
+    ],
+    challenge: { title: "بناء مكونات مكتوبة بأنواع", description: "أنشئ مكون Card بخصائص مكتوبة بنوع ونموذج بأحداث مكتوبة بنوع وعدّاد بحالة مكتوبة بنوع." },
+    cheatSheet: { title: "ملخص TypeScript React", items: [
+      { term: ".tsx", definition: "امتداد ملف TypeScript React" },
+      { term: "interface Props {}", definition: "تعريف نوع خصائص المكون" },
+      { term: "function Comp({}: Props)", definition: "كتابة نوع الخصائص في الدالة" },
+      { term: "useState<Type>(init)", definition: "كتابة نوع الحالة بالعام" },
+      { term: "React.FormEvent", definition: "نوع حدث النموذج" },
+      { term: "React.ChangeEvent", definition: "نوع حدث تغيير الإدخال" },
+      { term: "React.FC", definition: "نوع المكون الدالة (أقل شيوعاً)" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Why TypeScript with React?", content: [

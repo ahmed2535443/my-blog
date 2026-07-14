@@ -1,4 +1,41 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "ما هي Route Handlers؟", content: [
+        { type: "p", text: "<strong>Route Handlers</strong> هي الطريقة لإنشاء نقاط نهاية API داخل تطبيقات Next.js باستخدام App Router. أنشئ ملف <code>route.js</code> داخل أي مجلد." },
+        { type: "p", text: "Route Handlers تعمل فقط على الخادم — لا يُحمّل أي JavaScript إلى العميل." },
+      ]},
+      { title: "مثال أساسي", content: [
+        { type: "code", text: "// app/api/users/route.js\nimport { NextResponse } from 'next/server';\n\nexport async function GET() {\n  const users = await db.users.findMany();\n  return NextResponse.json(users);\n}" },
+      ]},
+      { title: "طرق HTTP", content: [
+        { type: "li", text: "<code>GET</code> — جلب البيانات" },
+        { type: "li", text: "<code>POST</code> — إنشاء بيانات" },
+        { type: "li", text: "<code>PUT</code> — تحديث البيانات" },
+        { type: "li", text: "<code>DELETE</code> — حذف البيانات" },
+      ]},
+      { title: "proxy.ts — الـ Middleware الجديد", content: [
+        { type: "p", text: "في Next.js 16، <code>proxy.ts</code> يحل محل الـ Middleware القديم. يتعامل مع تعديل الطلب/الاستجابة، والمصادقة، وإعادة التوجيه." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "Route Handlers تنشئ نقاط نهاية API باستخدام ملفات route.js." },
+        { type: "li", text: "تنفذ فقط من جانب الخادم." },
+        { type: "li", text: "تدعم جميع طرق HTTP: GET، POST، PUT، DELETE." },
+        { type: "li", text: "proxy.ts يحل محل Middleware في Next.js 16." },
+      ]}
+    ],
+    quiz: [
+      { question: "أي ملف ينشئ نقطة نهاية API في App Router؟", options: ["api.js", "route.js", "endpoint.js", "server.js"], explanation: "ملف route.js داخل أي مجلد ينشئ نقطة نهاية API." },
+      { question: "أين تنفذ Route Handlers؟", options: ["في المتصفح", "على الخادم فقط", "كلاهما الخادم والعميل", "في عملية منفصلة"], explanation: "Route Handlers تعمل فقط على الخادم." },
+    ],
+    challenge: { title: "أنشئ مسارات API", description: "أنشئ route handlers GET و POST لنقطة نهاية users API." },
+    cheatSheet: { title: "ملخص مراجعة Route Handlers", items: [
+      { term: "route.js", definition: "ملف نقطة نهاية API" },
+      { term: "GET/POST/PUT/DELETE", definition: "تصديرات طرق HTTP" },
+      { term: "NextResponse.json()", definition: "إعادة استجابة JSON" },
+      { term: "proxy.ts", definition: "بديل الـ Middleware الجديد" }
+    ]}
+  },
   en: {
     sections: [
       { title: "What are Route Handlers?", content: [

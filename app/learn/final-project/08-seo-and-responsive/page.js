@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 3, 1], fr: [1, 1, 3, 1], de: [1, 1, 3, 1] };
+const correctAnswers = { en: [1, 1, 3, 1], fr: [1, 1, 3, 1], de: [1, 1, 3, 1], ar: [1, 1, 3, 1] };
 
 const cheatSheetData = {
   en: {
@@ -79,6 +79,29 @@ const cheatSheetData = {
           "<code className='inline-code'>sm:</code> 640px - <code className='inline-code'>md:</code> 768px",
           "<code className='inline-code'>lg:</code> 1024px - <code className='inline-code'>xl:</code> 1280px",
           "<code className='inline-code'>next/image</code> für optimierte Bilder verwenden",
+        ],
+      },
+    ],
+  },
+  ar: {
+    title: "مرجع SEO والتصميم المتجاوب السريع",
+    columns: [
+      {
+        heading: "Metadata API:",
+        items: [
+          "ثابت: <code className='inline-code'>export const metadata = {...}</code>",
+          "ديناميكي: <code className='inline-code'>export async function generateMetadata()</code>",
+          "Open Graph للمشاركة الاجتماعية",
+          "sitemap.xml و robots.txt للزاحفات",
+        ],
+      },
+      {
+        heading: "التصميم المتجاوب:",
+        items: [
+          "Mobile First - الافتراضي للشاشات الصغيرة",
+          "<code className='inline-code'>sm:</code> 640px - <code className='inline-code'>md:</code> 768px",
+          "<code className='inline-code'>lg:</code> 1024px - <code className='inline-code'>xl:</code> 1280px",
+          "استخدم <code className='inline-code'>next/image</code> للصور المحسّنة",
         ],
       },
     ],

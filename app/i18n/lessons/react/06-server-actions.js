@@ -1,4 +1,43 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "ما هي إجراءات الخادم؟", content: [
+        { type: "p", text: "إجراءات الخادم هي دوال تعمل <strong>فقط على الخادم</strong>. تتعامل مع إرسال النماذج وعمليات قاعدة البيانات والمهام الخادم الأخرى." },
+        { type: "p", text: "في Next.js 13+، حدد الدالة بـ <code>\"use server\"</code> لجعلها إجراء خادم." },
+        { type: "p", text: "يمكن استدعاء إجراءات الخادم من مكونات العميل أو النماذج أو حتى مكونات الخادم." },
+      ]},
+      { title: "لماذا تستخدم إجراءات الخادم؟", content: [
+        { type: "li", text: "إبقاء المنطق الحساس والبيانات على الخادم" },
+        { type: "li", text: "تقليل حزمة JavaScript من جانب العميل" },
+        { type: "li", text: "تبسيط تعامل النماذج دون مسارات API" },
+        { type: "li", text: "الوصول المباشر إلى قاعدة البيانات دون كشف بيانات الاعتماد" },
+      ]},
+      { title: "الصيغة الأساسية", content: [
+        { type: "p", text: "أضف <code>\"use server\"</code> في أعلى الملف أو داخل دالة غير متزامنة لجعلها إجراء خادم." },
+        { type: "callout", title: "مهم", text: "يجب أن تكون إجراءات الخادم دوال غير متزامنة." },
+      ]},
+      { title: "استخدام إجراءات الخادم مع النماذج", content: [
+        { type: "p", text: "انقل إجراء الخادم إلى خاصية <code>action</code> لعنصر النموذج للتعامل التلقائي مع النموذج." },
+        { type: "li", text: "تتم تسلسل بيانات النموذج تلقائياً" },
+        { type: "li", text: "يعمل مع مكونات الخادم و مكونات العميل" },
+        { type: "li", text: "يدعم التحسين التدريجي" },
+      ]},
+      { title: "إعادة التحقق من البيانات", content: [
+        { type: "p", text: "بعد اكتمال إجراء الخادم، استخدم <code>revalidatePath</code> أو <code>revalidateTag</code> لتحديث البيانات المخزنة مؤقتاً." },
+      ]},
+    ],
+    quiz: [
+      { question: "كيف تجعل الدالة إجراء خادم؟", options: ["أضف توجيه 'use client'", "أضف توجيه 'use server'", "صدّره كافتراضي", "استخدم خاصية server"], correctAnswer: 1, explanation: "أضف التوجيه 'use server' في أعلى الملف أو داخل الدالة." },
+      { question: "أي نوع من الدوال يجب أن تكون إجراءات الخادم؟", options: ["متزامنة", "دوال سهمية", "دوال غير متزامنة", "دوال مولّدة"], correctAnswer: 2, explanation: "يجب أن تكون إجراءات الخادم دوال غير متزامنة." },
+      { question: "هل يمكن استدعاء إجراءات الخادم من مكونات العميل؟", options: ["لا، فقط من مكونات الخادم", "نعم، يمكن استدعاءها من أي مكان", "فقط من النماذج", "فقط من مسارات API"], correctAnswer: 1, explanation: "يمكن استدعاء إجراءات الخادم من مكونات العميل أو النماذج أو مكونات الخادم." },
+      { question: "كيف تُحدّث البيانات المخزنة مؤقتاً بعد إجراء خادم؟", options: ["استخدم useEffect", "استخدم revalidatePath أو revalidateTag", "استخدم router.refresh()", "استخدم SWR"], correctAnswer: 1, explanation: "استخدم revalidatePath أو revalidateTag لتحديث البيانات المخزنة مؤقتاً بعد إجراء الخادم." },
+    ],
+    challenge: { title: "ابنِ معالج نماذج", description: "أنشئ نموذجاً يستخدم إجراءات الخادم لمعالجة الإرسالات وحفظ البيانات في قاعدة بيانات." },
+    cheatSheet: { title: "ملخص إجراءات الخادم", columns: [
+      { heading: "إجراء خادم أساسي:", items: ['"use server";', 'async function saveData(formData) {', '  const name = formData.get("name");', '  await db.insert(name);', '}'] },
+      { heading: "في النموذج:", items: ['<form action={saveData}>', '  <input name="name" />', '  <button type="submit">Save</button>', '</form>'] },
+    ]},
+  },
   en: {
     sections: [
       { title: "What are Server Actions?", content: [

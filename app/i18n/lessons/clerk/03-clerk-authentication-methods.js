@@ -1,4 +1,44 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "طرق المصادقة", content: [
+        { type: "p", text: "يدعم Clerk طرق مصادقة متعددة جاهزة. في هذا الدرس، سنتعلم كيفية تنفيذ كل منها." },
+      ]},
+      { title: "البريد الإلكتروني وكلمة المرور", content: [
+        { type: "code", text: "// صفحة التسجيل\nimport { SignUp } from '@clerk/nextjs';\n\nexport default function SignUpPage() {\n  return <SignUp />;\n}\n\n// صفحة تسجيل الدخول\nimport { SignIn } from '@clerk/nextjs';\n\nexport default function SignInPage() {\n  return <SignIn />;\n}" },
+      ]},
+      { title: "مزودو تسجيل الدخول الاجتماعي", content: [
+        { type: "p", text: "فعّل تسجيل الدخول الاجتماعي في لوحة تحكم Clerk: التطبيق → المستخدم والمصادقة → الاتصالات الاجتماعية." },
+        { type: "li", text: "Google — الأكثر شعبية" },
+        { type: "li", text: "GitHub — للمطورين" },
+        { type: "li", text: "Facebook — أكبر شبكة اجتماعية" },
+        { type: "li", text: "Twitter/X — شائعة بين مجتمع التقنية" },
+        { type: "li", text: "Apple — مطلوبة لتطبيقات iOS" },
+      ]},
+      { title: "المصادقة متعددة العوامل (MFA)", content: [
+        { type: "p", text: "تضيف MFA طبقة أمان إضافية. يدعم Clerk رموز SMS، ورموز البريد الإلكتروني، وتطبيقات المصادقة." },
+        { type: "p", text: "فعّل MFA في لوحة التحكم: المستخدم والمصادقة → متعددة العوامل." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "يوفر Clerk مكونات SignIn و SignUp مدمجة." },
+        { type: "li", text: "يمكن تفعيل تسجيل الدخول الاجتماعي من لوحة التحكم." },
+        { type: "li", text: "تضيف MFA أماناً إضافياً بطرق تحقق متعددة." },
+      ]}
+    ],
+    quiz: [
+      { question: "أي مزودين لتسجيل الدخول الاجتماعي يدعمهم Clerk؟", options: ["Google فقط", "Google و GitHub و Facebook والمزيد", "البريد الإلكتروني فقط", "GitHub فقط"], explanation: "يدعم Clerk مزودين متعددين بما في ذلك Google و GitHub و Facebook و Twitter و Apple والمزيد." },
+      { question: "ماذا يعني MFA؟", options: ["متعدد الملفات الوصول", "المصادقة متعددة العوامل", "تخصيص الملفات", "واجهة برمجة متعددة الوظائف"], explanation: "MFA = المصادقة متعددة العوامل، تضيف طبقات أمان إضافية." },
+    ],
+    challenge: { title: "نفذ طرق مصادقة متعددة", description: "أعد إعداد البريد الإلكتروني/كلمة المرور، وفعّل تسجيل الدخول الاجتماعي بـ Google، وكن MFA لتطبيقك." },
+    cheatSheet: { title: "ملخص مراجعة طرق المصادقة", items: [
+      { term: "<SignIn />", definition: "مكون تسجيل الدخول" },
+      { term: "<SignUp />", definition: "مكون التسجيل" },
+      { term: "Social Connections", definition: "تفعيل في لوحة التحكم" },
+      { term: "MFA", definition: "المصادقة متعددة العوامل" },
+      { term: "SMS Code", definition: "تحقق بالهاتف" },
+      { term: "Authenticator App", definition: "تحقق مبني على TOTP" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Authentication Methods", content: [

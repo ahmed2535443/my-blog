@@ -1,4 +1,83 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "1. مقدمة المشروع", content: [
+        { type: "p", text: "مرحبًا بك في الدرس الأخير من مرحلة جافاسكريبت + ES6+! في هذا الدرس، سنبني مشروعًا عمليًا يجمع <strong>جميع المفاهيم</strong> التي تعلمتها في الدروس السابقة." },
+        { type: "callout", title: "مشروعنا:", text: "نظام إدارة طلاب يحتوي على بيانات الطلاب ومعدلاتهم. سنبني دوالًا لإضافة الطلاب وحساب المعدلات والتصفية وعرض التقارير." },
+        { type: "p", text: "هذا المشروع مصمم ليكون <strong>جسرًا</strong> بين أساسيات جافاسكريبت ومكتبة React. كل مفهوم تستخدمه هنا ستجده مباشرة في React:" },
+        { type: "li", text: "المصفوفات والكائنات = <strong>Props و State</strong> في React" },
+        { type: "li", text: "الدوال المساعدة = <strong>Custom Hooks</strong>" },
+        { type: "li", text: "تحويل البيانات = <strong>JSX والعرض</strong>" },
+        { type: "li", text: "async/await = <strong>useEffect وجلب البيانات</strong>" },
+        { type: "li", text: "الوحدات = <strong>تقسيم المكونات</strong>" },
+      ]},
+      { title: "2. ما سنتعلمه", content: [
+        { type: "p", text: "من خلال هذا المشروع، ستطبق عمليًا:" },
+        { type: "li", text: "هياكل البيانات (المصفوفات والكائنات)" },
+        { type: "li", text: "دوال السهم" },
+        { type: "li", text: "التفكيك" },
+        { type: "li", text: "عملية Spread" },
+        { type: "li", text: "map و filter و reduce" },
+        { type: "li", text: "find و some و every" },
+        { type: "li", text: "Object.keys و values و entries" },
+        { type: "li", text: "قوالب النصوص" },
+        { type: "li", text: "الوحدات" },
+        { type: "li", text: "async/await" },
+      ]},
+      { title: "3. هيكل المشروع", content: [
+        { type: "p", text: "في المشاريع الحقيقية، نقسم الكود إلى ملفات منفصلة. لأغراض تعليمية، سنكتب كل شيء في ملف واحد، ثم نُظهر كيف يمكن تقسيمه." },
+        { type: "p", text: "<strong>المبدأ الأساسي:</strong> كل ملف مسؤول عن مهمة واحدة فقط (مبدأ المسؤولية الفردية)." },
+      ]},
+      { title: "4. الخطوة 1: تجهيز البيانات", content: [
+        { type: "p", text: "الخطوة الأولى هي تعريف شكل البيانات التي سيعمل معها مشروعنا. نستخدم <strong>مصفوفة كائنات</strong>، النمط الأكثر شيوعًا لتمثيل مجموعات البيانات في جافاسكريبت." },
+      ]},
+      { title: "5. الخطوة 2: المنطق الأساسي", content: [
+        { type: "p", text: "الآن نبني الدوال الأساسية: حساب المتوسط باستخدام <strong>reduce</strong>، وتصنيف الدرجات، وثراء بيانات الطلاب." },
+        { type: "p", text: "<strong>حساب المتوسط مع reduce:</strong> دالة reduce من أقوى طرق المصفوفات. تأخذ دالة callback وقيمة أولية، ثم تكرر عبر كل عنصر متراكمًا النتيجة." },
+        { type: "p", text: "<strong>ثراء البيانات مع map و Spread:</strong> بعد حساب المتوسط، نستخدم map لإنشاء نسخة محسّنة لكل طالب. نستخدم عملية Spread لإضافة حقول جديدة دون تعديل الكائن الأصلي." },
+      ]},
+      { title: "6. الخطوة 3: الدوال المساعدة (البحث والتصفية)", content: [
+        { type: "p", text: "الآن نبني دوالًا تبحث وتصفية البيانات. هذه هي أساس كل تطبيق ويب: البحث والتصفية والتحقق الشرطي." },
+        { type: "p", text: "<strong>مقارنة الطرق:</strong>" },
+        { type: "li", text: "filter() - تُرجع مصفوفة بالعناصر المطابقة لشرط" },
+        { type: "li", text: "find() - تُرجع أول عنصر يطابق شرطًا" },
+        { type: "li", text: "some() - تتحقق مما إذا كان عنصر واحد على الأقل يطابق" },
+        { type: "li", text: "every() - تتحقق مما إذا كان كل العناصر تطابق" },
+        { type: "li", text: "map() - تحول كل عنصر إلى قيمة جديدة" },
+        { type: "li", text: "reduce() - تجمع العناصر في قيمة واحدة" },
+      ]},
+      { title: "7. الخطوة 4: دمج الكل (الإحصائيات والتقارير)", content: [
+        { type: "p", text: "الآن نجمع كل الدوال في نظام متكامل: إحصائيات عامة، وتقارير تفصيلية، وإدارة البيانات (إضافة وحذف وتحديث)." },
+        { type: "p", text: "<strong>إدارة البيانات (CRUD):</strong> إنشاء (إضافة)، قراءة (عرض)، تحديث (تعديل)، حذف (إزالة). لاحظ أننا لا نعدّل المصفوفة الأصلية أبدًا - ننشئ نسخ جديدة، وهو مبدأ أساسي في React." },
+      ]},
+      { title: "8. الكود الكامل", content: [
+        { type: "p", text: "هذا هو الكود الكامل لنظام إدارة الطلاب. يمكنك نسخه وتشغيله مباشرة في محرر جافاسكريبت." },
+      ]},
+      { title: "9. الوحدات و async/await", content: [
+        { type: "p", text: "<strong>تقسيم الكود إلى وحدات:</strong> في المشاريع الحقيقية، لا نكتب كل شيء في ملف واحد. كل ملف مسؤول عن مهمة محددة. تسمى برمجة الوحدات." },
+        { type: "p", text: "<strong>محاكاة غير المتزامنة:</strong> في التطبيقات الحقيقية، تأتي البيانات من خادم عبر الشبكة. نستخدم async/await مع الوعود للتعامل مع هذا التأخير." },
+      ]},
+      { title: "10. تحديات إضافية", content: [
+        { type: "p", text: "وقت التحديات! حاول حل هذه التحديات لتثبيت ما تعلمته." },
+        { type: "li", text: "<strong>التحدي 1:</strong> ترتيب الطلاب حسب المتوسط (من الأعلى إلى الأدنى)" },
+        { type: "li", text: "<strong>التحدي 2:</strong> التجميع حسب القسم" },
+        { type: "li", text: "<strong>التحدي 3:</strong> التصدير بتنسيق CSV" },
+        { type: "li", text: "<strong>التحدي 4:</strong> نظام التحقق من الدرجات" },
+        { type: "li", text: "<strong>التحدي 5:</strong> بحث متقدم بمعايير متعددة" },
+      ]},
+    ],
+    quiz: [
+      { question: "أي مفهوم سنستخدمه لحساب معدل مجموعة من الدرجات في مصفوفة؟", options: ["map - لتحويل العناصر", "filter - لتصفية العناصر", "reduce - لجمع العناصر في قيمة واحدة", "find - للبحث عن عنصر محدد"], correctAnswer: 2, explanation: "reduce هي الأنسب لأنها تكرر عبر كل عنصر وتجمعهم في قيمة واحدة (المجموع)، ثم نقسم على عدد العناصر للحصول على المتوسط." },
+    ],
+    challenge: { title: "تحديات إضافية", description: "جرب هذه التحديات: 1. ترتيب حسب المتوسط، 2. تجميع حسب القسم، 3. تصدير CSV، 4. التحقق من الدرجات، 5. بحث متقدم." },
+    cheatSheet: { title: "نظام إدارة الطلاب - مرجع كامل", items: [
+      { label: "ثراء البيانات", description: "calculateAverage(grades) باستخدام reduce | getGradeLabel(average) باستخدام if/else | enrichStudent(student) باستخدام spread" },
+      { label: "البحث والتصفية", description: "getActiveStudents() باستخدام filter | getTopStudents() باستخدام filter | findByName() باستخدام find | searchStudents() باستخدام filter مع includes" },
+      { label: "الإحصائيات", description: "getStatistics() باستخدام reduce لبناء كائن إحصائيات كامل مع count و average و highest و lowest و active" },
+      { label: "إدارة البيانات", description: "addStudent() باستخدام spread | removeStudent() باستخدام filter | updateGrades() باستخدام map مع spread" },
+      { label: "أنماط غير المتزامنة", description: "fetchStudentsFromAPI() باستخدام Promise | async/await مع try/catch/finally | processStudentData() تجمع map و reduce و async" },
+    ]},
+  },
   en: {
     sections: [
       { title: "1. Project Introduction", content: [

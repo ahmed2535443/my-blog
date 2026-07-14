@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2], fr: [1, 2], de: [1, 2] };
+const correctAnswers = { ar: [1, 2], en: [1, 2], fr: [1, 2], de: [1, 2] };
 
 const challengeCode = `async function fetchUserData(userId) {
   try {
@@ -42,6 +42,31 @@ async function fetchMultipleUsers() {
 fetchMultipleUsers();`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ورقة مرجعية لجافاسكريبت - الدرس 4",
+    columns: [
+      {
+        heading: "الوحدات (ES6):",
+        items: [
+          '<code className="inline-code">export const name = value</code> - تصدير مسمى',
+          '<code className="inline-code">export default function</code> - تصدير افتراضي',
+          '<code className="inline-code">import { name } from "./module"</code> - استيراد مسمى',
+          '<code className="inline-code">import Name from "./module"</code> - استيراد افتراضي',
+        ],
+      },
+      {
+        heading: "Async/Await والوعود:",
+        items: [
+          '<code className="inline-code">async function</code> - تعلن عن دالة غير متزامنة',
+          '<code className="inline-code">await</code> - ينتظر حل الوعيد',
+          '<code className="inline-code">new Promise()</code> - ينشئ وعيدًا',
+          '<code className="inline-code">Promise.all()</code> - ينتظر جميع الوعود',
+          '<code className="inline-code">Promise.race()</code> - أسرع واحد يحل يفوز',
+          '<code className="inline-code">.then()/.catch()</code> - تسلسل الوعود',
+        ],
+      },
+    ],
+  },
   en: {
     title: "JavaScript Cheat Sheet - Lesson 4",
     columns: [
@@ -120,6 +145,18 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: {
+    title: "مشروع صغير: جالب بيانات غير متزامن",
+    description: "أنشئ تطبيقًا غير متزامن:",
+    items: [
+      "يجلب البيانات من API عام (مثل JSONPlaceholder)",
+      "يستخدم async/await لجميع العمليات غير المتزامنة",
+      "يعالج الأخطاء بأناقة مع try-catch",
+      "يجلب موارد متعددة بالتوازي مع Promise.all",
+      "يُصدّر الدوال المساعدة كوحدات ES6",
+    ],
+    hint: "استخدم fetch API مع نمط async/await.",
+  },
   en: {
     title: "Mini Project: Async Data Fetcher",
     description: "Create an async application that:",

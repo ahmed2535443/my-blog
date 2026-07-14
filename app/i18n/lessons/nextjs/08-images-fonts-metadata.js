@@ -1,4 +1,33 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "next/image — مكون الصور المحسّن", content: [
+        { type: "p", text: "مكون <code>next/image</code> يوفر تحسيناً تلقائياً للصور بما في ذلك التحميل الكسول، وإعادة التغيير الحجم، وتحويل الصيغة إلى WebP أو AVIF." },
+        { type: "p", text: "استخدام علامات <code>&lt;img&gt;</code> العادية يسبب العديد من المشاكل: لا يوجد تحميل كسول، لا يوجد تغيير حجم، لا يوجد تحويل صيغة." },
+      ]},
+      { title: "next/font — الخطوط المحسّنة", content: [
+        { type: "p", text: "وحدة <code>next/font</code> تحسّن الخطوط تلقائياً عن طريق تنزيلها وقت البناء واستضافتها مع أصولك الثابتة." },
+      ]},
+      { title: "واجهة برمجة البيانات الوصفية", content: [
+        { type: "p", text: "Next.js يوفر واجهة برمجة البيانات الوصفية لتحسين محركات البحث. صدّر كائن <code>metadata</code> أو دالة <code>generateMetadata</code> من page.js أو layout.js." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "استخدم next/image بدلاً من <img> للصور المحسّنة." },
+        { type: "li", text: "استخدم next/font للتحميل المحسّن للخطوط." },
+        { type: "li", text: "صدّر كائنات metadata لتحسين محركات البحث." },
+      ]}
+    ],
+    quiz: [
+      { question: "لماذا تستخدم next/image بدلاً من <img>؟", options: ["يبدو أفضل", "يوفر التحميل الكسول وإعادة تغيير الحجم وتحسين الصيغة", "مطلوب من React", "لا يوجد فرق"], explanation: "next/image يوفر التحميل الكسول التلقائي وتحويل WebP/AVIF." },
+    ],
+    challenge: { title: "حسّن الصور والخطوط", description: "استبدل علامات <img> بـ next/image وقم بتكوين الخطوط باستخدام next/font." },
+    cheatSheet: { title: "ملخص مراجعة الصور والخطوط والبيانات الوصفية", items: [
+      { term: "<Image src='/photo.jpg' />", definition: "مكون صور محسّن" },
+      { term: "next/font", definition: "تحميل خطوط محسّن" },
+      { term: "export const metadata = {}", definition: "بيانات وصفية للصفحة لتحسين محركات البحث" },
+      { term: "generateMetadata()", definition: "دالة بيانات وصفية ديناميكية" }
+    ]}
+  },
   en: {
     sections: [
       { title: "next/image — Optimized Image Component", content: [

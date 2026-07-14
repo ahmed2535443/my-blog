@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [2, 1, 0], fr: [2, 1, 0], de: [2, 1, 0] };
+const correctAnswers = { ar: [2, 1, 0], en: [2, 1, 0], fr: [2, 1, 0], de: [2, 1, 0] };
 
 const challengeCode = `<!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -32,6 +32,36 @@ const challengeCode = `<!DOCTYPE html>
 </html>`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص HTML - الدرس الأول",
+    columns: [
+      {
+        heading: "العلامات الأساسية:",
+        items: [
+          '<code className="inline-code">&lt;!DOCTYPE html&gt;</code> - إعلان نوع المستند',
+          '<code className="inline-code">&lt;html&gt;</code> - العنصر الجذر',
+          '<code className="inline-code">&lt;head&gt;</code> - البيانات الوصفية للصفحة',
+          '<code className="inline-code">&lt;body&gt;</code> - المحتوى المرئي',
+          '<code className="inline-code">&lt;title&gt;</code> - عنوان التبويب',
+          '<code className="inline-code">&lt;meta&gt;</code> - معلومات البيانات الوصفية',
+        ],
+      },
+      {
+        heading: "قالب صفحة أساسية:",
+        code: `<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>العنوان</title>
+</head>
+<body>
+  <!-- المحتوى هنا -->
+</body>
+</html>`,
+        codeLanguage: "html",
+      },
+    ],
+  },
   en: {
     title: "HTML Cheat Sheet - Lesson 1",
     columns: [
@@ -125,6 +155,18 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: {
+    title: "مشروع صغير: بطاقة هوية شخصية",
+    description: "أنشئ صفحة HTML تحتوي على بطاقة هوية شخصية تتضمن:",
+    items: [
+      'اسمك كعنوان رئيسي <code>&lt;h1&gt;</code>',
+      'وصف مختصر عنك في فقرة <code>&lt;p&gt;</code>',
+      'قائمة بمهاراتك <code>&lt;ul&gt;</code>',
+      'قائمة مرقمة بتجاربك <code>&lt;ol&gt;</code>',
+      'رابط لصفحتك أو بريدك الإلكتروني <code>&lt;a&gt;</code>',
+    ],
+    hint: "ستحتاج علامات جديدة لم تتعلمها بعد مثل <code>&lt;a&gt;</code> للروابط. يمكنك البحث عنها على Google أو الانتظار حتى الدرس القادم!",
+  },
   en: {
     title: "Mini Project: Personal ID Card",
     description: "Create an HTML page containing a personal ID card that includes:",

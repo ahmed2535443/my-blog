@@ -1,4 +1,64 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "مقدمة في تصميم قاعدة البيانات", content: [
+        { type: "p", text: "الآن نحتاج إلى تصميم قاعدة البيانات التي ستخزن جميع بيانات المدونة. تصميم قاعدة البيانات هو أساس أي تطبيق يعتمد على البيانات." },
+        { type: "p", text: "تصميم قاعدة البيانات الجيد يجعل التطبيق أسرع وأمان وأسهل في الصيانة." },
+        { type: "callout", title: "الفوائد الرئيسية", text: "جداول منظمة جيدًا، علاقات واضحة بين البيانات، وصول آمن عبر RLS، استعلامات محسّنة." }
+      ]},
+      { title: "الجداول المطلوبة", content: [
+        { type: "p", text: "بناءً على متطلبات مدونتنا، نحتاج إلى 4 جداول رئيسية:" },
+        { type: "li", text: "<strong>profiles:</strong> ملفات تعريف المستخدمين المرتبطة بمصادقة Clerk" },
+        { type: "li", text: "<strong>categories:</strong> تصنيفات المقالات مثل التكنولوجيا والتصميم والتطوير" },
+        { type: "li", text: "<strong>posts:</strong> مقالات المدونة مع العنوان والمحتوى والمؤلف والتصنيف" },
+        { type: "li", text: "<strong>comments:</strong> تعليقات المستخدمين على المقالات" }
+      ]},
+      { title: "إنشاء جدول profiles", content: [
+        { type: "p", text: "يخزن جدول profiles معلومات المستخدم الإضافية além مما توفره Clerk. إنه مرتبط بجدول auth.users." },
+        { type: "callout", title: "المفاهيم الرئيسية", text: "id UUID PRIMARY KEY مرتبط بـ auth.users، REFERENCES ينشئ مفتاحًا أجنبيًا، ON DELETE CASCADE يحذف الملف عند حذف المستخدم." }
+      ]},
+      { title: "إنشاء جدول categories", content: [
+        { type: "p", text: "ينظم جدول categories المقالات إلى مجموعات بأسماء فريدة وروابط مناسبة للعناوين." },
+        { type: "callout", title: "الحقول المهمة", text: "name TEXT NOT NULL UNIQUE يضمن أسماء فريدة، slug يُستخدم في العناوين، color يساعد في التمييز البصري." }
+      ]},
+      { title: "إنشاء جدول posts", content: [
+        { type: "p", text: "جدول posts هو جوهر مدونتنا ويخزن المقالات مع المحتوى والمؤلف والتصنيف وحالة النشر." },
+        { type: "callout", title: "العلاقات المهمة", text: "author_id مرتبط بـ profiles، category_id مرتبط بـ categories مع ON DELETE SET NULL، status يمكن أن يكون draft أو published." }
+      ]},
+      { title: "إنشاء جدول comments", content: [
+        { type: "p", text: "يخزن جدول comments تعليقات المستخدمين على المقالات مع دعم التعليقات المتداخلة." },
+        { type: "callout", title: "التعليقات المتداخلة", text: "عمود parent_id يتيح التعليقات المتداخلة. null يعني تعليق في المستوى الأول، وإلا يشير إلى id تعليق آخر." }
+      ]},
+      { title: "علاقات البيانات", content: [
+        { type: "p", text: "تحدد العلاقات كيفية اتصال الجداول ببعضها البعض." },
+        { type: "li", text: "<strong>واحد إلى متعدد:</strong> مستخدم واحد يمكنه كتابة عدة مقالات" },
+        { type: "li", text: "<strong>متعدد إلى واحد:</strong> عدة مقالات يمكن أن تنتمي إلى تصنيف واحد" },
+        { type: "li", text: "<strong>إحالة ذاتية:</strong> التعليقات يمكن أن ترد على تعليقات أخرى" },
+        { type: "callout", title: "سلوك ON DELETE", text: "CASCADE يحذف السجلات المرتبطة، SET NULL يضع المفتاح الأجنبي على null، RESTRICT يمنع الحذف إذا وجدت سجلات مرتبطة." }
+      ]},
+      { title: "سياسات أمان RLS", content: [
+        { type: "p", text: "يضمن أمان مستوى الصفوف أن المستخدمين يمكنهم فقط الوصول إلى البيانات المصرح لهم برؤيتها." },
+        { type: "callout", title: "قواعد RLS الرئيسية", text: "الجميع يمكنهم رؤية المقالات المنشورة، المستخدمون المصادق عليهم يمكنهم إنشاء المقالات، المؤلفون لا يمكنهم تعديل/حذف مقالاتهم فقط." }
+      ]},
+      { title: "عروض قاعدة البيانات", content: [
+        { type: "p", text: "العروض هي جداول افتراضية تجمع البيانات من جداول متعددة، مما يبسط الاستعلامات المعقدة." },
+        { type: "callout", title: "فوائد العروض", text: "تبسط استعلامات JOIN، تحسين الأداء، توفر API نظيفة للواجهة الأمامية." }
+      ]}
+    ],
+    quiz: [
+      { question: "ماذا يحدث مع ON DELETE SET NULL لـ category_id في posts عند حذف تصنيف؟",
+        options: ["تُحذف جميع المقالات", "يُوضع category_id على NULL", "يُمنع الحذف", "يتم إلقاء خطأ"],
+        correctAnswer: 1, explanation: "يضع ON DELETE SET NULL category_id في المقالات المرتبطة على NULL بدلاً من حذف المقالات." }
+    ],
+    challenge: { title: "تحدي: تصميم جدول likes",
+      description: "صمم جدول likes مع id، post_id، user_id، created_at. أضف قيد UNIQUE على (post_id، user_id) وفعّل RLS." },
+    cheatSheet: { title: "مرجع تصميم قاعدة البيانات السريع", items: [
+      { title: "الجداول الأساسية", content: "profiles, categories, posts, comments" },
+      { title: "أنواع العلاقات", content: "واحد إلى متعدد وإحالة ذاتية" },
+      { title: "خيارات ON DELETE", content: "CASCADE, SET NULL, RESTRICT" },
+      { title: "الأمان", content: "فعّل RLS على جميع الجداول" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Introduction to Database Design", content: [

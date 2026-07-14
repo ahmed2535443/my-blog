@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1], fr: [1], de: [1] };
+const correctAnswers = { ar: [1], en: [1], fr: [1], de: [1] };
 
 const challengeCode = `function process(students) {
   let total = 0;
@@ -39,6 +39,27 @@ const challengeCode = `function process(students) {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص إعادة الهيكلة",
+    columns: [
+      {
+        heading: "المبادئ الأساسية:",
+        items: [
+          '<strong style={{ color: "var(--primary)" }}>DRY</strong> - لا تكرر نفسك - استخرج المنطق المشترك',
+          '<strong style={{ color: "var(--accent)" }}>KISS</strong> - أبقه بسيطاً - تجنب التعقيد غير الضروري',
+          '<strong style={{ color: "var(--secondary)" }}>المسؤولية الفردية</strong> - كل دالة تفعل شيئاً واحداً فقط',
+        ],
+      },
+      {
+        heading: "تقنيات إعادة الهيكلة:",
+        items: [
+          '<strong style={{ color: "var(--primary)" }}>استخراج الدالة</strong> - قسم الدوال الطويلة إلى أصغر',
+          '<strong style={{ color: "var(--accent)" }}>إعادة تسمية المتغير</strong> - حسّن أسماء المتغيرات والدوال',
+          '<strong style={{ color: "var(--secondary)" }}>استبدال الشرط</strong> - استبدل الشروط بالتعدد الأشكال أو الكائنات',
+        ],
+      },
+    ],
+  },
   en: {
     title: "Refactoring Cheat Sheet",
     columns: [

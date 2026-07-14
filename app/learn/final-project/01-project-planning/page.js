@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1], fr: [1], de: [1] };
+const correctAnswers = { en: [1], fr: [1], de: [1], ar: [1] };
 
 const cheatSheetData = {
   en: {
@@ -79,6 +79,29 @@ const cheatSheetData = {
           "<code className='inline-code'>Supabase</code> - PostgreSQL-Datenbank mit RLS",
           "<code className='inline-code'>Clerk</code> - Benutzerauthentifizierung",
           "<code className='inline-code'>Tailwind CSS</code> - Utility-First CSS-Framework",
+        ],
+      },
+    ],
+  },
+  ar: {
+    title: "مرجع التخطيط السريع",
+    columns: [
+      {
+        heading: "خطوات التخطيط:",
+        items: [
+          "1. تحديد الفكرة - اكتب وصفًا موجزًا لمشروعك",
+          "2. تحليل المتطلبات - حدد الميزات الأساسية والإضافية",
+          "3. اختيار التقنيات - اختر الأدوات المناسبة لمشروعك",
+          "4. تخطيط الهيكل - حدد هيكل الملفات والمجلدات",
+        ],
+      },
+      {
+        heading: "التقنيات الرئيسية:",
+        items: [
+          "<code className='inline-code'>Next.js 16</code> - إطار عمل React مع App Router",
+          "<code className='inline-code'>Supabase</code> - قاعدة بيانات PostgreSQL مع RLS",
+          "<code className='inline-code'>Clerk</code> - مصادقة المستخدمين",
+          "<code className='inline-code'>Tailwind CSS</code> - إطار عمل CSS على أساس المساعدات",
         ],
       },
     ],

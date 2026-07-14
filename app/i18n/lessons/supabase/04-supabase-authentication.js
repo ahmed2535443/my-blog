@@ -1,4 +1,39 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "مصادقة Supabase", content: [
+        { type: "p", text: "يوفر Supabase نظام مصادقة كاملاً جاهزاً، يدعم طرقاً متعددة: البريد الإلكتروني/كلمة المرور، الروابط السحرية، تسجيل الدخول الاجتماعي (Google، GitHub، Facebook)، و OTP للهاتف." },
+      ]},
+      { title: "مصادقة البريد الإلكتروني/كلمة المرور", content: [
+        { type: "code", text: "// التسجيل\nconst { data, error } = await supabase.auth.signUp({\n  email: 'user@example.com',\n  password: 'securePassword123'\n});\n\n// تسجيل الدخول\nconst { data, error } = await supabase.auth.signInWithPassword({\n  email: 'user@example.com',\n  password: 'securePassword123'\n});\n\n// تسجيل الخروج\nawait supabase.auth.signOut();" },
+      ]},
+      { title: "تسجيل الدخول الاجتماعي", content: [
+        { type: "code", text: "// تسجيل الدخول بـ Google\nconst { data, error } = await supabase.auth.signInWithOAuth({\n  provider: 'google'\n});" },
+      ]},
+      { title: "حماية الصفحات", content: [
+        { type: "p", text: "لحماية الصفحات، تحقق من جلسة المستخدم من جانب الخادم باستخدام <code>supabase.auth.getSession()</code>." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "يدعم Supabase البريد الإلكتروني/كلمة المرور والروابط السحرية وتسجيل الدخول الاجتماعي." },
+        { type: "li", text: "استخدم signUp() و signInWithPassword() و signOut()." },
+        { type: "li", text: "احمِ الصفحات بالتحقق من الجلسة على الخادم." },
+      ]}
+    ],
+    quiz: [
+      { question: "أي طريقة مصادقة لا يدعمها Supabase؟", options: ["البريد الإلكتروني/كلمة المرور", "تسجيل الدخول الاجتماعي (Google)", "الروابط السحرية", "المصادقة البيومترية"], explanation: "Supabase لا يدعم المصادقة البيومترية أصلاً." },
+      { question: "كيف تتسجيل الدخول بالبريد الإلكتروني وكلمة المرور؟", options: ["supabase.auth.login()", "supabase.auth.signInWithPassword()", "supabase.auth.authenticate()", "supabase.auth.email()"], explanation: "استخدم supabase.auth.signInWithPassword() لتسجيل الدخول بالبريد الإلكتروني وكلمة المرور." },
+    ],
+    challenge: { title: "أضف المصادقة إلى تطبيقك", description: "أنشئ نموذج تسجيل وتسجيل دخول. نفذ مصادقة البريد الإلكتروني/كلمة المرور وأضف التحقق من الجلسة لحماية المسارات." },
+    cheatSheet: { title: "ملخص مراجعة مصادقة Supabase", items: [
+      { term: "signUp({email, password})", definition: "تسجيل مستخدم جديد" },
+      { term: "signInWithPassword({email, password})", definition: "تسجيل الدخول بالبيانات" },
+      { term: "signInWithOAuth({provider})", definition: "تسجيل الدخول بمزود اجتماعي" },
+      { term: "signOut()", definition: "تسجيل خروج المستخدم الحالي" },
+      { term: "getSession()", definition: "الحصول على الجلسة الحالية" },
+      { term: "getUser()", definition: "الحصول على معلومات المستخدم الحالي" },
+      { term: "onAuthStateChange()", definition: "الاستماع لتغييرات المصادقة" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Supabase Authentication", content: [

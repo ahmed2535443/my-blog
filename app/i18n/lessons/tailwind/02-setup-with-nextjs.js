@@ -1,4 +1,93 @@
 const translations = {
+  ar: {
+    sections: [
+      {
+        title: "ما هو إعداد Tailwind v4؟",
+        content: [
+          { type: "p", text: "في هذا الدرس، سنتعلم كيفية إعداد <strong>Tailwind CSS v4</strong> مع مشروع <strong>Next.js</strong>. أصبح الإعداد في v4 أسهل وأبسط بكثير مقارنة بالإصدارات السابقة." },
+          { type: "callout", title: "ماذا تغير في Tailwind v4؟", text: "لم يعد هناك ملف tailwind.config.js — الإعداد الآن مباشرة عبر CSS. يستخدم التوجيه @theme للتخصيص. سرعة بناء أسرع بشكل ملحوظ مع مخرجات أصغر. مسح ملفات تلقائي بدون تحديد مسارات." },
+        ]
+      },
+      {
+        title: "التثبيت مع Next.js",
+        content: [
+          { type: "li", text: "<strong>الخطوة 1:</strong> إنشاء مشروع Next.js جديد باستخدام create-next-app" },
+          { type: "li", text: "<strong>الخطوة 2:</strong> تثبيت الحزم المطلوبة: tailwindcss و @tailwindcss/postcss" },
+          { type: "li", text: "<strong>الخطوة 3:</strong> إعداد PostCSS بإنشاء postcss.config.mjs" },
+          { type: "li", text: "<strong>الخطوة 4:</strong> إعداد ملف CSS مع @import \"tailwindcss\"" },
+          { type: "li", text: "<strong>الخطوة 5:</strong> تشغيل المشروع باستخدام npm run dev" },
+        ]
+      },
+      {
+        title: "شرح الملفات",
+        content: [
+          { type: "p", text: "يخبر ملف postcss.config.mjs Next.js كيفية معالجة ملفات CSS. ملف globals.css هو نقطة الدخول لـ Tailwind CSS. سطر @import \"tailwindcss\" يستورد جميع الأنماط الأساسية ويسحب ملفات المشروع ويولّد CSS للفئات المكتشفة." },
+          { type: "callout", title: "لا تستخدم توجيهات v3 القديمة!", text: "في Tailwind v4، لا تستخدم @tailwind base أو @tailwind components أو @tailwind utilities. استبدلها جميعاً بسطر واحد: @import \"tailwindcss\"." },
+        ]
+      },
+      {
+        title: "إعداد VS Code",
+        content: [
+          { type: "li", text: "<strong>Tailwind CSS IntelliSense</strong> — يوفر إكمالاً تلقائياً ومعاينة التمرير وتمييز الأخطاء." },
+          { type: "li", text: "<strong>Tailwind CSS Snippets</strong> — يوفر اختصارات سريعة لكتابة فئات Tailwind الشائعة." },
+          { type: "li", text: "<strong>Prettier + Tailwind Plugin</strong> — يرتب فئات Tailwind تلقائياً بالترتيب الموصى به." },
+        ]
+      },
+      {
+        title: "المكون الأول",
+        content: [
+          { type: "p", text: "لنشئ مكوننا الأول باستخدام Tailwind CSS ونرى كيف يعمل عملياً. أنشئ مكون SimpleCard وأضفه إلى صفحتك الرئيسية." },
+        ]
+      },
+      {
+        title: "الأخطاء الشائعة",
+        content: [
+          { type: "li", text: "<strong>خطأ 1: نسيان ملف PostCSS</strong> — بدون postcss.config.mjs، لن يعمل Tailwind على الإطلاق." },
+          { type: "li", text: "<strong>خطأ 2: استخدام توجيهات v3 القديمة</strong> — استخدام @tailwind base بدلاً من @import \"tailwindcss\"." },
+          { type: "li", text: "<strong>خطأ 3: تحديد مسارات المسح يدوياً</strong> — في v4 يتم ذلك تلقائياً." },
+          { type: "li", text: "<strong>خطأ 4: خلط الاستيراد في globals.css</strong> — أضف @import \"tailwindcss\" كأول سطر." },
+          { type: "li", text: "<strong>خطأ 5: استخدام style بدلاً من className</strong> — فئات Tailwind تذهب في className، وليس في style." },
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: "أي ملف يجب إضافته إلى جذر المشروع لإعداد PostCSS مع Tailwind v4؟",
+        options: ["tailwind.config.js", "postcss.config.mjs", "next.config.js", "css.config.json"],
+        explanation: "ملف postcss.config.mjs هو المسؤول عن ربط Tailwind CSS بـ PostCSS."
+      },
+      {
+        question: "في Tailwind v4، ماذا نستخدم في globals.css بدلاً من @tailwind base/components/utilities؟",
+        options: ["@include tailwindcss", "@import \"tailwindcss\"", "@use tailwindcss", "@load tailwindcss"],
+        explanation: "في v4، نستخدم @import \"tailwindcss\" بدلاً من توجيهات @tailwind القديمة."
+      },
+      {
+        question: "هل نحتاج إلى تحديد مسارات مسح الملفات في v4؟",
+        options: ["نعم، يجب تحديد المسارات في مصفوفة content", "لا، يمسح Tailwind v4 الملفات تلقائياً", "فقط في وضع الإنتاج", "فقط إذا كان المشروع كبيراً"],
+        explanation: "يمسح Tailwind v4 جميع ملفات المشروع تلقائياً — لا حاجة لتحديد مسارات في أي مكان."
+      },
+      {
+        question: "ما هو الحجم النهائي المتوقع لـ CSS في مشروع Tailwind متوسط في الإنتاج؟",
+        options: ["50-100KB", "100-200KB", "10-15KB", "5-8KB"],
+        explanation: "بفضل وضع JIT، لا يتضمن CSS النهائي إلا الفئات المستخدمة. ينتج مشروع متوسط حوالي 10-15KB من CSS."
+      }
+    ],
+    challenge: {
+      title: "تحدي: إنشاء مشروع Next.js جديد مع Tailwind v4",
+      description: "اتبع هذه الخطوات: أنشئ مشروع Next.js جديدًا، ثبّت Tailwind CSS v4 و @tailwindcss/postcss، أنشئ post.css.config.mjs، عدّل globals.css، أنشئ مكون UserCard مع دعم الوضع الداكن، وتحقق من أن التصميم يظهر بشكل صحيح."
+    },
+    cheatSheet: {
+      title: "دليل الإعداد الكامل — Tailwind v4 مع Next.js",
+      items: [
+        { term: "npm install tailwindcss @tailwindcss/postcss", definition: "تثبيت الحزم المطلوبة" },
+        { term: "postcss.config.mjs", definition: "تكوين PostCSS مع إضافة @tailwindcss/postcss" },
+        { term: "@import \"tailwindcss\"", definition: "نقطة الدخول في globals.css" },
+        { term: "Tailwind CSS IntelliSense", definition: "إضافة VS Code للإكمال التلقائي" },
+        { term: "npm run dev", definition: "تشغيل خادم التطوير" },
+        { term: "مسح الملفات", definition: "تلقائي في v4 — لا حاجة لمسارات" }
+      ]
+    }
+  },
   en: {
     sections: [
       {

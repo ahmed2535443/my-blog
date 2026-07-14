@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2, 2, 1], fr: [1, 2, 2, 1], de: [1, 2, 2, 1] };
+const correctAnswers = { en: [1, 2, 2, 1], fr: [1, 2, 2, 1], de: [1, 2, 2, 1], ar: [1, 2, 2, 1] };
 
 const cheatSheetData = {
   en: {
@@ -76,6 +76,28 @@ const cheatSheetData = {
           "<code className='inline-code'>.range(offset, offset + limit - 1)</code> verwenden",
           "Debounce verzögert die Suche bis zum Stoppen der Eingabe",
           "URL-Parameter machen Suchlinks teilbar",
+        ],
+      },
+    ],
+  },
+  ar: {
+    title: "مرجع البحث والتقسيم السريع",
+    columns: [
+      {
+        heading: "بحث Supabase:",
+        items: [
+          "<code className='inline-code'>.ilike('title', '%query%')</code> - بحث نصي بسيط",
+          "<code className='inline-code'>.or('title.ilike...')</code> - بحث متعدد الأعمدة",
+          "<code className='inline-code'>.rpc('search_posts', {search_query})</code> - بحث نصي كامل",
+        ],
+      },
+      {
+        heading: "التقسيم والتأخير:",
+        items: [
+          "احسب <code className='inline-code'>offset = (page - 1) * limit</code>",
+          "استخدم <code className='inline-code'>.range(offset, offset + limit - 1)</code>",
+          "ؤخر Debounce البحث حتى يتوقف الكتابة",
+          "معلمات URL تجعل روابط البحث قابلة للمشاركة",
         ],
       },
     ],

@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2, 1], fr: [1, 2, 1], de: [1, 2, 1] };
+const correctAnswers = { ar: [1, 2, 1], en: [1, 2, 1], fr: [1, 2, 1], de: [1, 2, 1] };
 
 const challengeCode = `<!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -64,6 +64,53 @@ const challengeCode = `<!DOCTYPE html>
 </html>`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص الروابط والصور",
+    columns: [
+      {
+        heading: "الروابط:",
+        items: [
+          '<code className="inline-code">&lt;a href="url"&gt;</code> - رابط أساسي',
+          '<code className="inline-code">target="_blank"</code> - فتح في تبويب جديد',
+          '<code className="inline-code">rel="noopener noreferrer"</code> - أمان مع _blank',
+          '<code className="inline-code">href="#id"</code> - رابط داخلي للصفحة',
+          '<code className="inline-code">href="mailto:x@x.com"</code> - رابط بريد إلكتروني',
+          '<code className="inline-code">href="tel:+123456"</code> - رابط اتصال هاتفي',
+          '<code className="inline-code">download</code> - رابط تنزيل ملف',
+        ],
+      },
+      {
+        heading: "الصور:",
+        items: [
+          '<code className="inline-code">src</code> - مصدر الصورة (إلزامي)',
+          '<code className="inline-code">alt</code> - نص بديل (إلزامي)',
+          '<code className="inline-code">width</code> / <code className="inline-code">height</code> - الأبعاد',
+          '<code className="inline-code">loading="lazy"</code> - التحميل البطيء',
+          '<code className="inline-code">&lt;figure&gt;</code> - حاوية الصورة',
+          '<code className="inline-code">&lt;figcaption&gt;</code> - تعليق الصورة',
+        ],
+        code: `<!-- الروابط -->
+<a href="https://example.com">خارجي</a>
+<a href="/about">داخلي</a>
+<a href="#section">مرساة</a>
+<a href="mailto:x@x.com">بريد</a>
+<a href="file.pdf" download>تنزيل</a>
+<a href="url" target="_blank"
+   rel="noopener noreferrer">تبويب جديد</a>
+
+<!-- الصور -->
+<img src="pic.jpg" alt="وصف"
+     width="400" height="300"
+     loading="lazy" />
+
+<figure>
+  <img src="pic.jpg" alt="وصف" />
+  <figcaption>نص التعليق</figcaption>
+</figure>`,
+        codeLanguage: "html",
+      },
+    ],
+  },
   en: {
     title: "Links and Images Cheat Sheet",
     columns: [
@@ -208,6 +255,19 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: {
+    title: "مشروع صغير: صفحة مدونة",
+    description: "أنشئ صفحة مدونة بسيطة تتضمن:",
+    items: [
+      'تنقل داخلي بين الأقسام باستخدام روابط <code>#</code>',
+      'عدة مقالات، كل منها بصورة باستخدام <code>&lt;figure&gt;</code>',
+      'روابط خارجية لموارد إضافية تفتح في تبويبات جديدة',
+      'صورة شعار تربط بالصفحة الرئيسية',
+      'قسم اتصال بروابط البريد الإلكتروني والهاتف',
+      'استخدم أنواع روابط مختلفة: مطلقة، نسبية، داخلية، mailto، tel',
+    ],
+    hint: "استخدم <code>&lt;figure&gt;</code> و<code>&lt;figcaption&gt;</code> مع كل صورة، ولا تنسَ <code>rel='noopener noreferrer'</code> مع الروابط الخارجية.",
+  },
   en: {
     title: "Mini Project: Blog Page",
     description: "Create a simple blog page that includes:",

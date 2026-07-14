@@ -1,4 +1,114 @@
 const translations = {
+  ar: {
+    sections: [
+      {
+        title: "ما هي الخصائص؟",
+        content: [
+          { type: "p", text: "الخصائص هي معلومات إضافية نضعها داخل علامة الفتح لتغيير سلوك العنصر أو مظهره، أو لتوفير بيانات وصفية عنه. تأتي دائماً على شكل <code>اسم=\"قيمة\"</code>." },
+          { type: "p", text: "إذا كانت العلامة هي الاسم (سيارة)، فإن الخصائص هي الخصائص (color=\"red\"، model=\"2026\")." },
+          { type: "callout", title: "تشبيه", text: "إذا كانت العلامة هي \"اسم السيارة\" (مثل تويوتا)، فإن الخصائص هي \"خصائص السيارة\" (color=\"red\"، year=\"2026\"). كل خاصية ت提供更多 معلومات عن العنصر." }
+        ]
+      },
+      {
+        title: "الخصائص الأكثر شيوعاً",
+        content: [
+          { type: "p", text: "هناك خصائص يمكن استخدامها مع معظم علامات HTML:" },
+          { type: "li", text: "<strong><code>id</code></strong>: يعطي معرفاً فريداً للعنصر في الصفحة. لا يجب تكرار نفس الـ id في صفحة واحدة. يُستخدم الوصول للعنصر باستخدام JavaScript أو للتنقل الداخلي." },
+          { type: "li", text: "<strong><code>class</code></strong>: يُستخدم لتصنيف العناصر. يمكن إعطاء نفس الـ class لعدة عناصر، ويمكن للعنصر الواحد أن يكون له عدة classes (مفصولة بمسافات). الاستخدام الأساسي هو مع CSS لتطبيق الأنماط." },
+          { type: "li", text: "<strong><code>style</code></strong>: يُستخدم لإضافة أنماط CSS مباشرة للعنصر (Inline CSS). يُفضل تجنبه واستخدام ملفات CSS خارجية." },
+          { type: "li", text: "<strong><code>title</code></strong>: يعرض تلميحاً عند المرور فوق العنصر." },
+          { type: "callout", title: "قاعدة مهمة لـ id مقابل class", text: "<strong>id فريد</strong> - لا يمكن تكراره في الصفحة. استخدمه لعنصر مميز واحد.<br /><strong>class قابل للتكرار</strong> - يمكن استخدامه مع عناصر متعددة. استخدمه لنمط عدة عناصر بنفس النمط." }
+        ]
+      },
+      {
+        title: "مقدمة عن الجداول",
+        content: [
+          { type: "p", text: "تُستخدم الجداول لعرض البيانات الجدولية، مثل جداول الأسعار، الإحصائيات، أو أي بيانات تتكون من صفوف وأعمدة." },
+          { type: "p", text: "العلامات الأساسية لبناء جدول:" },
+          { type: "li", text: "<code>&lt;table&gt;</code>: الحاوية الرئيسية للجدول." },
+          { type: "li", text: "<code>&lt;tr&gt;</code>: يمثل صف في الجدول (Table Row)." },
+          { type: "li", text: "<code>&lt;th&gt;</code>: يمثل خلية رأس الجدول (Table Header). النص داخلها عريض ومميز." },
+          { type: "li", text: "<code>&lt;td&gt;</code>: يمثل خلية بيانات عادية (Table Data)." },
+          { type: "li", text: "<code>&lt;thead&gt;</code>: يمثل رأس الجدول ويحتوي على صفوف الرؤوس." },
+          { type: "li", text: "<code>&lt;tbody&gt;</code>: يمثل جسم الجدول ويحتوي على بيانات الصفوف." },
+          { type: "li", text: "<code>&lt;tfoot&gt;</code>: يمثل تذييل الجدول للمجاميع." },
+          { type: "callout", title: "ملاحظة", text: "الجداول تُستخدم فقط للبيانات الجدولية، وليس لتنسيق الصفحة! استخدم CSS لتنسيق التخطيط." }
+        ]
+      },
+      {
+        title: "خصائص الجدول المتقدمة",
+        content: [
+          { type: "p", text: "يمكننا استخدام خصائص إضافية للتحكم في مظهر الجدول:" },
+          { type: "li", text: "<code>colspan</code>: يدمج عدة أعمدة في خلية واحدة." },
+          { type: "li", text: "<code>rowspan</code>: يدمج عدة صفوف في خلية واحدة." },
+          { type: "li", text: "<code>border</code>: يضيف حدوداً للجدول." },
+          { type: "callout", title: "ملاحظة", text: "يُفضل استخدام CSS لتنسيق الجداول بدلاً من خصائص HTML المباشرة مثل border." }
+        ]
+      },
+      {
+        title: "مثال عملي: جدول مقارنة المنتجات",
+        content: [
+          { type: "p", text: "دعنا نرى كيف نبني جدول مقارنة منتجات حقيقية:" }
+        ]
+      },
+      {
+        title: "أفضل الممارسات",
+        content: [
+          { type: "li", text: "<strong>استخدم الـ id بمفرده:</strong> لا تكرر نفس الـ id في الصفحة." },
+          { type: "li", text: "<strong>استخدم الـ class للتنسيق:</strong> لإعطاء نفس النمط لعدة عناصر." },
+          { type: "li", text: "<strong>تجنب style المباشر:</strong> استخدم ملفات CSS خارجية." },
+          { type: "li", text: "<strong>استخدم thead وtbody وtfoot:</strong> لتنظيم هيكل الجدول دلالياً." },
+          { type: "li", text: "<strong>أضف عنصر caption:</strong> لوصف محتوى الجدول." }
+        ]
+      },
+      {
+        title: "ملخص الدرس",
+        content: [
+          { type: "li", text: "<strong>الخصائص</strong> تأتي على شكل <code>اسم=\"قيمة\"</code>" },
+          { type: "li", text: "<strong>id</strong> فريد | <strong>class</strong> قابل للتكرار" },
+          { type: "li", text: "الجداول: <code>&lt;table&gt;</code>، <code>&lt;tr&gt;</code>، <code>&lt;th&gt;</code>، <code>&lt;td&gt;</code>" },
+          { type: "li", text: "خصائص الجدول: <code>colspan</code> و<code>rowspan</code>" },
+          { type: "li", text: "استخدم <code>&lt;thead&gt;</code>، <code>&lt;tbody&gt;</code>، <code>&lt;tfoot&gt;</code> لتنظيم الجدول" }
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: "ما الفرق بين id و class؟",
+        options: [
+          "لا يوجد فرق بينهما",
+          "id فريد ولا يُكرر، class قابل للتكرار لعدة عناصر",
+          "id يُستخدم لتنسيق النص، class لتنسيق الخلفية",
+          "id اختياري، class إجباري"
+        ],
+        explanation: "id يجب أن يكون فريداً في الصفحة (يُستخدم لعنصر واحد)، بينما class يمكن تكراره لعدة عناصر (يُستخدم لنمط عدة عناصر بنفس النمط)."
+      },
+      {
+        question: "أي العلامات تُستخدم لدمج عمودين في جدول؟",
+        options: ["rowspan", "colspan", "merge", "combine"],
+        explanation: "colspan تُستخدم لدمج عدة أعمدة في خلية واحدة، بينما rowspan تُستخدم لدمج عدة صفوف."
+      }
+    ],
+    challenge: {
+      title: "تحدي: جدول مقارنة",
+      description: "أنشئ جدول مقارنة بين 3 منتجات يتضمن: رأس الجدول بأسماء المنتجات، صفوف بالمواصفات (السعر، الحجم، اللون)، وصفوف مدمجة للعروض الخاصة."
+    },
+    cheatSheet: {
+      title: "ملخص الخصائص والجداول",
+      items: [
+        { term: "<code>id</code>", definition: "معرف فريد للعنصر" },
+        { term: "<code>class</code>", definition: "تصنيف قابل للتكرار" },
+        { term: "<code>style</code>", definition: "تنسيق CSS مباشر (يُفضل تجنبه)" },
+        { term: "<code>title</code>", definition: "تلميح عند المرور" },
+        { term: "<code>&lt;table&gt;</code>", definition: "حاوية الجدول" },
+        { term: "<code>&lt;tr&gt;</code>", definition: "صف جدول" },
+        { term: "<code>&lt;th&gt;</code>", definition: "رأس جدول (عريض)" },
+        { term: "<code>&lt;td&gt;</code>", definition: "خلية بيانات عادية" },
+        { term: "<code>colspan</code>", definition: "دمج أعمدة" },
+        { term: "<code>rowspan</code>", definition: "دمج صفوف" }
+      ]
+    }
+  },
   en: {
     sections: [
       {

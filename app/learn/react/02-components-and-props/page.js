@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 2, 2, 0], fr: [1, 1, 2, 2, 0], de: [1, 1, 2, 2, 0] };
+const correctAnswers = { ar: [1, 1, 2, 2, 0], en: [1, 1, 2, 2, 0], fr: [1, 1, 2, 2, 0], de: [1, 1, 2, 2, 0] };
 
 const challengeCode = `function UserProfile({ name, role, bio }) {
   return (
@@ -43,6 +43,29 @@ function App() {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص المكونات والخصائص",
+    columns: [
+      {
+        heading: "المفاهيم الأساسية:",
+        items: [
+          "المكونات - أجزاء قابلة لإعادة الاستخدام من واجهة المستخدم",
+          "مكونات الدوال - نهج حديث باستخدام الدوال التي تُرجع JSX",
+          "الخصائص - بيانات من المكونات الأصل إلى الفرعية",
+          "الخصائص للقراءة فقط - المكونات الفرعية لا يمكنها تعديلها",
+          "الخصائص الافتراضية - قيم افتراضية للخصائص غير المقدمة",
+        ],
+      },
+      {
+        heading: "الأوامر:",
+        items: [
+          "يجب أن تبدأ أسماء المكونات بحرف كبير",
+          "يجب أن تُرجع المكونات JSX",
+          "يمكن تداخل المكونات داخل بعضها",
+        ],
+      },
+    ],
+  },
   en: {
     title: "Components and Props Cheat Sheet",
     columns: [

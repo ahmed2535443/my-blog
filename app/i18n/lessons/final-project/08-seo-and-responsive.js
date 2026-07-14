@@ -1,4 +1,59 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "مقدمة في SEO والتصميم المتجاوب", content: [
+        { type: "p", text: "يساعد SEO مدونتك على الظهور في نتائج البحث. يضمن التصميم المتجاوب ظهورها بشكل رائع على جميع الأجهزة. يغطي هذا الدرس Metadata API في Next.js وصور Open Graph وأدوات Tailwind المتجاوبة." },
+        { type: "callout", title: "المواضيع الرئيسية", text: "Metadata API لـ SEO، generateMetadata لل dinamikus صفحات، صور Open Graph، التصميم المتجاوب مع نقاط توقف Tailwind، تحسين next/image." }
+      ]},
+      { title: "Metadata API في Next.js", content: [
+        { type: "p", text: "يوفر Next.js Metadata API لإعداد إعدادات SEO لكل صفحة، بما في ذلك العنوان والوصف والكلمات المفتاحية وعلامات Open Graph." },
+        { type: "callout", title: "خصائص Metadata", text: "title مع نمط القالب، description لمقتطفات البحث، keywords لمحركات البحث، openGraph للمشاركة الاجتماعية، canonical لمنع المحتوى المكرر." }
+      ]},
+      { title: "Metadata الديناميكي مع generateMetadata", content: [
+        { type: "p", text: "للصفحات الديناميكية مثل مقالات المدونة، استخدم generateMetadata لإنشاء metadata بناءً على المحتوى من قاعدة بياناتك." },
+        { type: "callout", title: "نمط generateMetadata", text: "صدّر دالة غير متزامنة تجلب بيانات المقال وترجع كائن metadata مع العنوان والوصف وصور openGraph من المقال." }
+      ]},
+      { title: "صور Open Graph الديناميكية", content: [
+        { type: "p", text: "أنشئ صور Open Graph dinamikus باستخدام Next.js Route Handlers ومكتبة ImageResponse." },
+        { type: "callout", title: "توليد صور OG", text: "استخدم app/api/og/route.js مع ImageResponse، مرر العنوان والعنوان الفرعي كمعلمات URL، أعد صورة 1200x630." }
+      ]},
+      { title: "التصميم المتجاوب مع Tailwind", content: [
+        { type: "p", text: "يستخدم Tailwind نهج Mobile First مع نقاط التوقف: sm (640px)، md (768px)، lg (1024px)، xl (1280px)." },
+        { type: "callout", title: "نقاط توقف Tailwind", text: "sm: الأجهزة الصغيرة، md: الأجهزة اللوحية، lg: أجهزة الحاسوب المحمولة، xl: الشاشات الكبيرة." }
+      ]},
+      { title: "تحسين الصور مع next/image", content: [
+        { type: "p", text: "يوفر next/image تحسينًا تلقائيًا يشمل التحميل الكسول والتحويل إلى WebP والحجم المتجاوب." },
+        { type: "callout", title: "ميزات الصور", text: "التحميل الكسول التلقائي، تحويل الصيغة إلى WebP/AVIF، خاصية الأحجام المتجاوبة، placeholder ضبابي، الأولوية للصور فوق السطر." }
+      ]},
+      { title: "ميزات SEO الإضافية", content: [
+        { type: "p", text: "أنشئ sitemap.xml و robots.txt ديناميكيًا، أضف بيانات منظمة (JSON-LD) للمقتطفات الغنية." },
+        { type: "callout", title: "إضافات SEO", text: "sitemap.js يولد خريطة XML، robots.js ينشئ robots.txt، JSON-LD يوفر بيانات منظمة لمحركات البحث." }
+      ]}
+    ],
+    quiz: [
+      { question: "ماذا توفر Metadata API في Next.js؟",
+        options: ["تحسين قاعدة البيانات", "إعدادات HTML head لـ SEO بما في ذلك العنوان والوصف وOpen Graph", "حماية مسارات API", "مراقبة الأداء"],
+        correctAnswer: 1, explanation: "توفر Metadata API طريقة منظمة لإعداد عناصر HTML head المتعلقة بـ SEO لكل صفحة." },
+      { question: "ما هي ميزة next/image مقارنة بـ img العادية؟",
+        options: ["تدعم المزيد من الصيغ", "التحسين التلقائي وتحويل WebP والتحميل الكسول والحجم المتجاوب", "تعمل مع TypeScript", "عرض أسرع"],
+        correctAnswer: 1, explanation: "يوفر next/image تحسينًا تلقائيًا يشمل تحويل الصيغة والتحميل الكسول والحجم المتجاوب." },
+      { question: "ماذا يفعل breakpoint sm: في Tailwind؟",
+        options: ["يطبق الأنماط على جميع الشاشات", "يطبق الأنماط على شاشات 640px وأعرض", "يصغر النص", "يخفي العناصر على الجوال"],
+        correctAnswer: 1, explanation: "يطبق sm: في Tailwind الأنماط عند 640px وأعلى، متبعًا نهج Mobile First." },
+      { question: "ما هو الهدف من sitemap.xml؟",
+        options: ["تخزين نقاط نهاية API", "سرد جميع الصفحات لمحركات البحث للزحف", "تخزين جلسات المستخدمين", "تخزين متغيرات البيئة"],
+        correctAnswer: 1, explanation: "يسرد sitemap.xml جميع صفحات موقعك مع عناوين URL وبياناتها الوصفية لزاحفات محركات البحث." }
+    ],
+    challenge: { title: "تحدي: إنشاء صفحة تصنيف مع SEO",
+      description: "أنشئ صفحة تصنيف مع metadata ديناميكي وعلامات Open Graph وبيانات منظمة. استخدم generateMetadata لضبط عنوان الصفحة والوصف من بيانات التصنيف." },
+    cheatSheet: { title: "مرجع SEO والتصميم المتجاوب", items: [
+      { title: "Metadata", content: "export const metadata = { title, description, openGraph }" },
+      { title: "Metadata ديناميكي", content: "export async function generateMetadata({ params })" },
+      { title: "Tailwind المتجاوب", content: "Mobile First: sm: 640px، md: 768px، lg: 1024px، xl: 1280px" },
+      { title: "next/image", content: "priority، sizes، placeholder='blur'، تحويل الصيغة" },
+      { title: "ملفات SEO", content: "sitemap.js، robots.js، JSON-LD بيانات منظمة" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Introduction to SEO and Responsive Design", content: [

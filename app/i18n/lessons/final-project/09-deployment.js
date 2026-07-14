@@ -1,4 +1,62 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "مقدمة في النشر", content: [
+        { type: "p", text: "النشر هو عملية جعل تطبيقك متاحًا للمستخدمين على الإنترنت. يغطي هذا الدرس النشر على Vercel وإعداد متغيرات البيئة وإعداد CI/CD." },
+        { type: "callout", title: "ما سنتعلمه", text: "النشر على Vercel، إعداد متغيرات البيئة، إعداد Supabase للإنتاج، إعداد النطاق المخصص، تحسين الأداء، CI/CD مع GitHub Actions." }
+      ]},
+      { title: "التحضير قبل النشر", content: [
+        { type: "p", text: "قبل النشر، تأكد من أن مشروعك جاهز للإنتاج: قم بتشغيل lint و type-check والبناء بنجاح." },
+        { type: "callout", title: "قائمة التحقق قبل النشر", text: "قم بتشغيل npm run lint و npm run type-check و npm run build، تأكد من أن .gitignore يشمل الملفات الحساسة." }
+      ]},
+      { title: "النشر باستخدام Vercel", content: [
+        { type: "p", text: "Vercel هو أسهل طريقة لنشر تطبيقات Next.js. ادفع إلى GitHub، اتصل بـ Vercel، اضبط متغيرات البيئة، وانشر." },
+        { type: "callout", title: "خطوات نشر Vercel", text: "1. ادفع إلى GitHub، 2. أنشئ حساب Vercel، 3. استورد المستودع، 4. اضبط متغيرات البيئة، 5. انشر." }
+      ]},
+      { title: "إعداد متغيرات البيئة", content: [
+        { type: "p", text: "تخزن متغيرات البيئة البيانات الحساسة مثل مفاتيح API. يجب إعدادها في لوحة تحكم Vercel، لا يتم ا_commit_ها أبدًا إلى Git." },
+        { type: "callout", title: "المتغيرات الرئيسية", text: "بادئة NEXT_PUBLIC_ للمتغيرات من جانب العميل، SUPABASE_SERVICE_ROLE_KEY للخادم فقط، مفاتيح Clerk للمصادقة." }
+      ]},
+      { title: "إعداد Supabase للإنتاج", content: [
+        { type: "p", text: "اضبط سياسات RLS ودلو التخزين ودوال قاعدة البيانات للاستخدام في الإنتاج." },
+        { type: "callout", title: "قائمة التحقق للإنتاج", text: "فعّل RLS على جميع الجداول، أنشئ دلو التخزين مع السياسات، أضف دوال قاعدة البيانات، اختبر جميع العمليات." }
+      ]},
+      { title: "إعداد النطاق المخصص", content: [
+        { type: "p", text: "اتصل نطاقًا مخصصًا بنشر Vercel مع إعداد DNS و SSL." },
+        { type: "callout", title: "إعداد النطاق", text: "اشترِ النطاق، أضفه إلى Vercel، اضبط سجلات DNS (A/CNAME)، SSL تلقائي." }
+      ]},
+      { title: "تحسين الأداء", content: [
+        { type: "p", text: "حسّن بناء الإنتاج مع تحسين الصور وتحميل الخطوط والتخزين المؤقت وتقسيم الكود." },
+        { type: "callout", title: "نصائح التحسين", text: "استخدم next/image مع priority، حسّن الخطوط باستخدام next/font، استفد من التخزين المؤقت، استخدم الاستيراد الديناميكي." }
+      ]},
+      { title: "CI/CD مع GitHub Actions", content: [
+        { type: "p", text: "أعد التكامل المستمر والنشر باستخدام GitHub Actions للاختبار والنشر التلقائي." },
+        { type: "callout", title: "فوائد CI/CD", text: "الاختبار التلقائي مع كل دفع، النشر التلقائي إلى الإنتاج، عملية بناء متسقة." }
+      ]}
+    ],
+    quiz: [
+      { question: "ما هو الهدف من متغيرات البيئة في الإنتاج؟",
+        options: ["تحسين الأداء", "تخزين البيانات الحساسة مثل مفاتيح API بشكل منفصل عن الكود", "تسريع البناء", "تقليل حجم الحزمة"],
+        correctAnswer: 1, explanation: "تخزن متغيرات البيئة بيانات الإعداد الحساسة بشكل منفصل عن قاعدة الكود، مما يحافظ على أمان الأسرار." },
+      { question: "ماذا يضبط vercel.json؟",
+        options: ["إعدادات React", "إعدادات نشر Vercel بما في ذلك الرؤوس والإعادة التوجيهات وإعادة الكتابة", "مخطط قاعدة البيانات", "تبعيات الحزمة"],
+        correctAnswer: 1, explanation: "يضبط vercel.json إعدادات النشر المحددة بما في ذلك رؤوس الأمان وإعادة التوجيه/إعادة الكتابة والمهام المجدولة." },
+      { question: "كيف يجب تخزين متغيرات البيئة الحساسة لـ GitHub Actions؟",
+        options: ["في README.md", "في GitHub Secrets", "في .env.local", "في package.json"],
+        correctAnswer: 1, explanation: "يشفر GitHub Secrets المتغيرات الحساسة بحيث يمكن استخدامها في سير العمل دون كشفها." },
+      { question: "ماذا يعني CI/CD؟",
+        options: ["Code Integration / Code Deployment", "Continuous Integration / Continuous Deployment", "Create Install / Create Deploy", "Central Interface / Central Database"],
+        correctAnswer: 1, explanation: "يقوم CI/CD بأتمتة عملية الاختبار والتكامل ونشر تغييرات الكود بشكل متسق." }
+    ],
+    challenge: { title: "تحدي: إعداد النشر الكامل",
+      description: "أنشئ vercel.json مع رؤوس الأمان، أعد إعداد سير عمل GitHub Actions، أنشئ نقطة نهاية لفحص الحالة، اضبط متغيرات البيئة في Vercel." },
+    cheatSheet: { title: "مرجع النشر السريع", items: [
+      { title: "أوامر Vercel", content: "vercel، vercel --prod، vercel ls" },
+      { title: "vercel.json", content: "الرؤوس للأمان، إعادة التوجيه/إعادة الكتابة للعناوين" },
+      { title: "التحسين", content: "next/image، next/font، التخزين المؤقت، الاستيراد الديناميكي" },
+      { title: "CI/CD", content: "GitHub Actions للاختبار والنشر التلقائي" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Introduction to Deployment", content: [

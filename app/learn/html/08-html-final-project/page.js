@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [2, 2, 1], fr: [2, 2, 1], de: [2, 2, 1] };
+const correctAnswers = { ar: [2, 2, 1], en: [2, 2, 1], fr: [2, 2, 1], de: [2, 2, 1] };
 
 const challengeCode = `<!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -75,6 +75,82 @@ const challengeCode = `<!DOCTYPE html>
 </html>`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص مرحلة HTML",
+    columns: [
+      {
+        heading: "هيكل الصفحة:",
+        code: `<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width">
+  <title>العنوان</title>
+</head>
+<body>
+  <!-- المحتوى -->
+</body>
+</html>`,
+        codeLanguage: "html",
+      },
+      {
+        heading: "العناصر الدلالية:",
+        items: [
+          '<code className="inline-code">&lt;header&gt;</code> <code className="inline-code">&lt;nav&gt;</code> <code className="inline-code">&lt;main&gt;</code>',
+          '<code className="inline-code">&lt;section&gt;</code> <code className="inline-code">&lt;article&gt;</code> <code className="inline-code">&lt;aside&gt;</code>',
+          '<code className="inline-code">&lt;footer&gt;</code> <code className="inline-code">&lt;figure&gt;</code> <code className="inline-code">&lt;figcaption&gt;</code>',
+          '<code className="inline-code">&lt;blockquote&gt;</code> <code className="inline-code">&lt;cite&gt;</code> <code className="inline-code">&lt;time&gt;</code>',
+        ],
+      },
+      {
+        heading: "النماذج:",
+        code: `<form>
+  <label for="x">الاسم</label>
+  <input type="text" id="x" required>
+  <textarea></textarea>
+  <select>
+    <option>...</option>
+  </select>
+  <button type="submit">إرسال</button>
+</form>`,
+        codeLanguage: "html",
+      },
+      {
+        heading: "الروابط والصور:",
+        items: [
+          '<code className="inline-code">&lt;a href="url"&gt;</code> - رابط',
+          '<code className="inline-code">target="_blank" rel="noopener noreferrer"</code> - تبويب جديد',
+          '<code className="inline-code">&lt;img src="pic.jpg" alt="desc" loading="lazy" /&gt;</code>',
+        ],
+      },
+      {
+        heading: "إمكانية الوصول:",
+        items: [
+          'aria-label - اسم مسموع',
+          'aria-required - حقل إجباري',
+          'aria-describedby - وصف إضافي',
+          'aria-invalid - بيانات غير صالحة',
+          'aria-current="page" - الصفحة الحالية',
+          'role="alert" / role="button"',
+          'skip-link / sr-only',
+        ],
+      },
+      {
+        heading: "نصائح للمحترفين:",
+        items: [
+          "1. HTML أولاً، CSS ثانياً",
+          "2. استخدم HTML الدلالي دائماً",
+          "3. alt لكل صورة",
+          "4. label لكل حقل",
+          "5. رابط التخطي لإمكانية الوصول",
+          "6. لا تستخدم br للمسافات",
+          "7. لا تستخدم div لكل شيء",
+          "8. اختبر بـ Tab وقارئ الشاشة",
+        ],
+      },
+    ],
+  },
   en: {
     title: "HTML Stage Cheat Sheet",
     columns: [
@@ -306,6 +382,21 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: {
+    title: "المشروع النهائي: صفحة أسئلة شائعة متكاملة",
+    description: "أنشئ صفحة أسئلة شائعة متكاملة لمشروعك الشخصي باستخدام كل ما تعلمته:",
+    items: [
+      'هيكل صفحة كامل (<code>&lt;!DOCTYPE&gt;</code>، <code>&lt;html&gt;</code>، <code>&lt;head&gt;</code>، <code>&lt;body&gt;</code>)',
+      'ترويسة بشعار وتنقل دلالي',
+      'عنوان رئيسي وعناوين فرعية متسلسلة',
+      '<code>&lt;details&gt;</code> و<code>&lt;summary&gt;</code> لعناصر الأسئلة الشائعة',
+      'صورة بنص alt وصفي',
+      'نموذج اتصال بتسميات مرتبطة',
+      'تذييل بمعلومات حقوق النشر',
+      'ميزات إمكانية الوصول (رابط تخطي، أسماء aria)',
+    ],
+    hint: "طبق كل ما تعلمته في مرحلة HTML. فكر في الهيكل أولاً، ثم إمكانية الوصول، ثم الدلالية. اختبر بالتنقل بلوحة المفاتيح!",
+  },
   en: {
     title: "Final Project: Complete FAQ Page",
     description: "Create a complete FAQ page for your personal project using everything you've learned:",

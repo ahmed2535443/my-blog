@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 0, 1], fr: [1, 0, 1], de: [1, 0, 1] };
+const correctAnswers = { ar: [1, 0, 1], en: [1, 0, 1], fr: [1, 0, 1], de: [1, 0, 1] };
 
 const codeBadCode = `// ❌ Unclean code - Student management system
 function proc(d, t) {
@@ -444,6 +444,47 @@ console.log(text);
 console.log(result);`;
 
 const cheatSheetData = {
+  ar: {
+    title: "مرجع سريع للكود النظيف",
+    columns: [
+      {
+        heading: "قواعد التسمية:",
+        items: [
+          "استخدم أسماء وصفية واضحة",
+          "اجعل الأسماء تُقرأ كقصة",
+          "تجنب الأسماء المختصرة",
+          "استخدم الثوابت للأرقام السحرية",
+        ],
+      },
+      {
+        heading: "قواعد الدوال:",
+        items: [
+          "كل دالة تفعل شيئاً واحداً فقط",
+          "أبقِ الدوال صغيرة (أقل من 20 سطر)",
+          "استخدم معايير واضحة",
+          "قسّم الدوال الطويلة",
+        ],
+      },
+      {
+        heading: "مبادئ التنظيم:",
+        items: [
+          "DRY: لا تكرر نفسك",
+          "KISS: أبقه بسيطاً",
+          "المسؤولية الفردية: مسؤولية واحدة",
+          "فصل الاهتمامات: افصل الاهتمامات",
+        ],
+      },
+      {
+        heading: "التعليقات:",
+        items: [
+          "اشرح لماذا وليسماذا",
+          "لا تعلق على الكود الواضح",
+          "استخدم JSDoc للدوال العامة",
+          "حدّث التعليقات مع الكود",
+        ],
+      },
+    ],
+  },
   en: {
     title: "Clean Code Quick Reference",
     columns: [

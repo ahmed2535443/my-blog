@@ -1,4 +1,51 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "مقدمة في الفرز والبحث", content: [
+        { type: "p", text: "ينظم الفرز البيانات لاسترجاعها بكفاءة. يقلل Binary Search وقت البحث من O(n) إلى O(log n) على البيانات المرتبة." },
+        { type: "callout", title: "ما سنتعلمه", text: "خوارزمية Binary Search، خوارزميات الفرز (Quick Sort، Merge Sort)، ومشاكل البحث المتقدمة." }
+      ]},
+      { title: "أساسيات Binary Search", content: [
+        { type: "p", text: "يعمل Binary Search على المصفوفات المرتبة عن طريق تقسيم فترات البحث إلى نصف بشكل متكرر." },
+        { type: "callout", title: "المعادلة الرئيسية", text: "mid = left + Math.floor((right - left) / 2). قارن mid مع الهدف، أeliminate نصفًا في كل خطوة." }
+      ]},
+      { title: "تنويعات Binary Search", content: [
+        { type: "p", text: "يمكن تكييف Binary Search لإيجاد الحدود أو القمم أو الإجابة في نطاق من القيم الممكنة." },
+        { type: "callout", title: "التنويعات", text: "البحث الكلاسيكي، الظهور الأول/الأخير، البحث في مصفوفة مدورة، الإجابة على نطاق مرتب (BS على الإجابة)." }
+      ]},
+      { title: "خوارزميات الفرز", content: [
+        { type: "p", text: "فهم خوارزميات الفرز يساعد في اختيار المناسب منها بناءً على حجم البيانات والذاكرة والمتطلبات." },
+        { type: "callout", title: "الخوارزميات الشائعة", text: "Quick Sort: O(n log n) متوسط، مدمج. Merge Sort: O(n log n) مضمون، مستقر. Insertion Sort: O(n²)، جيد للبيانات الصغيرة." }
+      ]},
+      { title: "Binary Search على الإجابة", content: [
+        { type: "p", text: "عندما تكون الإجابة في نطاق [low, high]، استخدم Binary Search لإيجاد الحد الأدنى/الأقصى للإجابة الصالحة." },
+        { type: "callout", title: "النمط", text: "حدد نطاق البحث، لكل mid تحقق من الصلاحية، حرّك يسارًا أو يمينًا بناءً على الصلاحية." }
+      ]},
+      { title: "البحث في مصفوفة 2D", content: [
+        { type: "p", text: "تعامل مع مصفوفة 2D مرتبة كمصفوفة مسطحة مرتبة وطبّق Binary Search مع تحويل الفهرس." },
+        { type: "callout", title: "تحويل الفهرس", text: "row = Math.floor(mid / cols)، col = mid % cols. O(log(m*n))." }
+      ]}
+    ],
+    quiz: [
+      { question: "ما هو تعقيد الوقت لـ Binary Search؟",
+        options: ["O(n)", "O(log n)", "O(n log n)", "O(1)"],
+        correctAnswer: 1, explanation: "ي eliminate Binary Search نصف مساحة البحث في كل خطوة، مما يعطي تعقيد وقت O(log n)." },
+      { question: "لماذا نستخدم mid = left + Math.floor((right - left) / 2)؟",
+        options: ["أسرع", "يمنع تجاوز الأعداد الصحيحة", "أسهل في القراءة", "لا يوجد سبب"],
+        correctAnswer: 1, explanation: "الاستخدام left + (right-left)/2 بدلاً من (left+right)/2 يمنع تجاوز الأعداد الصحيحة المحتمل." },
+      { question: "متى يمكنك تطبيق Binary Search؟",
+        options: ["أي مصفوفة", "المصفوفات المرتبة أو الشروط الأحادية", "القوائم المرتبطة فقط", "الأشجار فقط"],
+        correctAnswer: 1, explanation: "يتطلب Binary Search بيانات مرتبة أو شرطًا أحاديًا يسمح بإزالة نصف مساحة البحث." }
+    ],
+    challenge: { title: "تحدي: الفرز والبحث",
+      description: "نفّذ Binary Search، حل Search in Rotated Sorted Array، ثم حل Koko Eating Bananas باستخدام Binary Search على الإجابة." },
+    cheatSheet: { title: "مرجع الفرز والبحث السريع", items: [
+      { title: "Binary Search", content: "O(log n)، بيانات مرتبة، mid = left + (right-left)/2" },
+      { title: "Quick Sort", content: "O(n log n) متوسط، مدمج، غير مستقر" },
+      { title: "Merge Sort", content: "O(n log n) مضمون، مستقر، O(n) ذاكرة" },
+      { title: "BS على الإجابة", content: "نطاق [low, high]، تحقق من الصلاحية لكل mid" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Introduction to Sorting & Searching", content: [

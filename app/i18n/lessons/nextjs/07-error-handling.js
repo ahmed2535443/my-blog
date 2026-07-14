@@ -1,4 +1,42 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "لماذا معالجة الأخطاء مهمة", content: [
+        { type: "p", text: "في تطبيقات الإنتاج، قد تنفصل قواعد البيانات، ويفشل الشبكات، وقد يدخل المستخدمون روابط خاطئة. بدون معالجة أخطاء مناسبة، يرى المستخدمون شاشات بيضاء فارغة." },
+        { type: "p", text: "Next.js يوفر نظاماً شاملاً لمعالجة الأخطاء من خلال اتفاقيات الملفات التي تسمح التقاط الأخطاء وعرض واجهات مستخدم ودية." },
+      ]},
+      { title: "error.js — حدود الأخطاء", content: [
+        { type: "p", text: "ملف <code>error.js</code> هو اتفاقية ملف في Next.js تُستخدم لإنشاء حدود الأخطاء التي تلتقط الأخطاء في أجزاء المسارات." },
+        { type: "p", text: "عندما يحدث خطأ في صفحة، يقوم error.js التقاطه وعرض واجهة بديلة بدلاً من إيقاف تشغيل التطبيق بالكامل." },
+      ]},
+      { title: "not-found.js — صفحات 404", content: [
+        { type: "p", text: "ملف <code>not-found.js</code> يتعامل مع أخطاء 404 عندما لا تُوجد الصفحة. يمكنك تشغيله يدوياً باستخدام <code>notFound()</code> من next/navigation." },
+      ]},
+      { title: "استراتيجيات التعافي من الأخطاء", content: [
+        { type: "li", text: "استخدم error.js مع 'use client' للتعافي التفاعلي من الأخطاء" },
+        { type: "li", text: "استخدم دالة reset() لإعادة محاولة العرض" },
+        { type: "li", text: "استخدم not-found.js لصفحات 404" },
+        { type: "li", text: "error.js عالمي لأخطاء التخطيط الجذري" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "error.js ينشئ حدود أخطاء لأجزاء المسارات." },
+        { type: "li", text: "not-found.js يتعامل مع أخطاء 404." },
+        { type: "li", text: "استخدم reset() لإعادة المحاولة بعد الأخطاء." },
+        { type: "li", text: "قدم دائماً واجهة بديلة لحالات الخطأ." },
+      ]}
+    ],
+    quiz: [
+      { question: "ماذا يفعل error.js في Next.js؟", options: ["يسجل الأخطاء في console", "ينشئ حدود أخطاء تلتقط الأخطاء في أجزاء المسارات", "يمنع جميع الأخطاء", "يرسل تقارير الأخطاء"], explanation: "error.js ينشئ حدود أخطاء تلتقط الأخطاء و تعرض واجهة بديلة بدلاً من الإيقاف." },
+      { question: "كيف تُشغّل صفحة 404 يدوياً؟", options: ["throw new Error('404')", "notFound() من next/navigation", "return null", "redirect('/404')"], explanation: "استخدم notFound() من next/navigation لتشغيل صفحة not-found.js." },
+    ],
+    challenge: { title: "تنفيذ معالجة الأخطاء", description: "أضف error.js و not-found.js إلى مساراتك مع واجهة بديلة مناسبة." },
+    cheatSheet: { title: "ملخص مراجعة معالجة الأخطاء", items: [
+      { term: "error.js", definition: "حدود خطأ لجزء المسار" },
+      { term: "not-found.js", definition: "معالج صفحة 404" },
+      { term: "reset()", definition: "إعادة محاولة العرض بعد الخطأ" },
+      { term: "notFound()", definition: "تشغيل صفحة 404 يدوياً" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Why Error Handling Matters", content: [

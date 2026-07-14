@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1, 1, 1], fr: [1, 1, 1, 1, 1], de: [1, 1, 1, 1, 1] };
+const correctAnswers = { ar: [1, 1, 1, 1, 1], en: [1, 1, 1, 1, 1], fr: [1, 1, 1, 1, 1], de: [1, 1, 1, 1, 1] };
 
 const challengeCode = `function MyProfile() {
   return (
@@ -24,6 +24,29 @@ const challengeCode = `function MyProfile() {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص مقدمة React",
+    columns: [
+      {
+        heading: "المفاهيم الأساسية:",
+        items: [
+          "React - مكتبة JavaScript لبناء واجهات المستخدم",
+          "مبني على المكونات - واجهة مستخدم من مكونات صغيرة قابلة لإعادة الاستخدام",
+          "صرفي - صف ما تريد، React يتعامل مع DOM",
+          "DOM افتراضي - تمثيل في الذاكرة لأداء أفضل",
+          "JSX - امتداد صيغة يبدو مثل HTML",
+        ],
+      },
+      {
+        heading: "الأمر:",
+        items: [
+          "1. ثبّت Node.js",
+          "2. npx create-react-app my-app",
+          "3. cd my-app && npm start",
+        ],
+      },
+    ],
+  },
   en: {
     title: "React Introduction Cheat Sheet",
     columns: [

@@ -1,4 +1,47 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "مقدمة في المصادقة والتخطيط", content: [
+        { type: "p", text: "بعد بناء قاعدة البيانات، نحتاج إلى إعداد مصادقة المستخدمين والتخطيط الرئيسي. Clerk يتعامل مع المصادقة بينما ننشئ الهيكل البصري." },
+        { type: "callout", title: "ما سنتعلمه", text: "إعداد مصادقة Clerk، إنشاء صفحات تسجيل الدخول/التسجيل، حماية المسارات باستخدام middleware، بناء التخطيط الرئيسي مع الرأس والشريط الجانبي والتذييل." }
+      ]},
+      { title: "إعداد Clerk", content: [
+        { type: "p", text: "يوفر Clerk حل مصادقة كامل. أولاً ثبّت الحزمة، ثم اضبط متغيرات البيئة، ولُف التطبيق باستخدام ClerkProvider." },
+        { type: "callout", title: "مكونات Clerk الرئيسية", text: "ClerkProvider يلف التطبيق، SignIn/SignUp يتعاملان مع تسجيل الدخول/التسجيل، UserButton يعرض صورة المستخدم مع القائمة المنسدلة، SignedIn/SignedOut يتحكمان في العرض الشرطي." }
+      ]},
+      { title: "حماية الوسيطات", content: [
+        { type: "p", text: "تحمي الوسيطات المسارات عن طريق التحقق مما إذا كان المستخدمون مصادق عليهم قبل الوصول إلى الصفحات المحمية مثل لوحة التحكم." },
+        { type: "callout", title: "كيف تعمل الوسيطات", text: "أنشئ مقارنات المسارات للمسارات المحمية، استدعِ auth.protect() لطلب المصادقة، تعمل الوسيطات قبل عرض الصفحة." }
+      ]},
+      { title: "صفحات تسجيل الدخول والتسجيل", content: [
+        { type: "p", text: "يوفر Clerk مكونات جاهزة لصفحات تسجيل الدخول والتسجيل باستخدام المسارات الشاملة." },
+        { type: "callout", title: "هيكل المسارات", text: "استخدم المسارات الشاملة [[...sign-in]] و [[...sign-up]] لصفحات مصادقة Clerk." }
+      ]},
+      { title: "UserButton في الرأس", content: [
+        { type: "p", text: "مكون UserButton من Clerk يعرض صورة المستخدم ويوفر خيارات إدارة الحساب." },
+        { type: "callout", title: "العرض الشرطي", text: "استخدم SignedIn لعرض رابط لوحة التحكم وUserButton عند تسجيل الدخول، وSignedOut لعرض زر تسجيل الدخول عند تسجيل الخروج." }
+      ]},
+      { title: "هيكل التخطيط الرئيسي", content: [
+        { type: "p", text: "أنشئ تخطيطًا مع الرأس والشريط الجانبي والتذييل باستخدام CSS Grid أو Flexbox للتصميم المتجاوب." },
+        { type: "callout", title: "نمط التخطيط", text: "استخدم المجموعات المRoute لتنظيم المسارات، أنشئ مكونات تخطيط مشتركة، تأكد من التنقل المتسق عبر الصفحات." }
+      ]}
+    ],
+    quiz: [
+      { question: "أي وظيفة Clerk تحمي المسارات في الوسيطات؟",
+        options: ["protectRoute()", "auth.protect()", "securePage()", "checkAuth()"],
+        correctAnswer: 1, explanation: "auth.protect() هي وظيفة الوسيطات في Clerk التي تتطلب المصادقة للمسارات المحمية." },
+      { question: "أين يجب وضع ClerkProvider لحماية جميع المسارات؟",
+        options: ["في كل صفحة محمية", "في middleware.ts", "في app/layout.js التخطيط الجذر", "في next.config.js"],
+        correctAnswer: 2, explanation: "يجب أن يكون ClerkProvider في التخطيط الجذر layout.js للف التطبيق بالكامل بسياق المصادقة." }
+    ],
+    challenge: { title: "تحدي: إنشاء صفحة ملف التعريف",
+      description: "أنشئ صفحة /profile تعرض معلومات المستخدم باستخدام مكون UserProfile من Clerk. أنشئ المسار، أضف الصفحة مع UserProfile، وحمِّ المسار باستخدام الوسيطات." },
+    cheatSheet: { title: "مرجع المصادقة والتخطيط السريع", items: [
+      { title: "مكونات Clerk", content: "ClerkProvider, SignIn, SignUp, UserButton, SignedIn, SignedOut" },
+      { title: "نمط التخطيط", content: "التخطيط الجزر للهيكل الرئيسي، المجموعات المRoute للتنظيم" },
+      { title: "الوسيطات", content: "تحمي المسارات باستخدام createRouteMatcher و auth.protect()" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Introduction to Authentication and Layout", content: [

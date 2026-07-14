@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [2], fr: [2], de: [2] };
+const correctAnswers = { ar: [2], en: [2], fr: [2], de: [2] };
 
 const challengeCode = `// ❌ Before improvement:
 
@@ -55,6 +55,29 @@ function isCustomerEligible(customer) {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص التعليقات والتوثيق",
+    columns: [
+      {
+        heading: "أنواع التعليقات:",
+        items: [
+          '<strong style={{ color: "#a855f7" }}>تعليقات لماذا ✅</strong> - تشرح السبب خلف القرار',
+          '<strong style={{ color: "#a855f7" }}>TODO / FIXME</strong> - تتبع المهام المعلقة والمشاكل المعروفة',
+          '<strong style={{ color: "#a855f7" }}>JSDoc</strong> - توثّق الدوال العامة بالتفصيل',
+          '<strong style={{ color: "#ef4444" }}>تعليقاتماذا ❌</strong> - تشرحماذا يفعل الكود الواضح',
+        ],
+      },
+      {
+        heading: "قواعد التعليقات:",
+        items: [
+          '<strong style={{ color: "#22c55e" }}>الكود الموثّق ذاتياً</strong> - الأسماء الواضحة تحل محل التعليقات',
+          '<strong style={{ color: "#22c55e" }}>حدّث أو احذف</strong> - التعليقات القديمة أسوأ من عدم وجود تعليق',
+          '<strong style={{ color: "#22c55e" }}>TODO مسؤول</strong> - أضف اسمك والتاريخ والسبب',
+          '<strong style={{ color: "#3b82f6" }}>README شامل</strong> - التثبيت والاستخدام والإعدادات والمساهمة',
+        ],
+      },
+    ],
+  },
   en: {
     title: "Comments and Documentation Cheat Sheet",
     columns: [

@@ -1,4 +1,67 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "ملخص المرحلة", content: [
+        { type: "p", text: "تهانينا على إكمال مرحلة Supabase! لقد تعلمت جميع المهارات الأساسية لاستخدام Supabase كخادم لتطبيقات Next.js الخاصة بك." },
+        { type: "li", text: "الدرس 1: ما هو Supabase" },
+        { type: "li", text: "الدرس 2: التثبيت والإعداد" },
+        { type: "li", text: "الدرس 3: قاعدة البيانات — الجداول والعلاقات و CRUD" },
+        { type: "li", text: "الدرس 4: المصادقة" },
+        { type: "li", text: "الدرس 5: التخزين والأمان" },
+      ]},
+      { title: "ما أتقنته", content: [
+        { type: "li", text: "إنشاء وإدارة مشاريع Supabase" },
+        { type: "li", text: "تصميم جداول قاعدة البيانات والعلاقات" },
+        { type: "li", text: "تنفيذ عمليات CRUD" },
+        { type: "li", text: "تنفيذ طرق مصادقة متعددة" },
+        { type: "li", text: "إدارة تخزين الملفات" },
+        { type: "li", text: "تطبيق الأمان على مستوى الصف" },
+      ]},
+      { title: "المشروع النهائي: نظام إدارة الطلاب", content: [
+        { type: "p", text: "في هذا المشروع، سنبني نظاماً كاملاً لإدارة الطلاب باستخدام جميع المفاهيم التي تعلمناها." },
+        { type: "li", text: "تصميم جداول قاعدة البيانات: الطلاب والمعلمون والدورات والتسجيلات" },
+        { type: "li", text: "تنفيذ مصادقة البريد الإلكتروني/كلمة المرور" },
+        { type: "li", text: "إنشاء عمليات CRUD لجميع الكيانات" },
+        { type: "li", text: "إضافة رفع الملفات لصور الطلاب" },
+        { type: "li", text: "تطبيق سياسات الأمان لحماية البيانات" },
+      ]},
+      { title: "أفضل الممارسات", content: [
+        { type: "li", text: "استخدم دائماً متغيرات البيئة للمفاتيح" },
+        { type: "li", text: "فعّل RLS على جميع الجداول التي تحتوي على بيانات المستخدمين" },
+        { type: "li", text: "استخدم العلاقات بدلاً من تكرار البيانات" },
+        { type: "li", text: "تعامل مع الأخطاء بأناقة في كودك" },
+        { type: "li", text: "أبقِ تكوين عميل Supabase في مكان واحد" },
+      ]},
+      { title: "ما الخطوة التالية؟", content: [
+        { type: "p", text: "بعد هذه المرحلة، يمكنك الانتقال إلى Clerk للمصادقة المتقدمة، أو البدء في بناء مشاريع حقيقية مع Supabase + Next.js." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "أتقن Supabase: قاعدة البيانات والمصادقة والتخزين والأمان." },
+        { type: "li", text: "بنى نظام إدارة طلاب كامل." },
+        { type: "li", text: "جاهز لمرحلة Clerk والمشاريع الحقيقية." },
+      ]}
+    ],
+    quiz: [
+      { question: "ما هي أفضل ممارسة لتخزين مفاتيح Supabase؟", options: ["في الكود مباشرة", "في متغيرات البيئة", "في localStorage", "في قاعدة البيانات"], explanation: "استخدم دائماً متغيرات البيئة (.env.local) للمفاتيح الحساسة." },
+      { question: "ما هو الغرض من RLS في Supabase؟", options: ["تسريع الاستعلامات", "تحكم في الوصول إلى البيانات على مستوى الصف", "إدارة تخزين الملفات", "التعامل مع الوقت الفوري"], explanation: "RLS (الأمان على مستوى الصف) يتحكم في الصفوف التي يمكن لكل مستخدم الوصول إليها." },
+      { question: "ما هي ميزة استخدام Supabase؟", options: ["لا حاجة للبرمجة", "APIs جاهزة ولوحة تحكم", "يدعم MySQL فقط", "لا مصادقة"], explanation: "يوفر Supabase APIs جاهزة، لوحة تحكم مرئية، ومصادقة مدمجة." },
+    ],
+    challenge: { title: "ابنِ نظام إدارة الطلاب", description: "أنشئ نظاماً كاملاً مع جداول الطلاب/المعلمين والمصادقة وعمليات CRUD ورفع الملفات وسياسات الأمان." },
+    cheatSheet: { title: "ملخص مراجعة Supabase الكامل", items: [
+      { term: "createClient(url, key)", definition: "تهيئة عميل Supabase" },
+      { term: ".from('table').select('*')", definition: "قراءة البيانات" },
+      { term: ".insert({})", definition: "إنشاء سجل" },
+      { term: ".update({}).eq('id', val)", definition: "تحديث سجل" },
+      { term: ".delete().eq('id', val)", definition: "حذف سجل" },
+      { term: "signUp()", definition: "تسجيل مستخدم" },
+      { term: "signInWithPassword()", definition: "تسجيل الدخول" },
+      { term: "signOut()", definition: "تسجيل الخروج" },
+      { term: ".upload('path', file)", definition: "رفع ملف" },
+      { term: ".getPublicUrl('path')", definition: "الحصول على رابط الملف" },
+      { term: "RLS + Policies", definition: "الأمان على مستوى الصف" },
+      { term: ".env.local", definition: "تخزين متغيرات البيئة" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Stage Summary", content: [

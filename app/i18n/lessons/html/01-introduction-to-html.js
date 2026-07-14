@@ -1,4 +1,165 @@
 const translations = {
+  ar: {
+    sections: [
+      {
+        title: "ما هو HTML؟",
+        content: [
+          { type: "p", text: "<strong>HTML</strong> اختصار لـ <strong>HyperText Markup Language</strong>، وهي لغة الترميز القياسية لإنشاء صفحات الويب." },
+          { type: "p", text: "دعنا نفكر في الأمر ببساطة: إذا كنت تريد بناء منزل، فأنت بحاجة إلى <strong>هيكل</strong> يشكل أساس المنزل (جدران، أبواب، نوافذ). بدون هذا الهيكل، لا يمكنك إضافة الأثاث أو الطلاء أو أي تفاصيل أخرى." },
+          { type: "p", text: "<strong>HTML هو الشيء نفسه ولكن لمواقع الويب.</strong> إنه الهيكل الأساسي لكل صفحة ويب في العالم. كل ما تراه في المتصفح - النصوص، الصور، الأزرار، الروابط - كلها مبنية على هيكل HTML." },
+          { type: "callout", title: "تشبيه بسيط", text: "تخيّل أنك تكتب رسالة. <strong>HTML</strong> يحدد أي جملة هي عنوان، وأي جملة هي فقرة عادية، وأي كلمة هي رابط. HTML يعطي المتصفح تعليمات حول <strong>الهيكل</strong> للصفحة، لكنه لا يتحدث عن <strong>المظهر</strong> (ذلك دور CSS)." }
+        ]
+      },
+      {
+        title: "لماذا نستخدم HTML؟",
+        content: [
+          { type: "p", text: "HTML يحل مشكلة أساسية: <strong>كيف يفهم المتصفح ما تريد عرضه للمستخدم؟</strong>" },
+          { type: "p", text: "بدون HTML، المتصفح يرى نصاً عشوائياً بدون أي معنى. HTML يعطي النص <strong>هيكلاً ودلالات</strong> حتى يفهم المتصفح:" },
+          { type: "li", text: "أي جزء هو <strong>عنوان</strong> (يجب أن يكون كبيراً وعريضاً)" },
+          { type: "li", text: "أي جزء هو <strong>فقرة</strong> (يجب أن تكون منفصلة)" },
+          { type: "li", text: "أي جزء هو <strong>رابط</strong> (يجب أن يكون قابلاً للنقر)" },
+          { type: "li", text: "أي جزء هو <strong>صورة</strong> (يجب أن تُعرض، لا تُقرأ كنص)" },
+          { type: "li", text: "أي جزء هو <strong>قائمة</strong> (يجب أن تُعرض بترتيب)" },
+          { type: "callout", title: "حقيقة مهمة", text: "كل صفحة ويب تزورها الآن (Google، YouTube، Facebook، Twitter) مبنية على HTML في جوهرها. حتى تطبيقات JavaScript المعقدة تستخدم HTML لبناء الواجهة." }
+        ]
+      },
+      {
+        title: "المشكلة التي يحلها HTML",
+        content: [
+          { type: "p", text: "تخيّل أنك تريد إرسال ملف نصي إلى المتصفح وتخبره: \"هذه صفحة ويب.\" ماذا يحدث؟" },
+          { type: "p", text: "المتصفح يرى نصاً عشوائياً ولا يفهم:" },
+          { type: "li", text: "أي جزء هو العنوان الرئيسي؟" },
+          { type: "li", text: "أين تبدأ الفقرة وأين تنتهي؟" },
+          { type: "li", text: "أي كلمة هي رابط يجب النقر عليه؟" },
+          { type: "li", text: "أين يجب أن تظهر الصورة؟" },
+          { type: "p", text: "<strong>HTML يحل هذه المشكلة</strong> باستخدام \"علامات\" بسيطة تحيط بالنص وتعطيه معنى. المتصفح يعرف هذه العلامات ويعالج كل علامة وفقاً لدورها." }
+        ]
+      },
+      {
+        title: "كيف يعمل HTML؟ شرح بسيط",
+        content: [
+          { type: "p", text: "HTML يعمل على مبدأ بسيط جداً: <strong>علامة الفتح + المحتوى + علامة الإغلاق</strong>" },
+          { type: "p", text: "دعنا نحلل هذا السطر:" },
+          { type: "li", text: "<code>&lt;h1&gt;</code> هي <strong>علامة الفتح</strong> - تخبر المتصفح: \"ابدأ عنواناً من المستوى الأول هنا\"" },
+          { type: "li", text: "<code>مرحبا بالعالم</code> هو <strong>المحتوى</strong> - النص الذي سيُعرض للمستخدم" },
+          { type: "li", text: "<code>&lt;/h1&gt;</code> هي <strong>علامة الإغلاق</strong> - تخبر المتصفح: \"العنوان ينتهي هنا\"" },
+          { type: "p", text: "لاحظ أن علامة الإغلاق تحتوي على <code>/</code> قبل اسم العلامة. هكذا تميز بين علامات الفتح والإغلاق." },
+          { type: "callout", title: "تشبيه بسيط", text: "العلامة مثل الأقواس: <code>(مرحبا بالعالم)</code>. القوس المفتوح <code>(</code> يبدأ النص، والقوس المغلق <code>)</code> ينهيه. HTML يستخدم <code>&lt;</code> و<code>&gt;</code> بدلاً من الأقواس العادية." }
+        ]
+      },
+      {
+        title: "مثال بسيط: صفحتك الأولى بـ HTML",
+        content: [
+          { type: "p", text: "إليك أبسط صفحة HTML ممكنة. يمكنك كتابتها في أي ملف بامتداد <code>.html</code> وفتحها في المتصفح:" },
+          { type: "p", text: "دعنا نفهم كل سطر:" },
+          { type: "li", text: "<code>&lt;!DOCTYPE html&gt;</code>: تخبر المتصفح بأن هذا ملف <strong>HTML5</strong> (أحدث إصدار). يجب أن يكون هذا السطر دائماً الأول في الملف." },
+          { type: "li", text: "<code>&lt;html lang=\"ar\" dir=\"rtl\"&gt;</code>: العلامة الجذرية التي تحتوي على الصفحة بأكملها. <code>lang=\"ar\"</code> تخبر المتصفح بأن اللغة عربية، و<code>dir=\"rtl\"</code> تخبره بأن الاتجاه من اليمين إلى اليسار." },
+          { type: "li", text: "<code>&lt;head&gt;</code>: يحتوي على <strong>معلومات عن الصفحة</strong> لا تظهر مباشرة للمستخدم (مثل العنوان و charset)." },
+          { type: "li", text: "<code>&lt;meta charset=\"UTF-8\"&gt;</code>: يحدد ترميز الأحرف - مهم لدعم الأحرف العربية بشكل صحيح." },
+          { type: "li", text: "<code>&lt;title&gt;</code>: العنوان الذي يظهر في تبويب المتصفح." },
+          { type: "li", text: "<code>&lt;body&gt;</code>: يحتوي على <strong>كل المحتوى المرئي</strong> للصفحة - كل ما يراه المستخدم." }
+        ]
+      },
+      {
+        title: "مثال عملي: هيكل صفحة حقيقية",
+        content: [
+          { type: "p", text: "دعنا نرى كيف تبدو صفحة ويب حقيقية في بداية المشروع. هذا المثال يحاكي هيكل صفحة \"من نحن\" على موقع ويب بسيط:" },
+          { type: "callout", title: "ملاحظة", text: "استخدمنا علامات مثل <code>&lt;header&gt;</code> و<code>&lt;nav&gt;</code> و<code>&lt;main&gt;</code> و<code>&lt;section&gt;</code> و<code>&lt;footer&gt;</code>. هذه علامات <strong>دلالية</strong> سنتعلمها بالتفصيل في درس لاحق. إنها تعطي المتصفح فهماً أعمق لهيكل الصفحة." }
+        ]
+      },
+      {
+        title: "ماذا يحدث خلف الكواليس؟",
+        content: [
+          { type: "p", text: "عندما تكتب ملف HTML وتفتحه في المتصفح، يحدث ما يلي:" },
+          { type: "li", text: "<strong>المتصفح يقرأ ملف HTML</strong> سطراً بعد سطر من الأعلى إلى الأسفل." },
+          { type: "li", text: "<strong>يبني \"شجرة DOM\"</strong>: يحول العلامات إلى بنية شجرية حيث تصبح كل علامة \"عقدة\" لها أب وأبناء. مثلاً، <code>&lt;body&gt;</code> هو الأب لـ <code>&lt;h1&gt;</code> و<code>&lt;p&gt;</code>." },
+          { type: "li", text: "<strong>يطبق الأنماط</strong>: إذا كان هناك ملف CSS مرتبط، يضيف الألوان والمسافات والأحجام." },
+          { type: "li", text: "<strong>يُنشئ \"شجرة العرض\"</strong>: يجمع HTML مع CSS لإنشاء الصورة النهائية." },
+          { type: "li", text: "<strong>يرسم الصفحة</strong>: يرسم كل عنصر في موضعه الصحيح على الشاشة." },
+          { type: "callout", title: "هل تعلم؟", text: "يمكنك رؤية هذه \"الشجرة\" بنفسك! اضغط <strong>F12</strong> على أي صفحة ويب وانتقل إلى تبويب <strong>Elements</strong>. سترى HTML الأصلي وكيف يحوله المتصفح إلى بنية شجرية." }
+        ]
+      },
+      {
+        title: "أخطاء شائعة للمبتدئين",
+        content: [
+          { type: "li", text: "<strong>نسيان علامة الإغلاق:</strong> كتابة <code>&lt;p&gt;نص بدون إغلاق</code> بدلاً من <code>&lt;p&gt;نص مع إغلاق&lt;/p&gt;</code>. قد يعالجها المتصفح بشكل غير متوقع، أو يغلق العلامة تلقائياً في المكان الخطأ." },
+          { type: "li", text: "<strong>استخدام علامات تنصيص خاطئة:</strong> كتابة <code>lang='ar'</code> بدلاً من <code>lang=\"ar\"</code>. في HTML، يُفضل دائماً استخدام علامات التنصيص المزدوجة." },
+          { type: "li", text: "<strong>عدم استخدام doctype:</strong> نسيان <code>&lt;!DOCTYPE html&gt;</code> في بداية الملف. بدونها، قد يعالج المتصفح الصفحة في \"وضع الغرابة\" مما يؤدي إلى سلوك غير متوقع." },
+          { type: "li", text: "<strong>وضع المحتوى في head:</strong> النصوص والصور والأزرار يجب وضعها في <code>&lt;body&gt;</code>، وليس في <code>&lt;head&gt;</code>. الـ head فقط للبيانات الوصفية." },
+          { type: "li", text: "<strong>التداخل الخاطئ للعلامات:</strong> كتابة <code>&lt;b&gt;&lt;i&gt;نص&lt;/b&gt;&lt;/i&gt;</code> بدلاً من <code>&lt;b&gt;&lt;i&gt;نص&lt;/i&gt;&lt;/b&gt;</code>. العلامة الداخلية يجب إغلاقها أولاً." }
+        ]
+      },
+      {
+        title: "أفضل الممارسات",
+        content: [
+          { type: "li", text: "<strong>استخدم دائماً &lt;!DOCTYPE html&gt;:</strong> تأكد أنها السطر الأول في الملف." },
+          { type: "li", text: "<strong>استخدم الأحرف الكبيرة لل اختصارات:</strong> مثل <code>HTML</code> و<code>DOCTYPE</code> و<code>UTF-8</code> - غير مطلوب لكنه ممارسة شائعة." },
+          { type: "li", text: "<strong>استخدم علامات التنصيص المزدوجة للخصائص:</strong> مثل <code>lang=\"ar\"</code> بدلاً من <code>lang='ar'</code>." },
+          { type: "li", text: "<strong>أغلق دائماً جميع العلامات:</strong> حتى العلامات الفارغة مثل <code>&lt;br&gt;</code> و<code>&lt;img&gt;</code> يُفضل كتابتها كـ <code>&lt;br /&gt;</code> و<code>&lt;img /&gt;</code> في XHTML." },
+          { type: "li", text: "<strong>استخدم العلامات الدلالية:</strong> مثل <code>&lt;header&gt;</code> و<code>&lt;nav&gt;</code> و<code>&lt;main&gt;</code> بدلاً من استخدام <code>&lt;div&gt;</code> لكل شيء." },
+          { type: "li", text: "<strong>اكتب تعليقات وصفية:</strong> استخدم التعليقات لشرح الأجزاء المعقدة: <code>&lt;!-- هذا هو عنوان الصفحة --&gt;</code>" }
+        ]
+      },
+      {
+        title: "ملخص الدرس",
+        content: [
+          { type: "li", text: "<strong>HTML</strong> هي لغة ترميز تعطي المحتوى هيكلاً ودلالة." },
+          { type: "li", text: "HTML تُستخدم لبناء <strong>الهيكل</strong> لكل صفحة ويب." },
+          { type: "li", text: "العلامات تأتي على شكل <code>&lt;اسم_العلامة&gt;محتوى&lt;/اسم_العلامة&gt;</code>" },
+          { type: "li", text: "كل صفحة HTML تبدأ بـ <code>&lt;!DOCTYPE html&gt;</code>" },
+          { type: "li", text: "الصفحة لها جزآن رئيسيان: <code>&lt;head&gt;</code> (معلومات) و<code>&lt;body&gt;</code> (المحتوى المرئي)" },
+          { type: "li", text: "HTML وحده لا يوفر تصميماً جميلاً - دوره فقط <strong>الهيكل</strong>. التصميم دور CSS." }
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: "ما هو الدور الرئيسي لـ HTML؟",
+        options: [
+          "تنسيق الألوان والخطوط في الصفحة",
+          "إضافة التفاعلية والحسابات إلى الصفحة",
+          "إعطاء المحتوى هيكلاً ودلالة",
+          "إدارة قاعدة بيانات"
+        ],
+        explanation: "HTML مسؤول عن هيكل الصفحة ودلالة محتويها (تحديد ما هو عنوان، ما هي فقرة، ما هو رابط، إلخ). التنسيق دور CSS، والتفاعلية دور JavaScript."
+      },
+      {
+        question: "أين يوضع المحتوى المرئي للصفحة (النصوص، الصور، الأزرار)؟",
+        options: [
+          "في <code>&lt;head&gt;</code>",
+          "في <code>&lt;body&gt;</code>",
+          "في <code>&lt;html&gt;</code>",
+          "في <code>&lt;title&gt;</code>"
+        ],
+        explanation: "كل ما يراه المستخدم في الصفحة يوضع داخل علامة <code>&lt;body&gt;</code>. الـ <code>&lt;head&gt;</code> فقط يحتوي على البيانات الوصفية مثل العنوان و charset."
+      },
+      {
+        question: "أي علامة تخبر المتصفح بأن اللغة عربية والاتجاه من اليمين إلى اليسار؟",
+        options: [
+          "<code>&lt;html lang=\"ar\" dir=\"rtl\"&gt;</code>",
+          "<code>&lt;html lang=\"en\" dir=\"ltr\"&gt;</code>",
+          "<code>&lt;body lang=\"ar\"&gt;</code>",
+          "<code>&lt;meta charset=\"ar\"&gt;</code>"
+        ],
+        explanation: "العلامة <code>&lt;html lang=\"ar\" dir=\"rtl\"&gt;</code> تخبر المتصفح باللغة (ar = عربية) واتجاه النص (rtl = من اليمين إلى اليسار)."
+      }
+    ],
+    challenge: {
+      title: "تحدي: أول صفحة HTML",
+      description: "أنشئ ملف HTML جديد يسمى <code>index.html</code> يحتوي على: 1. عنوان رئيسي <code>&lt;h1&gt;</code> باسمك، 2. فقرة <code>&lt;p&gt;</code> تقدمك بنفسك، 3. قائمة غير مرقمة <code>&lt;ul&gt;</code> بثلاثة من هواياتك."
+    },
+    cheatSheet: {
+      title: "ملخص HTML - الدرس الأول",
+      items: [
+        { term: "<code>&lt;!DOCTYPE html&gt;</code>", definition: "يحدد نوع المستند" },
+        { term: "<code>&lt;html&gt;</code>", definition: "العنصر الجذر" },
+        { term: "<code>&lt;head&gt;</code>", definition: "البيانات الوصفية للصفحة" },
+        { term: "<code>&lt;body&gt;</code>", definition: "المحتوى المرئي" },
+        { term: "<code>&lt;title&gt;</code>", definition: "عنوان التبويب" },
+        { term: "<code>&lt;meta&gt;</code>", definition: "معلومات البيانات الوصفية" }
+      ]
+    }
+  },
   en: {
     sections: [
       {

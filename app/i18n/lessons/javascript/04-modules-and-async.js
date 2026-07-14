@@ -1,4 +1,95 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "ما هو؟", content: [
+        { type: "p", text: "في هذا الدرس سنتعلم من أهم مفاهيم جافاسكريبت الحديثة: <strong>الوحدات</strong> و<strong>البرمجة غير المتزامنة</strong>. هذه المفاهيم هي حجر الأساس في بناء تطبيقات الويب الحديثة والفعالة." },
+        { type: "p", text: "<strong>الوحدات</strong> هي طريقة لتقسيم الكود إلى ملفات صغيرة مستقلة يمكن إعادة استخدامها وتنظيمها منطقيًا." },
+        { type: "p", text: "<strong>البرمجة غير المتزامنة</strong> هي طريقة لتنفيذ العمليات التي تستغرق وقتًا، مثل جلب البيانات من خادم، دون حظر تنفيذ باقي الكود." },
+        { type: "callout", title: "لماذا هذا الدرس مهم؟", text: "كل تطبيق ويب حديث يعتمد على الوحدات لتنظيم الكود وغير المتزامنة لجلب البيانات من الخوادم. بدون فهم هذه المفاهيم، لن تتمكن من بناء تطبيقات واقعية." },
+      ]},
+      { title: "لماذا نستخدمه؟", content: [
+        { type: "p", text: "قبل ES6، كانت جافاسكريبت بها مشكلة في تنظيم الكود. لم تكن هناك طريقة رسمية لتقسيم الكود إلى ملفات مستقلة." },
+        { type: "p", text: "<strong>وحدات ES</strong> جاءت لحل هذه المشكلة من خلال توفير نظام موحد وقياسي لتنظيم الكود. <strong>البرمجة غير المتزامنة</strong> جاءت لحل مشكلة حظر تنفيذ الكود أثناء العمليات البطيئة." },
+        { type: "li", text: "<strong>تنظيم الكود:</strong> تقسيم الكود إلى ملفات منطقية سهلة الصيانة." },
+        { type: "li", text: "<strong>إعادة الاستخدام:</strong> تصدير الدوال واستيرادها في أي مكان." },
+        { type: "li", text: "<strong>عزل النطاق:</strong> كل وحدة لها نطاقها الخاص." },
+        { type: "li", text: "<strong>تحسين الأداء:</strong> التحميل الكسول للملفات." },
+        { type: "li", text: "<strong>منع حظر واجهة المستخدم:</strong> العمليات غير المتزامنة تمنع تجمد الصفحة." },
+        { type: "li", text: "<strong>تجربة مستخدم أفضل:</strong> تبقى الواجهة مستجيبة أثناء انتظار البيانات." },
+      ]},
+      { title: "المشكلة التي يحلها", content: [
+        { type: "p", text: "قبل وحدات ES، كان كل الكود في ملف واحد أو عدة ملفات مرتبطة بطريقة غير منظمة. هذا تسبب في تعارض الأسماء وصعوبة الصيانة وغموض التبعيات." },
+        { type: "p", text: "بالنسبة للبرمجة غير المتزامنة، المشكلة هي أن بعض العمليات مثل جلب البيانات من خادم بعيد تستغرق وقتًا طويلًا. بدون غير المتزامنة، سيتجمد المتصفح ويتوقف عن الاستجابة." },
+      ]},
+      { title: "شرح بسيط", content: [
+        { type: "p", text: "<strong>أولًا: الوحدات</strong> - فكر في الوحدات كفصول في كتاب: كل فصل يغطي موضوعًا محددًا. بدلاً من كتابة كل شيء في صفحة طويلة واحدة، تقسم الكود إلى ملفات صغيرة كل منها مسؤول عن شيء واحد." },
+        { type: "callout", title: "تشبيه بسيط:", text: "تخيل بناء منزل: بدلاً من استخدام قطعة خشب كبيرة لكل شيء، تقطع قطع بأحجام مناسبة لكل غرفة. ملف utils.js يحتوي على أدوات مساعدة، api.js يتعامل مع الخوادم، auth.js يدير المصادقة، إلخ." },
+        { type: "p", text: "<strong>ثانيًا: البرمجة غير المتزامنة</strong> - المتصفح لا يتوقف عن العمل أثناء انتظار نتيجة عملية بطيئة. بدلاً من ذلك، ينفذ باقي الكود ويعود لمعالجة النتيجة عند الجاهزية." },
+        { type: "p", text: "<strong>الوعود (Promises)</strong> هي الطريقة الأساسية للتعبير عن عملية غير متزامنة. الوعيد يمثل قيمة ستكون جاهزة في المستقبل، أو خطأ قد يحدث." },
+        { type: "p", text: "<strong>async/await</strong> هو حلوى صياغية فوق الوعود يجعل الكود أبسط وأوضح." },
+        { type: "p", text: "<strong>fetch API</strong> هي الدالة المضمنة في المتصفح لجلب البيانات من الخوادم." },
+      ]},
+      { title: "مثال بسيط", content: [
+        { type: "p", text: "<strong>1. تصدير واستيراد الوحدات</strong>" },
+        { type: "p", text: "<strong>2. وعيد بسيط</strong>" },
+        { type: "p", text: "<strong>3. async/await - البديل الأسهل</strong>" },
+      ]},
+      { title: "مثال عملي", content: [
+        { type: "p", text: "<strong>التطبيق العملي: جلب بيانات المستخدم من API</strong>" },
+        { type: "p", text: "<strong>متقدم: Promise.all و Promise.race</strong>" },
+        { type: "p", text: "<strong>تحويل JSON</strong>" },
+      ]},
+      { title: "ماذا يحدث خلف الكواليس؟", content: [
+        { type: "p", text: "<strong>1. كيف تعمل وحدات ES؟</strong>" },
+        { type: "p", text: "<strong>2. كيف تعمل الوعود و async/await؟</strong>" },
+        { type: "p", text: "جافاسكريبت <strong>خيط واحد</strong>، مما يعني أنها تنفذ كودًا واحدًا في كل مرة. للتعامل مع العمليات البطيئة دون حظر الخيط الرئيسي، تستخدم <strong>حلقة الحدث (Event Loop)</strong>." },
+        { type: "p", text: "<strong>3. مثال مبسط على حلقة الحدث</strong>" },
+      ]},
+      { title: "الأخطاء الشائعة", content: [
+        { type: "li", text: "<strong>الخطأ 1: نسيان await قبل fetch في دالة async</strong>" },
+        { type: "li", text: "<strong>الخطأ 2: استخدام import في ملف عادي (بدون type='module')</strong>" },
+        { type: "li", text: "<strong>الخطأ 3: عدم معالجة أخطاء fetch</strong>" },
+        { type: "li", text: "<strong>الخطأ 4: استخدام التصدير الافتراضي بشكل غير صحيح</strong>" },
+        { type: "li", text: "<strong>الخطأ 5: التنفيذ العرضي المتسلسل باستخدام await</strong>" },
+      ]},
+      { title: "أفضل الممارسات", content: [
+        { type: "li", text: "<strong>استخدم async/await بدلاً من .then():</strong> أسهل في القراءة والصيانة." },
+        { type: "li", text: "<strong>تحقق دائمًا من response.ok:</strong> fetch لا تثير خطأ عند فشل HTTP." },
+        { type: "li", text: "<strong>استخدم Promise.all للتوازي:</strong> نفذ العمليات المستقلة بالتوازي." },
+        { type: "li", text: "<strong>استخدم try/catch مع async/await:</strong> لمعالجة الأخطاء المركزية." },
+        { type: "li", text: "<strong>قسم الكود إلى وحدات صغيرة:</strong> مبدأ المسؤولية الفردية." },
+        { type: "li", text: "<strong>استخدم التصديرات المسماة بدلاً من الافتراضية:</strong> تجعل الأسماء أوضح وتسمح بأدوات تطوير أفضل." },
+        { type: "li", text: "<strong>تجنب الاختصارات الغامضة:</strong> اكتب أسماء واضحة مثل fetchUserData." },
+        { type: "li", text: "<strong>استخدم JSON.stringify مع فاصل للعرض:</strong> JSON.stringify(obj, null, 2)." },
+        { type: "li", text: "<strong>لا تتجاهل الأخطاء:</strong> اكتب دائمًا معالجة أخطاء." },
+        { type: "li", text: "<strong>استخدم import() الديناميكي للتحميل الكسول:</strong> import('./module.js')." },
+      ]},
+      { title: "ملخص", content: [
+        { type: "li", text: "<strong>وحدات ES:</strong> نظام موحد لتنظيم الكود باستخدام export/import." },
+        { type: "li", text: "<strong>التصديرات المسماة:</strong> export function و import { name } from." },
+        { type: "li", text: "<strong>التصدير الافتراضي:</strong> export default و import Name from." },
+        { type: "li", text: "<strong>الوعود:</strong> كائن يمثل نتيجة عملية غير متزامنة." },
+        { type: "li", text: "<strong>Promise.all:</strong> انتظار جميع الطلبات بالتوازي." },
+        { type: "li", text: "<strong>Promise.race:</strong> انتظار أسرع طلب فقط." },
+        { type: "li", text: "<strong>async/await:</strong> صياغة مريحة للعمل مع الوعود." },
+        { type: "li", text: "<strong>try/catch:</strong> معالجة الأخطاء في async/await." },
+        { type: "li", text: "<strong>fetch API:</strong> جلب البيانات من الخوادم باستخدام GET و POST." },
+        { type: "li", text: "<strong>JSON:</strong> تحويل البيانات بين جافاسكريبت وتنسيق JSON." },
+        { type: "li", text: "<strong>حلقة الحدث:</strong> كيف يعمل آلية عدم التزامن في جافاسكريبت." },
+      ]},
+    ],
+    quiz: [
+      { question: "ما هو الفرق الرئيسي بين async/await و .then() عند التعامل مع الوعود؟", options: ["async/await أسرع من .then() في التنفيذ", "async/await يجعل الكود يبدو أكثر تزامنًا وأسهل في القراءة", ".then() لا يمكنها معالجة الأخطاء", "async/await لا تحتاج إلى وعود"], correctAnswer: 1, explanation: "async/await هو حلوى صياغية فوق الوعود يجعل الكود يبدو متزامنًا، مما يجعله أسهل في القراءة والصيانة. لا يوجد فرق في الأداء، مجرد طريقة كتابة مختلفة." },
+      { question: "ماذا يحدث عندما يُرجع الخادم حالة HTTP مثل 404 أو 500 عند استخدام fetch()؟", options: ["يتم إطلاق خطأ تلقائيًا يمكن التقاطه بـ try/catch", "يتم تمرير الكائن المُرجع إلى .catch() مباشرة", "يتم إرجاع null بدلاً من بيانات الاستجابة", "لا يحدث شيء، يعتبر الطلب ناجحًا وتُرجع الاستجابة بشكل طبيعي"], correctAnswer: 3, explanation: "fetch() لا تثير خطأ عند فشل HTTP مثل 404 أو 500. يعتبر الطلب ناجحًا طالما تم الاتصال بالخادم." },
+    ],
+    challenge: { title: "تحدي: بناء نظام جلب بيانات كامل", description: "أنشئ نظام وحدات يجلب البيانات من API ويعالج الأخطاء بشكل صحيح." },
+    cheatSheet: { title: "ورقة مرجعية: الوحدات وعدم التزامن في جافاسكريبت", items: [
+      { label: "صياغة الوحدات", description: "export function add() | export default | import { name } from | import Name from | import * as mod from | await import('./file.js')" },
+      { label: "طرق الوعود", description: "new Promise() | .then() .catch() .finally() | Promise.all() | Promise.race() | Promise.allSettled()" },
+      { label: "أنماط async/await", description: "async function | await | try/catch/finally | Promise.all للتوازي" },
+      { label: "fetch API", description: "fetch(url) GET | fetch(url, {method:'POST'}) | response.ok | response.json() | JSON.stringify/parse" },
+    ]},
+  },
   en: {
     sections: [
       { title: "What Is It?", content: [

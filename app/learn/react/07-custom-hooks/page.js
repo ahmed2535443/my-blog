@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2, 2, 2, 1], fr: [1, 2, 2, 2, 1], de: [1, 2, 2, 2, 1] };
+const correctAnswers = { ar: [1, 2, 2, 2, 1], en: [1, 2, 2, 2, 1], fr: [1, 2, 2, 2, 1], de: [1, 2, 2, 2, 1] };
 
 const challengeCode = `// useFetch hook
 function useFetch(url) {
@@ -49,6 +49,29 @@ function useToggle(initialValue = false) {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص الخطافات المخصصة",
+    columns: [
+      {
+        heading: "الهيكل الأساسي:",
+        items: [
+          "function useCounter(initialValue = 0) {",
+          "  const [count, setCount] = useState(initialValue);",
+          "  const increment = () => setCount(c => c + 1);",
+          "  return { count, increment };",
+          "}",
+        ],
+      },
+      {
+        heading: "الاستخدام:",
+        items: [
+          "const { count, increment } = useCounter(0);",
+          "يجب أن تبدأ بكلمة 'use'",
+          "كل مكون يحصل على نسخته الخاصة",
+        ],
+      },
+    ],
+  },
   en: {
     title: "Custom Hooks Cheat Sheet",
     columns: [

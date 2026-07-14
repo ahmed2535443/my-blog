@@ -1,4 +1,53 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "ما هي الواجهة؟", content: [
+        { type: "p", text: "تُعرّف <strong>الواجهة</strong> شكل الكائن. تُحدد أي خصائص يجب أن يكون لدى الكائن وأنواع هذه الخصائص." },
+        { type: "code", text: "interface Person {\n  name: string;\n  age: number;\n  email: string;\n}\n\nconst person: Person = {\n  name: 'Ahmed',\n  age: 25,\n  email: 'ahmed@example.com'\n};" },
+      ]},
+      { title: "الخصائص الاختيارية والللقراءة فقط", content: [
+        { type: "p", text: "تدعم الواجهات الخصائص الاختيارية (?) والخصائص للقراءة فقط:" },
+        { type: "code", "text": "interface Config {\n  readonly apiUrl: string;\n  timeout?: number;\n  debug?: boolean;\n}" },
+        { type: "callout", title: "نقاط رئيسية", text: "readonly = لا يمكن تغييره بعد الإنشاء. ? = الخاصية اختيارية." },
+      ]},
+      { title: "توسيع الواجهات", content: [
+        { type: "p", text: "يمكن للواجهات التوسع من واجهات أخرى لإعادة الاستخدام والبناء على الأنواع الموجودة:" },
+        { type: "code", text: "interface Animal {\n  name: string;\n  sound: string;\n}\n\ninterface Dog extends Animal {\n  breed: string;\n  bark(): void;\n}" },
+      ]},
+      { title: "أسماء الأنواع البديلة", content: [
+        { type: "p", text: "أسماء الأنواع البديلة هي طريقة أخرى لإنشاء أنواع مخصصة. تعمل بشكل مشابه للواجهات لكنها أكثر مرونة:" },
+        { type: "code", text: "type Point = {\n  x: number;\n  y: number;\n};\n\ntype ID = string | number;\n\ntype Result = {\n  success: boolean;\n  data: any;\n  error?: string;\n};" },
+        { type: "callout", title: "واجهة مقابل نوع", text: "استخدم interface للكائنات والكلاسات. استخدم type لأنواع الاتحاد والتقاطع وتعريفات الأنواع الأبسط." },
+      ]},
+      { title: "أنواع التقاطع", content: [
+        { type: "p", text: "تجمع أنواع التقاطع عدة أنواع في واحد:" },
+        { type: "code", text: "type HasName = { name: string };\ntype HasAge = { age: number };\n\ntype Person = HasName & HasAge;\n// يجب أن يحتوي Person على name و age معاً" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "تُعرّف الواجهات شكل الكائنات" },
+        { type: "li", text: "readonly يجعل الخصائص غير قابلة للتغيير" },
+        { type: "li", text: "? يجعل الخصائص اختيارية" },
+        { type: "li", text: "يمكن للواجهات التوسع من واجهات أخرى" },
+        { type: "li", text: "أسماء الأنواع البديلة أكثر مرونة للاتحادات والتقاطعات" },
+        { type: "li", text: "أنواع التقاطع (&) تجمع عدة أنواع" },
+      ]}
+    ],
+    quiz: [
+      { question: "ماذا يفعل المُعدّل readonly؟", options: ["ي يجعل الخاصية مطلوبة", "ي يجعل الخاصية غير قابلة للتغيير", "ي يجعل الخاصية اختيارية", "ي يجعل الخاصية خاصة"], explanation: "readonly يجعل الخاصية غير قابلة للتغيير — لا يمكن تغييرها بعد إنشاء الكائن." },
+      { question: "ما الفرق بين interface و type؟", options: ["لا فرق", "interface للكائنات، type أكثر مرونة", "type أسرع", "interface يدعم الاتحادات"], explanation: "الواجهات أفضل للكائنات والكلاسات، بينما أسماء الأنواع البديلة أكثر مرونة للاتحادات والتقاطعات." },
+      { question: "كيف تجمع نوعين في واحد؟", options: ["اتحاد (|)", "تقاطع (&)", "دمج", "combine"], explanation: "يجمع التقاطع (&) عدة أنواع في واحد، متطلباً جميع الخصائص." }
+    ],
+    challenge: { title: "بناء نظام أنواع", description: "أنشئ واجهات لنظام مدونة: Post، User، Comment. استخدم extends للوراثة والخصائص الاختيارية وأنواع التقاطع." },
+    cheatSheet: { title: "ملخص الواجهات والأنواع", items: [
+      { term: "interface", definition: "يُعرّف شكل الكائن" },
+      { term: "readonly", definition: "الخاصية غير قابلة للتغيير" },
+      { term: "?:", definition: "خاصية اختيارية" },
+      { term: "extends", definition: "الوراثة من واجهة أخرى" },
+      { term: "type", definition: "اسم نوع بديل — أكثر مرونة" },
+      { term: "A & B", definition: "تقاطع — يجمع الأنواع" },
+      { term: "A | B", definition: "اتحاد — A أو B" }
+    ]}
+  },
   en: {
     sections: [
       { title: "What is an Interface?", content: [

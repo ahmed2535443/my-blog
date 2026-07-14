@@ -1,4 +1,69 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "ما سنبنيه", content: [
+        { type: "p", text: "في هذا الدرس الأخير من مرحلة Tailwind، سنبني مشروعاً عملياً حقيقياً: لوحة تحكم كاملة. يجمع هذا المشروع كل ما تعلمناه في الدروس السابقة." },
+        { type: "li", text: "<strong>الشريط الجانبي</strong> — الشعار وروابط التنقل مع حالة نشطة" },
+        { type: "li", text: "<strong>الرأس</strong> — شريط البحث + أيقونة الإشعارات + صورة المستخدم" },
+        { type: "li", text: "<strong>بطاقات الإحصائيات</strong> — شبكة من البطاقات مع أرقام ومؤشرات" },
+        { type: "li", text: "<strong>جدول البيانات</strong> — جدول متجاوب يعرض بيانات المستخدمين" },
+        { type: "li", text: "<strong>الوضع الداكن</strong> — تبديل كامل مع دعم جميع المكونات" },
+      ]},
+      { title: "هيكل المشروع", content: [
+        { type: "p", text: "يتكون التصميم من ثلاثة أجزاء رئيسية مرتبة بأفقي flexbox: الشريط الجانبي، الرأس، ومنطقة المحتوى الرئيسي." },
+        { type: "callout", title: "نقاط التصميم الرئيسية", text: "نستخدم flex للتخطيط الأفقي بين الشريط الجانبي والمحتوى. flex-1 على المحتوى يأخذ المساحة المتبقية. الشريط الجانبي مخفي على الهاتف مع hidden lg:block." },
+      ]},
+      { title: "بناء الشريط الجانبي", content: [
+        { type: "p", text: "الشريط الجانبي هو عنصر التنقل الرئيسي. يتضمن الشعار في الأعلى وروابط التنقل في الوسط ومعلومات المستخدم في الأسفل." },
+        { type: "li", text: "hidden lg:flex — مخفي افتراضياً، flex على شاشات lg" },
+        { type: "li", text: "sticky top-0 — يلتصق بالأعلى عند التمرير" },
+        { type: "li", text: "flex-col — تخطيط عمودي لعناصر الشريط الجانبي" },
+        { type: "li", text: "flex-1 — يأخذ المساحة المتبقية للتنقل" },
+      ]},
+      { title: "بناء الرأس", content: [
+        { type: "p", text: "يتضمن الرأس شريط البحث في الوسط وأيقونة الإشعارات وصورة المستخدم على اليمين وزر القائمة المحمولة على اليسار." },
+      ]},
+      { title: "بطاقات الإحصائيات", content: [
+        { type: "p", text: "تعرض بطاقات الإحصائيات معلومات سريعة وأرقاماً رئيسية. نستخدم CSS Grid للتخطيط المتجاوب." },
+        { type: "li", text: "grid-cols-1 md:grid-cols-2 lg:grid-cols-4 — شبكة متجاوبة" },
+        { type: "li", text: "hover:shadow-md — تأثير التمرير" },
+        { type: "li", text: "transition-shadow — انتقال سلس للظل" },
+      ]},
+      { title: "جدول البيانات", content: [
+        { type: "p", text: "يعرض الجدول قائمة من المستخدمين مع صورهم وأسمائهم وأدوارهم وحالتهم. على الهاتف، نسمح بالتمرير الأفقي." },
+        { type: "li", text: "overflow-x-auto — يسمح بالتمرير الأفقي على الشاشات الصغيرة" },
+        { type: "li", text: "whitespace-nowrap — يمنع لف النص في الخلايا" },
+        { type: "li", text: "divide-y — يرسم خطوط فاصلة بين الصفوف" },
+      ]},
+      { title: "دمج الوضع الداكن", content: [
+        { type: "p", text: "يعمل الوضع الداكن في Tailwind بإضافة البادئة dark: أمام كل فئة. نبني زر تبديل ونطبق الألوان الداكنة على جميع المكونات." },
+        { type: "callout", title: "نمط ألوان داكنة متسق", text: "الخلفية: bg-gray-900 للصفحة، bg-gray-800 للمكونات. الحدود: border-gray-700. النص: text-gray-200 للأساسي، text-gray-400 للثانوي." },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "تجمع لوحة التحكم بين Flexbox و Grid والتصميم المتجاوب والوضع الداكن" },
+        { type: "li", text: "يستخدم الشريط الجانبي التثبيت الموضعي والإخفاء المتجاوب" },
+        { type: "li", text: "تستخدم بطاقات الإحصائيات شبكة متجاوبة مع تأثيرات التمرير" },
+        { type: "li", text: "يدعم جدول البيانات التمرير الأفقي على الهاتف" },
+        { type: "li", text: "يستخدم الوضع الداكن أنماط ألوان متسقة عبر جميع المكونات" },
+      ]}
+    ],
+    quiz: [
+      { question: "كيف يُخفي الشريط الجانبي على الهاتف؟", options: ["display: none", "hidden lg:flex", "visibility: hidden", "opacity-0"], explanation: "hidden lg:flex يُخفي الشريط الجانبي افتراضياً ويعرضه كـ flex على شاشات lg (1024px+)." },
+      { question: "أي فئة تسمح بالتمرير الأفقي على الهاتف؟", options: ["overflow-scroll", "overflow-x-auto", "scroll-x", "horizontal-scroll"], explanation: "overflow-x-auto يسمح بالتمرير الأفقي عندما يتجاوز المحتوى عرض الحاوية." },
+      { question: "كيف تجعل الشبكة متجاوبة بعمود واحد على الهاتف وأربعة على سطح المكتب؟", options: ["grid-cols-4", "grid-cols-1 md:grid-cols-4", "responsive-grid", "grid-auto-4"], explanation: "grid-cols-1 md:grid-cols-4 تعيّن عموداً واحداً افتراضياً وأربعة أعمدة على شاشات md (768px+)." }
+    ],
+    challenge: { title: "بناء لوحة تحكم كاملة", description: "أنشئ لوحة تحكم كاملة مع شريط جانبي ورأس وبطاقات إحصائيات وجدول بيانات وتبديل وضع داكن باستخدام فئات Tailwind CSS فقط." },
+    cheatSheet: { title: "ملخص مشروع لوحة التحكم", items: [
+      { term: "hidden lg:flex", definition: "إظهار العنصر فقط على شاشات lg+" },
+      { term: "sticky top-0", definition: "تثبيت العنصر في الأعلى عند التمرير" },
+      { term: "flex-1", definition: "أخذ المساحة المتبقية" },
+      { term: "grid-cols-1 md:grid-cols-2 lg:grid-cols-4", definition: "شبكة متجاوبة 1→2→4 أعمدة" },
+      { term: "overflow-x-auto", definition: "تمرير أفقي عند الفائض" },
+      { term: "divide-y", definition: "فواصل أفقية بين العناصر" },
+      { term: "dark:bg-gray-800", definition: "خلفية الوضع الداكن" },
+      { term: "transition-colors duration-300", definition: "انتقال سلس للألوان" }
+    ]}
+  },
   en: {
     sections: [
       { title: "What We'll Build", content: [

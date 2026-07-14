@@ -1,4 +1,67 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "التصميم المتجاوب", content: [
+        { type: "p", text: "التصميم المتجاوب يعني أن موقعك يعمل بشكل مثالي على جميع أحجام الشاشات — من الهواتف الصغيرة إلى الشاشات الكبيرة. يجعل Tailwind CSS التصميم المتجاوب سهلاً للغاية باستخدام نظام البادئات." },
+        { type: "callout", title: "نهج الهاتف أولاً", text: "يتبع Tailwind نهج الهاتف أولاً — تصمم للشاشات الصغيرة أولاً، ثم أضف التعديلات للشاشات الأكبر. الكود بدون بادئة ينطبق على جميع الشاشات. البادئات مثل sm: و md: تضيف أنماط للشاشات الأكبر فقط." },
+        { type: "li", text: "sm: — min-width: 640px (هاتف كبير)" },
+        { type: "li", text: "md: — min-width: 768px (جهاز لوحي)" },
+        { type: "li", text: "lg: — min-width: 1024px (حاسوب مكتبي)" },
+        { type: "li", text: "xl: — min-width: 1280px (شاشة مكتبية)" },
+        { type: "li", text: "2xl: — min-width: 1536px (شاشة كبيرة)" },
+      ]},
+      { title: "أمثلة عملية متجاوبة", content: [
+        { type: "li", text: "تنقل متجاوب — قائمة همبرغر على الهاتف، روابط كاملة على سطح المكتب" },
+        { type: "li", text: "طباعة متجاوبة — أصغر على الهاتف، أكبر على سطح المكتب" },
+        { type: "li", text: "تخطيط متجاوب — متكدس على الهاتف، جنباً إلى جنب على سطح المكتب" },
+        { type: "li", text: "تباعد متجاوب — حشو أقل على الهاتف، أكثر على سطح المكتب" },
+      ]},
+      { title: "الحالات التفاعلية", content: [
+        { type: "p", text: "يوفر Tailwind بادئات للحالات المختلفة التي يمكن أن يكون فيها العنصر. تُضاف هذه البادئات أمام أي فئة لتغيير المظهر في حالات محددة." },
+        { type: "li", text: "hover: — عندما يكون الماوس فوق العنصر" },
+        { type: "li", text: "focus: / focus-visible: — عندما يكون للعنصر تركيز" },
+        { type: "li", text: "active: — أثناء النقر/الضغط" },
+        { type: "li", text: "disabled: — عندما يكون العنصر معطلاً" },
+        { type: "li", text: "first: / last: / odd: / even: — محددات موضعية" },
+      ]},
+      { title: "الوضع الداكن", content: [
+        { type: "p", text: "أصبح الوضع الداكن ميزة أساسية في تطبيقات الويب الحديثة. يوفر Tailwind بادئة dark: لتحديد أنماط مختلفة للوضع الداكن." },
+        { type: "callout", title: "كيف يعمل الوضع الداكن في Tailwind", text: "يستخدم Tailwind استراتيجية 'class' افتراضياً. يُفعّل الوضع الداكن بإضافة فئة 'dark' إلى عنصر <html> أو <body>." },
+        { type: "li", text: "bg-white dark:bg-gray-900 — خلفية فاتحة، داكنة في الوضع الداكن" },
+        { type: "li", text: "text-gray-900 dark:text-gray-100 — نص داكن، فاتح في الوضع الداكن" },
+        { type: "li", text: "border-gray-200 dark:border-gray-700 — حدود تكيفية" },
+      ]},
+      { title: "group و peer", content: [
+        { type: "p", text: "تعد بادئات group و peer من أقوى الميزات المتقدمة في Tailwind. تسمح لك بتنسيق العناصر بناءً على حالة عنصر آخر." },
+        { type: "li", text: "group — تضيف group-hover: لجميع الأطفال عندما يمر الماوس على الأصل" },
+        { type: "li", text: "peer — تنسيق العناصر الشقيقة بناءً على حالة عنصر(peer)" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "يستخدم التصميم المتجاوب بادئات نقاط التوقف: sm:، md:، lg:، xl:، 2xl:" },
+        { type: "li", text: "تستخدم الحالات التفاعلية hover:، focus:، active:، disabled:" },
+        { type: "li", text: "يستخدم الوضع الداكن البادئة dark: مع استراتيجية 'class'" },
+        { type: "li", text: "تمكّن group و peer من التنسيق القائم على الأصل/الشقيق" },
+      ]}
+    ],
+    quiz: [
+      { question: "ماذا يعني md:text-lg؟", options: ["النص كبير فقط على الأجهزة اللوحية وما فوق", "النص كبير دائماً", "النص كبير على الهاتف", "النص له هامش"], explanation: "md:text-lg يطبق font-size: 1.125rem فقط على شاشات 768px وما فوق." },
+      { question: "كيف تفعّل الوضع الداكن في Tailwind؟", options: ["أضف فئة dark-mode إلى body", "أضف فئة dark إلى html أو body", "استخدم prefers-color-scheme media query", "عيّن متغير JavaScript"], explanation: "يستخدم Tailwind استراتيجية 'class' — أضف فئة dark إلى عنصر html أو body." },
+      { question: "ماذا يفعل group-hover:؟", options: ["يُخفي العنصر عند التمرير", "يُطبق أنماطاً على الأطفال عندما يمر الماوس على الأصل", "يجعل العنصر مجموعة", "يفعّل تحديد المجموعة"], explanation: "group-hover: يُطبق أنماطاً على العناصر الفرعية عندما يمر الماوس على الأصل الحامل لفئة group." }
+    ],
+    challenge: { title: "بناء مكون تبديل الوضع الداكن", description: "أنشئ مكوناً يدعم كلتا الحالتين الفاتحة والداكنة مع انتقالات سلسة، باستخدام بادئة dark: في Tailwind والتصميم المتجاوب." },
+    cheatSheet: { title: "ملخص المتجاوب والحالات والوضع الداكن", items: [
+      { term: "sm: / md: / lg: / xl:", definition: "نقاط توقف متجاوبة" },
+      { term: "hover:", definition: "حالة تمرير الماوس" },
+      { term: "focus-visible:", definition: "حالة تركيز لوحة المفاتيح" },
+      { term: "active:", definition: "حالة النقر/الضغط" },
+      { term: "disabled:", definition: "حالة التعطيل" },
+      { term: "dark:", definition: "أنماط الوضع الداكن" },
+      { term: "group-hover:", definition: "تمرير الأصل → أنماط الأبناء" },
+      { term: "peer-checked:", definition: "شريك محدد" },
+      { term: "first: / last:", definition: "محددات الابن الأول/الأخير" },
+      { term: "transition-colors", definition: "انتقال سلس للألوان" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Responsive Design", content: [

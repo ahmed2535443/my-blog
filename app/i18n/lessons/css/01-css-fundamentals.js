@@ -1,4 +1,191 @@
 const translations = {
+  ar: {
+    sections: [
+      {
+        title: "ما هو CSS",
+        content: [
+          { type: "p", text: "CSS اختصار لـ <strong>Cascading Style Sheets</strong> (أوراق الأنماط المتتالية). وهو اللغة المستخدمة لتنسيق وتصميم صفحات HTML." },
+          { type: "p", text: "بينما يتعامل HTML مع الهيكل والمحتوى، يتعامل CSS مع المظهر والألوان والخطوط والتخطيط." },
+          { type: "callout", title: "مفهوم أساسي", text: "يفصل CSS المحتوى عن العرض، مما يتيح لك تغيير مظهر موقعك بالكامل عن طريق تعديل ملف واحد فقط." }
+        ]
+      },
+      {
+        title: "لماذا نستخدمه",
+        content: [
+          { type: "p", text: "بدون CSS، ستبدو كل صفحة ويب متشابهة ومملة. يحل CSS هذه المشاكل:" },
+          { type: "li", text: "<strong>فصل المحتوى عن التصميم</strong> - تغيير المظهر دون لمس المحتوى" },
+          { type: "li", text: "<strong>تنسيق متسق</strong> - تنسيق موحد عبر جميع الصفحات" },
+          { type: "li", text: "<strong>التخصيص</strong> - تصاميم متجاوبة تعمل على جميع الأجهزة" },
+          { type: "li", text: "<strong>التخزين المؤقت</strong> - تحديث ملف واحد لتحديث جميع الصفحات" },
+          { type: "li", text: "<strong>الأداء</strong> - ملفات CSS قابلة للتخزين المؤقت من المتصفحات" }
+        ]
+      },
+      {
+        title: "المشكلة التي يحلها",
+        content: [
+          { type: "p", text: "تخيل أنك تريد تغيير لون جميع العناوين في موقع ويب مكون من 100 صفحة:" },
+          { type: "callout-accent", title: "بدون CSS", text: "ستحتاج إلى تعديل كل يدوياً. مع CSS، ملف واحد محدث ي يحدث كل شيء." }
+        ]
+      },
+      {
+        title: "شرح بسيط",
+        content: [
+          { type: "p", text: "يعمل CSS على مبدأ بسيط: <strong>المحدد + الخاصية + القيمة</strong>" },
+          { type: "p", text: "هناك ثلاث طرق لربط CSS بصفحة HTML:" },
+          { type: "li", text: "<strong>Inline</strong> - الأسوأ، باستخدام سمة style" },
+          { type: "li", text: "<strong>Internal</strong> - جيد للصفحات الفردية، باستخدام وسم style" },
+          { type: "li", text: "<strong>External</strong> - الأفضل دائماً، باستخدام وسم link" },
+          { type: "callout-primary", title: "القاعدة الذهبية", text: "استخدم دائماً الملفات الخارجية. استخدم الأنماط الداخلية فقط للنماذج الأولية أو الصفحات الفردية." }
+        ]
+      },
+      {
+        title: "ما يحدث خلف الكواليس",
+        content: [
+          { type: "p", text: "عندما يload المتصفح صفحة ويب، يمر CSS بعدة مراحل قبل عرض النتيجة النهائية:" },
+          { type: "li", text: "<strong>1. تحليل CSS</strong> - يقرأ المتصفح ويحلل CSS إلى شجرة تسمى CSSOM" },
+          { type: "li", text: "<strong>2. بناء شجرة العرض</strong> - يتم دمج DOM و CSSOM في شجرة عرض" },
+          { type: "li", text: "<strong>3. التخطيط</strong> - يحسب المتصفح الموقع والحجم الدقيق لكل عنصر" },
+          { type: "li", text: "<strong>4. الرسم</strong> - يرسم المتصفح كل عنصر بتأثيراته البصرية" },
+          { type: "li", text: "<strong>5. التجميع</strong> - يتم دمج جميع طبقات الرسومات في النتيجة النهائية" },
+          { type: "callout", title: "نصيحة أداء", text: "الخصائص مثل <code>transform</code> و <code>opacity</code> لا تسبب إعادة حساب التخطيط - وهي أسرع للرسوم المتحركة والتأثيرات البصرية." }
+        ]
+      },
+      {
+        title: "النوعية",
+        content: [
+          { type: "p", text: "عندما تنطبق عدة قواعد CSS على عنصر واحد، يقرر المتصفح أي قاعدة تطبق بناءً على <strong>نوعية المحدد</strong>." },
+          { type: "li", text: "1. عنصر HTML (p, div) → 0-0-1" },
+          { type: "li", text: "2. فئة (.class) → 0-1-0" },
+          { type: "li", text: "3. معرّف (#id) → 1-0-0" },
+          { type: "li", text: "4. Inline (style=\"\") → 1-0-0-0" },
+          { type: "li", text: "5. !important → الأعلى (ملاذ أخير)" },
+          { type: "callout-accent", title: "احذر من !important", text: "استخدم <code>!important</code> فقط كملاذ أخير. الإفراط في استخدامه يجعل الكود صعب الصيانة ويسبب مشاكل غير متوقعة. استخدم المتغيرات بدلاً من ذلك." }
+        ]
+      },
+      {
+        title: "نموذج الصندوق",
+        content: [
+          { type: "p", text: "كل عنصر HTML هو صندوق. يصف نموذج الصندوق كيفية حساب حجم العنصر والمسافات:" },
+          { type: "li", text: "<strong>content-box</strong> (الافتراضي) - العرض يتضمن المحتوى فقط" },
+          { type: "li", text: "<strong>border-box</strong> - العرض يتضمن الحشو والحد" },
+          { type: "callout-primary", title: "القاعدة الذهبية", text: "استخدم دائماً <code>box-sizing: border-box</code> في بداية ملفك. هذا يجعل التخطيط أسهل وأكثر قابلية للتنبؤ." }
+        ]
+      },
+      {
+        title: "الوحدات الحديثة",
+        content: [
+          { type: "p", text: "يوفر CSS وحدات مختلفة. فهم الفروق يحسن التصميم بشكل كبير:" },
+          { type: "li", text: "<strong>rem</strong> - نسبي لحجم خط الجذر، مثالي للخطوط والمسافات" },
+          { type: "li", text: "<strong>em</strong> - نسبي لحجم خط الأب، يتراكم في العناصر المتداخلة" },
+          { type: "li", text: "<strong>%</strong> - نسبي للحاوية الأب" },
+          { type: "li", text: "<strong>vw/vh</strong> - نسبي لعرض/ارتفاع منطقة العرض" },
+          { type: "li", text: "<strong>dvh</strong> - ارتفاع منطقة العرض الديناميكي، يحل مشاكل الجوال" },
+          { type: "li", text: "<strong>clamp()</strong> - يحدد الحد الأدنى والأقصى والفضل - الوحدة السحرية" }
+        ]
+      },
+      {
+        title: "الألوان الحديثة",
+        content: [
+          { type: "p", text: "يوفر CSS طرقاً متعددة لتحديد الألوان، لكل منها حالات استخدامها:" },
+          { type: "li", text: "<strong>Hexadecimal</strong> - سريع وشائع (#2563eb)" },
+          { type: "li", text: "<strong>RGB/RGBA</strong> - مع دعم الشفافية" },
+          { type: "li", text: "<strong>HSL/HSLA</strong> - الأسهل تعديلاً (اللون، التشبّع، السطوع)" },
+          { type: "li", text: "<strong>oklch()</strong> - ألوان حديثة متسقة بصرياً" },
+          { type: "li", text: "<strong>color-mix()</strong> - خلط لونين مباشرة في CSS" },
+          { type: "li", text: "<strong>light-dark()</strong> - ألوان السمة التلقائية" }
+        ]
+      },
+      {
+        title: "أساسيات العرض",
+        content: [
+          { type: "p", text: "تحدد الخاصية <code>display</code> كيفية عرض العنصر وسلوكه في التخطيط:" },
+          { type: "li", text: "<strong>block</strong> - يأخذ العرض الكامل، يبدأ في سطر جديد (div, p, h1)" },
+          { type: "li", text: "<strong>inline</strong> - يبقى في نفس السطر، يأخذ عرض المحتوى فقط (span, a)" },
+          { type: "li", text: "<strong>inline-block</strong> - يجمع بين مزايا inline و block (button, input)" },
+          { type: "li", text: "<strong>none</strong> - يخفي العنصر تماماً، لا محجوز للمساحة" }
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: "ما الفرق بين box-sizing: content-box و box-sizing: border-box؟",
+        options: [
+          "content-box يتضمن الحشو والحد في العرض، border-box لا يتضمنهما",
+          "border-box يتضمن الحشو والحد في العرض، content-box لا يتضمنهما",
+          "لا يوجد فرق بينهما",
+          "border-box يخفي الحدود وcontent-box يعرضها"
+        ],
+        correctAnswer: 1,
+        explanation: "في border-box، يتم تضمين الحشو والحد في العرض المحدد. في content-box (الافتراضي)، يتم حساب العرض للمحتوى فقط، وتزداد المساحة مع الحشو والحد."
+      },
+      {
+        question: "لماذا نفضل rem بدلاً من px للخطوط؟",
+        options: [
+          "rem أسرع في الأداء",
+          "rem يجعل الخطوط أكبر حجماً",
+          "rem يحترم إعدادات حجم الخط في المتصفح ويوفر إمكانية الوصول",
+          "px لا يعمل في المتصفحات الحديثة"
+        ],
+        correctAnswer: 2,
+        explanation: "يعتمد rem على حجم خط الجذر. إذا غير المستخدم حجم الخط في إعدادات المتصفح لإمكانية الوصول، تتغير جميع الخطوط المعرّفة بـ rem. px ثابت ولا يتغير."
+      }
+    ],
+    challenge: {
+      title: "تصميم بطاقة باستخدام الأساسيات",
+      description: "أنشئ بطاقة بسيطة باستخدام: box-sizing: border-box, rem للخطوط, clamp() للعرض, المتغيرات, display: block/inline-block, والألوان الحديثة. يجب أن تكون البطاقة متجاوبة دون استعلامات الوسائط."
+    },
+    cheatSheet: {
+      title: "مرجع CSS سريع",
+      items: [
+        {
+          title: "الوحدات",
+          content: `| الوحدة | المرجع | أفضل استخدام |
+|--------|---------|-------------|
+| px | ثابت | حدود دقيقة، أيقونات |
+| rem | حجم خط الجذر | الخطوط، المسافات العامة |
+| em | حجم خط الأب | خطوط داخل العناصر |
+| % | الحاوية | تخطيط نسبي |
+| vw / vh | منطقة العرض | أحجام متجاوبة |
+| dvh | ارتفاع ديناميكي | حل الجوال |
+| ch | عرض حرف "0" | أعمدة النص |
+| clamp() | الحد الأدنى + النسبي + الأقصى | الأفضل للتخطيط المرن |`
+        },
+        {
+          title: "الألوان",
+          content: `| الصيغة | مثال | الاستخدام |
+|--------|------|-----------|
+| #hex | #2563eb | سريع وشائع |
+| rgb() | rgb(37, 99, 235) | مع الشفافية: rgba() |
+| hsl() | hsl(217, 91%, 60%) | سهل التعديل |
+| oklch() | oklch(0.65 0.19 145) | حديث ودقيق |
+| color-mix() | color-mix(in oklch, blue 50%, red) | خلط الألوان |
+| light-dark() | light-dark(#fff, #111) | ألوان السمة التلقائية |`
+        },
+        {
+          title: "أنواع العرض",
+          content: `| القيمة | السلوك | أمثلة |
+|--------|--------|-------|
+| block | سطر جديد + عرض كامل | div, p, h1 |
+| inline | نفس السطر + عرض المحتوى | span, a, strong |
+| inline-block | نفس السطر + يقبل الأبعاد | button, input |
+| none | إخفاء تام + لا مساحة | إخفاء العناصر |
+| flex | تخطيط مرن | حاويات التخطيط |
+| grid | تخطيط شبكة | صفحات معقدة |`
+        },
+        {
+          title: "النوعية",
+          content: `الترتيب من الأدنى إلى الأعلى:
+1. العناصر (p, div) → 0-0-1
+2. الفئات (.class) → 0-1-0
+3. المعرّفات (#id) → 1-0-0
+4. Inline (style="") → 1-0-0-0
+5. !important → الأعلى (ملاذ أخير)
+
+القاعدة: استخدم دائماً الفئات، تجنب المعرّفات في CSS، ولا تستخدم !important أبداً إلا لإصلاحات الطوارئ.`
+        }
+      ]
+    }
+  },
   en: {
     sections: [
       {

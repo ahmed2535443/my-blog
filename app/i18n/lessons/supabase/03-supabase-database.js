@@ -1,4 +1,62 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "مفاهيم قواعد البيانات", content: [
+        { type: "p", text: "قاعدة البيانات هي طريقة منظمة لتخزين البيانات واسترجاعها وإدارتها. فكر فيها كخزانة ملفات رقمية تحتوي كل مجلد على بيانات محددة." },
+        { type: "p", text: "Supabase يستخدم PostgreSQL، الذي ينظم البيانات في <strong>جداول</strong> (مثل جداول Excel) مع <strong>صفوف</strong> (سجلات) و <strong>أعمدة</strong> (حقول)." },
+      ]},
+      { title: "إنشاء الجداول", content: [
+        { type: "li", text: "اذهب إلى محرر الجداول في لوحة تحكم Supabase" },
+        { type: "li", text: "انقر على 'Create Table'" },
+        { type: "li", text: "أعطه اسماً (مثل 'posts'، 'users'، 'comments')" },
+        { type: "li", text: "أضف أعمدة مع أنواع بياناتها" },
+        { type: "li", text: "اختر نوع البيانات المناسب لكل عمود" },
+      ]},
+      { title: "أنواع البيانات", content: [
+        { type: "li", text: "<strong>int4/int8</strong> — أعداد صحيحة (صغيرة/كبيرة)" },
+        { type: "li", text: "<strong>float8</strong> — أعداد عشرية" },
+        { type: "li", text: "<strong>text</strong> — نص بأي طول" },
+        { type: "li", text: "<strong>varchar(255)</strong> — نص بحد أقصى للطول" },
+        { type: "li", text: "<strong>bool</strong> — منطقي (صحيح/خطأ)" },
+        { type: "li", text: "<strong>timestamptz</strong> — تاريخ ووقت مع المنطقة الزمنية" },
+        { type: "li", text: "<strong>uuid</strong> — معرّف فريد" },
+        { type: "li", text: "<strong>jsonb</strong> — بيانات JSON للهياكل المعقدة" },
+      ]},
+      { title: "العلاقات", content: [
+        { type: "li", text: "<strong>واحد إلى واحد</strong>: كل مستخدم له ملف شخصي واحد" },
+        { type: "li", text: "<strong>واحد إلى متعدد</strong>: منشور واحد له العديد من التعليقات" },
+        { type: "li", text: "<strong>متعدد إلى متعدد</strong>: الطلاب يسجّلون في العديد من الدورات" },
+      ]},
+      { title: "عمليات CRUD", content: [
+        { type: "p", text: "CRUD تعني الإنشاء والقراءة والتحديث والحذف — العمليات الأساسية الأربعة لإدارة البيانات." },
+        { type: "code", text: "// إنشاء\nawait supabase.from('posts').insert({ title: 'مرحباً', content: 'العالم' });\n\n// قراءة\nconst { data } = await supabase.from('posts').select('*');\n\n// تحديث\nawait supabase.from('posts').update({ title: 'محدّث' }).eq('id', 1);\n\n// حذف\nawait supabase.from('posts').delete().eq('id', 1);" },
+      ]},
+      { title: "ملخص الدرس", content: [
+        { type: "li", text: "قواعد البيانات تنظم البيانات في جداول مع صفوف وأعمدة." },
+        { type: "li", text: "كل عمود له نوع بيانات محدد." },
+        { type: "li", text: "العلاقات تربط الجداول معاً." },
+        { type: "li", text: "عمليات CRUD تدير بياناتك." },
+      ]}
+    ],
+    quiz: [
+      { question: "ماذا يعني CRUD؟", options: ["إنشاء وقراءة وتحديث وحذف", "اتصال وتشغيل واستخدام ونشر", "كود وعرض ورفع وتنزيل", "إنشاء واسترجاع ورفع وتدمير"], explanation: "CRUD = إنشاء وقراءة وتحديث وحذف — العمليات الأساسية الأربعة لقاعدة البيانات." },
+      { question: "أي نوع بيانات تستخدمه لاسم المستخدم الكامل؟", options: ["int4", "bool", "text", "uuid"], text: "text مناسب لتخزين الأسماء بأي طول." },
+      { question: "ما هي العلاقة واحد إلى متعدد؟", options: ["سجل واحد في A يرتبط بواحد في B", "سجل واحد في A يرتبط بالعديد في B", "العديد من السجلات في A مرتبطة بالعديد في B", "لا علاقة"], explanation: "واحد إلى متعدد: سجل واحد في الجدول الأول يرتبط بالعديد من السجلات في الجدول الثاني." },
+    ],
+    challenge: { title: "أنشئ جدولك الأول", description: "أنشئ جدول 'posts' بأعمدة: id و title و content و created_at. أضف 3 سجلات باستخدام محرر الجداول." },
+    cheatSheet: { title: "ملخص مراجعة قواعد البيانات و CRUD", items: [
+      { term: "جدول", definition: "مجموعة بيانات مرتبطة" },
+      { term: "صف", definition: "سجل واحد في الجدول" },
+      { term: "عمود", definition: "حقل بنوع بيانات محدد" },
+      { term: "CRUD", definition: "إنشاء وقراءة وتحديث وحذف" },
+      { term: ".from('table')", definition: "تحديد جدول" },
+      { term: ".select('*')", definition: "تحديد جميع الأعمدة" },
+      { term: ".insert({})", definition: "إضافة سجل جديد" },
+      { term: ".update({})", definition: "تعديل سجل موجود" },
+      { term: ".delete()", definition: "إزالة سجل" },
+      { term: ".eq('col', val)", definition: "حيث العمود يساوي القيمة" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Database Concepts", content: [

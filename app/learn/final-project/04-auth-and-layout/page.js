@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2], fr: [1, 2], de: [1, 2] };
+const correctAnswers = { en: [1, 2], fr: [1, 2], de: [1, 2], ar: [1, 2] };
 
 const cheatSheetData = {
   en: {
@@ -79,6 +79,29 @@ const cheatSheetData = {
           "Route Group - Seiten mit gemeinsamem Layout gruppieren",
           "Middleware - Routen vor Seitenzugriff schützen",
           "auth.protect() - Leitet nicht authentifizierte Benutzer um",
+        ],
+      },
+    ],
+  },
+  ar: {
+    title: "مرجع المصادقة والتخطيط السريع",
+    columns: [
+      {
+        heading: "مكونات Clerk:",
+        items: [
+          "<code className='inline-code'>ClerkProvider</code> - يلف التطبيق لسياق المصادقة",
+          "<code className='inline-code'>SignIn / SignUp</code> - صفحات تسجيل الدخول والتسجيل",
+          "<code className='inline-code'>UserButton</code> - زر حساب المستخدم في الرأس",
+          "<code className='inline-code'>SignedIn / SignedOut</code> - العرض الشرطي",
+        ],
+      },
+      {
+        heading: "مفاهيم التخطيط:",
+        items: [
+          "RootLayout - التخطيط الرئيسي مع ClerkProvider",
+          "Route Group - تجميع الصفحات بتخطيط مشترك",
+          "Middleware - حماية المسارات قبل الوصول للصفحة",
+          "auth.protect() - إعادة توجيه المستخدمين غير المصادقين",
         ],
       },
     ],

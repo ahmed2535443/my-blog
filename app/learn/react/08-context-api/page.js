@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2, 1, 2, 2], fr: [1, 2, 1, 2, 2], de: [1, 2, 1, 2, 2] };
+const correctAnswers = { ar: [1, 2, 1, 2, 2], en: [1, 2, 1, 2, 2], fr: [1, 2, 1, 2, 2], de: [1, 2, 1, 2, 2] };
 
 const challengeCode = `// AppContext
 "use client";
@@ -42,6 +42,31 @@ export function useApp() {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص Context API",
+    columns: [
+      {
+        heading: "إنشاء Context:",
+        items: [
+          'const ThemeContext = createContext("light");',
+        ],
+      },
+      {
+        heading: "توفير Context:",
+        items: [
+          "<ThemeContext.Provider value={theme}>",
+          "  {children}",
+          "</ThemeContext.Provider>",
+        ],
+      },
+      {
+        heading: "استهلاك Context:",
+        items: [
+          "const theme = useContext(ThemeContext);",
+        ],
+      },
+    ],
+  },
   en: {
     title: "Context API Cheat Sheet",
     columns: [

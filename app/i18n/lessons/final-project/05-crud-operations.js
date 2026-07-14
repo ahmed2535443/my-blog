@@ -1,4 +1,51 @@
 ﻿const translations = {
+  ar: {
+    sections: [
+      { title: "مقدمة في عمليات CRUD", content: [
+        { type: "p", text: "CRUD هو اختصار لـ Create و Read و Update و Delete - العمليات الأساسية الأربع لإدارة البيانات. في هذا الدرس نقوم بتنفيذها باستخدام Server Actions و Supabase." },
+        { type: "callout", title: "عمليات CRUD", text: "Create = إدراج سجلات جديدة، Read = جلب وعرض البيانات، Update = تعديل السجلات الموجودة، Delete = إزالة السجلات." }
+      ]},
+      { title: "إعداد عميل Supabase", content: [
+        { type: "p", text: "نحتاج إلى عميلين Supabase: واحد للعمليات من جانب الخادم (server.js) وواحد للعمليات من جانب العميل (client.js)." },
+        { type: "callout", title: "الخادم مقابل العميل", text: "عميل الخادم يتعامل مع الطلبات المصادق عليها باستخدام ملفات تعريف ارتباط، عميل العميل للاستعلامات من جانب المتصفح." }
+      ]},
+      { title: "إنشاء المقالات (Create)", content: [
+        { type: "p", text: "استخدم Server Actions لإنشاء مقالات جديدة. Server Actions هي دوال تعمل على الخادم ويمكن استدعاؤها من تقديم النماذج." },
+        { type: "callout", title: "نمط Server Actions", text: "حدد الدالة بـ 'use server'، تلقي FormData، استخدم Supabase للإدراج، استدعِ revalidatePath و redirect." }
+      ]},
+      { title: "قراءة المقالات (Read)", content: [
+        { type: "p", text: "اجلب المقالات من Supabase باستخدام مكونات الخادم. يقوم Next.js بتحسين جلب البيانات على الخادم تلقائيًا." },
+        { type: "callout", title: "نمط الجلب", text: "استخدم supabase.from('posts').select() مع البيانات المرتبطة، تعامل مع الأخطاء بسلاسة، استخدم .order() للفرز." }
+      ]},
+      { title: "تحديث المقالات (Update)", content: [
+        { type: "p", text: "أنشئ وظيفة تحديث في Server Actions وصفحة نموذج تحمل البيانات الموجودة للتعديل." },
+        { type: "callout", title: "نمط التحديث", text: "حمّل البيانات الموجودة مع defaultValue، استخدم supabase.update() مع فلتر .eq()، أعد التحقق من المسارات المتأثرة." }
+      ]},
+      { title: "حذف المقالات (Delete)", content: [
+        { type: "p", text: "أنشئ وظيفة حذف مع حوار تأكيد. استخدم useTransition لأوقات التحميل." },
+        { type: "callout", title: "نمط الحذف", text: "أضف حوار تأكيد، استخدم useTransition لحالة الانتظار، استدعِ revalidatePath بعد الحذف." }
+      ]},
+      { title: "التحديثات التفاؤلية", content: [
+        { type: "p", text: "التحديثات التفاؤلية تقوم بتحديث واجهة المستخدم فورًا قبل تأكيد الخادم للتغيير، ثم تعود إذا حدث خطأ." },
+        { type: "callout", title: "نمط useOptimistic", text: "قم بتحديث واجهة المستخدم فورًا لتجربة مستخدم أفضل، عُد في حالة الخطأ، استخدمها للعمليات التي يهم فيها السرعة." }
+      ]}
+    ],
+    quiz: [
+      { question: "ما هي Server Actions في Next.js؟",
+        options: ["معالجات أحداث من جانب العميل", "دوال من جانب الخادم يمكن استدعاؤها من مكونات العميل", "محفزات قاعدة البيانات", "نقاط نهاية API"],
+        correctAnswer: 1, explanation: "Server Actions هي دوال من جانب الخادم يمكن استدعاؤها مباشرة من مكونات العميل، مما يلغي الحاجة إلى مسارات API." },
+      { question: "لماذا نحتاج إلى عميلين Supabase؟",
+        options: ["لقاعدة بيانات مختلفة", "عميل الخادم يستخدم ملفات تعريف الارتباط للمصادقة، عميل العميل لاستعلامات المتصفح", "لتحسين الأداء", "واحد للقراءة وواحد للكتابة"],
+        correctAnswer: 1, explanation: "يتعامل عميل الخادم مع الطلبات المصادق عليها باستخدام جلسات ملفات تعريف الارتباط، بينما يُستخدم عميل العميل لاستعلامات المتصفح." }
+    ],
+    challenge: { title: "تحدي: إضافة التصفية حسب التصنيف",
+      description: "أضف تصفية التصنيف إلى صفحة قائمة المقالات. أنشئ مكون CategoryFilter، استخدم معلمات URL لتتبع التصنيف المحدد، نفذ التصفية في استعلام Supabase." },
+    cheatSheet: { title: "مرجع عمليات CRUD السريع", items: [
+      { title: "طرق Supabase", content: ".insert([{}]) .select() .update({}) .delete() .eq()" },
+      { title: "Server Actions", content: "حدد بـ 'use server'، تلقي FormData، استخدم revalidatePath()" },
+      { title: "التحديثات التفاؤلية", content: "useOptimistic لتحديثات واجهة المستخدم الفورية، العودة في حالة الخطأ" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Introduction to CRUD Operations", content: [

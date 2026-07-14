@@ -1,4 +1,171 @@
 const translations = {
+  ar: {
+    sections: [
+      {
+        title: "ما هو التصميم المتجاوب الحديث",
+        content: [
+          { type: "p", text: "التصميم المتجاوب الحديث هو مجموعة من تقنيات CSS المتقدمة التي تتيح لك بناء مواقع ويب تتكيف تلقائياً مع أحجام شاشات وأجهزة مختلفة - لكن بطريقة أذكى وأكثر كفاءة من الأساليب التقليدية." },
+          { type: "p", text: "في الماضي، كنا نعتمد حصرياً على <strong>Media Queries</strong> للكشف عن عرض الشاشة وضبط التصميم وفقاً لذلك. لكن مع تطور الويب، هناك أدوات أقوى وأكثر مرونة:" },
+          { type: "li", text: "1. Media Queries - كلاسيكية لكن محسّنة" },
+          { type: "li", text: "2. Container Queries - الثورة الحقيقية!" },
+          { type: "li", text: "3. clamp() - أحجام خطوط ومسافات سائلة دون Media Queries" },
+          { type: "li", text: "4. min() و max() - دوال حساب ذكية" },
+          { type: "li", text: "5. Logical Properties - دعم RTL كامل" },
+          { type: "li", text: "6. @supports - كشف الميزات" },
+          { type: "li", text: "7. Aspect Ratio - نسبة العرض إلى الارتفاع" },
+          { type: "li", text: "8. استراتيجية نقاط التوقف المبنية على المحتوى" }
+        ]
+      },
+      {
+        title: "لماذا نستخدمه",
+        content: [
+          { type: "p", text: "التصميم المتجاوب الحديث ليس مجرد 'أداة إضافية' - بل هو <strong>ضرورة مطلقة</strong> في عالم الويب الحديث." },
+          { type: "li", text: "<strong>تنوّع الأجهزة الجنوني</strong> - المستخدمون يتصفحون من الهواتف والأجهزة اللوحية وأجهزة الكمبيوتر المكتبية والمحمولة والتلفزيونات الذكية" },
+          { type: "li", text: "<strong>مشكلة Media Queries الكلاسيكية</strong> - Media Queries ترى عرض منطقة العرض، لا عرض الحاوية" },
+          { type: "li", text: "<strong>أداء أفضل</strong> - Container Queries و clamp() تعمل على مستوى CSS مباشرة" },
+          { type: "li", text: "<strong>دعم RTL</strong> - Logical Properties تحل مشاكل margin-left/right في تصاميم RTL" }
+        ]
+      },
+      {
+        title: "المشكلة التي يحلها",
+        content: [
+          { type: "p", text: "دعنا نأخذ مثالاً عملياً. تخيل مكون بطاقات يُستخدم في أماكن مختلفة:" },
+          { type: "callout-accent", title: "مشكلة الحاوية", text: "بطاقة في الشريط الجانبي (ضيقة) مقابل المحتوى الرئيسي (واسع) تحتاج تخطيطات مختلفة. Media Queries ترى فقط عرض منطقة العرض. Container Queries تحل هذا ببراعة!" },
+          { type: "callout-accent", title: "مشكلة الخط الثابت", text: "بدون clamp()، تحتاج مئات الأسطر في Media Queries لتغيير أحجام الخطوط عند كل نقطة توقف. clamp() يفعل ذلك بسطر واحد!" },
+          { type: "callout-accent", title: "مشكلة الاتجاه (LTR/RTL)", text: "في تصاميم الويب العربية، تحتاج margin-right في LTR و margin-left في RTL. Logical Properties تحل هذا تلقائياً بـ margin-inline-end." }
+        ]
+      },
+      {
+        title: "شرح بسيط",
+        content: [
+          { type: "p", text: "دعنا نشرح كل تقنية ببساطة قبل الغوص في الكود:" },
+          { type: "li", text: "<strong>Media Queries</strong> — \"على أي جهاز أنت؟\" — بسيطة لكن محدودة، لا تعرف السياق الداخلي" },
+          { type: "li", text: "<strong>Container Queries</strong> — \"أين أنت داخل الصفحة؟\" — هذه هي الثورة!" },
+          { type: "li", text: "<strong>clamp()</strong> — \"أعطني حجماً سائلاً\" — قيم الحد الأدنى والفضلي والأقصى تتغير بسلاسة" },
+          { type: "li", text: "<strong>Logical Properties</strong> — \"افهم الاتجاه من السياق\" — margin-inline-start بدلاً من margin-left" },
+          { type: "li", text: "<strong>Aspect Ratio</strong> — \"حافظ على النسبة\" — الحفاظ على نسبة 16:9 دون حيل CSS القديمة" }
+        ]
+      },
+      {
+        title: "خلف الكواليس",
+        content: [
+          { type: "p", text: "دعنا نفهم كيف تعمل هذه التقنيات على مستوى المتصفح:" },
+          { type: "li", text: "<strong>Container Queries:</strong> يجد المتصفح عنصر container-type، ويُنشئ سياق الحجز، ويتبع الأبعاد، وينطبق قواعد @container" },
+          { type: "li", text: "<strong>clamp():</strong> المعادلة: max(القيمة-الدنيا, min(القيمة-المفضلة, القيمة-القصوى)). يحسب سائلاً بين الحد الأدنى والأقصى" },
+          { type: "li", text: "<strong>Logical Properties:</strong> يفهم المتصفح writing-mode. LTR: inline-start = يسار. RTL: inline-start = يمين (معكوس!)" },
+          { type: "li", text: "<strong>@supports:</strong> كشف الميزات قبل تطبيق الأنماط - تحسين تدريجي" }
+        ]
+      },
+      {
+        title: "الأخطاء الشائعة",
+        content: [
+          { type: "li", text: "<strong>الخطأ 1: استخدام container-type: size بدلاً من inline-size</strong> — قد يسبب تبعية دائرية" },
+          { type: "li", text: "<strong>الخطأ 2: نسيان container-name</strong> — قد يستعلم من حاوية غير متوقعة" },
+          { type: "li", text: "<strong>الخطأ 3: أرقام clamp() خاطئة</strong> — القيمة الدنيا أكبر من القصوى لا معنى لها" },
+          { type: "li", text: "<strong>الخطأ 4: عدم تطابق container-name</strong> — الاسم في الاستعلام يجب أن يطابق container-name" },
+          { type: "li", text: "<strong>الخطأ 5: استخدام الخصائص المادية في RTL</strong> — margin-left لا يعمل بشكل صحيح في RTL" },
+          { type: "li", text: "<strong>الخطأ 6: نقاط التوقف المحددة للجهاز</strong> — استخدم نقاط التوقف المبنية على المحتوى بدلاً من ذلك" },
+          { type: "li", text: "<strong>الخطأ 7: إنشاء حلقات لا نهائية</strong> — لا تغير حجم الحاوية من داخل @container" }
+        ]
+      },
+      {
+        title: "أفضل الممارسات",
+        content: [
+          { type: "li", text: "1. استخدم clamp() للمسافات والأحجام - أنشئ متغيرات سائلة" },
+          { type: "li", text: "2. ابدأ من الجوال أولاً باستخدام Container Queries" },
+          { type: "li", text: "3. استخدم @supports للتحسين التدريجي" },
+          { type: "li", text: "4. اكتب دائماً Logical Properties" },
+          { type: "li", text: "5. استخدم aspect-ratio للصور والفيديوهات" },
+          { type: "li", text: "6. استخدم استراتيجية نقاط التوقف المبنية على المحتوى" }
+        ]
+      }
+    ],
+    quiz: [
+      {
+        question: "ما هو الفرق الأساسي بين Media Queries و Container Queries؟",
+        options: [
+          "Media Queries أسرع من Container Queries",
+          "Media Queries تستعلم عن عرض منطقة العرض، Container Queries تستعلم عن حجم الحاوية",
+          "Container Queries تعمل فقط على الهواتف",
+          "Media Queries لا تعمل مع RTL"
+        ],
+        correctAnswer: 1,
+        explanation: "ترى Media Queries عرض منطقة العرض (نافذة المتصفح)، بينما ترى Container Queries حجم الحاوية حيث ي exist المكون. هذا يتيح للمكونات التكيف مع مكانها داخل الصفحة، وليس فقط حجم الشاشة."
+      },
+      {
+        question: "لماذا نوصي باستخدام inline-size بدلاً من size في Container Queries؟",
+        options: [
+          "لأن size غير مدعومة من جميع المتصفحات",
+          "لأن inline-size أسرع في الأداء",
+          "لأن size قد تسبب تبعية دائرية بين الحاوية والمحتوى",
+          "لأن inline-size تعمل فقط مع RTL"
+        ],
+        correctAnswer: 2,
+        explanation: "عند استخدام container-type: size، قد يدخل المتصفح في حلقة لا نهائية حيث يعتمد حجم الحاوية على المحتوى والمحتوى يعتمد على الحاوية. تتبع inline-size العرض فقط وأكثر أماناً."
+      },
+      {
+        question: "ما المكافئ المنطقي لـ margin-left؟",
+        options: [
+          "margin-inline-end",
+          "margin-inline-start",
+          "margin-inline: left",
+          "margin-left-inline"
+        ],
+        correctAnswer: 1,
+        explanation: "margin-inline-start هو المكافئ المنطقي لـ margin-left في LTR و margin-right في RTL. 'start' تعني بداية السطر وتتغير حسب اتجاه الكتابة."
+      },
+      {
+        question: "متى تستخدم Container Queries بدلاً من Media Queries؟",
+        options: [
+          "عندما تريد دعم المتصفحات القديمة",
+          "عندما يتم استخدام مكون في أماكن مختلفة بأحجام مختلفة",
+          "عندما تريد تحسين أداء الموقع",
+          "عندما تصمم لجهاز محدد"
+        ],
+        correctAnswer: 1,
+        explanation: "Container Queries مثالية عندما لديك مكون (مثل بطاقة) يُستخدم في أماكن مختلفة (شريط جانبي، محتوى رئيسي، نافذة منبثقة) ويحتاج أن يتكيف مع حجم كل حاوية."
+      }
+    ],
+    challenge: {
+      title: "بناء مكون بطاقات متوافق مع RTL",
+      description: "أنشئ مكون تعليمي للبطاقات باستخدام Container Queries و clamp() و Logical Properties و aspect-ratio و @supports للتحسين التدريجي."
+    },
+    cheatSheet: {
+      title: "مرجع سريع للتصميم المتجاوب الحديث",
+      items: [
+        {
+          title: "Container Queries",
+          content: `.container { container-type: inline-size; container-name: my-container; }
+@container my-container (min-width: 500px) { .child { /* ... */ } }
+@container (min-width: 400px) { /* حاوية كبيرة */ }
+@container (max-width: 399px) { /* حاوية صغيرة */ }`
+        },
+        {
+          title: "صيغة clamp()",
+          content: `font-size: clamp(1rem, 2.5vw, 2rem);
+padding: clamp(1rem, 3vw, 3rem);
+width: clamp(300px, 80%, 1200px);
+/* الصيغة: max(الدنيا, min(المفضلة, القصوى)) */`
+        },
+        {
+          title: "خريطة Logical Properties",
+          content: `width → inline-size
+height → block-size
+margin-left → margin-inline-start
+margin-right → margin-inline-end
+padding-left → padding-inline-start
+text-align: left → text-align: start
+inset-left → inset-inline-start`
+        },
+        {
+          title: "min() و max()",
+          content: `width: min(80%, 800px); /* الأصغر من الاثنين */
+width: max(300px, 50%); /* الأكبر من الاثنين */
+font-size: max(1rem, min(3vw, 2rem)); /* يعادل clamp */`
+        }
+      ]
+    }
+  },
   en: {
     sections: [
       {

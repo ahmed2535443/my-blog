@@ -1,4 +1,51 @@
 const translations = {
+  ar: {
+    sections: [
+      { title: "مقدمة في Two Pointers و Sliding Window", content: [
+        { type: "p", text: "Two Pointers و Sliding Window هما تقنيتان ضروريةان لحل مشاكل المصفوفات والنصوص بكفاءة، مما يقلل تعقيد الوقت من O(n²) إلى O(n)." },
+        { type: "callout", title: "ما سنتعلمه", text: "Two Pointers على المصفوفات المرتبة، Sliding Window لمشاكل المجموعات الفرعية/النصوص الفرعية، ومتى تطبق كل تقنية." }
+      ]},
+      { title: "تقنية Two Pointers", content: [
+        { type: "p", text: "يستخدم Two Pointers فهرسين يتحركان نحو بعضهما البعض أو في نفس الاتجاه لإيجاد الأزواج أو حل المشكلات في وقت خطي." },
+        { type: "callout", title: "الأنماط", text: "الطرفان المتقابلان: التناظر، مشاكل الحاوية. نفس الاتجاه: إزالة التكرارات، دمج المصفوفات المرتبة." }
+      ]},
+      { title: "أساسيات Sliding Window", content: [
+        { type: "p", text: "يحافظ Sliding Window على نافذة من العناصر ويتحرك عبر المصفوفة، يوسّع ويقلّص بناءً على الشروط." },
+        { type: "callout", title: "النافذة الثابتة مقابل المتغيرة", text: "الثابتة: حجم النافذة ثابت (مثل: k). المتغيرة: النافذة تنمو/تقلص بناءً على شرط." }
+      ]},
+      { title: "Sliding Window المتغيرة", content: [
+        { type: "p", text: "وسّع النافذة عن طريق تحريك المؤشر الأيمن، قلّص من اليسار عند انتهاك الشرط، وتابع النتيجة المثالية." },
+        { type: "callout", title: "النمط", text: "for right in range: add[right]. while condition_violated: remove[left]، left++. update result." }
+      ]},
+      { title: "Sliding Window الثابتة", content: [
+        { type: "p", text: "استخدم نافذة بحجم ثابت عن طريق إضافة العنصر الجديد وإزالة العنصر القديم مع تحرك النافذة." },
+        { type: "callout", title: "النمط", text: "for right in range: add[right]. if right >= k: remove[right - k]. update result." }
+      ]},
+      { title: "متى تستخدم كل تقنية", content: [
+        { type: "p", text: "Two Pointers: المصفوفات المرتبة، إيجاد الأزواج، التناظر. Sliding Window: تحسين المجموعات الفرعية/النصوص الفرعية، العناصر المتتالية." },
+        { type: "callout", title: "دليل القرار", text: "تحتاج زوجًا من مصفوفة مرتبة؟ Two Pointers. تحتاج أفضل/أسوأ مجموعة فرعية؟ Sliding Window." }
+      ]}
+    ],
+    quiz: [
+      { question: "متى تستخدم Two Pointers؟",
+        options: ["للمصفوفات غير المرتبة", "للمصفوفات المرتبة ومشاكل إيجاد الأزواج", "للقوائم المرتبطة فقط", "لتجذور الأشجار"],
+        correctAnswer: 1, explanation: "يكون Two Pointers الأكثر فعالية على المصفوفات المرتبة لإيجاد الأزواج والتناظر ومشاكل الحاويات." },
+      { question: "ما هو الفرق الرئيسي بين Two Pointers و Sliding Window؟",
+        options: ["لا يوجد فرق", "يستخدم Two Pointers فهرسين، يحافظ Sliding Window على نافذة مجموعة فرعية", "Two Pointers أسرع", "Sliding Window للأشجار"],
+        correctAnswer: 1, explanation: "يستخدم Two Pointers فهرسين فرديين، بينما يحافظ Sliding Window على مجموعة فرعية/نص فرعي متصل." },
+      { question: "كيف تعامل شرطًا منتهكًا في Sliding Window المتغيرة؟",
+        options: ["أعد البداية من الأول", "قلّص النافذة من اليسار حتى يتحقق الشرط", "حرّك المؤشر الأيمن إلى الخلف", "عُد فورًا"],
+        correctAnswer: 1, explanation: "عند انتهاك الشرط، قلّص النافذة من اليسار حتى تصبح صالحة مرة أخرى." }
+    ],
+    challenge: { title: "تحدي: Two Pointers و Sliding Window",
+      description: "حل Container With Most Water باستخدام Two Pointers، ثم أوجد أطول نص فرعي بدون أحرف مكررة باستخدام Sliding Window." },
+    cheatSheet: { title: "مرجع Two Pointers و Sliding Window السريع", items: [
+      { title: "Two Pointers", content: "المصفوفات المرتبة، إيجاد الأزواج، وقت O(n)" },
+      { title: "Sliding Window", content: "مشاكل المجموعات الفرعية/النصوص الفرعية، توسيع لليمين، قلص لليسار" },
+      { title: "النافذة المتغيرة", content: "تنمو حتى ينتهي الشرط، ثم تقلص" },
+      { title: "النافذة الثابتة", content: "حجم ثابت، أضف عنصرًا جديدًا، أزل القديم" }
+    ]}
+  },
   en: {
     sections: [
       { title: "Introduction to Two Pointers & Sliding Window", content: [

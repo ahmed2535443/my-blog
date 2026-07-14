@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2], fr: [1, 2], de: [1, 2] };
+const correctAnswers = { ar: [1, 2], en: [1, 2], fr: [1, 2], de: [1, 2] };
 
 const challengeCode = `const students = [
   { name: "أحمد", grade: 92, subject: "رياضيات" },
@@ -49,6 +49,31 @@ addStudent("سارة", 89, "علوم");
 console.log("القائمة المحدثة:", students);`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ورقة مرجعية لجافاسكريبت - الدرس 3",
+    columns: [
+      {
+        heading: "طرق المصفوفة:",
+        items: [
+          '<code className="inline-code">.filter()</code> - تُرجع مصفوفة جديدة بالعناصر المطابقة',
+          '<code className="inline-code">.map()</code> - تُرجع مصفوفة جديدة بتحويل كل عنصر',
+          '<code className="inline-code">.reduce()</code> - تُحول المصفوفة إلى قيمة واحدة',
+          '<code className="inline-code">.find()</code> - تُرجع أول عنصر مطابق',
+          '<code className="inline-code">.some()</code> - تتحقق مما إذا كان عنصر واحد على الأقل يجتزء',
+          '<code className="inline-code">.every()</code> - تتحقق مما إذا كان كل العناصر تجتزء',
+        ],
+      },
+      {
+        heading: "عمليات الكائن:",
+        items: [
+          '<code className="inline-code">Object.keys()</code> - تُرجع مصفوفة بالمفاتيح',
+          '<code className="inline-code">Object.values()</code> - تُرجع مصفوفة بالقيم',
+          '<code className="inline-code">Object.entries()</code> - تُرجع أزواج المفتاح-القيمة',
+          "Spread: <code>{...obj}</code> - تنسخ الخصائص",
+        ],
+      },
+    ],
+  },
   en: {
     title: "JavaScript Cheat Sheet - Lesson 3",
     columns: [
@@ -127,6 +152,19 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: {
+    title: "مشروع صغير: نظام إدارة الطلاب",
+    description: "أنشئ نظامًا يدير سجلات الطلاب:",
+    items: [
+      'أنشئ مصفوفة من كائنات الطلاب بالاسم والدرجة والمادة',
+      'استخدم filter() لإيجاد الطلاب بدرجات أعلى من 85',
+      'استخدم map() لإنشاء مصفوفة بأسماء الطلاب',
+      'استخدم reduce() لحساب متوسط الدرجة',
+      'أضف دالة لإدراج طالب جديد (بالتحقق من التكرارات)',
+      'اعرض جميع معلومات الطلاب بتنسيق أنيق',
+    ],
+    hint: "استخدم filter و map و reduce و عمليات Spread معًا.",
+  },
   en: {
     title: "Mini Project: Student Management System",
     description: "Create a system that manages student records:",

@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1, 1], fr: [1, 1, 1, 1], de: [1, 1, 1, 1] };
+const correctAnswers = { en: [1, 1, 1, 1], fr: [1, 1, 1, 1], de: [1, 1, 1, 1], ar: [1, 1, 1, 1] };
 
 const cheatSheetData = {
   en: {
@@ -82,6 +82,30 @@ const cheatSheetData = {
           "Umgebungsvariablen für Produktion",
           "Supabase RLS und Storage-Richtlinien",
           "GitHub Actions für CI/CD",
+        ],
+      },
+    ],
+  },
+  ar: {
+    title: "مرجع النشر السريع",
+    columns: [
+      {
+        heading: "خطوات نشر Vercel:",
+        items: [
+          "1. إعداد المشروع على GitHub",
+          "2. إنشاء حساب Vercel",
+          "3. استيراد المستودع",
+          "4. إضافة متغيرات البيئة",
+          "5. النشر التلقائي",
+        ],
+      },
+      {
+        heading: "الإعدادات الرئيسية:",
+        items: [
+          "<code className='inline-code'>vercel.json</code> - الرؤوس، إعادة التوجيه، المهام المجدولة",
+          "متغيرات البيئة للإنتاج",
+          "سياسات Supabase RLS و Storage",
+          "GitHub Actions لـ CI/CD",
         ],
       },
     ],
