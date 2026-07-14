@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/components/LanguageProvider";
+import rawTranslations from "@/i18n/lessons/problem-solving/10-interview-mix";
 import LessonSection from "@/components/LessonSection";
 import LessonHeader from "@/components/LessonHeader";
 import LessonNavigation from "@/components/LessonNavigation";
@@ -7,8 +9,22 @@ import CheatSheet from "@/components/CheatSheet";
 import ProblemCard from "@/components/ProblemCard";
 import { getLessonBySlug } from "@/data/curriculum";
 
+function renderContent(item) {
+  if (item.type === "p") return <p dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "li") return <li dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "callout") return (
+    <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+      <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>💡 {item.title}:</p>
+      <p dangerouslySetInnerHTML={{ __html: item.text }} />
+    </div>
+  );
+  return null;
+}
+
 export default function InterviewMix() {
+  const { lang } = useLanguage();
   const lesson = getLessonBySlug("problem-solving", "10-interview-mix");
+  const content = rawTranslations ? (rawTranslations[lang] || rawTranslations.en) : null;
 
   return (
     <div dir="rtl" className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -20,46 +36,13 @@ export default function InterviewMix() {
           totalLessons={lesson.totalLessons}
         />
 
-        {/* ========================================== */}
-        {/* القسم الأول: مقدمة */}
-        {/* ========================================== */}
-        <LessonSection title="مسائل المقابلات الشائعة">
-          <p>
-            في هذا الدرس الأخير من مسار حل المشاكل، سنتناول <strong>أكثر المسائل شيوعاً في مقابلات البرمجة</strong>.
-            هذه المسائل مختارة بعناية لتمثيل مختلف الفئات والصعوبات التي تواجهها في مقابلات الشركات التقنية الكبرى مثل Google و Meta و Amazon و Microsoft.
-          </p>
+        {content && content.sections.map((section, i) => (
+          <LessonSection key={i} title={section.title}>
+            {section.content.map((item, j) => <div key={j}>{renderContent(item)}</div>)}
+          </LessonSection>
+        ))}
 
-          <p>
-            كل مسألة هنا هي من أكثر المسائل المطلوبة في المقابلات التقنية. تأكد من فهم الحلول وال Approaches المختلفة،
-            وتدرب على كتابة الكود بدون مراجعات لتحسين مهاراتك في المقابلات.
-          </p>
-
-          <div
-            className="p-4 rounded-xl my-4 border"
-            style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-          >
-            <p className="font-bold mb-2" style={{ color: "var(--accent)" }}>
-              ✅ لماذا هذه المسائل مهمة؟
-            </p>
-            <ul>
-              <li>تختبر مهاراتك الأساسية في هيكل البيانات والخوارزميات</li>
-              <li>تظهر في مقابلات كبرى الشركات التقنية بشكل متكرر</li>
-              <li>تغطي مواضيع متنوعة: Arrays, Hash Maps, Two Pointers, Sliding Window, Trees, Graphs, Dynamic Programming, Greedy</li>
-              <li>تتعلم كيف تفكر في مشاكل جديدة وتحلها بشكل منهجي</li>
-            </ul>
-          </div>
-
-          <p>
-            تأكد من أنك تحاول حل كل مسألة بنفسك قبل الاطلاع على الحل. حاول تحديد الفئة والصعوبة والخوارزمية المناسبة أولاً.
-          </p>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الثاني: مسائل Easy */}
-        {/* ========================================== */}
         <LessonSection title="مسائل Easy (سهلة)">
-
-          {/* المشكلة 1: FizzBuzz */}
           <ProblemCard
             id={1}
             title="FizzBuzz"
@@ -88,13 +71,12 @@ export default function InterviewMix() {
             solutionApproach="نمر على كل رقم من 1 إلى n ونتحقق من الشروط بالترتيب: أولاً القسمة على 15 (3×5)، ثم 3، ثم 5، وإلا نطبع الرقم."
           />
 
-          {/* المشكلة 2: Valid Parentheses */}
           <ProblemCard
             id={2}
             title="Valid Parentheses"
             difficulty="easy"
             category="Stack"
-            description="أgiven a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. An input string is valid if: Open brackets must be closed by the same type of brackets, and open brackets must be closed in the correct order."
+            description="معطى سلسلة s تحتوي فقط على الأحرف '(', ')', '{', '}', '[' و ']', حدد ما إذا كانت السلسلة المدخلة صحيحة."
             examples={[
               { input: "s = \"()\"", output: "true" },
               { input: "s = \"()[]{}\"", output: "true" },
@@ -125,13 +107,12 @@ export default function InterviewMix() {
             solutionApproach="نستخدم Stack لتخزين الأقواس المفتوحة. عند كل قوس مغلق نتحقق من تطابقه مع أعلى عنصر في الـ Stack. إذا كان الـ Stack فارغاً في النهاية فالنتيجة صحيحة."
           />
 
-          {/* المشكلة 3: Palindrome Number */}
           <ProblemCard
             id={3}
             title="Palindrome Number"
             difficulty="easy"
             category="Math / Two Pointers"
-            description="أ given an integer x, return true if x is a palindrome integer. A palindrome number reads the same backward as forward. For example, 121 is a palindrome while 123 is not."
+            description="أعطى عدد صحيح x، أرجع true إذا كان x عدد صحيح palindrome. عدد palindrome يقرأ بنفس الطريقة من الأمام والخلف."
             examples={[
               { input: "x = 121", output: "true" },
               { input: "x = -121", output: "false" },
@@ -157,23 +138,17 @@ export default function InterviewMix() {
 
   return x === reversed || x === Math.floor(reversed / 10);
 }`}
-            solutionApproach="نقلب النصف الثاني من الرقم رقمياً ونقارنه بالنصف الأول. نتوقف عندما يكون x <= reversed. الأعداد السالبة و那些 تنتهي بـ 0 ليست palindromes."
+            solutionApproach="نقلب النصف الثاني من الرقم رقمياً ونقارنه بالنصف الأول. نتوقف عندما يكون x <= reversed. الأعداد السالبة وتلك التي تنتهي بـ 0 ليست palindromes."
           />
-
         </LessonSection>
 
-        {/* ========================================== */}
-        {/* القسم الثالث: مسائل Medium */}
-        {/* ========================================== */}
         <LessonSection title="مسائل Medium (متوسطة)">
-
-          {/* المشكلة 4: LRU Cache */}
           <ProblemCard
             id={4}
             title="LRU Cache"
             difficulty="medium"
             category="Hash Map / Linked List"
-            description="صمم هيكل بيانات LRU Cache. يجب أن يدعم الـ Cache العمليات التالية: get(key) - يجلب قيمة المفتاح من الـ Cache، وput(key, value) - يضيف أو يحدث المفتاح والقيمة. يجب أن يكون Time Complexity للعمليتين O(1). عندما يمتلئ الـ Cache، يجب حذف العنصر الذي تم استخدامه بالأقدم (Least Recently Used) قبل إضافة عنصر جديد."
+            description="صمم هيكل بيانات LRU Cache. يجب أن يدعم الـ Cache العمليات التالية: get(key) - يجلب قيمة المفتاح من الـ Cache، وput(key, value) - يضيف أو يحدث المفتاح والقيمة. يجب أن يكون Time Complexity للعمليتين O(1)."
             examples={[
               { input: "LRUCache(2)\nput(1,1)\nput(2,2)\nget(1)\\nput(3,3)\nget(2)", output: "1\n-1" },
               { input: "LRUCache(1)\nput(2,1)\nget(2)\nput(3,2)\nget(2)", output: "1\n-1" },
@@ -242,13 +217,12 @@ class LRUCache {
             solutionApproach="نستخدم Hash Map للوصول السريع O(1) و Doubly Linked List للحفاظ على ترتيب الاستخدام. عند كل عملية get/put ننقل العنصر للبداية. عند الإفراط نحذف آخر عنصر."
           />
 
-          {/* المشكلة 5: Merge Intervals */}
           <ProblemCard
             id={5}
             title="Merge Intervals"
             difficulty="medium"
             category="Array / Sorting"
-            description="أ given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input."
+            description="معطى مصفوفة من الفترات intervals حيث intervals[i] = [start, end]، ادمج جميع الفترات المتعارضة وأعد المصفوفة الناتجة."
             examples={[
               { input: "intervals = [[1,3],[2,6],[8,10],[15,18]]", output: "[[1,6],[8,10],[15,18]]" },
               { input: "intervals = [[1,4],[4,5]]", output: "[[1,5]]" },
@@ -276,13 +250,12 @@ class LRUCache {
             solutionApproach="نرتيب الفترات حسب نقطة البداية، ثم نمر عليها وندمج كل فترة متداخلة مع سابقتها عن طريق تحديث النهاية."
           />
 
-          {/* المشكلة 6: Product of Array Except Self */}
           <ProblemCard
             id={6}
             title="Product of Array Except Self"
             difficulty="medium"
             category="Array / Prefix"
-            description="أ given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer. You must write an algorithm that runs in O(n) time and without using the division operation."
+            description="معطى مصفوفة nums، أرجع مصفوفة answer حيث answer[i] هو حاصل ضرب جميع عناصر nums ما عدا nums[i]. يجب أن يكون التعقيد الزمني O(n) وبدون استخدام القسمة."
             examples={[
               { input: "nums = [1,2,3,4]", output: "[24,12,8,6]" },
               { input: "nums = [-1,1,0,-3,3]", output: "[0,0,9,0,0]" },
@@ -315,20 +288,19 @@ class LRUCache {
             solutionApproach="نحسب مصفوفة left حيث left[i] = حاصل ضرب جميع العناصر قبل i، ومصفوفة right حيث right[i] = حاصل ضرب جميع العناصر بعد i. النتيجة = left[i] × right[i]."
           />
 
-          {/* المشكلة 7: Find Duplicate Number */}
           <ProblemCard
             id={7}
             title="Find Duplicate Number"
             difficulty="medium"
             category="Array / Cycle Detection"
-            description="أ given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive. There is only one duplicate number in nums, return this duplicate number. You must solve the problem without modifying the array nums and use only constant extra space."
+            description="معطى مصفوفة أعداد nums تحتوي على n + 1 عدد صحيح حيث كل عدد في النطاق [1, n] بما في ذلك ذلك. يوجد رقم واحد مكرر فقط في nums، أرجع هذا الرقم المكرر."
             examples={[
               { input: "nums = [1,3,4,2,2]", output: "2" },
               { input: "nums = [3,1,3,4,2]", output: "3" },
             ]}
             hints={[
               "هذه المسألة يمكن حلها باستخدام Floyd's Cycle Detection (Tortoise and Hare).",
-              "فكر في المصفوفة ك linked list حيث nums[i] هو المؤشر للعنصر التالي.",
+              "فكر في المصفوفة كlinked list حيث nums[i] هو المؤشر للعنصر التالي.",
               "العنصر المكرر هو نقطة بداية الدورة في الـ linked list.",
             ]}
             solution={`function findDuplicate(nums) {
@@ -349,16 +321,15 @@ class LRUCache {
 
   return slow;
 }`}
-            solutionApproach="نستخدم Floyd's Cycle Detection: نحرك مؤشرين slow و fast. يتوقف slow عند 1 خطوة و fast عند خطوتين. عند التقاءهما، نعيد slow للبداية ونحرك两者 بخطوة واحدة حتى يلتقيان - نقطة الالتقاء هي الرقم المكرر."
+            solutionApproach="نستخدم Floyd's Cycle Detection: نحرك مؤشرين slow و fast. يتوقف slow عند 1 خطوة و fast عند خطوتين. عند التقاءهما، نعيد slow للبداية ونحركها بخطوة واحدة حتى يلتقيان - نقطة الالتقاء هي الرقم المكرر."
           />
 
-          {/* المشكلة 8: Rotate Image */}
           <ProblemCard
             id={8}
             title="Rotate Image"
             difficulty="medium"
             category="Matrix / Math"
-            description="أ given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise). You have to rotate the image in-place, which means you have to modify the input 2D matrix directly."
+            description="معطى مصفوفة ثنائية الأبعاد n x n، قم بدوران الصورة 90 درجة (عقارب الساعة). يجب أن تقوم بالدوران في المكان."
             examples={[
               { input: "matrix = [[1,2,3],[4,5,6],[7,8,9]]", output: "[[7,4,1],[8,5,2],[9,6,3]]" },
               { input: "matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]", output: "[[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]" },
@@ -386,13 +357,12 @@ class LRUCache {
             solutionApproach="الدوران 90 درجة clockwise = Transpose المصفوفة (تبديل الصفوف بالأعمدة) ثم عكس كل صف. نقوم أولاً بتبديل matrix[i][j] مع matrix[j][i] ثم نعكس كل صف."
           />
 
-          {/* المشكلة 9: Spiral Matrix */}
           <ProblemCard
             id={9}
             title="Spiral Matrix"
             difficulty="medium"
             category="Matrix / Simulation"
-            description="أ given an m x n matrix, return all elements of the matrix in spiral order. Spiral order means traversing the matrix in a spiral pattern from the top-left corner."
+            description="معطى مصفوفة m x n، أرجع جميع عناصر المصفوفة بترتيب حلزوني."
             examples={[
               { input: "matrix = [[1,2,3],[4,5,6],[7,8,9]]", output: "[1,2,3,6,9,8,7,4,5]" },
               { input: "matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]", output: "[1,2,3,4,8,12,11,10,9,5,6,7]" },
@@ -432,13 +402,12 @@ class LRUCache {
             solutionApproach="نحدد four boundaries ونمشي في كل اتجاه: يميناً ثم لأسفل ثم يساراً ثم لأعلى. في كل مرة نقلل Boundary حتى ننتهي من جميع العناصر."
           />
 
-          {/* المشكلة 10: Jump Game */}
           <ProblemCard
             id={10}
             title="Jump Game"
             difficulty="medium"
             category="Array / Greedy"
-            description="أ given an integer array nums, you are initially positioned at the first index. Each element in the array represents your maximum jump length at that position. Return true if you can reach the last index, or false otherwise."
+            description="معطى مصفوفة أعداد nums، أنت موضع في الفهرس الأول. كل عنصر في المصفوفة يمثل أقصى طول قفزة يمكنك فعله من ذلك الموضع. أرجع true إذا كان بإمكانك الوصول إلى الفهرس الأخير، أو false بخلاف ذلك."
             examples={[
               { input: "nums = [2,3,1,1,4]", output: "true" },
               { input: "nums = [3,2,1,0,4]", output: "false" },
@@ -460,21 +429,15 @@ class LRUCache {
 }`}
             solutionApproach="نستخدم Greedy: نتتبع أبعد موضع يمكننا الوصول إليه. في كل خطوة نتحقق إذا كان الموضع الحالي أكبر من maxReach، إذا كان كذلك فلا يمكننا التقدم وإلا نحدّث maxReach."
           />
-
         </LessonSection>
 
-        {/* ========================================== */}
-        {/* القسم الرابع: مسائل Hard */}
-        {/* ========================================== */}
         <LessonSection title="مسائل Hard (صعبة)">
-
-          {/* المشكلة 11: Trapping Rain Water */}
           <ProblemCard
             id={11}
             title="Trapping Rain Water"
             difficulty="hard"
             category="Array / Two Pointers"
-            description="أ given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining."
+            description="معطى n عدد غير سالب يمثل خريطة ارتفاع حيث عرض كل عمود 1، احسب كم من الماء يمكن حبسه بعد المطر."
             examples={[
               { input: "height = [0,1,0,2,1,0,1,3,2,1,2,1]", output: "6" },
               { input: "height = [4,2,0,3,2,5]", output: "9" },
@@ -512,13 +475,12 @@ class LRUCache {
             solutionApproach="نستخدم Two Pointers من الطرفين. نتحرك من الجانب الأصغر أولاً لأن الماء المحبوس يعتمد على الطرف الأقصر. نتتبع أعلى ارتفاع لليسار وليمين ونحسب الماء المحبوس في كل موضع."
           />
 
-          {/* المشكلة 12: Word Ladder */}
           <ProblemCard
             id={12}
             title="Word Ladder"
             difficulty="hard"
             category="Graph / BFS"
-            description="A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that every adjacent pair of words differs by exactly one letter, and every si is in wordList. Note that beginWord does not need to be in wordList. Given beginWord, endWord, and a dictionary wordList, return the number of words in the shortest transformation sequence, or 0 if no such sequence exists."
+            description="تسلسل تحويل من كلمة beginWord إلى كلمة endWord باستخدام قاموس wordList هو تسلسل من الكلمات beginWord -> s1 -> s2 -> ... -> sk حيث كل زوج مجاور يختلف بحرف واحد فقط. أرجع عدد الكلمات في أقصر تسلسل تحويل، أو 0 إذا لم يوجد."
             examples={[
               { input: "beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\",\"cog\"]", output: "5" },
               { input: "beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\"]", output: "0" },
@@ -555,13 +517,12 @@ class LRUCache {
             solutionApproach="نستخدم BFS لإيجاد أقصر مسار. في كل خطوة نحاول تغيير كل حرف في الكلمة الحالية إلى حرف مختلف ونتحقق إذا كانت الكلمة الجديدة موجودة في القاموس. BFS يضمن إيجاد أقصر مسار."
           />
 
-          {/* المشكلة 13: Meeting Rooms II */}
           <ProblemCard
             id={13}
             title="Meeting Rooms II"
             difficulty="hard"
             category="Array / Heap / Sorting"
-            description="أ given an array of meeting time intervals intervals where intervals[i] = [starti, endi], return the minimum number of conference rooms required."
+            description="معطى مصفوفة من فترات الاجتماعات intervals حيث intervals[i] = [start, end]، أرجع الحد الأدنى من قاعات الاجتماعات المطلوبة."
             examples={[
               { input: "intervals = [[0,30],[5,10],[15,20]]", output: "2" },
               { input: "intervals = [[7,10],[2,4]]", output: "1" },
@@ -592,12 +553,8 @@ class LRUCache {
 }`}
             solutionApproach="نفصل نقاط البداية والنهاية ونرتبها. نمر على نقاط البداية: إذا كانت بداية اجتماع أصغر من نهاية أي اجتماع حالي، نحتاج قاعة جديدة. وإلا نحرر قاعة."
           />
-
         </LessonSection>
 
-        {/* ========================================== */}
-        {/* Cheat Sheet */}
-        {/* ========================================== */}
         <CheatSheet title="نصائح للمقابلات التقنية">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -627,7 +584,7 @@ class LRUCache {
                 </div>
                 <div className="p-3 rounded-lg" style={{ background: "rgba(34, 197, 94, 0.05)", border: "1px solid var(--border)" }}>
                   <p className="font-bold" style={{ color: "var(--accent)" }}>ابدأ بـ Brute Force</p>
-                  <p>اقترح حلاً بسيطاً أولاً ثمحسّنه - هذا يظهر تفكيرك المنهجي</p>
+                  <p>اقترح حلاً بسيطاً أولاً ثم حسّنه - هذا يظهر تفكيرك المنهجي</p>
                 </div>
                 <div className="p-3 rounded-lg" style={{ background: "rgba(251, 191, 36, 0.05)", border: "1px solid var(--border)" }}>
                   <p className="font-bold" style={{ color: "var(--secondary)" }}>تحدث بصوت عالٍ</p>
@@ -660,9 +617,6 @@ class LRUCache {
           </div>
         </CheatSheet>
 
-        {/* ========================================== */}
-        {/* التنقل بين الدروس */}
-        {/* ========================================== */}
         <LessonNavigation
           prevLesson={lesson.prevLesson}
           prevStage={lesson.prevLessonStage}

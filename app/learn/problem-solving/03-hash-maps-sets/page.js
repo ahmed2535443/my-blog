@@ -1,14 +1,30 @@
-"use client"
+"use client";
 
-import ProblemCard from "@/components/ProblemCard"
-import LessonSection from "@/components/LessonSection"
-import LessonHeader from "@/components/LessonHeader"
-import LessonNavigation from "@/components/LessonNavigation"
-import CheatSheet from "@/components/CheatSheet"
-import { getLessonBySlug } from "@/data/curriculum"
+import { useLanguage } from "@/components/LanguageProvider";
+import rawTranslations from "@/i18n/lessons/problem-solving/03-hash-maps-sets";
+import ProblemCard from "@/components/ProblemCard";
+import LessonSection from "@/components/LessonSection";
+import LessonHeader from "@/components/LessonHeader";
+import LessonNavigation from "@/components/LessonNavigation";
+import CheatSheet from "@/components/CheatSheet";
+import { getLessonBySlug } from "@/data/curriculum";
+
+function renderContent(item) {
+  if (item.type === "p") return <p dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "li") return <li dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "callout") return (
+    <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+      <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>💡 {item.title}:</p>
+      <p dangerouslySetInnerHTML={{ __html: item.text }} />
+    </div>
+  );
+  return null;
+}
 
 export default function HashMapsSets() {
-  const lesson = getLessonBySlug("problem-solving", "03-hash-maps-sets")
+  const { lang } = useLanguage();
+  const lesson = getLessonBySlug("problem-solving", "03-hash-maps-sets");
+  const content = rawTranslations ? (rawTranslations[lang] || rawTranslations.en) : null;
 
   return (
     <div dir="rtl" className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -20,44 +36,11 @@ export default function HashMapsSets() {
       />
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-12">
 
-        <LessonSection title="مقدمة في Hash Maps و Sets">
-          <p>
-            في هذا الدرس سنتعرف على أقوى هياكل البيانات استخداماً في حل مشاكل البرمجة التنافسية: <strong>Hash Maps</strong> و <strong>Sets</strong>.
-            هذه الهياكل توفر بحثاً وبحثاً وإدراجاً في متوسط تعقيد O(1)، مما يجعلها حلاً مثالياً للعديد من المشاكل التي تبدو معقدة بدونها.
-          </p>
-
-          <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-            <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
-              Hash Map في JavaScript:
-            </p>
-            <p>
-              في JavaScript، الـ <code>Object</code> و <code>Map</code> كلاهما يُستخدمان كـ Hash Maps.
-              الـ <code>Map</code> يحتوي على مزايا إضافية مثل الحفاظ على ترتيب الإدراج ودعم مفاتيح من أي نوع.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-            <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
-              Set في JavaScript:
-            </p>
-            <p>
-              الـ <code>Set</code> هو مجموعة من القيم الفريدة (بدون تكرار). يوفر البحث في O(1) أيضاً
-              وهو مثالي لإزالة التكرارات والتحقق من الوجود.
-            </p>
-          </div>
-        </LessonSection>
-
-        <LessonSection title="متى نستخدم Hash Map أو Set؟">
-          <ul>
-            <li><strong>البحث عن زوج من الأعداد:</strong> عندما تحتاج لمعرفة ما إذا كان مجموع عددين يساوي قيمة معينة، استخدم Hash Map لتخزين القيم التي مررت بها.</li>
-            <li><strong>إزالة التكرارات:</strong> استخدم Set لتحويل مصفوفة إلى مصفوفة فريدة بكلمة واحدة.</li>
-            <li><strong>العدّ (Counting):</strong> Hash Map ممتاز لعدّ تكرارات العناصر مثل الأحرف أو الأرقام.</li>
-            <li><strong>التحقق من الوجود:</strong> كلتا الهياكلين يوفران فحص الوجود في O(1) بدلاً من O(n) في المصفوفات.</li>
-            <li><strong>المجموعات المتداخلة:</strong> استخدام Set لحساب التقاطع والتجميع بين مجموعتين.</li>
-          </ul>
-        </LessonSection>
-
-        {/* ==================== المشاكل السهلة ==================== */}
+        {content && content.sections.map((section, i) => (
+          <LessonSection key={i} title={section.title}>
+            {section.content.map((item, j) => <div key={j}>{renderContent(item)}</div>)}
+          </LessonSection>
+        ))}
 
         <ProblemCard
           id={1}
@@ -185,10 +168,8 @@ export default function HashMapsSets() {
     if (countMap[num] === 1) return Number(num);
   }
 }`}
-          solutionApproach="ن雛ّ تكرارات كل عنصر في Hash Map بمرور واحد على المصفوفة. ثم نبحث عن العنصر الوحيد الذي عدّته 1. التعقيد: O(n) وقت و O(n) مساحة."
+          solutionApproach="نعدّ تكرارات كل عنصر في Hash Map بمرور واحد على المصفوفة. ثم نبحث عن العنصر الوحيد الذي عدّته 1. التعقيد: O(n) وقت و O(n) مساحة."
         />
-
-        {/* ==================== المشاكل المتوسطة ==================== */}
 
         <ProblemCard
           id={5}
@@ -236,7 +217,7 @@ export default function HashMapsSets() {
           hints={[
             "كل anagram عندما يُرتب يصبح نفس الكلمة",
             "استخدم الكلمة المرتبة كمفتاح في Hash Map",
-            "الكلمات ذات المفتاح نفسه تابعة لنفس المجموعة",
+            "الكلمات ذات المفتاح نفسها تابعة لنفس المجموعة",
           ]}
           solution={`function groupAnagrams(strs) {
   const map = new Map();
@@ -282,7 +263,7 @@ export default function HashMapsSets() {
     .slice(0, k)
     .map(([num]) => Number(num));
 }`}
-          solutionApproach="أولاً ن雛ّ تكرارات كل عنصر في Hash Map. ثم نحوّل الـ Map لمصفوفة من الأزواج [القيمة، التكرار] ونرتّبها تنازلياً حسب التكرار. نأخذ أول k عناصر. التعقيد: O(n log n) بسبب الفرز."
+          solutionApproach="أولاً نعدّ تكرارات كل عنصر في Hash Map. ثم نحوّل الـ Map لمصفوفة من الأزواج [القيمة، التكرار] ونرتّبها تنازلياً حسب التكرار. نأخذ أول k عناصر. التعقيد: O(n log n) بسبب الفرز."
         />
 
         <ProblemCard
@@ -297,7 +278,7 @@ export default function HashMapsSets() {
             { input: "numerator = 2, denominator = 3", output: '"0.(6)"' },
           ]}
           hints={[
-            "القسمة المعتادة تعطي الجزء الصحيح وال쩝ور",
+            "القسمة المعتادة تعطي الجزء الصحيح والopher",
             "استخدم Hash Map لتخزين باقي القسمة ومكانها",
             "إذا تكرر باقي القسمة، فهذا يدل على بداية الجزء الدوري",
           ]}
@@ -460,7 +441,7 @@ export default function HashMapsSets() {
 
   return -1;
 }`}
-          solutionApproach="أولاً ن雛ّ تكرارات جميع العناصر لنحدد العنصر الأكثر تكراراً (dominant). ثم نمر على المصفوفة ونعدّ تكرارات العنصر domininant في الجزء الأيسر. الشرط: العدد في الجزء الأيسر يجب أن يتجاوز نصف طوله، والعدد في الجزء الأيمن يتجاوز نصف طوله أيضاً. التعقيد: O(n)."
+          solutionApproach="أولاً نعدّ تكرارات جميع العناصر لنحدد العنصر الأكثر تكراراً (dominant). ثم نمر على المصفوفة ونعدّ تكرارات العنصر dominant في الجزء الأيسر. الشرط: العدد في الجزء الأيسر يجب أن يتجاوز نصف طوله، والعدد في الجزء الأيمن يتجاوز نصف طوله أيضاً. التعقيد: O(n)."
         />
 
         <ProblemCard
@@ -515,8 +496,6 @@ function arraysEqual(a, b) {
 }`}
           solutionApproach="نستخدم مصفوفتين من 26 عنصر (لكل حرف في الإنجليزية) لعدّ التكرارات: واحدة لـ p وواحدة لنافذة حالية على s. النافذة بحجم p تنزلق بخطوة واحدة. عند كل خطوة، نضيف الحرف الجديد ونحذف القديم ونقارن العدّات. التعقيد: O(n)."
         />
-
-        {/* ==================== CheatSheet ==================== */}
 
         <CheatSheet title="ملخص Hash Maps و Sets">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

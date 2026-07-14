@@ -42,13 +42,22 @@ const fr = {
     subtitle: "{stages} étapes • {lessons} leçons • De zéro à professionnel",
     lessons: "leçons",
   },
+  breadcrumbs: {
+    home: "Accueil",
+    curriculum: "Programme",
+  },
   stage: {
     backToRoadmap: "Retour au parcours",
+    notFound: "Étape non trouvée",
     duration: "Durée",
     minute: "min",
     minutes: "min",
     hour: "heure",
     hours: "heures",
+    lesson: "Leçon",
+    of: "/",
+    info: "💡 Ce programme est mis à jour pour 2025-2026 avec les dernières pratiques et technologies",
+    infoReact: "💡 Ce programme est adapté pour Next.js 16 et React 19",
   },
   components: {
     quiz: {

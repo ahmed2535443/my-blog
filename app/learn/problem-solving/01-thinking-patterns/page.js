@@ -1,3 +1,7 @@
+"use client";
+
+import { useLanguage } from "@/components/LanguageProvider";
+import rawTranslations from "@/i18n/lessons/problem-solving/01-thinking-patterns";
 import ProblemCard from "@/components/ProblemCard";
 import LessonSection from "@/components/LessonSection";
 import LessonHeader from "@/components/LessonHeader";
@@ -71,21 +75,33 @@ const code8 = `function fibonacci(n) {
 }
 console.log(fibonacci(8)); // [0,1,1,2,3,5,8,13]`;
 
+function renderContent(item) {
+  if (item.type === "p") return <p dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "li") return <li dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "callout") return (
+    <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+      <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>💡 {item.title}:</p>
+      <p dangerouslySetInnerHTML={{ __html: item.text }} />
+    </div>
+  );
+  return null;
+}
+
 export default function ThinkingPatterns() {
+  const { lang } = useLanguage();
   const lesson = getLessonBySlug("problem-solving", "01-thinking-patterns");
+  const content = rawTranslations ? (rawTranslations[lang] || rawTranslations.en) : null;
 
   return (
     <div dir="rtl" className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <LessonHeader stage={lesson.stage} lesson={lesson} lessonIndex={lesson.lessonIndex} totalLessons={lesson.totalLessons} />
 
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-12">
-        <LessonSection title="أنماط التفكير في حل المسائل">
-          <p style={{ color: "var(--foreground)" }}>
-            قبل أن تكتب أي كود، تحتاج أن تفهم المسألة جيداً. التفكير المنظّم هو أساس حل أي مشكلة برمجية.
-            هناك 4 أنماط أساسية للتفكير: <strong>Dry Run</strong> (تتبع اليدوي)، و <strong>Pseudocode</strong> (الكود المزيف)،
-            و <strong>تفكيك المشكلة</strong> (تقسيمها لأجزاء)، و <strong>التعرف على الأنماط</strong> (Pattern Recognition).
-          </p>
-        </LessonSection>
+        {content && content.sections.map((section, i) => (
+          <LessonSection key={i} title={section.title}>
+            {section.content.map((item, j) => <div key={j}>{renderContent(item)}</div>)}
+          </LessonSection>
+        ))}
 
         <LessonSection title="التمارين الأساسية">
           <p style={{ color: "var(--muted)" }}>حل كل مسألة في السطور أولاً، ثم اكتب الكود.</p>

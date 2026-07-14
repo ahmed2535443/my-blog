@@ -1,10 +1,7 @@
-// =====================================================
-// ملف: page.js (الدرس الثاني: العناصر والنصوص)
-// المكان: app/learn/html/02-elements-and-text/page.js
-// الوظيفة: تعريف المبتدئين بوسوم HTML الأساسية والنصوص
-// URL: /learn/html/02-elements-and-text
-// =====================================================
+"use client";
 
+import { useLanguage } from "@/components/LanguageProvider";
+import rawTranslations from "@/i18n/lessons/html/02-elements-and-text";
 import CodeBlock from "@/components/CodeBlock";
 import LessonSection from "@/components/LessonSection";
 import LessonHeader from "@/components/LessonHeader";
@@ -14,8 +11,321 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
+const correctAnswers = { en: [1, 2, 0], fr: [1, 2, 0], de: [1, 2, 0] };
+
+const challengeCode = `<h1>مقدمة في HTML</h1>
+<p>HTML هي لغة الويب الأساسية. تُستخدم لبناء صفحات الويب.</p>
+
+<h2>أنواع العناصر</h2>
+<p>هناك عدة أنواع من العناصر في HTML:</p>
+
+<h3>العناوين</h3>
+<p>يوجد 6 مستويات من العناوين من h1 إلى h6.</p>
+
+<h3>القوائم</h3>
+<ul>
+    <li>العناصر غير المرقمة تستخدم ul</li>
+    <li>العناصر المرقمة تستخدم ol</li>
+</ul>
+
+<h3>النص العريض والمائل</h3>
+<p>يمكنك استخدام <strong>strong</strong> للنص العريض و <em>em</em> للنص المائل.</p>
+
+<blockquote>
+    <p>هذا اقتباس من مصدر موثوق.</p>
+</blockquote>
+
+<hr>
+
+<p>هذا مثال على <code>النص المنسق</code> внутри فقرة.</p>`;
+
+const cheatSheetData = {
+  en: {
+    title: "Elements and Text Cheat Sheet",
+    columns: [
+      {
+        heading: "Headings:",
+        items: [
+          '<code className="inline-code">&lt;h1&gt;</code> to <code className="inline-code">&lt;h6&gt;</code> - Six heading levels',
+          '<code className="inline-code">&lt;h1&gt;</code> is the largest, <code className="inline-code">&lt;h6&gt;</code> is the smallest',
+          "Use headings sequentially, don't skip levels",
+        ],
+      },
+      {
+        heading: "Text Tags:",
+        items: [
+          '<code className="inline-code">&lt;p&gt;</code> - Paragraph',
+          '<code className="inline-code">&lt;strong&gt;</code> - Bold (semantic importance)',
+          '<code className="inline-code">&lt;em&gt;</code> - Italic (emphasis)',
+          '<code className="inline-code">&lt;code&gt;</code> - Inline code',
+          '<code className="inline-code">&lt;blockquote&gt;</code> - Block quote',
+          '<code className="inline-code">&lt;pre&gt;</code> - Preformatted text',
+        ],
+      },
+      {
+        heading: "Lists:",
+        items: [
+          '<code className="inline-code">&lt;ul&gt;</code> - Unordered list',
+          '<code className="inline-code">&lt;ol&gt;</code> - Ordered list',
+          '<code className="inline-code">&lt;li&gt;</code> - List item',
+          '<code className="inline-code">&lt;dl&gt;</code> - Description list',
+        ],
+      },
+      {
+        heading: "Empty Elements:",
+        items: [
+          '<code className="inline-code">&lt;br&gt;</code> - Line break',
+          '<code className="inline-code">&lt;hr&gt;</code> - Horizontal rule',
+          '<code className="inline-code">&lt;img&gt;</code> - Image (no closing tag)',
+        ],
+        code: `<!-- Headings -->
+<h1>Main Title</h1>
+<h2>Subtitle</h2>
+<h3>Section Title</h3>
+
+<!-- Text -->
+<p>Paragraph text</p>
+<strong>Bold text</strong>
+<em>Italic text</em>
+<code>inline code</code>
+
+<!-- Lists -->
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>
+<ol>
+  <li>First</li>
+  <li>Second</li>
+</ol>`,
+        codeLanguage: "html",
+      },
+    ],
+  },
+  fr: {
+    title: "Fiche mémo Éléments et Texte",
+    columns: [
+      {
+        heading: "Titres:",
+        items: [
+          '<code className="inline-code">&lt;h1&gt;</code> à <code className="inline-code">&lt;h6&gt;</code> - Six niveaux de titres',
+          '<code className="inline-code">&lt;h1&gt;</code> est le plus grand, <code className="inline-code">&lt;h6&gt;</code> le plus petit',
+          "Utilisez les titres séquentiellement, ne sautez pas de niveaux",
+        ],
+      },
+      {
+        heading: "Balises de texte:",
+        items: [
+          '<code className="inline-code">&lt;p&gt;</code> - Paragraphe',
+          '<code className="inline-code">&lt;strong&gt;</code> - Gras (importance sémantique)',
+          '<code className="inline-code">&lt;em&gt;</code> - Italique (emphase)',
+          '<code className="inline-code">&lt;code&gt;</code> - Code en ligne',
+          '<code className="inline-code">&lt;blockquote&gt;</code> - Citation',
+          '<code className="inline-code">&lt;pre&gt;</code> - Texte préformaté',
+        ],
+      },
+      {
+        heading: "Listes:",
+        items: [
+          '<code className="inline-code">&lt;ul&gt;</code> - Liste non ordonnée',
+          '<code className="inline-code">&lt;ol&gt;</code> - Liste ordonnée',
+          '<code className="inline-code">&lt;li&gt;</code> - Élément de liste',
+          '<code className="inline-code">&lt;dl&gt;</code> - Liste de définition',
+        ],
+      },
+      {
+        heading: "Éléments vides:",
+        items: [
+          '<code className="inline-code">&lt;br&gt;</code> - Saut de ligne',
+          '<code className="inline-code">&lt;hr&gt;</code> - Ligne horizontale',
+          '<code className="inline-code">&lt;img&gt;</code> - Image (pas de balise de fermeture)',
+        ],
+        code: `<!-- Titres -->
+<h1>Titre principal</h1>
+<h2>Sous-titre</h2>
+<h3>Titre de section</h3>
+
+<!-- Texte -->
+<p>Texte de paragraphe</p>
+<strong>Texte en gras</strong>
+<em>Texte en italique</em>
+<code>code en ligne</code>
+
+<!-- Listes -->
+<ul>
+  <li>Élément 1</li>
+  <li>Élément 2</li>
+</ul>
+<ol>
+  <li>Premier</li>
+  <li>Deuxième</li>
+</ol>`,
+        codeLanguage: "html",
+      },
+    ],
+  },
+  de: {
+    title: "Spickzettel Elemente und Text",
+    columns: [
+      {
+        heading: "Überschriften:",
+        items: [
+          '<code className="inline-code">&lt;h1&gt;</code> bis <code className="inline-code">&lt;h6&gt;</code> - Sechs Überschriftsebenen',
+          '<code className="inline-code">&lt;h1&gt;</code> ist die größte, <code className="inline-code">&lt;h6&gt;</code> die kleinste',
+          "Verwenden Sie Überschriften sequentiell, überspringen Sie keine Ebenen",
+        ],
+      },
+      {
+        heading: "Text-Tags:",
+        items: [
+          '<code className="inline-code">&lt;p&gt;</code> - Absatz',
+          '<code className="inline-code">&lt;strong&gt;</code> - Fett (semantische Bedeutung)',
+          '<code className="inline-code">&lt;em&gt;</code> - Kursiv (Hervorhebung)',
+          '<code className="inline-code">&lt;code&gt;</code> - Inline-Code',
+          '<code className="inline-code">&lt;blockquote&gt;</code> - Block-Zitat',
+          '<code className="inline-code">&lt;pre&gt;</code> - Vorformatierter Text',
+        ],
+      },
+      {
+        heading: "Listen:",
+        items: [
+          '<code className="inline-code">&lt;ul&gt;</code> - Ungeordnete Liste',
+          '<code className="inline-code">&lt;ol&gt;</code> - Geordnete Liste',
+          '<code className="inline-code">&lt;li&gt;</code> - Listen-Element',
+          '<code className="inline-code">&lt;dl&gt;</code> - Beschreibungsliste',
+        ],
+      },
+      {
+        heading: "Leere Elemente:",
+        items: [
+          '<code className="inline-code">&lt;br&gt;</code> - Zeilenumbruch',
+          '<code className="inline-code">&lt;hr&gt;</code> - Horizontale Linie',
+          '<code className="inline-code">&lt;img&gt;</code> - Bild (kein Schließungstag)',
+        ],
+        code: `<!-- Überschriften -->
+<h1>Haupttitel</h1>
+<h2>Untertitel</h2>
+<h3>Abschnittstitel</h3>
+
+<!-- Text -->
+<p>Absatztext</p>
+<strong>Fetter Text</strong>
+<em>Kursiver Text</em>
+<code>Inline-Code</code>
+
+<!-- Listen -->
+<ul>
+  <li>Element 1</li>
+  <li>Element 2</li>
+</ul>
+<ol>
+  <li>Erstes</li>
+  <li>Zweites</li>
+</ol>`,
+        codeLanguage: "html",
+      },
+    ],
+  },
+};
+
+const miniProject = {
+  en: {
+    title: "Mini Project: Personal Profile Page",
+    description: "Create a personal profile page that includes:",
+    items: [
+      'Your name as a main heading <code>&lt;h1&gt;</code>',
+      'A brief bio in a paragraph <code>&lt;p&gt;</code>',
+      'Your skills as an unordered list <code>&lt;ul&gt;</code>',
+      'Your experiences as an ordered list <code>&lt;ol&gt;</code>',
+      'A blockquote with your favorite quote',
+      'A horizontal rule to separate sections',
+    ],
+    hint: "Use all the tags you learned in this lesson. Remember to use headings in order (h1, h2, h3) without skipping levels.",
+  },
+  fr: {
+    title: "Mini Projet: Page de profil personnel",
+    description: "Créez une page de profil personnel comprenant:",
+    items: [
+      'Votre nom comme titre principal <code>&lt;h1&gt;</code>',
+      'Une brève bio dans un paragraphe <code>&lt;p&gt;</code>',
+      'Vos compétences en liste non ordonnée <code>&lt;ul&gt;</code>',
+      'Vos expériences en liste ordonnée <code>&lt;ol&gt;</code>',
+      'Un bloc de citation avec votre citation préférée',
+      'Une ligne horizontale pour séparer les sections',
+    ],
+    hint: "Utilisez toutes les balises que vous avez apprises dans cette leçon. N'oubliez pas d'utiliser les titres dans l'ordre (h1, h2, h3) sans sauter de niveaux.",
+  },
+  de: {
+    title: "Mini-Projekt: Persönliche Profilseite",
+    description: "Erstellen Sie eine persönliche Profilseite mit:",
+    items: [
+      'Ihren Namen als Hauptüberschrift <code>&lt;h1&gt;</code>',
+      'Eine kurze Biografie in einem Absatz <code>&lt;p&gt;</code>',
+      'Ihre Fähigkeiten als ungeordnete Liste <code>&lt;ul&gt;</code>',
+      'Ihre Erfahrungen als geordnete Liste <code>&lt;ol&gt;</code>',
+      'Ein Zitat mit Ihrem Lieblingszitat',
+      'Eine horizontale Linie zur Trennung der Abschnitte',
+    ],
+    hint: "Verwenden Sie alle Tags, die Sie in dieser Lektion gelernt haben. Denken Sie daran, Überschriften der Reihe nach zu verwenden (h1, h2, h3), ohne Ebenen zu überspringen.",
+  },
+};
+
+function renderContent(item) {
+  if (item.type === "p") {
+    return <p dangerouslySetInnerHTML={{ __html: item.text }} />;
+  }
+  if (item.type === "li") {
+    return <li dangerouslySetInnerHTML={{ __html: item.text }} />;
+  }
+  if (item.type === "ol") {
+    return <ol dangerouslySetInnerHTML={{ __html: item.text }} />;
+  }
+  if (item.type === "h3") {
+    return <h3 dangerouslySetInnerHTML={{ __html: item.text }} />;
+  }
+  if (item.type === "callout") {
+    return (
+      <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+        <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
+          💡 {item.title}:
+        </p>
+        <p dangerouslySetInnerHTML={{ __html: item.text }} />
+      </div>
+    );
+  }
+  if (item.type === "callout-accent") {
+    return (
+      <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+        <p className="font-bold mb-2" style={{ color: "var(--accent)" }}>
+          ✅ {item.title}:
+        </p>
+        <p dangerouslySetInnerHTML={{ __html: item.text }} />
+      </div>
+    );
+  }
+  if (item.type === "callout-primary") {
+    return (
+      <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+        <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>
+          🔍 {item.title}:
+        </p>
+        <p dangerouslySetInnerHTML={{ __html: item.text }} />
+      </div>
+    );
+  }
+  return null;
+}
+
 export default function ElementsAndText() {
+  const { lang } = useLanguage();
   const lessonInfo = getLessonBySlug("html", "02-elements-and-text");
+  const content = rawTranslations[lang] || rawTranslations.en;
+
+  if (!content) return null;
+
+  const answers = correctAnswers[lang] || correctAnswers.en;
+  const cs = cheatSheetData[lang] || cheatSheetData.en;
+  const mp = miniProject[lang] || miniProject.en;
 
   return (
     <div className="flex flex-col lg:flex-row gap-8">
@@ -27,498 +337,68 @@ export default function ElementsAndText() {
           totalLessons={lessonInfo.totalLessons}
         />
 
-        {/* ========================================== */}
-        {/* القسم الأول: ما هي العناصر (Elements)؟ */}
-        {/* ========================================== */}
-        <LessonSection title="ما هي العناصر (Elements)؟">
-          <p>
-            في الدرس السابق تعلمنا أن HTML يتكون من &quot;وسوم&quot; (Tags). لكن في الواقع، الوسم وحده ليس العنصر. <strong>العنصر (Element)</strong> يتكون من ثلاثة أجزاء:
+        {content.sections.map((section, i) => (
+          <LessonSection key={i} title={section.title}>
+            {section.content.map((item, j) => (
+              <div key={j}>{renderContent(item)}</div>
+            ))}
+          </LessonSection>
+        ))}
+
+        {content.quiz && content.quiz.map((q, i) => (
+          <Quiz
+            key={i}
+            question={q.question}
+            options={q.options}
+            correctAnswer={answers[i]}
+            explanation={q.explanation}
+          />
+        ))}
+
+        {content.challenge && (
+          <Challenge title={content.challenge.title} description={<p>{content.challenge.description}</p>}>
+            <CodeBlock language="html" code={challengeCode} />
+          </Challenge>
+        )}
+
+        <div className="rounded-xl p-6 my-6 border-2" style={{ background: "var(--surface)", borderColor: "var(--secondary)" }}>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xl">🏗️</span>
+            <span className="font-bold text-lg" style={{ color: "var(--secondary)" }}>
+              {mp.title}
+            </span>
+          </div>
+          <p className="mb-4" style={{ color: "var(--foreground)" }}>
+            {mp.description}
           </p>
-
-          <ul>
-            <li><strong>وسم الافتتاح</strong> (Opening Tag)</li>
-            <li><strong>المحتوى</strong> (Content)</li>
-            <li><strong>وسم الإغلاق</strong> (Closing Tag)</li>
+          <ul className="mb-4" style={{ color: "var(--foreground)" }}>
+            {mp.items.map((item, i) => (
+              <li key={i} dangerouslySetInnerHTML={{ __html: item }} />
+            ))}
           </ul>
-
-          <CodeBlock
-            language="html"
-            code={`<!-- هذا عنصر كامل (Element) -->
-<h1>مرحباً بالعالم</h1>
-
-<!-- تفصيل العنصر: -->
-<h1>مرحباً بالعالم</h1>
-↑         ↑              ↑
-وسم افتتاح  محتوى       وسم إغلاق`}
-          />
-
-          <p>بعض العناصر <strong>لا تحتوي محتوى</strong> وتُسمى &quot;عناصر فارغة&quot; (Empty Elements) مثل:</p>
-
-          <CodeBlock
-            language="html"
-            code={`<!-- سطر فارغ (لا وسم إغلاق) -->
-<br />
-
-<!-- صورة (لا وسم إغلاق) -->
-<img src="photo.jpg" />
-
-<!-- خط فاصل (لا وسم إغلاق) -->
-<hr />`}
-          />
-
-          <div
-            className="p-4 rounded-xl my-4 border"
-            style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-          >
-            <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
-              💡 تشبيه بسيط:
-            </p>
-            <p>
-              الوسم مثل الأقواس <code>( )</code>، والمحتوى هو ما بداخلها. لكن بعض العناصر مثل <code>&lt;br&gt;</code> و <code>&lt;img&gt;</code> لا تحتاج محتوى بين الأقواس - هي مثل <code>( )</code> فارغة.
-            </p>
-          </div>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الثاني: العناصر النصية (Text Elements) */}
-        {/* ========================================== */}
-        <LessonSection title="العناصر النصية الأساسية">
-          <p>هناك وسوم كثيرة للتعامل مع النصوص. إليك أهمها:</p>
-
-          <h3>العناوين (Headings)</h3>
-          <p>HTML يوفر 6 درجات للعناوين من <code>&lt;h1&gt;</code> (الأكبر) إلى <code>&lt;h6&gt;</code> (الأصغر):</p>
-
-          <CodeBlock
-            language="html"
-            code={`<h1>العنوان الرئيسي (h1)</h1>
-<h2>عنوان فرعي (h2)</h2>
-<h3>عنوان أصغر (h3)</h3>
-<h4>عنوان أصغر (h4)</h4>
-<h5>عنوان أصغر (h5)</h5>
-<h6>عنوان أصغر (h6)</h6>`}
-          />
-
-          <div
-            className="p-4 rounded-xl my-4 border"
-            style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-          >
-            <p className="font-bold mb-2" style={{ color: "var(--danger)" }}>
-              ⚠️ قاعدة مهمة:
-            </p>
-            <p>
-              لا تتخطَّ من <code>&lt;h1&gt;</code> مباشرة إلى <code>&lt;h3&gt;</code>! يجب أن تكون العناوين متسلسلة. <code>&lt;h1&gt;</code> ثم <code>&lt;h2&gt;</code> ثم <code>&lt;h3&gt;</code> وهكذا. تخطي درجة هو خطأ شائع.
-            </p>
-          </div>
-
-          <h3>الفقرات (Paragraphs)</h3>
-          <p>لفقرة نصية عادية، نستخدم وسم <code>&lt;p&gt;</code>:</p>
-
-          <CodeBlock
-            language="html"
-            code={`<p>هذه فقرة أولى. تظهر في سطر منفصل.</p>
-<p>هذه فقرة ثانية. تظهر أيضاً في سطر منفصل.</p>`}
-          />
-
-          <h3>النص العريض والمائل (Bold & Italic)</h3>
-
-          <CodeBlock
-            language="html"
-            code={`<!-- نص عريض (Strong - له دلالة أهمية) -->
-<strong>هذا نص مهم</strong>
-
-<!-- نص مائل (Emphasis - له دلالة التأكيد) -->
-<em>هذا نص بتأثير مائل</em>
-
-<!-- نص عريض بدون دلالة (يُفضل استخدام strong) -->
-<b>نص عريض فقط</b>
-
-<!-- نص مائل بدون دلالة (يُفضل استخدام em) -->
-<i>نص مائل فقط</i>`}
-          />
-
-          <p>
-            الفرق بين <code>&lt;strong&gt;</code> و <code>&lt;b&gt;</code>: الأول يدل على <strong>أهمية</strong> النص (ะ.semantic)، بينما الثاني يُعطي فقط <strong>شكل</strong> عريض. يُفضل استخدام <code>&lt;strong&gt;</code> لأسباب تتعلق بالوصولية.
+          <p className="text-sm" style={{ color: "var(--muted)" }}>
+            💡 {mp.hint}
           </p>
-        </LessonSection>
+        </div>
 
-        {/* ========================================== */}
-        {/* القسم الثالث: القوائم (Lists) */}
-        {/* ========================================== */}
-        <LessonSection title="القوائم (Lists)">
-          <p>HTML توفر三种 أنواع من القوائم:</p>
-
-          <h3>1. القائمة غير المرقمة (Unordered List)</h3>
-          <p>تستخدم عندما لا يكون ترتيب العناصر مهماً:</p>
-
-          <CodeBlock
-            language="html"
-            code={`<ul>
-    <li>تفاح</li>
-    <li>موز</li>
-    <li>برتقال</li>
-</ul>`}
-          />
-
-          <h3>2. القائمة المرقمة (Ordered List)</h3>
-          <p>تستخدم عندما يكون الترتيب مهماً:</p>
-
-          <CodeBlock
-            language="html"
-            code={`<ol>
-    <li>الخطوة الأولى: تثبيت Node.js</li>
-    <li>الخطوة الثانية: إنشاء مشروع</li>
-    <li>الخطوة الثالثة: كتابة الكود</li>
-</ol>`}
-          />
-
-          <h3>3. قائمة التعريف (Description List)</h3>
-          <p>تستخدم لعرض أزواج من المصطلحات والتعريفات:</p>
-
-          <CodeBlock
-            language="html"
-            code={`<dl>
-    <dt>HTML</dt>
-    <dd>لغة ترميز النص التشعبي - تُحدد بنية الصفحة</dd>
-
-    <dt>CSS</dt>
-    <dd>أوراق الأنماط المتراصة - تُحدد شكل الصفحة</dd>
-
-    <dt>JavaScript</dt>
-    <dd>لغة برمجة - تُضيف التفاعل للصفحة</dd>
-</dl>`}
-          />
-
-          <h3>قوائم متداخلة (Nested Lists)</h3>
-          <p>يمكنك وضع قائمة داخل قائمة أخرى:</p>
-
-          <CodeBlock
-            language="html"
-            code={`<ul>
-    <li>ال front-end
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-        </ul>
-    </li>
-    <li>ال back-end
-        <ul>
-            <li>Node.js</li>
-            <li>Python</li>
-        </ul>
-    </li>
-</ul>`}
-          />
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الرابع: الفواصل والت_wsوم المفيدة */}
-        {/* ========================================== */}
-        <LessonSection title="وسوم مفيدة أخرى للنصوص">
-          <CodeBlock
-            language="html"
-            code={`<!-- سطر فارغ (Line Break) -->
-نص في سطر<br />
-نص في سطر جديد
-
-<!-- خط فاصل (Horizontal Rule) -->
-<section>
-    <p>المحتوى الأول</p>
-</section>
-<hr />
-<section>
-    <p>المحتوى الثاني</p>
-</section>
-
-<!-- كود مُضمَّن (Inline Code) -->
-<p>استخدم أمر <code>git init</code> لإنشاء مستودع جديد</p>
-
-<!-- اقتباس (Block Quote) -->
-<blockquote>
-    <p>البرمجة ليست عن الكتابة فقط، بل عن التفكير.</p>
-</blockquote>
-
-<!-- كود مُنسَّق (Preformatted Text) -->
-<pre>
-    هذا نص مُنسَّق
-    الفراغات والأسطر
-    تظهر كما هي
-</pre>`}
-          />
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الخامس: مثال عملي من مشروع حقيقي */}
-        {/* ========================================== */}
-        <LessonSection title="مثال عملي: صفحة مقال بسيط">
-          <p>لنرَ كيف نستخدم كل ما تعلمناه في صفحة مقال حقيقية:</p>
-
-          <CodeBlock
-            language="html"
-            code={`<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>مقدمة في البرمجة - مقال</title>
-</head>
-<body>
-    <article>
-        <h1>مقدمة في عالم البرمجة</h1>
-        <p>البرمجة هي مهارة أساسية في عصرنا الحالي. في هذا المقال،
-           سنتعلم أساسيات عالم البرمجة.</p>
-
-        <h2>لماذا تعلم البرمجة؟</h2>
-        <p>تعلم البرمجة يفتح أمامك أبواباً كثيرة:</p>
-        <ol>
-            <li>فرص عمل عالية الأجر</li>
-            <li>إمكانية العمل عن بُعد</li>
-            <li>بناء مشاريعك الخاصة</li>
-            <li>تطوير مهارات التفكير المنطقي</li>
-        </ol>
-
-        <hr />
-
-        <h2>أفضل لغات البرمجة للمبتدئين</h2>
-        <ul>
-            <li><strong>Python</strong> - سهلة التعلم ومتعددة الاستخدامات</li>
-            <li><strong>JavaScript</strong> - لغة الويب الأساسية</li>
-            <li><strong>HTML/CSS</strong> - أساسيات تصميم المواقع</li>
-        </ul>
-
-        <h2>نصيحتي لك</h2>
-        <blockquote>
-            <p>لا تحاول تعلم كل شيء في وقت واحد.
-               ابدأ بلغة واحدة وأتقنها قبل الانتقال للتالية.</p>
-        </blockquote>
-
-        <p>تذكّر: <em>الاستمرارية أهم من الكمال</em>.
-           ابدأ اليوم ولا تنتظر الغد!</p>
-    </article>
-</body>
-</html>`}
-          />
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم السادس: ماذا يحدث خلف الكواليس؟ */}
-        {/* ========================================== */}
-        <LessonSection title="ماذا يحدث خلف الكواليس؟">
-          <p>عندما يقرأ المتصفح وسوم النصوص، يحدث التالي:</p>
-
-          <ul>
-            <li>يُحوّل <code>&lt;h1&gt;</code> إلى نص بحجم كبير (عادة <strong>32px</strong> أو أكثر) ووزن عريض.</li>
-            <li>يُحوّل <code>&lt;p&gt;</code> إلى نص في فقرة منفصلة بهامش سفلي.</li>
-            <li>يُحوّل <code>&lt;ul&gt;</code> و <code>&lt;ol&gt;</code> إلى قوائم نقاط أو أرقام تلقائياً.</li>
-            <li>يُحوّل <code>&lt;strong&gt;</code> إلى نص <strong>عريض</strong>.</li>
-            <li>يُحوّل <code>&lt;code&gt;</code> إلى نص بخط خاص (Monospace) مع خلفية رمادية.</li>
-          </ul>
-
-          <div
-            className="p-4 rounded-xl my-4 border"
-            style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-          >
-            <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>
-              🔍 هل تعلم؟
-            </p>
-            <p>
-              المتصفح يُعطي كل وسم <strong>أبعاداً افتراضية</strong> (default styles). مثلاً، <code>&lt;h1&gt;</code> يحصل على <code>font-size: 2em</code> و <code>margin: 0.67em 0</code>. يمكنك رؤية هذه القيم في أدوات المطور (F12).
-            </p>
-          </div>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم السابع: الأخطاء الشائعة */}
-        {/* ========================================== */}
-        <LessonSection title="الأخطاء الشائعة">
-          <ul>
-            <li>
-              <strong>❌ تخطي درجات العناوين:</strong>
-              <br />
-              استخدام <code>&lt;h1&gt;</code> مباشرة followed by <code>&lt;h3&gt;</code> بدون <code>&lt;h2&gt;</code>. هذا يُضعف بنية الصفحة ويسبب مشاكل في SEO والوصولية.
-            </li>
-            <li>
-              <strong>❌ استخدام العناوين لتنسيق النص فقط:</strong>
-              <br />
-              استخدام <code>&lt;h3&gt;</code> لأنك تريد نصاً أصغر. العناوين للبنية الدلالية فقط، أما التنسيق فدور CSS.
-            </li>
-            <li>
-              <strong>❌ وضع عناصر داخلية في غير مكانها:</strong>
-              <br />
-              مثل وضع <code>&lt;p&gt;</code> داخل <code>&lt;p&gt;</code> آخر. هذا غير صحيح في HTML.
-            </li>
-            <li>
-              <strong>❌ استخدام <code>&lt;br&gt;</code> لإنشاء مسافات:</strong>
-              <br />
-              استخدام <code>&lt;br&gt;&lt;br&gt;&lt;br&gt;</code> لإنشاء مسافة بين الفقرات. استخدم الـ margin في CSS بدلاً من ذلك.
-            </li>
-          </ul>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الثامن: أفضل الممارسات */}
-        {/* ========================================== */}
-        <LessonSection title="أفضل الممارسات">
-          <ul>
-            <li><strong>✅ استخدم h1 مرة واحدة فقط في الصفحة:</strong> لأنها تمثل العنوان الرئيسي للصفحة.</li>
-            <li><strong>✅ استخدم strong و em بدلاً من b و i:</strong> لأنهما يُعطيان معنى دلالياً إضافياً.</li>
-            <li><strong>✅ افصل العناصر بمسافة بصرية:</strong> استخدم فارغة بين الكتل المنطقية في ملف HTML لسهولة القراءة.</li>
-            <li><strong>✅ استخدم القوائم عند الحاجة:</strong> لا تحول كل مجموعة نقاط إلى فقرات.</li>
-          </ul>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم التاسع: ملخص */}
-        {/* ========================================== */}
-        <LessonSection title="ملخص الدرس">
-          <div
-            className="p-6 rounded-xl border"
-            style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-          >
-            <ul className="space-y-3">
-              <li><strong style={{ color: "var(--primary)" }}>العنصر (Element)</strong> = وسم افتتاح + محتوى + وسم إغلاق</li>
-              <li>العناوين من <code>&lt;h1&gt;</code> إلى <code>&lt;h6&gt;</code> - لا تتخطَّ الدرجات</li>
-              <li>الفقرات: <code>&lt;p&gt;</code></li>
-              <li>النص العريض: <code>&lt;strong&gt;</code> | المائل: <code>&lt;em&gt;</code></li>
-              <li>القوائم: <code>&lt;ul&gt;</code> (غير مرقمة) | <code>&lt;ol&gt;</code> (مرقمة) | <code>&lt;dl&gt;</code> (تعريف)</li>
-              <li>العناصر الفارغة: <code>&lt;br&gt;</code> و <code>&lt;hr&gt;</code> و <code>&lt;img&gt;</code> (لا وسم إغلاق)</li>
-            </ul>
-          </div>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* Quiz */}
-        {/* ========================================== */}
-        <Quiz
-          question="كم عدد درجات العناوين في HTML؟"
-          options={["4 درجات", "5 درجات", "6 درجات", "3 درجات"]}
-          correctAnswer={2}
-          explanation="HTML يوفر 6 درجات للعناوين من h1 (الأكبر) إلى h6 (الأصغر)."
-        />
-
-        <Quiz
-          question="ما الفرق بين <strong>strong</strong> و <strong>b</strong>؟"
-          options={[
-            "لا يوجد فرق بينهما",
-            "strong للنص العريض، b للنص المائل",
-            "strong يدل على الأهمية الدلالية، b يُعطي فقط الشكل العريض",
-            "strong يُستخدم في CSS، b يُستخدم في HTML فقط",
-          ]}
-          correctAnswer={2}
-          explanation="strong يدل على أن النص مهم دلالياً (semantic importance)، بينما b يُعطي فقط شكل عريض بدون معنى إضافي. يُفضل استخدام strong لأسباب تتعلق بالوصولية."
-        />
-
-        {/* ========================================== */}
-        {/* تحدي */}
-        {/* ========================================== */}
-        <Challenge
-          title="تحدي: صفحة مقال كاملة"
-          description={
-            <p>
-              أنشئ صفحة HTML تحتوي على مقال كامل يتضمن:
-              <br />
-              1. عنوان رئيسي <code>&lt;h1&gt;</code>
-              <br />
-              2. فقرة مقدمة
-              <br />
-              3. عنوان فرعي <code>&lt;h2&gt;</code> مع فقرة
-              <br />
-              4. قائمة مرقمة بخطوات
-              <br />
-              5. قائمة غير مرقمة
-              <br />
-              6. اقتباس
-              <br />
-              7. خط فاصل
-              <br />
-              8. فقرة ختامية بنص عريض ومائل
-            </p>
-          }
-        >
-          <CodeBlock
-            language="html"
-            code={`<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>مقال عن البرمجة</title>
-</head>
-<body>
-    <article>
-        <h1>كيف تبدأ في تعلم البرمجة</h1>
-        <p>البرمجة مهارة قوية يمكنك تعلمها اليوم.</p>
-
-        <h2>خطوات البداية</h2>
-        <ol>
-            <li>اختر لغة برمجة</li>
-            <li>ادرس الأساسيات</li>
-            <li>طبّق بمشاريع صغيرة</li>
-        </ol>
-
-        <h2>أفضل الموارد المجانية</h2>
-        <ul>
-            <li>CodeMaster</li>
-            <li>MDN Web Docs</li>
-            <li>freeCodeCamp</li>
-        </ul>
-
-        <hr />
-
-        <blockquote>
-            <p>البرمجة ليست صعبة، تحتاج فقط صبراً وممارسة.</p>
-        </blockquote>
-
-        <p>تذكّر: <strong><em>ابدأ من الصفر ولا تتوقف عن التعلم</em></strong></p>
-    </article>
-</body>
-</html>`}
-          />
-        </Challenge>
-
-        {/* ========================================== */}
-        {/* Cheat Sheet */}
-        {/* ========================================== */}
-        <CheatSheet title="ملخص العناصر والنصوص">
+        <CheatSheet title={cs.title}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>عناوين:</p>
-              <CodeBlock language="html" code={`<h1>أكبر عنوان</h1>
-<h2>عنوان فرعي</h2>
-<h3>عنوان أصغر</h3>
-<h4>عنوان أصغر</h4>
-<h5>عنوان أصغر</h5>
-<h6>أصغر عنوان</h6>`} />
-
-              <p className="font-bold mb-2 mt-4" style={{ color: "var(--primary)" }}>نصوص:</p>
-              <CodeBlock language="html" code={`<p>فقرة نصية</p>
-<strong>نص عريض (مهم)</strong>
-<em>نص مائل (مؤكد)</em>
-<code>كود مضمَّن</code>
-<blockquote>اقتباس</blockquote>`} />
-            </div>
-            <div>
-              <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>قوائم:</p>
-              <CodeBlock language="html" code={`<!-- غير مرقمة -->
-<ul>
-  <li>عنصر 1</li>
-  <li>عنصر 2</li>
-</ul>
-
-<!-- مرقمة -->
-<ol>
-  <li>خطوة 1</li>
-  <li>خطوة 2</li>
-</ol>
-
-<!-- وسوم فارغة -->
-<br />  <!-- سطر فارغ -->
-<hr />  <!-- خط فاصل -->`} />
-            </div>
+            {cs.columns.map((col, i) => (
+              <div key={i}>
+                <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>{col.heading}</p>
+                {col.items && (
+                  <ul className="text-sm space-y-1">
+                    {col.items.map((item, j) => (
+                      <li key={j} dangerouslySetInnerHTML={{ __html: item }} />
+                    ))}
+                  </ul>
+                )}
+                {col.code && <CodeBlock language={col.codeLanguage || "html"} code={col.code} />}
+              </div>
+            ))}
           </div>
         </CheatSheet>
 
-        {/* ========================================== */}
-        {/* التنقل */}
-        {/* ========================================== */}
         <LessonNavigation
           prevLesson={lessonInfo.prevLesson}
           prevStage={lessonInfo.prevLessonStage}

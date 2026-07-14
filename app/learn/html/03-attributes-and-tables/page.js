@@ -1,10 +1,7 @@
-// =====================================================
-// ملف: page.js (الدرس الثالث: السمات والجداول)
-// المكان: app/learn/html/03-attributes-and-tables/page.js
-// الوظيفة: تعريف المبتدئين بالسمات والجداول في HTML
-// URL: /learn/html/03-attributes-and-tables
-// =====================================================
+"use client";
 
+import { useLanguage } from "@/components/LanguageProvider";
+import rawTranslations from "@/i18n/lessons/html/03-attributes-and-tables";
 import CodeBlock from "@/components/CodeBlock";
 import LessonSection from "@/components/LessonSection";
 import LessonHeader from "@/components/LessonHeader";
@@ -14,8 +11,297 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
+const correctAnswers = { en: [0, 2, 1], fr: [0, 2, 1], de: [0, 2, 1] };
+
+const challengeCode = `<table border="1">
+  <caption>جدول رواتب الموظفين</caption>
+  <thead>
+    <tr>
+      <th>الاسم</th>
+      <th>الوظيفة</th>
+      <th>الراتب</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>أحمد محمد</td>
+      <td>مطور</td>
+      <td>8000 ر.س</td>
+    </tr>
+    <tr>
+      <td>سارة علي</td>
+      <td>مصممة</td>
+      <td>7500 ر.س</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2">المتوسط</td>
+      <td>7750 ر.س</td>
+    </tr>
+  </tfoot>
+</table>`;
+
+const cheatSheetData = {
+  en: {
+    title: "Attributes and Tables Cheat Sheet",
+    columns: [
+      {
+        heading: "Global Attributes:",
+        items: [
+          '<code className="inline-code">id</code> - Unique identifier for an element',
+          '<code className="inline-code">class</code> - CSS class name (can be shared)',
+          '<code className="inline-code">style</code> - Inline CSS styles',
+          '<code className="inline-code">title</code> - Tooltip text on hover',
+          '<code className="inline-code">hidden</code> - Hides the element',
+        ],
+      },
+      {
+        heading: "Table Structure:",
+        items: [
+          '<code className="inline-code">&lt;table&gt;</code> - Table container',
+          '<code className="inline-code">&lt;caption&gt;</code> - Table title',
+          '<code className="inline-code">&lt;thead&gt;</code> - Table header group',
+          '<code className="inline-code">&lt;tbody&gt;</code> - Table body group',
+          '<code className="inline-code">&lt;tfoot&gt;</code> - Table footer group',
+          '<code className="inline-code">&lt;tr&gt;</code> - Table row',
+          '<code className="inline-code">&lt;th&gt;</code> - Header cell',
+          '<code className="inline-code">&lt;td&gt;</code> - Data cell',
+        ],
+        code: `<!-- Table with attributes -->
+<table border="1" style="width:100%">
+  <caption>Employee Table</caption>
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ahmed</td>
+      <td>Developer</td>
+    </tr>
+  </tbody>
+</table>`,
+        codeLanguage: "html",
+      },
+      {
+        heading: "Colspan & Rowspan:",
+        items: [
+          '<code className="inline-code">colspan="n"</code> - Merge n columns',
+          '<code className="inline-code">rowspan="n"</code> - Merge n rows',
+          '<code className="inline-code">scope="col"</code> - Header for column',
+          '<code className="inline-code">scope="row"</code> - Header for row',
+        ],
+      },
+    ],
+  },
+  fr: {
+    title: "Fiche mémo Attributs et Tableaux",
+    columns: [
+      {
+        heading: "Attributs globaux:",
+        items: [
+          '<code className="inline-code">id</code> - Identifiant unique pour un élément',
+          '<code className="inline-code">class</code> - Nom de classe CSS (peut être partagé)',
+          '<code className="inline-code">style</code> - Styles CSS en ligne',
+          '<code className="inline-code">title</code> - Texte de l\'infobulle au survol',
+          '<code className="inline-code">hidden</code> - Masque l\'élément',
+        ],
+      },
+      {
+        heading: "Structure du tableau:",
+        items: [
+          '<code className="inline-code">&lt;table&gt;</code> - Conteneur de tableau',
+          '<code className="inline-code">&lt;caption&gt;</code> - Titre du tableau',
+          '<code className="inline-code">&lt;thead&gt;</code> - Groupe d\'en-tête',
+          '<code className="inline-code">&lt;tbody&gt;</code> - Groupe de corps',
+          '<code className="inline-code">&lt;tfoot&gt;</code> - Groupe de pied',
+          '<code className="inline-code">&lt;tr&gt;</code> - Ligne de tableau',
+          '<code className="inline-code">&lt;th&gt;</code> - Cellule d\'en-tête',
+          '<code className="inline-code">&lt;td&gt;</code> - Cellule de données',
+        ],
+        code: `<!-- Tableau avec attributs -->
+<table border="1" style="width:100%">
+  <caption>Tableau des employés</caption>
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Rôle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ahmed</td>
+      <td>Développeur</td>
+    </tr>
+  </tbody>
+</table>`,
+        codeLanguage: "html",
+      },
+      {
+        heading: "Colspan et Rowspan:",
+        items: [
+          '<code className="inline-code">colspan="n"</code> - Fusionner n colonnes',
+          '<code className="inline-code">rowspan="n"</code> - Fusionner n lignes',
+          '<code className="inline-code">scope="col"</code> - En-tête pour colonne',
+          '<code className="inline-code">scope="row"</code> - En-tête pour ligne',
+        ],
+      },
+    ],
+  },
+  de: {
+    title: "Spickzettel Attribute und Tabellen",
+    columns: [
+      {
+        heading: "Globale Attribute:",
+        items: [
+          '<code className="inline-code">id</code> - Eindeutige Kennung für ein Element',
+          '<code className="inline-code">class</code> - CSS-Klassenname (kann geteilt werden)',
+          '<code className="inline-code">style</code> - Inline-CSS-Stile',
+          '<code className="inline-code">title</code> - Tooltip-Text beim Überfahren',
+          '<code className="inline-code">hidden</code> - Versteckt das Element',
+        ],
+      },
+      {
+        heading: "Tabellenstruktur:",
+        items: [
+          '<code className="inline-code">&lt;table&gt;</code> - Tabellen-Container',
+          '<code className="inline-code">&lt;caption&gt;</code> - Tabellentitel',
+          '<code className="inline-code">&lt;thead&gt;</code> - Tabellenkopfgruppe',
+          '<code className="inline-code">&lt;tbody&gt;</code> - Tabellenkörpergruppe',
+          '<code className="inline-code">&lt;tfoot&gt;</code> - Tabellenfußgruppe',
+          '<code className="inline-code">&lt;tr&gt;</code> - Tabellenzeile',
+          '<code className="inline-code">&lt;th&gt;</code> - Kopfzelle',
+          '<code className="inline-code">&lt;td&gt;</code> - Datenzelle',
+        ],
+        code: `<!-- Tabelle mit Attributen -->
+<table border="1" style="width:100%">
+  <caption>Mitarbeitertabelle</caption>
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Rolle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ahmed</td>
+      <td>Entwickler</td>
+    </tr>
+  </tbody>
+</table>`,
+        codeLanguage: "html",
+      },
+      {
+        heading: "Colspan und Rowspan:",
+        items: [
+          '<code className="inline-code">colspan="n"</code> - N Spalten zusammenführen',
+          '<code className="inline-code">rowspan="n"</code> - N Zeilen zusammenführen',
+          '<code className="inline-code">scope="col"</code> - Kopf für Spalte',
+          '<code className="inline-code">scope="row"</code> - Kopf für Zeile',
+        ],
+      },
+    ],
+  },
+};
+
+const miniProject = {
+  en: {
+    title: "Mini Project: Course Grades Table",
+    description: "Create a table that displays student grades:",
+    items: [
+      'A <code>&lt;caption&gt;</code> with the title "Student Grades"',
+      'A header row with: Name, Math, Science, English, Average',
+      'At least 3 student rows with grade data',
+      'A footer row with the class average using <code>colspan</code>',
+      'Use <code>scope</code> attributes on all <code>&lt;th&gt;</code> elements',
+    ],
+    hint: "Use <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, and <code>&lt;tfoot&gt;</code> to structure your table properly. The average can be calculated as the mean of the three grades.",
+  },
+  fr: {
+    title: "Mini Projet: Tableau de notes de cours",
+    description: "Créez un tableau affichant les notes des étudiants:",
+    items: [
+      'Un <code>&lt;caption&gt;</code> avec le titre "Notes des étudiants"',
+      'Une ligne d\'en-tête avec: Nom, Maths, Sciences, Anglais, Moyenne',
+      'Au moins 3 lignes d\'étudiants avec des données de notes',
+      'Une ligne de pied avec la moyenne de la classe utilisant <code>colspan</code>',
+      'Utilisez des attributs <code>scope</code> sur tous les éléments <code>&lt;th&gt;</code>',
+    ],
+    hint: "Utilisez <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> et <code>&lt;tfoot&gt;</code> pour structurer correctement votre tableau. La moyenne peut être calculée comme la moyenne des trois notes.",
+  },
+  de: {
+    title: "Mini-Projekt: Notentabelle für Kurse",
+    description: "Erstellen Sie eine Tabelle, die Schülernoten anzeigt:",
+    items: [
+      'Ein <code>&lt;caption&gt;</code> mit dem Titel "Schülernoten"',
+      'Eine Kopfzeile mit: Name, Mathe, Naturwissenschaften, Englisch, Durchschnitt',
+      'Mindestens 3 Schülerzeilen mit Notendaten',
+      'Eine Fußzeile mit dem Klassendurchschnitt unter Verwendung von <code>colspan</code>',
+      'Verwenden Sie <code>scope</code>-Attribute bei allen <code>&lt;th&gt;</code>-Elementen',
+    ],
+    hint: "Verwenden Sie <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> und <code>&lt;tfoot&gt;</code>, um Ihre Tabelle korrekt zu strukturieren. Der Durchschnitt kann als Mittelwert der drei Noten berechnet werden.",
+  },
+};
+
+function renderContent(item) {
+  if (item.type === "p") {
+    return <p dangerouslySetInnerHTML={{ __html: item.text }} />;
+  }
+  if (item.type === "li") {
+    return <li dangerouslySetInnerHTML={{ __html: item.text }} />;
+  }
+  if (item.type === "ol") {
+    return <ol dangerouslySetInnerHTML={{ __html: item.text }} />;
+  }
+  if (item.type === "h3") {
+    return <h3 dangerouslySetInnerHTML={{ __html: item.text }} />;
+  }
+  if (item.type === "callout") {
+    return (
+      <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+        <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
+          💡 {item.title}:
+        </p>
+        <p dangerouslySetInnerHTML={{ __html: item.text }} />
+      </div>
+    );
+  }
+  if (item.type === "callout-accent") {
+    return (
+      <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+        <p className="font-bold mb-2" style={{ color: "var(--accent)" }}>
+          ✅ {item.title}:
+        </p>
+        <p dangerouslySetInnerHTML={{ __html: item.text }} />
+      </div>
+    );
+  }
+  if (item.type === "callout-primary") {
+    return (
+      <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+        <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>
+          🔍 {item.title}:
+        </p>
+        <p dangerouslySetInnerHTML={{ __html: item.text }} />
+      </div>
+    );
+  }
+  return null;
+}
+
 export default function AttributesAndTables() {
+  const { lang } = useLanguage();
   const lessonInfo = getLessonBySlug("html", "03-attributes-and-tables");
+  const content = rawTranslations[lang] || rawTranslations.en;
+
+  if (!content) return null;
+
+  const answers = correctAnswers[lang] || correctAnswers.en;
+  const cs = cheatSheetData[lang] || cheatSheetData.en;
+  const mp = miniProject[lang] || miniProject.en;
 
   return (
     <div className="flex flex-col lg:flex-row gap-8">
@@ -27,392 +313,68 @@ export default function AttributesAndTables() {
           totalLessons={lessonInfo.totalLessons}
         />
 
-        {/* ========================================== */}
-        {/* القسم الأول: ما هي السمات (Attributes)؟ */}
-        {/* ========================================== */}
-        <LessonSection title="ما هي السمات (Attributes)؟">
-          <p>
-            السمات هي معلومات إضافية نضعها داخل وسم البداية لتغيير سلوك العنصر أو شكله أو لتقديم بيانات وصفية عنه. تأتي دائمًا على شكل <code>اسم=&quot;قيمة&quot;</code>.
-          </p>
+        {content.sections.map((section, i) => (
+          <LessonSection key={i} title={section.title}>
+            {section.content.map((item, j) => (
+              <div key={j}>{renderContent(item)}</div>
+            ))}
+          </LessonSection>
+        ))}
 
-          <p>
-            إذا كان الوسم مثل الاسم (سيارة)، فالسمات هي الصفات (اللون=&quot;أحمر&quot;، الموديل=&quot;2026&quot;).
-          </p>
-
-          <CodeBlock
-            language="html"
-            code={`<!-- هنا href و target و title هي سمات للوسم a -->
-<a href="/about" target="_blank" title="اعرف المزيد عنا">صفحة عنا</a>
-
-<!-- سمة id تعطي العنصر معرّفاً فريداً -->
-<div id="main-content">المحتوى الرئيسي</div>
-
-<!-- سمة class تُستخدم لتصنيف العناصر -->
-<p class="important">نص مهم جداً</p>`}
+        {content.quiz && content.quiz.map((q, i) => (
+          <Quiz
+            key={i}
+            question={q.question}
+            options={q.options}
+            correctAnswer={answers[i]}
+            explanation={q.explanation}
           />
+        ))}
 
-          <div
-            className="p-4 rounded-xl my-4 border"
-            style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-          >
-            <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
-              💡 تشبيه:
-            </p>
-            <p>
-              إذا كان الوسم هو &quot;اسم السيارة&quot; (مثل Toyota)، فالسمات هي &quot;صفات السيارة&quot; (اللون=&quot;أحمر&quot;، שנת الصنع=&quot;2026&quot;). كل سمة تُعطي معلومة إضافية عن العنصر.
-            </p>
+        {content.challenge && (
+          <Challenge title={content.challenge.title} description={<p>{content.challenge.description}</p>}>
+            <CodeBlock language="html" code={challengeCode} />
+          </Challenge>
+        )}
+
+        <div className="rounded-xl p-6 my-6 border-2" style={{ background: "var(--surface)", borderColor: "var(--secondary)" }}>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xl">🏗️</span>
+            <span className="font-bold text-lg" style={{ color: "var(--secondary)" }}>
+              {mp.title}
+            </span>
           </div>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الثاني: أشهر السمات العامة */}
-        {/* ========================================== */}
-        <LessonSection title="أشهر السمات العامة">
-          <p>هناك سمات يمكن استخدامها مع معظم وسوم HTML:</p>
-
-          <ul>
-            <li>
-              <strong><code>id</code></strong>: يُعطي معرّفًا فريدًا للعنصر في الصفحة. لا يجب أن يتكرر نفس الـ id في الصفحة الواحدة. يستخدم غالبًا للوصول للعنصر باستخدام JavaScript أو للتنقل الداخلي.
-            </li>
-            <li>
-              <strong><code>class</code></strong>: يُستخدم لتصنيف العناصر. يمكن إعطاء نفس الكلاس لعدة عناصر، ويمكن للعنصر الواحد أن يمتلك عدة كلاسات (مفصولة بمسافة). استخدامه الرئيسي هو مع CSS لتطبيق التنسيقات.
-            </li>
-            <li>
-              <strong><code>style</code></strong>: يُستخدم لإضافة تنسيقات CSS مباشرة على العنصر (Inline CSS). من الأفضل تجنبه واستخدام ملفات CSS خارجية.
-            </li>
-            <li>
-              <strong><code>title</code></strong>: يُظهر نصًا تلميحيًا (Tooltip) عند مرور مؤشر الفأرة فوق العنصر.
-            </li>
-          </ul>
-
-          <CodeBlock
-            language="html"
-            code={`<h2 id="main-title" class="heading large-text">العنوان الرئيسي</h2>
-<p style="color: blue;" title="هذه فقرة زرقاء">نص أزرق.</p>
-
-<!-- عدة كلاسات على عنصر واحد -->
-<span class="highlight bold">نص مهم ومميز</span>`}
-          />
-
-          <div
-            className="p-4 rounded-xl my-4 border"
-            style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-          >
-            <p className="font-bold mb-2" style={{ color: "var(--danger)" }}>
-              ⚠️ قاعدة مهمة لـ id vs class:
-            </p>
-            <p>
-              <strong>id فريد</strong> - لا يمكن تكراره في الصفحة. استخدمه لعنصر واحد مميز.<br />
-              <strong>class قابل للتكرار</strong> - يمكن استخدامه مع عدة عناصر. استخدمه لتنسيق عدة عناصر بأسلوب واحد.
-            </p>
-          </div>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الثالث: مقدمة إلى الجداول */}
-        {/* ========================================== */}
-        <LessonSection title="مقدمة إلى الجداول (Tables)">
-          <p>
-            تُستخدم الجداول لعرض البيانات الجدولية (Tabular Data)، مثل جداول الأسعار، إحصائيات، أو أي بيانات تتكون من صفوف وأعمدة.
+          <p className="mb-4" style={{ color: "var(--foreground)" }}>
+            {mp.description}
           </p>
-
-          <p>الوسوم الأساسية لبناء جدول هي:</p>
-
-          <ul>
-            <li><code>&lt;table&gt;</code>: الحاوية الرئيسية للجدول.</li>
-            <li><code>&lt;tr&gt;</code>: يمثل صفًا في الجدول (Table Row).</li>
-            <li><code>&lt;th&gt;</code>: يمثل خلية رأس الجدول (Table Header). النص بداخلها يكون ثقيلًا (bold) ومميزًا.</li>
-            <li><code>&lt;td&gt;</code>: يمثل خلية بيانات عادية في الجدول (Table Data).</li>
+          <ul className="mb-4" style={{ color: "var(--foreground)" }}>
+            {mp.items.map((item, i) => (
+              <li key={i} dangerouslySetInnerHTML={{ __html: item }} />
+            ))}
           </ul>
-
-          <CodeBlock
-            language="html"
-            code={`<table>
-    <tr>
-        <th>الاسم</th>
-        <th>العمر</th>
-    </tr>
-    <tr>
-        <td>أحمد</td>
-        <td>25</td>
-    </tr>
-    <tr>
-        <td>فاطمة</td>
-        <td>28</td>
-    </tr>
-</table>`}
-          />
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الرابع: مثال عملي: جدول بيانات المستخدمين */}
-        {/* ========================================== */}
-        <LessonSection title="مثال عملي: جدول بيانات المستخدمين">
-          <p>
-            لنبنِ جدولًا يعرض أسماء المستخدمين وبريدهم الإلكتروني. لاحظ كيف نستخدم <code>&lt;thead&gt;</code> لرأس الجدول و <code>&lt;tbody&gt;</code> لجسم الجدول لتحسين البنية الدلالية.
+          <p className="text-sm" style={{ color: "var(--muted)" }}>
+            💡 {mp.hint}
           </p>
+        </div>
 
-          <CodeBlock
-            language="html"
-            code={`<table>
-  <thead>
-    <tr>
-      <th scope="col">الاسم</th>
-      <th scope="col">البريد الإلكتروني</th>
-      <th scope="col">المسمى الوظيفي</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>أحمد محمد</td>
-      <td>ahmed@example.com</td>
-      <td>مطور واجهات أمامية</td>
-    </tr>
-    <tr>
-      <td>فاطمة علي</td>
-      <td>fatima@example.com</td>
-      <td>مصممة تجربة مستخدم</td>
-    </tr>
-    <tr>
-      <td>خالد حسن</td>
-      <td>khaled@example.com</td>
-      <td>مدير مشاريع</td>
-    </tr>
-  </tbody>
-</table>`}
-          />
-
-          <p className="mt-4">
-            <strong>ملاحظة:</strong> السمة <code>scope=&quot;col&quot;</code> في وسم <code>&lt;th&gt;</code> هي ممارسة ممتازة لتحسين إمكانية الوصول (Accessibility)، حيث تخبر قارئات الشاشة أن هذه الخلية هي رأس للعمود بأكمله.
-          </p>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الخامس: جدول م不死 مع thead و tbody و tfoot */}
-        {/* ========================================== */}
-        <LessonSection title="الجداول المتقدمة: thead, tbody, tfoot">
-          <p>يمكنك تقسيم الجدول إلى أجزاء دلالية:</p>
-
-          <CodeBlock
-            language="html"
-            code={`<table>
-  <!-- رأس الجدول -->
-  <thead>
-    <tr>
-      <th>المنتج</th>
-      <th>السعر</th>
-      <th>الكمية</th>
-    </tr>
-  </thead>
-
-  <!-- جسم الجدول -->
-  <tbody>
-    <tr>
-      <td>لابتوب</td>
-      <td>3500 ر.س</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <td>هاتف</td>
-      <td>2000 ر.س</td>
-      <td>25</td>
-    </tr>
-  </tbody>
-
-  <!-- تذييل الجدول -->
-  <tfoot>
-    <tr>
-      <td colspan="2"><strong>المجموع</strong></td>
-      <td><strong>35</strong></td>
-    </tr>
-  </tfoot>
-</table>`}
-          />
-
-          <p>لاحظ السمة <code>colspan=&quot;2&quot;</code> - هذه السمة تجعل الخلية تمتد عبر 2 أعمدة.</p>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم السادس: ماذا يحدث خلف الكواليس؟ */}
-        {/* ========================================== */}
-        <LessonSection title="ماذا يحدث خلف الكواليس؟">
-          <p>عندما يقرأ المتصفح جدول HTML، يحدث التالي:</p>
-
-          <ul>
-            <li>يُنشئ بنية <code>&lt;table&gt;</code> كحاوية رئيسية.</li>
-            <li>كل <code>&lt;tr&gt;</code> يُنشئ صفًا أفقيًا.</li>
-            <li>كل <code>&lt;th&gt;</code> و <code>&lt;td&gt;</code> يُنشئ خلية داخل الصف.</li>
-            <li>يُطبّق تنسيقاتاً افتراضية: <code>&lt;th&gt;</code> يكون عريضاً ومُ centro و <code>&lt;td&gt;</code> يكون عادياً.</li>
-            <li>يُضيف حدوداً (Borders) افتراضية للجداول في بعض المتصفحات.</li>
-          </ul>
-
-          <p>إذا أردت تجاوز التنسيق الافتراضي، يمكنك استخدام CSS لتنسيق الجدول حسب ذوقك.</p>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم السابع: الأخطاء الشائعة */}
-        {/* ========================================== */}
-        <LessonSection title="الأخطاء الشائعة">
-          <ul>
-            <li>
-              <strong>❌ استخدام الجداول للتخطيط (Layout):</strong>
-              <br />
-              في الماضي، كان المطورون يستخدمون الجداول لتقسيم تصميم الصفحة. هذه ممارسة سيئة جدًا وقديمة. استخدم CSS (مثل Flexbox أو Grid) للتخطيط.
-            </li>
-            <li>
-              <strong>❌ نسيان علامات الاقتباس حول قيم السمات:</strong>
-              <br />
-              كتابة <code>class=heading</code> قد تعمل، لكنها غير صحيحة. دائمًا استخدم علامات الاقتباس: <code>class=&quot;heading&quot;</code>.
-            </li>
-            <li>
-              <strong>❌ استخدام <code>&lt;td&gt;</code> بدلاً من <code>&lt;th&gt;</code> في رأس الجدول:</strong>
-              <br />
-              هذا يقلل من الدلالة وإمكانية الوصول للجدول.
-            </li>
-            <li>
-              <strong>❌ نسيان tbody و thead:</strong>
-              <br />
-              استخدام <code>&lt;tr&gt;</code> مباشرة بدون <code>&lt;thead&gt;</code> و <code>&lt;tbody&gt;</code>. هذا يُضعف البنية الدلالية للجدول.
-            </li>
-          </ul>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الثامن: أفضل الممارسات */}
-        {/* ========================================== */}
-        <LessonSection title="أفضل الممارسات">
-          <ul>
-            <li><strong>✅ استخدم always thead و tbody و tfoot:</strong> لتحسين البنية الدلالية.</li>
-            <li><strong>✅ استخدم scope=&quot;col&quot; مع &lt;th&gt;:</strong> لتحسين إمكانية الوصول.</li>
-            <li><strong>✅ لا تستخدم الجداول للتخطيط:</strong> استخدم Flexbox أو Grid في CSS.</li>
-            <li><strong>✅ استخدم colspan و rowspan عند الحاجة فقط:</strong> وتأكد من أن الجدول لا يصبح معقداً.</li>
-            <li><strong>✅ أضف عنواناً للجدول:</strong> باستخدام <code>&lt;caption&gt;</code> لتحسين SEO والوصولية.</li>
-          </ul>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم التاسع: ملخص */}
-        {/* ========================================== */}
-        <LessonSection title="ملخص الدرس">
-          <div
-            className="p-6 rounded-xl border"
-            style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-          >
-            <ul className="space-y-3">
-              <li><strong style={{ color: "var(--primary)" }}>السمات (Attributes)</strong> تُعطي العناصر معلومات إضافية</li>
-              <li>أشهر السمات: <code>id</code> (فريد) | <code>class</code> (متكرر) | <code>style</code> | <code>title</code></li>
-              <li>الجداول تُستخدم لعرض البيانات الجدولية فقط</li>
-              <li>وسوم الجدول: <code>&lt;table&gt;</code> | <code>&lt;tr&gt;</code> | <code>&lt;th&gt;</code> | <code>&lt;td&gt;</code></li>
-              <li>استخدم <code>&lt;thead&gt;</code> و <code>&lt;tbody&gt;</code> و <code>&lt;tfoot&gt;</code> لتحسين البنية</li>
-              <li>لا تستخدم الجداول للتخطيط - استخدم CSS</li>
-            </ul>
-          </div>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* Quiz */}
-        {/* ========================================== */}
-        <Quiz
-          question="ما الفرق بين id و class في HTML؟"
-          options={[
-            "لا يوجد فرق بينهما",
-            "id يُستخدم لعدة عناصر، class لعنصر واحد",
-            "id فريد ولا يتكرر، class يمكن تكراره لعدة عناصر",
-            "id في CSS فقط، class في HTML فقط",
-          ]}
-          correctAnswer={2}
-          explanation="id يجب أن يكون فريداً في الصفحة (لا يتكرر)، بينما class يمكن استخدامه مع عدة عناصر لإعطاءها نفس التنسيق."
-        />
-
-        <Quiz
-          question="أي وسم يُستخدم لرأس الجدول؟"
-          options={["<td>", "<th>", "<tr>", "<caption>"]}
-          correctAnswer={1}
-          explanation="&lt;th&gt; يُستخدم لرأس الجدول (Table Header). النص بداخلها يكون عريضاً ومُ centrowاً تلقائياً."
-        />
-
-        {/* ========================================== */}
-        {/* تحدي */}
-        {/* ========================================== */}
-        <Challenge
-          title="تحدي: جدول أفلامك المفضلة"
-          description={
-            <p>
-              قم بإنشاء جدول يعرض 3 من أفلامك المفضلة. يجب أن يحتوي الجدول على 3 أعمدة: &quot;اسم الفيلم&quot;، &quot;سنة الإصدار&quot;، و &quot;تقييمك (من 10)&quot;. استخدم الوسوم الدلالية الصحيحة (<code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code>).
-            </p>
-          }
-        >
-          <CodeBlock
-            language="html"
-            code={`<table>
-  <thead>
-    <tr>
-      <th scope="col">اسم الفيلم</th>
-      <th scope="col">سنة الإصدار</th>
-      <th scope="col">تقييمي</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>ال_matrix</td>
-      <td>1999</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <td>إنسيبيشن</td>
-      <td>2010</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <td>الحارس lone</td>
-      <td>2009</td>
-      <td>8</td>
-    </tr>
-  </tbody>
-</table>`}
-          />
-        </Challenge>
-
-        {/* ========================================== */}
-        {/* Cheat Sheet */}
-        {/* ========================================== */}
-        <CheatSheet title="ملخص السمات والجداول">
+        <CheatSheet title={cs.title}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>السمات الأساسية:</p>
-              <CodeBlock language="html" code={`<!-- id: فريد في الصفحة -->
-<div id="main">...</div>
-
-<!-- class: قابل للتكرار -->
-<p class="text">...</p>
-
-<!-- several classes -->
-<span class="bold red">...</span>
-
-<!-- title: tooltip -->
-<a title="نص تلميحي">...</a>`} />
-            </div>
-            <div>
-              <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>الجداول:</p>
-              <CodeBlock language="html" code={`<table>
-  <thead>
-    <tr>
-      <th scope="col">العمود</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>البيانات</td>
-    </tr>
-  </tbody>
-</table>`} />
-            </div>
+            {cs.columns.map((col, i) => (
+              <div key={i}>
+                <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>{col.heading}</p>
+                {col.items && (
+                  <ul className="text-sm space-y-1">
+                    {col.items.map((item, j) => (
+                      <li key={j} dangerouslySetInnerHTML={{ __html: item }} />
+                    ))}
+                  </ul>
+                )}
+                {col.code && <CodeBlock language={col.codeLanguage || "html"} code={col.code} />}
+              </div>
+            ))}
           </div>
         </CheatSheet>
 
-        {/* ========================================== */}
-        {/* التنقل */}
-        {/* ========================================== */}
         <LessonNavigation
           prevLesson={lessonInfo.prevLesson}
           prevStage={lessonInfo.prevLessonStage}

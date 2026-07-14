@@ -42,13 +42,22 @@ const en = {
     subtitle: "{stages} learning stages • {lessons} lessons • From zero to professional",
     lessons: "lessons",
   },
+  breadcrumbs: {
+    home: "Home",
+    curriculum: "Curriculum",
+  },
   stage: {
     backToRoadmap: "Back to Roadmap",
+    notFound: "Stage not found",
     duration: "Duration",
     minute: "min",
     minutes: "min",
     hour: "hour",
     hours: "hours",
+    lesson: "Lesson",
+    of: "/",
+    info: "💡 This curriculum is updated for 2025-2026 with the latest practices and technologies",
+    infoReact: "💡 This curriculum is adapted for Next.js 16 and React 19",
   },
   components: {
     quiz: {

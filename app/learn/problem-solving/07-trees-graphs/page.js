@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/components/LanguageProvider";
+import rawTranslations from "@/i18n/lessons/problem-solving/07-trees-graphs";
 import LessonSection from "@/components/LessonSection";
 import LessonHeader from "@/components/LessonHeader";
 import LessonNavigation from "@/components/LessonNavigation";
@@ -7,8 +9,22 @@ import CheatSheet from "@/components/CheatSheet";
 import ProblemCard from "@/components/ProblemCard";
 import { getLessonBySlug } from "@/data/curriculum";
 
+function renderContent(item) {
+  if (item.type === "p") return <p dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "li") return <li dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "callout") return (
+    <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+      <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>💡 {item.title}:</p>
+      <p dangerouslySetInnerHTML={{ __html: item.text }} />
+    </div>
+  );
+  return null;
+}
+
 export default function TreesGraphs() {
+  const { lang } = useLanguage();
   const lesson = getLessonBySlug("problem-solving", "07-trees-graphs");
+  const content = rawTranslations ? (rawTranslations[lang] || rawTranslations.en) : null;
 
   return (
     <div dir="rtl" className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -20,81 +36,13 @@ export default function TreesGraphs() {
           totalLessons={lesson.totalLessons}
         />
 
-        {/* ========================================== */}
-        {/* القسم الأول: مقدمة في الأشجار والرسوم البيانية */}
-        {/* ========================================== */}
-        <LessonSection title="مقدمة في الأشجار (Trees) والرسوم البيانية (Graphs)">
-          <p>
-            <strong>الأشجار (Trees)</strong> هي هياكل بيانات غير خطية تتكون من عقد (Nodes) مترابطة بعلاقات أب-ابن.
-            كل شجرة تبدأ من <strong>الجذر (Root)</strong> وتمتد إلى <strong>الأوراق (Leaves)</strong> في الأسفل.
-          </p>
+        {content && content.sections.map((section, i) => (
+          <LessonSection key={i} title={section.title}>
+            {section.content.map((item, j) => <div key={j}>{renderContent(item)}</div>)}
+          </LessonSection>
+        ))}
 
-          <p>
-            <strong>الرسوم البيانية (Graphs)</strong> هي هياكل بيانات أكثر عمومية تتكون من <strong>رؤوس (Vertices)</strong> و<strong>حواف (Edges)</strong>.
-            يمكن أن تحتوي على حلقات (Cycles) على عكس الأشجار.
-          </p>
-
-          <div
-            className="p-4 rounded-xl my-4 border"
-            style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-          >
-            <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
-              💡 تشبيه:
-            </p>
-            <p>
-              الشجرة مثل عائلة: الجذر هو الجد، الأبناء هم الفروع، والأوراق هم الأحفاد.
-              الرسم البياني مثل خريطة مدن: المدن هي الرؤوس، والطرق هي الحواف.
-            </p>
-          </div>
-
-          <ul>
-            <li><strong>الأشجار الثنائية (Binary Tree):</strong> كل عقدة لها أب واحد最多 وإبنين (يسار ويمين).</li>
-            <li><strong>الأشجار الثنائية البحثية (BST):</strong> الابن الأيسر أصغر من الأب، والابن الأيمن أكبر.</li>
-            <li><strong>الرسوم البيانية الموجهة (Directed Graph):</strong> لها اتجاه واحد في الحواف.</li>
-            <li><strong>الرسوم البيانية غير الموجهة (Undirected Graph):</strong> الحواف بدون اتجاه محدد.</li>
-          </ul>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الثاني: خوارزميات traversal */}
-        {/* ========================================== */}
-        <LessonSection title="خوارزميات التجوال في الأشجار (Tree Traversal)">
-          <p>
-            هناك طريقتان رئيسيتان للتجوال في الشجرة الثنائية:
-          </p>
-
-          <p>
-            <strong>1. العمق أولاً (Depth-First Search - DFS):</strong> نذهب عميقاً في فرع واحد قبل أن نعود ونستكشف الفروع الأخرى.
-          </p>
-          <ul>
-            <li><strong>Pre-order:</strong> الجذر ← اليسار ← اليمين</li>
-            <li><strong>In-order:</strong> اليسار ← الجذر ← اليمين</li>
-            <li><strong>Post-order:</strong> اليسار ← اليمين ← الجذر</li>
-          </ul>
-
-          <p>
-            <strong>2. العرض أولاً (Breadth-First Search - BFS):</strong> نستكشف كل العقد في نفس المستوى قبل الانتقال للمستوى التالي.
-          </p>
-
-          <div
-            className="p-4 rounded-xl my-4 border"
-            style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-          >
-            <p className="font-bold mb-2" style={{ color: "var(--accent)" }}>
-              ✅ متى نستخدم ماذا؟
-            </p>
-            <p>
-              DFS ممتاز للبحث العميق وحل مشاكل الشجرة. BFS ممتاز للبحث عن أقصر مسار في الرسم البياني.
-            </p>
-          </div>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الثالث: المشاكل - سهل */}
-        {/* ========================================== */}
         <LessonSection title="مشاكل سهلة (Easy)">
-
-          {/* المشكلة 1: Maximum Depth of Binary Tree */}
           <ProblemCard
             id={1}
             title="Maximum Depth of Binary Tree"
@@ -121,7 +69,6 @@ export default function TreesGraphs() {
             solutionApproach="الحل باستخدام DFS استدعاء ذاتي: Base Case: إذا كانت العقدة null → أعد 0. Recursive Case: العمق = max(عمق اليسار, عمق اليمين) + 1."
           />
 
-          {/* المشكلة 2: Same Tree */}
           <ProblemCard
             id={2}
             title="Same Tree"
@@ -148,7 +95,6 @@ export default function TreesGraphs() {
             solutionApproach="الحل باستخدام DFS: Base Case: كلاهما null → true، أحدهما null → false. Recursive Case: قارن القيمة الحالية ثم استدعِ بشكل استدعاء ذاتي على الأبناء."
           />
 
-          {/* المشكلة 3: Invert Binary Tree */}
           <ProblemCard
             id={3}
             title="Invert Binary Tree"
@@ -179,7 +125,6 @@ export default function TreesGraphs() {
             solutionApproach="الحل باستخدام DFS: Base Case: إذا كانت العقدة null → لا تفعل شيئاً. Recursive Case: بدّل الابن الأيسر مع الأيمن ثم استدعِ بشكل استدعاء ذاتي."
           />
 
-          {/* المشكلة 4: Subtree of Another Tree */}
           <ProblemCard
             id={4}
             title="Subtree of Another Tree"
@@ -212,15 +157,9 @@ function isSameTree(p, q) {
 }`}
             solutionApproach="الحل باستخدام DFS: نتحقق لكل عقدة في root إذا كانت الشجرة الفرعية تبدأ منها باستخدام isSameTree. إذا لم نجد، نتابع البحث في الأبناء."
           />
-
         </LessonSection>
 
-        {/* ========================================== */}
-        {/* القسم الرابع: المشاكل - متوسط */}
-        {/* ========================================== */}
         <LessonSection title="مشاكل متوسطة (Medium)">
-
-          {/* المشكلة 5: Binary Tree Level Order Traversal */}
           <ProblemCard
             id={5}
             title="Binary Tree Level Order Traversal"
@@ -262,7 +201,6 @@ function isSameTree(p, q) {
             solutionApproach="الحل باستخدام BFS: نستخدم Queue لتخزين العقد. في كل مستوى، نأخذ حجم الـ Queue الحالي ونعالج كل العقد في هذا المستوى."
           />
 
-          {/* المشكلة 6: Validate BST */}
           <ProblemCard
             id={6}
             title="Validate Binary Search Tree"
@@ -292,7 +230,6 @@ function isSameTree(p, q) {
             solutionApproach="الحل باستخدام DFS مع حدود: نمرر حدود عليا وسفلية لكل عقدة. Base Case: إذا كانت العقدة null → true. Recursive Case: تحقق أن القيمة ضمن الحدود ثم استدعاء ذاتي على الأبناء."
           />
 
-          {/* المشكلة 7: Lowest Common Ancestor of a Binary Tree */}
           <ProblemCard
             id={7}
             title="Lowest Common Ancestor of a Binary Tree"
@@ -317,10 +254,9 @@ function isSameTree(p, q) {
   if (left && right) return root;
   return left || right;
 }`}
-            solutionApproach="الحل باستخدام DFS: Base Case: إذا كانت العقدة null أو هي p أو q → أعد العقدة. Recursive Case: ابحث في اليسار واليمين. إذا وجدت LCA في كليهما → العقدة الحارية هي LCA."
+            solutionApproach="الحل باستخدام DFS: Base Case: إذا كانت العقدة null أو هي p أو q → أعد العقدة. Recursive Case: ابحث في اليسار واليمين. إذا وجدت LCA في كليهما → العقدة الحالية هي LCA."
           />
 
-          {/* المشكلة 8: Number of Islands */}
           <ProblemCard
             id={8}
             title="Number of Islands"
@@ -366,7 +302,6 @@ function isSameTree(p, q) {
             solutionApproach="الحل باستخدام DFS: نمر على كل خلية. إذا وجدنا '1'، نزيد العداد ونستخدم DFS لتحديد جميع الأراضي المتصلة وتحويلها إلى '0' لتجنب التكرار."
           />
 
-          {/* المشكلة 9: Clone Graph */}
           <ProblemCard
             id={9}
             title="Clone Graph"
@@ -404,15 +339,9 @@ function isSameTree(p, q) {
 }`}
             solutionApproach="الحل باستخدام DFS مع Map: نستخدم Map لتخزين العقد المنسوخة. لكل عقدة نزار، نإنشاء نسخة جديدة ونخزنها، ثم نستدعي DFS على جيرانها."
           />
-
         </LessonSection>
 
-        {/* ========================================== */}
-        {/* القسم الخامس: المشاكل - صعب */}
-        {/* ========================================== */}
         <LessonSection title="مشاكل صعبة (Hard)">
-
-          {/* المشكلة 10: Binary Tree Maximum Path Sum */}
           <ProblemCard
             id={10}
             title="Binary Tree Maximum Path Sum"
@@ -449,7 +378,6 @@ function isSameTree(p, q) {
             solutionApproach="الحل باستخدام DFS: لكل عقدة، نحسب أكبر مسار يمر بها (القيمة + أقصى يسار + أقصى يمين). نُحدّث المتغير العام بأكبر مسار. نُعيد أكبر مسار يمكن تمديده لأعلى."
           />
 
-          {/* المشكلة 11: Serialize and Deserialize Binary Tree */}
           <ProblemCard
             id={11}
             title="Serialize and Deserialize Binary Tree"
@@ -505,13 +433,12 @@ function deserialize(data) {
             solutionApproach="الحل: Serialize باستخدام Pre-order traversal مع 'null' للعقد الفارغة. Deserialize باستخدام مؤشر و rebuild بشكل تكراري بنفس الترتيب."
           />
 
-          {/* المشكلة 12: Alien Dictionary */}
           <ProblemCard
             id={12}
             title="Alien Dictionary"
             difficulty="hard"
             category="Graphs"
-            description="أgiven a sorted list of words in an alien language, find the order of characters in the alien language. The words are sorted lexicographically according to the alien language rules."
+            description="معطى قائمة مرتبة من الكلمات بلغة غريبة، حدد ترتيب الأحرف في اللغة الغريبة. الكلمات مرتبة أبجدياً وفقاً لقواعد اللغة الغريبة."
             examples={[
               { input: "words = [\"wrt\",\"wrf\",\"er\",\"ett\",\"rftt\"]", output: "wertf" },
               { input: "words = [\"z\",\"x\"]", output: "zx" },
@@ -573,12 +500,8 @@ function deserialize(data) {
 }`}
             solutionApproach="الحل باستخدام Topological Sort: أولاً نبني رسم بياني من الفروقات بين الكلمات المتتالية. ثم نستخدم DFS مع cycle detection لإيجاد الترتيب."
           />
-
         </LessonSection>
 
-        {/* ========================================== */}
-        {/* Cheat Sheet */}
-        {/* ========================================== */}
         <CheatSheet title="ملخص Trees & Graphs">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -625,9 +548,6 @@ function deserialize(data) {
           </div>
         </CheatSheet>
 
-        {/* ========================================== */}
-        {/* التنقل بين الدروس */}
-        {/* ========================================== */}
         <LessonNavigation
           prevLesson={lesson.prevLesson}
           prevStage={lesson.prevLessonStage}

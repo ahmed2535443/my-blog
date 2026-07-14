@@ -1,14 +1,30 @@
-"use client"
+"use client";
 
-import ProblemCard from "@/components/ProblemCard"
-import LessonSection from "@/components/LessonSection"
-import LessonHeader from "@/components/LessonHeader"
-import LessonNavigation from "@/components/LessonNavigation"
-import CheatSheet from "@/components/CheatSheet"
-import { getLessonBySlug } from "@/data/curriculum"
+import { useLanguage } from "@/components/LanguageProvider";
+import rawTranslations from "@/i18n/lessons/problem-solving/02-arrays-strings";
+import ProblemCard from "@/components/ProblemCard";
+import LessonSection from "@/components/LessonSection";
+import LessonHeader from "@/components/LessonHeader";
+import LessonNavigation from "@/components/LessonNavigation";
+import CheatSheet from "@/components/CheatSheet";
+import { getLessonBySlug } from "@/data/curriculum";
+
+function renderContent(item) {
+  if (item.type === "p") return <p dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "li") return <li dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "callout") return (
+    <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+      <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>💡 {item.title}:</p>
+      <p dangerouslySetInnerHTML={{ __html: item.text }} />
+    </div>
+  );
+  return null;
+}
 
 export default function ArraysStrings() {
-  const lesson = getLessonBySlug("problem-solving", "02-arrays-strings")
+  const { lang } = useLanguage();
+  const lesson = getLessonBySlug("problem-solving", "02-arrays-strings");
+  const content = rawTranslations ? (rawTranslations[lang] || rawTranslations.en) : null;
 
   return (
     <div dir="rtl" className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -20,55 +36,11 @@ export default function ArraysStrings() {
       />
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-12">
 
-        <LessonSection title="مقدمة في المصفوفات والنصوص">
-          <p>
-            في هذا الدرس سنتعرف على أكثر هياكل البيانات استخداماً في مشاكل البرمجة التنافسية: <strong>Arrays (المصفوفات)</strong> و <strong>Strings (النصوص)</strong>.
-            هذه الهياكل هي أساس الحلول للعديد من المشاكل، وفهم عميق لها يفتح لك الباب لحل مئات المشاكل على المنصات المختلفة.
-          </p>
-
-          <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-            <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
-              Arrays في JavaScript:
-            </p>
-            <p>
-              المصفوفة في JavaScript هي كائن يمكنه تخزين أنواع متعددة. تدعم الوصول بالفهرس في O(1) والإدراج والحذف من النهاية في O(1).
-              الإدراج والحذف من المنتصف يكون O(n) بسبب الحاجة لإزاحة العناصر.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-            <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
-              Strings في JavaScript:
-            </p>
-            <p>
-              الـ String في JavaScript غير قابل للتعديل (Immutable). أي تعديل عليه يُنشئ نصاً جديداً.
-              يمكننا الوصول لأحرف بالفهرس مثل المصفوفات، واستخدام الـ <code>.split()</code> و <code>.join()</code> للتحويل بين النص والمصفوفة.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-            <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
-              لماذا هذه الأهمية في Problem Solving؟
-            </p>
-            <p>
-              أكثر من 60% من مشاكل LeetCode تعتمد على المصفوفات والنصوص بشكل مباشر أو غير مباشر. تقنيات مثل
-              <strong> Two Pointers</strong> و <strong>Sliding Window</strong> و <strong>Prefix Sum</strong> كلها تُطبّق على هذه الهياكل.
-            </p>
-          </div>
-        </LessonSection>
-
-        <LessonSection title="الأنماط الأساسية للمصفوفات والنصوص">
-          <ul>
-            <li><strong>البحث الخطي (Linear Search):</strong> مرور على كل عنصر بالترتيب. التعقيد O(n). مفيد عندما لا تكون المصفوفة مُرتبة.</li>
-            <li><strong>البحث الثنائي (Binary Search):</strong> تقسيم区间 نصف النصف. التعقيد O(log n). يتطلب مصفوفة مُرتبة.</li>
-            <li><strong>Two Pointers:</strong> استخدام مؤشرين من طرفي المصفوفة أو من جهة واحدة. ممتاز للمصفوفات المُرتبة.</li>
-            <li><strong>Sliding Window:</strong> نافذة منزلقة للمشاكل التي تتطلب معالجة أجزاء فرعية متتالية من المصفوفة.</li>
-            <li><strong>Prefix Sum:</strong> مجموع تراكمي لحساب مجاميع الأجزاء الفرعية بكفاءة.</li>
-            <li><strong>Kadane's Algorithm:</strong> خوارزمية لحساب أكبر مجموع لمصفوفة فرعية متصلة في O(n).</li>
-          </ul>
-        </LessonSection>
-
-        {/* ==================== المشاكل السهلة ==================== */}
+        {content && content.sections.map((section, i) => (
+          <LessonSection key={i} title={section.title}>
+            {section.content.map((item, j) => <div key={j}>{renderContent(item)}</div>)}
+          </LessonSection>
+        ))}
 
         <ProblemCard
           id={1}
@@ -133,7 +105,7 @@ export default function ArraysStrings() {
 
   return maxProfit;
 }`}
-          solutionApproach="نمر على المصفوفة مرة واحدة ونحتفظ بأقل سعر (minPrice) و最大 ربح (maxProfit). عند كل يوم، إذا كان السعر أقل من minPrice نحدّثه. ثم نحسب الربح المحتمل ونحدّث maxProfit إذا كان أعلى. التعقيد: O(n) وقت و O(1) مساحة."
+          solutionApproach="نمر على المصفوفة مرة واحدة ونحتفظ بأقل سعر (minPrice) وأقصى ربح (maxProfit). عند كل يوم، إذا كان السعر أقل من minPrice نحدّثه. ثم نحسب الربح المحتمل ونحدّث maxProfit إذا كان أعلى. التعقيد: O(n) وقت و O(1) مساحة."
         />
 
         <ProblemCard
@@ -198,7 +170,7 @@ export default function ArraysStrings() {
 
   return true;
 }`}
-          solutionApproach="ن雛ّ تكرارات أحرف s بزيادة 1 وتكرارات t بناقصة 1 في نفس Hash Map. إذا كانت s anagram لـ t، فإن جميع القيم في الـ Map ستكون صفر. التعقيد: O(n) وقت و O(1) مساحة (بما أن حروف الأبجدية محدودة بـ 26 حرف)."
+          solutionApproach="نعدّ تكرارات أحرف s بزيادة 1 وتكرارات t بناقصة 1 في نفس Hash Map. إذا كانت s anagram لـ t، فإن جميع القيم في الـ Map ستكون صفر. التعقيد: O(n) وقت و O(1) مساحة (بما أن حروف الأبجدية محدودة بـ 26 حرف)."
         />
 
         <ProblemCard
@@ -233,10 +205,8 @@ export default function ArraysStrings() {
 
   return true;
 }`}
-          solutionApproach="ن雛ّ تكرارات كل حرف في magazine في Hash Map. ثم نمر على أحرف ransomNote وننقص من العدّات. إذا وجدنا حرف غير موجود أو عدّته صفر، فالإجابة false. التعقيد: O(n + m) حيث n و m طول السلسلتين."
+          solutionApproach="نعدّ تكرارات كل حرف في magazine في Hash Map. ثم نمر على أحرف ransomNote وننقص من العدّات. إذا وجدنا حرف غير موجود أو عدّته صفر، فالإجابة false. التعقيد: O(n + m) حيث n و m طول السلسلتين."
         />
-
-        {/* ==================== المشاكل المتوسطة ==================== */}
 
         <ProblemCard
           id={6}
@@ -252,7 +222,7 @@ export default function ArraysStrings() {
           hints={[
             "كل anagram عندما يُرتب يصبح نفس الكلمة",
             "استخدم الكلمة المرتبة كمفتاح في Hash Map",
-            "الكلمات ذات المفتاح نفسه تابعة لنفس المجموعة",
+            "الكلمات ذات المفتاح نفسها تابعة لنفس المجموعة",
           ]}
           solution={`function groupAnagrams(strs) {
   const map = new Map();
@@ -499,7 +469,7 @@ export default function ArraysStrings() {
           title="Search in Rotated Sorted Array"
           difficulty="medium"
           category="Arrays"
-          description="معطى مصفوفة nums مُرتبة ولكن دُارت (rotated) حول فهرس معين، وعدد صحيح target، أرجع فهرس target في nums أو -1 إذا لم يكن موجوداً. يجب أن يكون تعقيد الحل O(log n)."
+          description="معطى مصفوفة nums مُرتبة ولكن دُرت (rotated) حول فهرس معين، وعدد صحيح target، أرجع فهرس target في nums أو -1 إذا لم يكن موجوداً. يجب أن يكون تعقيد الحل O(log n)."
           examples={[
             { input: "nums = [4,5,6,7,0,1,2], target = 0", output: "4" },
             { input: "nums = [4,5,6,7,0,1,2], target = 3", output: "-1" },
@@ -639,8 +609,6 @@ function decode(s) {
 }`}
           solutionApproach="الترميز: لكل سلسلة، نكتب طولها أولاً ثم # ثم السلسلة نفسها. مثال: 'lint' → '4#lint'. فك الترميز: نقرأ الأرقام قبل # لنعرف طول السلسلة، ثم نقرأ ذلك العدد من الأحرف بعد #. التعقيد: O(n) حيث n مجموع طول جميع السلاسل."
         />
-
-        {/* ==================== CheatSheet ==================== */}
 
         <CheatSheet title="ملخص المصفوفات والنصوص">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

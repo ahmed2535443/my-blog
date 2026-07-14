@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/components/LanguageProvider";
+import rawTranslations from "@/i18n/lessons/typescript/05-typescript-react";
 import CodeBlock from "@/components/CodeBlock";
 import LessonSection from "@/components/LessonSection";
 import LessonHeader from "@/components/LessonHeader";
@@ -9,31 +11,9 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-export default function Lesson05TypeScriptReact() {
-  const lesson = getLessonBySlug("typescript", "05-typescript-react");
+const correctAnswers = { en: [1, 0, 1], fr: [1, 0, 1], de: [1, 0, 1] };
 
-  return (
-    <div dir="rtl" className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <LessonHeader
-        stage={lesson.stage}
-        lesson={lesson}
-        lessonIndex={lesson.lessonIndex}
-        totalLessons={lesson.totalLessons}
-      />
-      <div className="max-w-4xl mx-auto px-4 py-8 space-y-12">
-        <LessonSection title="React TypeScript Typed Components">
-          <p className="text-gray-700 dark:text-gray-300 mb-4">
-            React with TypeScript provides enhanced type safety and better developer experience. 
-            This lesson covers Component Props Typing, Hooks Typing, Event Handlers, Generics, and Next.js 16 Server/Client Components.
-          </p>
-          
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">أساسيات كتابة أنواع خصائص المكونات</h3>
-          <p className="text-gray-700 dark:text-gray-300 mb-4">
-            لإنشاء مكون React مكتوب بأنواع TypeScript بشكل صحيح، نستخدم interfaces لتحديد أنواع الخصائص.
-          </p>
-          
-          <CodeBlock 
-            code={`interface ButtonProps {
+const challengeCode = `interface ButtonProps {
   text: string;
   onClick: () => void;
   variant?: "primary" | "secondary";
@@ -57,54 +37,169 @@ function Button(props: ButtonProps) {
 }
 
 // Usage Examples:
-<Button text="Click me" onClick={() => console.log("clicked")} />`}
-            language="tsx" 
-          />
-        </LessonSection>
+<Button text="Click me" onClick={() => console.log("clicked")} />`;
 
-        <Quiz
-          question="أي من هذه العبارات حول أنواع React Components صحيح؟"
-          options={
-            [
-              "React.FC هو النمط المفضل والوحيد لكتابة أنواع المكونات",
-              "يمكن استخدام React.ReactNode للأطفال الذين يمكن أن يكونوا أي عناصر React",
-              "تقبل جميع Event Handler نوع Event عامًا",
-              "يمكن دفن generics فقط في مكتبات المكونات"
-            ]
-          }
-          correctAnswer={1}
-          explanation="React.ReactNode يسمح لأي شيء يمكن وضعه داخل مكون، مما يجعله النوع المثالي لكتابة خصائص الأطفال."
+const cheatSheetData = {
+  en: {
+    title: "TypeScript React Cheat Sheet",
+    columns: [
+      {
+        heading: "Component Patterns:",
+        items: [
+          ".tsx — TypeScript React file extension",
+          "interface Props {} — Define component props type",
+          "function Comp({}: Props) — Type props in function",
+          "React.FC — Function component type (less common)",
+        ],
+      },
+      {
+        heading: "Hooks & Events:",
+        items: [
+          "useState<Type>(init) — Type state with generic",
+          "React.FormEvent — Form event type",
+          "React.ChangeEvent — Input change event type",
+          "useRef<Type>(init) — Typed ref",
+        ],
+      },
+    ],
+  },
+  fr: {
+    title: "Fiche mémo TypeScript React",
+    columns: [
+      {
+        heading: "Patterns de composants:",
+        items: [
+          ".tsx — Extension de fichier TypeScript React",
+          "interface Props {} — Définir le type des props",
+          "function Comp({}: Props) — Typer les props",
+          "React.FC — Type function component",
+        ],
+      },
+      {
+        heading: "Hooks et événements:",
+        items: [
+          "useState<Type>(init) — Typer l'état avec générique",
+          "React.FormEvent — Type d'événement formulaire",
+          "React.ChangeEvent — Type d'événement input",
+          "useRef<Type>(init) — Ref typée",
+        ],
+      },
+    ],
+  },
+  de: {
+    title: "TypeScript React Spickzettel",
+    columns: [
+      {
+        heading: "Komponentenmuster:",
+        items: [
+          ".tsx — TypeScript React Dateierweiterung",
+          "interface Props {} — Component-Props-Typ definieren",
+          "function Comp({}: Props) — Props typisieren",
+          "React.FC — Function component type",
+        ],
+      },
+      {
+        heading: "Hooks & Events:",
+        items: [
+          "useState<Type>(init) — State mit Generic typisieren",
+          "React.FormEvent — Formular-Event-Typ",
+          "React.ChangeEvent — Input-Change-Event-Typ",
+          "useRef<Type>(init) — Getypter Ref",
+        ],
+      },
+    ],
+  },
+};
+
+function renderContent(item) {
+  if (item.type === "p") {
+    return <p dangerouslySetInnerHTML={{ __html: item.text }} />;
+  }
+  if (item.type === "li") {
+    return <li dangerouslySetInnerHTML={{ __html: item.text }} />;
+  }
+  if (item.type === "code") {
+    return <CodeBlock language="tsx" code={item.text} />;
+  }
+  if (item.type === "callout") {
+    return (
+      <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+        <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
+          💡 {item.title}:
+        </p>
+        <p dangerouslySetInnerHTML={{ __html: item.text }} />
+      </div>
+    );
+  }
+  return null;
+}
+
+export default function TypeScriptReact() {
+  const { lang } = useLanguage();
+  const lessonInfo = getLessonBySlug("typescript", "05-typescript-react");
+  const content = rawTranslations[lang] || rawTranslations.en;
+
+  if (!content) return null;
+
+  const answers = correctAnswers[lang] || correctAnswers.en;
+  const cs = cheatSheetData[lang] || cheatSheetData.en;
+
+  return (
+    <div className="flex flex-col lg:flex-row gap-8">
+      <div className="flex-1 min-w-0">
+        <LessonHeader
+          stage={lessonInfo.stage}
+          lesson={lessonInfo}
+          lessonIndex={lessonInfo.lessonIndex}
+          totalLessons={lessonInfo.totalLessons}
         />
 
-        <CheatSheet title="أنماط React + TypeScript">
-          <div className="space-y-2 text-sm">
-            <div><code>interface Props {}</code> - النمط الأساسي للخصائص</div>
-            <div><code>React.FC&lt;Props&gt;</code> - نمط function component (deprecated)</div>
-            <div><code>{`(props: Props) => JSX.Element`}</code> - نمط function component الحديث</div>
+        {content.sections.map((section, i) => (
+          <LessonSection key={i} title={section.title}>
+            {section.content.map((item, j) => (
+              <div key={j}>{renderContent(item)}</div>
+            ))}
+          </LessonSection>
+        ))}
+
+        {content.quiz && content.quiz.map((q, i) => (
+          <Quiz
+            key={i}
+            question={q.question}
+            options={q.options}
+            correctAnswer={answers[i]}
+            explanation={q.explanation}
+          />
+        ))}
+
+        {content.challenge && (
+          <Challenge title={content.challenge.title} description={<p>{content.challenge.description}</p>}>
+            <CodeBlock language="tsx" code={challengeCode} />
+          </Challenge>
+        )}
+
+        <CheatSheet title={cs.title}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {cs.columns.map((col, i) => (
+              <div key={i}>
+                <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>{col.heading}</p>
+                <ul className="text-sm space-y-1">
+                  {col.items.map((item, j) => (
+                    <li key={j} dangerouslySetInnerHTML={{ __html: item }} />
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </CheatSheet>
 
-        <Challenge title="بناء مكون نموذج Type-Safe مع Zod Validation">
-          <div className="space-y-3">
-            <p>بناء تطبيق TODO مع:</p>
-            <ul className="list-disc list-inside space-y-1 mr-4">
-              <li>مخطط Zod للأ form validation</li>
-              <li>Hook مخصص لإدارة state مع typing</li>
-              <li>مكونات Type-Safe مع generics</li>
-              <li>Local Storage Integration مع Auto-Save</li>
-              <li>Filter and Search مع حالات Type-Safe</li>
-              <li>Error Handling مع Zod validation</li>
-            </ul>
-          </div>
-        </Challenge>
+        <LessonNavigation
+          prevLesson={lessonInfo.prevLesson}
+          prevStage={lessonInfo.prevLessonStage}
+          nextLesson={lessonInfo.nextLesson}
+          nextStage={lessonInfo.nextLessonStage}
+        />
       </div>
-      
-      <LessonNavigation
-        prevLesson={lesson.prevLesson}
-        prevStage={lesson.prevLessonStage}
-        nextLesson={lesson.nextLesson}
-        nextStage={lesson.nextLessonStage}
-      />
     </div>
   );
 }

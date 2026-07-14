@@ -1,0 +1,235 @@
+const translations = {
+  en: {
+    sections: [
+      { title: "Introduction", content: [
+        { type: "p", text: "State is one of the most important concepts in React. It allows components to manage and respond to changes in data over time. Combined with lifecycle methods, state gives React components the ability to be dynamic and interactive." },
+        { type: "p", text: "In this lesson, we will learn how to manage state and use lifecycle methods in React components." },
+      ]},
+      { title: "What is State?", content: [
+        { type: "p", text: "State is a built-in React object that contains data specific to a component. It is managed within the component and can be updated over time." },
+        { type: "p", text: "State vs Props:" },
+        { type: "li", text: "<strong>State:</strong> Internal, mutable, managed by the component" },
+        { type: "li", text: "<strong>Props:</strong> External, immutable, passed from parent" },
+        { type: "p", text: "State allows components to be interactive and respond to user actions." },
+      ]},
+      { title: "Using the useState Hook", content: [
+        { type: "p", text: "The <code>useState</code> hook is the modern way to add state to function components. It returns an array with two elements: the current state and a function to update it." },
+        { type: "p", text: "How useState works:" },
+        { type: "li", text: "Call useState with the initial value" },
+        { type: "li", text: "It returns [currentState, setStateFunction]" },
+        { type: "li", text: "Use the setState function to update the state" },
+        { type: "callout", title: "Important", text: "Never modify state directly. Always use the setState function to update state. This ensures React knows the state has changed and can re-render the component." },
+      ]},
+      { title: "State Updates", content: [
+        { type: "p", text: "When you update state, React re-renders the component with the new state. There are several ways to update state:" },
+        { type: "li", text: "<strong>Direct value:</strong> setState(5) - replaces the state with 5" },
+        { type: "li", text: "<strong>Functional update:</strong> setState(prev => prev + 1) - updates based on previous state" },
+        { type: "p", text: "Use functional updates when the new state depends on the previous state." },
+      ]},
+      { title: "Object and Array State", content: [
+        { type: "p", text: "When state is an object or array, you must create a new copy when updating. Never mutate state directly." },
+        { type: "p", text: "For objects, use the spread operator to create a new object with the updated values." },
+        { type: "p", text: "For arrays, use spread operator or array methods that return new arrays." },
+      ]},
+      { title: "Component Lifecycle", content: [
+        { type: "p", text: "Every component goes through a lifecycle: mounting, updating, and unmounting. React provides hooks to tap into these phases." },
+        { type: "li", text: "<strong>Mounting:</strong> Component is created and inserted into the DOM" },
+        { type: "li", text: "<strong>Updating:</strong> Component re-renders due to state or prop changes" },
+        { type: "li", text: "<strong>Unmounting:</strong> Component is removed from the DOM" },
+      ]},
+      { title: "The useEffect Hook", content: [
+        { type: "p", text: "The <code>useEffect</code> hook lets you perform side effects in function components. It runs after every render by default." },
+        { type: "p", text: "Common use cases for useEffect:" },
+        { type: "li", text: "<strong>Data fetching:</strong> Fetch data from an API" },
+        { type: "li", text: "<strong>Subscriptions:</strong> Set up event listeners" },
+        { type: "li", text: "<strong>DOM manipulation:</strong> Directly manipulate the DOM" },
+        { type: "li", text: "<strong>Timers:</strong> Set up intervals or timeouts" },
+      ]},
+      { title: "useEffect Dependencies", content: [
+        { type: "p", text: "You can control when useEffect runs by providing a dependency array. This is crucial for performance and avoiding bugs." },
+        { type: "li", text: "<strong>No array:</strong> Runs after every render" },
+        { type: "li", text: "<strong>Empty array []:</strong> Runs only once after initial render" },
+        { type: "li", text: "<strong>With dependencies [dep1, dep2]:</strong> Runs when any dependency changes" },
+        { type: "callout", title: "Warning", text: "Always include all values from the component scope that change over time in the dependency array. Missing dependencies can cause bugs." },
+      ]},
+      { title: "Cleanup Functions", content: [
+        { type: "p", text: "Sometimes you need to clean up resources when a component unmounts or before the effect re-runs. useEffect can return a cleanup function." },
+        { type: "p", text: "Common cleanup scenarios:" },
+        { type: "li", text: "Removing event listeners" },
+        { type: "li", text: "Clearing timers" },
+        { type: "li", text: "Cancelling subscriptions" },
+        { type: "li", text: "Aborting fetch requests" },
+      ]},
+    ],
+    quiz: [
+      { question: "What is the correct way to update state in React?", options: ["state = newValue", "setState(newValue)", "this.state = newValue", "state.update(newValue)"], explanation: "Always use the setState function returned by useState to update state. Never modify state directly." },
+    ],
+    challenge: { title: "Challenge: Build a counter with lifecycle", description: "Create a counter component that increments every second when mounted, and cleans up the interval when unmounted. Also add a button to reset the counter." },
+    cheatSheet: { title: "State and Lifecycle Cheat Sheet", items: [
+      { term: "useState", definition: "Hook to add state to function components" },
+      { term: "State is internal", definition: "Managed within the component, can be updated" },
+      { term: "Props are external", definition: "Passed from parent, read-only" },
+      { term: "Never mutate state", definition: "Always use setState, create new copies for objects/arrays" },
+      { term: "useEffect", definition: "Hook for side effects (data fetching, subscriptions, DOM)" },
+      { term: "Dependency array", definition: "Controls when useEffect runs" },
+      { term: "Cleanup function", definition: "Return from useEffect to clean up resources" },
+      { term: "Component lifecycle", definition: "Mounting → Updating → Unmounting" },
+    ]}
+  },
+  fr: {
+    sections: [
+      { title: "Introduction", content: [
+        { type: "p", text: "L'état est l'un des concepts les plus importants dans React. Il permet aux composants de gérer et de répondre aux changements de données au fil du temps. Combiné aux méthodes de cycle de vie, l'état donne aux composants React la capacité d'être dynamiques et interactifs." },
+        { type: "p", text: "Dans cette leçon, nous apprendrons comment gérer l'état et utiliser les méthodes de cycle de vie dans les composants React." },
+      ]},
+      { title: "Qu'est-ce que l'état ?", content: [
+        { type: "p", text: "L'état est un objet React intégré qui contient des données spécifiques à un composant. Il est géré au sein du composant et peut être mis à jour au fil du temps." },
+        { type: "p", text: "État vs Props :" },
+        { type: "li", text: "<strong>État :</strong> Interne, mutable, géré par le composant" },
+        { type: "li", text: "<strong>Props :</strong> Externe, immuable, passé du parent" },
+        { type: "p", text: "L'état permet aux composants d'être interactifs et de répondre aux actions de l'utilisateur." },
+      ]},
+      { title: "Utiliser le hook useState", content: [
+        { type: "p", text: "Le hook <code>useState</code> est la manière moderne d'ajouter de l'état aux composants fonctionnels. Il retourne un tableau avec deux éléments : l'état actuel et une fonction pour le mettre à jour." },
+        { type: "p", text: "Comment useState fonctionne :" },
+        { type: "li", text: "Appelez useState avec la valeur initiale" },
+        { type: "li", text: "Il retourne [étatActuel, fonctionSetState]" },
+        { type: "li", text: "Utilisez la fonction setState pour mettre à jour l'état" },
+        { type: "callout", title: "Important", text: "Ne modifiez jamais l'état directement. Utilisez toujours la fonction setState pour mettre à jour l'état. Cela assure à React que l'état a changé et peut re-rendre le composant." },
+      ]},
+      { title: "Mises à jour de l'état", content: [
+        { type: "p", text: "Quand vous mettez à jour l'état, React re-rend le composant avec le nouvel état. Il y a plusieurs façons de mettre à jour l'état :" },
+        { type: "li", text: "<strong>Valeur directe :</strong> setState(5) - remplace l'état par 5" },
+        { type: "li", text: "<strong>Mise à jour fonctionnelle :</strong> setState(prev => prev + 1) - met à jour basé sur l'état précédent" },
+        { type: "p", text: "Utilisez les mises à jour fonctionnelles quand le nouvel état dépend de l'état précédent." },
+      ]},
+      { title: "État objet et tableau", content: [
+        { type: "p", text: "Quand l'état est un objet ou un tableau, vous devez créer une nouvelle copie lors de la mise à jour. Ne mutatez jamais l'état directement." },
+        { type: "p", text: "Pour les objets, utilisez l'opérateur spread pour créer un nouvel objet avec les valeurs mises à jour." },
+        { type: "p", text: "Pour les tableaux, utilisez l'opérateur spread ou les méthodes de tableau qui retournent de nouveaux tableaux." },
+      ]},
+      { title: "Cycle de vie des composants", content: [
+        { type: "p", text: "Chaque composant traverse un cycle de vie : montage, mise à jour et démontage. React fournit des hooks pour accéder à ces phases." },
+        { type: "li", text: "<strong>Montage :</strong> Le composant est créé et inséré dans le DOM" },
+        { type: "li", text: "<strong>Mise à jour :</strong> Le composant re-rend à cause de changements d'état ou de props" },
+        { type: "li", text: "<strong>Démontage :</strong> Le composant est supprimé du DOM" },
+      ]},
+      { title: "Le hook useEffect", content: [
+        { type: "p", text: "Le hook <code>useEffect</code> vous permet d'effectuer des effets secondaires dans les composants fonctionnels. Il s'exécute après chaque rendu par défaut." },
+        { type: "p", text: "Cas d'utilisation courants de useEffect :" },
+        { type: "li", text: "<strong>Récupération de données :</strong> Récupérer des données depuis une API" },
+        { type: "li", text: "<strong>Abonnements :</strong> Mettre en place des écouteurs d'événements" },
+        { type: "li", text: "<strong>Manipulation du DOM :</strong> Manipuler directement le DOM" },
+        { type: "li", text: "<strong>Minuteries :</strong> Mettre en place des intervalles ou des délais" },
+      ]},
+      { title: "Dépendances de useEffect", content: [
+        { type: "p", text: "Vous pouvez contrôler quand useEffect s'exécute en fournissant un tableau de dépendances. C'est crucial pour les performances et éviter les bugs." },
+        { type: "li", text: "<strong>Pas de tableau :</strong> S'exécute après chaque rendu" },
+        { type: "li", text: "<strong>Tableau vide [] :</strong> S'exécute une seule fois après le rendu initial" },
+        { type: "li", text: "<strong>Avec dépendances [dep1, dep2] :</strong> S'exécute quand une dépendance change" },
+        { type: "callout", title: "Avertissement", text: "Incluez toujours toutes les valeurs de la portée du composant qui changent au fil du temps dans le tableau de dépendances. Les dépendances manquantes peuvent causer des bugs." },
+      ]},
+      { title: "Fonctions de nettoyage", content: [
+        { type: "p", text: "Parfois vous devez nettoyer les ressources quand un composant se démonte ou avant que l'effet ne se ré-exécute. useEffect peut retourner une fonction de nettoyage." },
+        { type: "p", text: "Scénarios de nettoyage courants :" },
+        { type: "li", text: "Supprimer les écouteurs d'événements" },
+        { type: "li", text: "Effacer les minuteries" },
+        { type: "li", text: "Annuler les abonnements" },
+        { type: "li", text: "Annuler les requêtes de récupération" },
+      ]},
+    ],
+    quiz: [
+      { question: "Quelle est la bonne façon de mettre à jour l'état dans React ?", options: ["state = newValue", "setState(newValue)", "this.state = newValue", "state.update(newValue)"], explanation: "Utilisez toujours la fonction setState retournée par useState pour mettre à jour l'état. Ne modifiez jamais l'état directement." },
+    ],
+    challenge: { title: "Défi : Construisez un compteur avec cycle de vie", description: "Créez un composant compteur qui s'incrémente chaque seconde quand il est monté, et nettoie l'intervalle quand il est démonté. Ajoutez aussi un bouton pour réinitialiser le compteur." },
+    cheatSheet: { title: "Référence de l'état et du cycle de vie", items: [
+      { term: "useState", definition: "Hook pour ajouter de l'état aux composants fonctionnels" },
+      { term: "L'état est interne", definition: "Géré au sein du composant, peut être mis à jour" },
+      { term: "Les props sont externes", definition: "Passées du parent, en lecture seule" },
+      { term: "Ne jamais muter l'état", definition: "Utilisez toujours setState, créez de nouvelles copies pour objets/tableaux" },
+      { term: "useEffect", definition: "Hook pour les effets secondaires (récupération de données, abonnements, DOM)" },
+      { term: "Tableau de dépendances", definition: "Contrôle quand useEffect s'exécute" },
+      { term: "Fonction de nettoyage", definition: "Retournez de useEffect pour nettoyer les ressources" },
+      { term: "Cycle de vie", definition: "Montage → Mise à jour → Démontage" },
+    ]}
+  },
+  de: {
+    sections: [
+      { title: "Einführung", content: [
+        { type: "p", text: "Zustand ist eines der wichtigsten Konzepte in React. Es ermöglicht Komponenten, Daten über die Zeit zu verwalten und auf Änderungen zu reagieren. Kombiniert mit Lebenszyklusmethoden geben Zustand React-Komponenten die Fähigkeit, dynamisch und interaktiv zu sein." },
+        { type: "p", text: "In dieser Lektion lernen wir, wie man Zustand verwaltet und Lebenszyklusmethoden in React-Komponenten verwendet." },
+      ]},
+      { title: "Was ist Zustand?", content: [
+        { type: "p", text: "Zustand ist ein eingebautes React-Objekt, das datenspezifische Informationen für eine Komponente enthält. Er wird innerhalb der Komponente verwaltet und kann über die Zeit aktualisiert werden." },
+        { type: "p", text: "Zustand vs Props:" },
+        { type: "li", text: "<strong>Zustand:</strong> Intern, mutabel, von der Komponente verwaltet" },
+        { type: "li", text: "<strong>Props:</strong> Extern, unveränderlich, vom Elternteil übergeben" },
+        { type: "p", text: "Zustand ermöglicht es Komponenten, interaktiv zu sein und auf Benutzeraktionen zu reagieren." },
+      ]},
+      { title: "Den useState-Hook verwenden", content: [
+        { type: "p", text: "Der <code>useState</code>-Hook ist der moderne Weg, um Zustand zu Funktionskomponenten hinzuzufügen. Er gibt ein Array mit zwei Elementen zurück: den aktuellen Zustand und eine Funktion zur Aktualisierung." },
+        { type: "p", text: "So funktioniert useState:" },
+        { type: "li", text: "Rufen Sie useState mit dem Anfangswert auf" },
+        { type: "li", text: "Er gibt [aktuellerZustand, setStateFunktion] zurück" },
+        { type: "li", text: "Verwenden Sie die setState-Funktion zum Aktualisieren des Zustands" },
+        { type: "callout", title: "Wichtig", text: "Verändern Sie Zustand niemals direkt. Verwenden Sie immer die setState-Funktion zum Aktualisieren. Dies stellt sicher, dass React weiß, dass sich der Zustand geändert hat, und die Komponente neu rendern kann." },
+      ]},
+      { title: "Zustandsaktualisierungen", content: [
+        { type: "p", text: "Wenn Sie Zustand aktualisieren, rendert React die Komponente mit dem neuen Zustand neu. Es gibt mehrere Möglichkeiten, Zustand zu aktualisieren:" },
+        { type: "li", text: "<strong>Direkter Wert:</strong> setState(5) - ersetzt den Zustand mit 5" },
+        { type: "li", text: "<strong>Funktionale Aktualisierung:</strong> setState(prev => prev + 1) - aktualisiert basierend auf vorherigem Zustand" },
+        { type: "p", text: "Verwenden Sie funktionale Aktualisierungen, wenn der neue Zustand vom vorherigen Zustand abhängt." },
+      ]},
+      { title: "Objekt- und Array-Zustand", content: [
+        { type: "p", text: "Wenn Zustand ein Objekt oder Array ist, müssen Sie bei der Aktualisierung eine neue Kopie erstellen. Verändern Sie Zustand niemals direkt." },
+        { type: "p", text: "Für Objekte verwenden Sie den Spread-Operator, um ein neues Objekt mit den aktualisierten Werten zu erstellen." },
+        { type: "p", text: "Für Arrays verwenden Sie den Spread-Operator oder Array-Methoden, die neue Arrays zurückgeben." },
+      ]},
+      { title: "Komponenten-Lebenszyklus", content: [
+        { type: "p", text: "Jede Komponente durchläuft einen Lebenszyklus: Montage, Aktualisierung und Demontage. React stellt Hooks bereit, um auf diese Phasen zuzugreifen." },
+        { type: "li", text: "<strong>Montage:</strong> Komponente wird erstellt und in das DOM eingefügt" },
+        { type: "li", text: "<strong>Aktualisierung:</strong> Komponente rendert neu aufgrund von Zustands- oder Prop-Änderungen" },
+        { type: "li", text: "<strong>Demontage:</strong> Komponente wird aus dem DOM entfernt" },
+      ]},
+      { title: "Der useEffect-Hook", content: [
+        { type: "p", text: "Der <code>useEffect</code>-Hook lässt Sie Seiteneffekte in Funktionskomponenten ausführen. Er läuft standardmäßig nach jedem Rendering." },
+        { type: "p", text: "Häufige Anwendungsfälle für useEffect:" },
+        { type: "li", text: "<strong>Datenabruf:</strong> Daten von einer API abrufen" },
+        { type: "li", text: "<strong>Abonnements:</strong> Ereignislistener einrichten" },
+        { type: "li", text: "<strong>DOM-Manipulation:</strong> DOM direkt manipulieren" },
+        { type: "li", text: "<strong>Timer:</strong> Intervalle oder Timeouts einrichten" },
+      ]},
+      { title: "useEffect-Abhängigkeiten", content: [
+        { type: "p", text: "Sie können kontrollieren, wann useEffect läuft, indem Sie ein Abhängigkeitsarray bereitstellen. Dies ist entscheidend für die Leistung und zur Vermeidung von Fehlern." },
+        { type: "li", text: "<strong>Kein Array:</strong> Läuft nach jedem Rendering" },
+        { type: "li", text: "<strong>Leeres Array []:</strong> Läuft nur einmal nach dem anfänglichen Rendering" },
+        { type: "li", text: "<strong>Mit Abhängigkeiten [dep1, dep2]:</strong> Läuft, wenn sich eine Abhängigkeit ändert" },
+        { type: "callout", title: "Warnung", text: "Fügen Sie immer alle Werte aus dem Komponentenbereich, die sich über die Zeit ändern, in das Abhängigkeitsarray ein. Fehlende Abhängigkeiten können Fehler verursachen." },
+      ]},
+      { title: "Aufräumfunktionen", content: [
+        { type: "p", text: "Manchmal müssen Sie Ressourcen aufräumen, wenn eine Komponente demontiert wird oder bevor der Effekt erneut läuft. useEffect kann eine Aufräumfunktion zurückgeben." },
+        { type: "p", text: "Häufige Aufräumszenarien:" },
+        { type: "li", text: "Entfernen von Ereignislistern" },
+        { type: "li", text: "Löschen von Timern" },
+        { type: "li", text: "Abbrechen von Abonnements" },
+        { type: "li", text: "Abbrechen von Abrufanfragen" },
+      ]},
+    ],
+    quiz: [
+      { question: "Was ist der richtige Weg, Zustand in React zu aktualisieren?", options: ["state = newValue", "setState(newValue)", "this.state = newValue", "state.update(newValue)"], explanation: "Verwenden Sie immer die setState-Funktion, die von useState zurückgegeben wird, um Zustand zu aktualisieren. Verändern Sie Zustand niemals direkt." },
+    ],
+    challenge: { title: "Herausforderung: Erstellen Sie einen Zähler mit Lebenszyklus", description: "Erstellen Sie eine Zähler-Komponente, die jede Sekunde inkrementiert, wenn sie montiert ist, und das Intervall aufräumt, wenn sie demontiert ist. Fügen Sie auch einen Button zum Zurücksetzen des Zählers hinzu." },
+    cheatSheet: { title: "Übersicht über Zustand und Lebenszyklus", items: [
+      { term: "useState", definition: "Hook zum Hinzufügen von Zustand zu Funktionskomponenten" },
+      { term: "Zustand ist intern", definition: "Innerhalb der Komponente verwaltet, kann aktualisiert werden" },
+      { term: "Props sind extern", definition: "Vom Elternteil übergeben, nur lesbar" },
+      { term: "Zustand nie verändern", definition: "Verwenden Sie immer setState, erstellen Sie neue Kopien für Objekte/Arrays" },
+      { term: "useEffect", definition: "Hook für Seiteneffekte (Datenabruf, Abonnements, DOM)" },
+      { term: "Abhängigkeitsarray", definition: "Kontrolliert, wann useEffect läuft" },
+      { term: "Aufräumfunktion", definition: "Geben Sie von useEffect zurück, um Ressourcen aufzuräumen" },
+      { term: "Komponenten-Lebenszyklus", definition: "Montage → Aktualisierung → Demontage" },
+    ]}
+  },
+};
+
+export default translations;

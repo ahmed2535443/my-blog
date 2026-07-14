@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/components/LanguageProvider";
+import rawTranslations from "@/i18n/lessons/clean-code/06-clean-code-final-project";
 import CodeBlock from "@/components/CodeBlock";
 import LessonSection from "@/components/LessonSection";
 import LessonHeader from "@/components/LessonHeader";
@@ -9,10 +11,9 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-export default function CleanCodeFinalProject() {
-  const lesson = getLessonBySlug("clean-code", "06-clean-code-final-project");
+const correctAnswers = { en: [1, 0, 1], fr: [1, 0, 1], de: [1, 0, 1] };
 
-  const codeBadCode = `// ❌ كود غير نظيف - نظام إدارة طلاب
+const codeBadCode = `// ❌ Unclean code - Student management system
 function proc(d, t) {
   let r = [];
   for (let i = 0; i < d.length; i++) {
@@ -43,15 +44,15 @@ function calc(d) {
   let avg = sum / d.length;
   let status = "";
   if (avg >= 90) {
-    status = "ممتاز";
+    status = "Excellent";
   } else if (avg >= 80) {
-    status = "جيد جداً";
+    status = "Very Good";
   } else if (avg >= 70) {
-    status = "جيد";
+    status = "Good";
   } else if (avg >= 60) {
-    status = "مقبول";
+    status = "Passing";
   } else {
-    status = "راسب";
+    status = "Failing";
   }
   return { avg: avg, status: status, count: d.length };
 }
@@ -64,13 +65,13 @@ function rpt(d) {
   return result.join(", ");
 }
 
-// استخدام الكود
+// Usage
 let students = [
-  { n: "أحمد", s: 95 },
-  { n: "سارة", s: 87 },
-  { n: "محمد", s: 45 },
-  { n: "فاطمة", s: 72 },
-  { n: "خالد", s: 38 },
+  { n: "Ahmed", s: 95 },
+  { n: "Sara", s: 87 },
+  { n: "Mohamed", s: 45 },
+  { n: "Fatma", s: 72 },
+  { n: "Khaled", s: 38 },
 ];
 
 let passed = proc(students, "passed");
@@ -79,7 +80,7 @@ let report = rpt(passed);
 console.log(stats);
 console.log(report);`;
 
-  const codeStep2 = `// ✅ أسماء واضحة ووصفيه
+const codeStep2 = `// ✅ Clear descriptive names
 function filterStudentsByType(students, filterType) {
   let filteredStudents = [];
   for (let i = 0; i < students.length; i++) {
@@ -110,22 +111,22 @@ function calculateStatistics(students) {
   let average = sum / students.length;
   let status = "";
   if (average >= 90) {
-    status = "ممتاز";
+    status = "Excellent";
   } else if (average >= 80) {
-    status = "جيد جداً";
+    status = "Very Good";
   } else if (average >= 70) {
-    status = "جيد";
+    status = "Good";
   } else if (average >= 60) {
-    status = "مقبول";
+    status = "Passing";
   } else {
-    status = "راسب";
+    status = "Failing";
   }
   return { average: average, status: status, count: students.length };
 }
 
 function generateReportTable(students) {
   let html = "<table>";
-  html += "<tr><th>الاسم</th><th>الدرجة</th></tr>";
+  html += "<tr><th>Name</th><th>Score</th></tr>";
   for (let i = 0; i < students.length; i++) {
     html += "<tr><td>" + students[i].name + "</td><td>" + students[i].score + "</td></tr>";
   }
@@ -133,7 +134,7 @@ function generateReportTable(students) {
   return html;
 }
 
-// ثوابت بدل الأرقام السحرية
+// Constants instead of magic numbers
 const PASSING_SCORE = 50;
 const HONORS_SCORE = 90;
 
@@ -144,7 +145,7 @@ const GRADE_THRESHOLDS = {
   passing: 60,
 };`;
 
-  const codeStep3 = `// ✅ دالة موحدة للتصفية
+const codeStep3 = `// ✅ Unified filter function
 function filterStudentsByType(students, filterType) {
   switch (filterType) {
     case "all":
@@ -160,7 +161,7 @@ function filterStudentsByType(students, filterType) {
   }
 }
 
-// ✅ دالة موحدة لحساب الإحصائيات
+// ✅ Unified statistics function
 function calculateStatistics(students) {
   const average = calculateAverage(students);
   const status = determineGradeStatus(average);
@@ -172,34 +173,34 @@ function calculateStatistics(students) {
   };
 }
 
-// ✅ دالة مساعدة لحساب المتوسط
+// ✅ Helper function for average
 function calculateAverage(students) {
   const totalScore = students.reduce((sum, student) => sum + student.score, 0);
   return totalScore / students.length;
 }
 
-// ✅ دالة مساعدة لتحديد الحالة
+// ✅ Helper function for status
 function determineGradeStatus(average) {
-  if (average >= GRADE_THRESHOLDS.excellent) return "ممتاز";
-  if (average >= GRADE_THRESHOLDS.veryGood) return "جيد جداً";
-  if (average >= GRADE_THRESHOLDS.good) return "جيد";
-  if (average >= GRADE_THRESHOLDS.passing) return "مقبول";
-  return "راسب";
+  if (average >= GRADE_THRESHOLDS.excellent) return "Excellent";
+  if (average >= GRADE_THRESHOLDS.veryGood) return "Very Good";
+  if (average >= GRADE_THRESHOLDS.good) return "Good";
+  if (average >= GRADE_THRESHOLDS.passing) return "Passing";
+  return "Failing";
 }
 
-// ✅ دالة لإنشاء صف جدول واحد
+// ✅ Function for single table row
 function createStudentRow(student) {
   return "<tr><td>" + student.name + "</td><td>" + student.score + "</td></tr>";
 }
 
-// ✅ دالة لإنشاء جدول التقرير الكامل
+// ✅ Function for complete report table
 function generateReportTable(students) {
-  const header = "<tr><th>الاسم</th><th>الدرجة</th></tr>";
+  const header = "<tr><th>Name</th><th>Score</th></tr>";
   const rows = students.map(createStudentRow).join("");
   return "<table>" + header + rows + "</table>";
 }`;
 
-  const codeStep4 = `// ✅ الكود بعد تطبيق DRY
+const codeStep4 = `// ✅ Code after applying DRY
 const PASSING_SCORE = 50;
 const HONORS_SCORE = 90;
 const GRADE_THRESHOLDS = {
@@ -235,13 +236,13 @@ function calculateAverage(students) {
 function determineGradeStatus(average) {
   for (const [grade, threshold] of Object.entries(GRADE_THRESHOLDS)) {
     if (average >= threshold) {
-      return grade === "excellent" ? "ممتاز"
-        : grade === "veryGood" ? "جيد جداً"
-        : grade === "good" ? "جيد"
-        : "مقبول";
+      return grade === "excellent" ? "Excellent"
+        : grade === "veryGood" ? "Very Good"
+        : grade === "good" ? "Good"
+        : "Passing";
     }
   }
-  return "راسب";
+  return "Failing";
 }
 
 function calculateStatistics(students) {
@@ -255,65 +256,51 @@ function createStudentRow(student) {
 }
 
 function generateReportTable(students) {
-  const header = "<tr><th>الاسم</th><th>الدرجة</th></tr>";
+  const header = "<tr><th>Name</th><th>Score</th></tr>";
   const rows = students.map(createStudentRow).join("");
   return "<table>" + header + rows + "</table>";
 }
 
-// استخراج التحقق من الاسم المكرر
+// Extract duplicate name check
 function hasDuplicateName(students, targetName) {
   return students.some(student => student.name === targetName);
 }
 
-// استخراج التحقق من صحة البيانات
+// Extract data validation
 function isValidStudent(student) {
   return student.name && typeof student.score === "number";
 }
 
 function validateStudents(students) {
   return students.filter(isValidStudent);
-}
+}`;
 
-// استخدام الكود النظيف
-const students = [
-  { name: "أحمد", score: 95 },
-  { name: "سارة", score: 87 },
-  { name: "محمد", score: 45 },
-  { name: "فاطمة", score: 72 },
-  { name: "خالد", score: 38 },
-];
-
-const validStudents = validateStudents(students);
-const passedStudents = filterStudentsByType(validStudents, "passed");
-const statistics = calculateStatistics(passedStudents);
-const report = generateReportTable(passedStudents);`;
-
-  const codeStep5 = `// ✅ الكود النظيف النهائي مع التعليقات المفيدة
+const codeStep5 = `// ✅ Clean code with useful comments
 
 /**
- * يحدد درجة الطالب بناءً على متوسط درجاته
- * يعتمد على نظام التقدير الجامعي المصري
- * @param {number} average - متوسط درجات الطالب
- * @returns {string} - درجة التقدير
+ * Determines student grade based on average score
+ * Follows the Egyptian university grading system
+ * @param {number} average - Student's average score
+ * @returns {string} - Grade status
  */
 function determineGradeStatus(average) {
-  // ترتيب من الأعلى للأقل للحصول على أول تطابق
-  if (average >= GRADE_THRESHOLDS.excellent) return "ممتاز";
-  if (average >= GRADE_THRESHOLDS.veryGood) return "جيد جداً";
-  if (average >= GRADE_THRESHOLDS.good) return "جيد";
-  if (average >= GRADE_THRESHOLDS.passing) return "مقبول";
-  return "راسب";
+  // Sort from highest to lowest for first match
+  if (average >= GRADE_THRESHOLDS.excellent) return "Excellent";
+  if (average >= GRADE_THRESHOLDS.veryGood) return "Very Good";
+  if (average >= GRADE_THRESHOLDS.good) return "Good";
+  if (average >= GRADE_THRESHOLDS.passing) return "Passing";
+  return "Failing";
 }
 
 /**
- * يصفي الطلاب حسب نوع التصفية المطلوب
- * يدعم: all, passed, failed, honors
- * @param {Array} students - قائمة الطلاب
- * @param {string} filterType - نوع التصفية
- * @returns {Array} - قائمة الطلاب المصفاة
+ * Filters students by the required filter type
+ * Supports: all, passed, failed, honors
+ * @param {Array} students - List of students
+ * @param {string} filterType - Filter type
+ * @returns {Array} - Filtered list of students
  */
 function filterStudentsByType(students, filterType) {
-  // استخدام Map بدل switch for سهولة الإضافة
+  // Using Map instead of switch for easy addition
   const filterStrategies = {
     all: () => true,
     passed: (student) => student.score >= PASSING_SCORE,
@@ -328,21 +315,21 @@ function filterStudentsByType(students, filterType) {
 }
 
 /**
- * ينشئ تقرير HTML جدولي للطلاب
- * ملاحظة: في تطبيق حقيقي، يجب استخدام مكتبة مثل React
- * بدلاً من بناء HTML يدوياً لتجنب XSS
- * @param {Array} students - قائمة الطلاب
- * @returns {string} - كود HTML للجدول
+ * Creates an HTML table report for students
+ * Note: In a real application, use a library like React
+ * instead of building HTML manually to prevent XSS
+ * @param {Array} students - List of students
+ * @returns {string} - HTML table code
  */
 function generateReportTable(students) {
-  const header = "<tr><th>الاسم</th><th>الدرجة</th></tr>";
+  const header = "<tr><th>Name</th><th>Score</th></tr>";
   const rows = students.map(createStudentRow).join("");
   return "<table>" + header + rows + "</table>";
 }`;
 
-  const codeFinal = `// ✅ الكود النظيف النهائي - نظام إدارة طلاب
+const codeFinal = `// ✅ Final clean code - Student management system
 
-// === الثوابت ===
+// === Constants ===
 const PASSING_SCORE = 50;
 const HONORS_SCORE = 90;
 const GRADE_THRESHOLDS = {
@@ -352,7 +339,7 @@ const GRADE_THRESHOLDS = {
   passing: 60,
 };
 
-// === دوال التحقق ===
+// === Validation Functions ===
 function isValidStudent(student) {
   return student.name && typeof student.score === "number";
 }
@@ -361,7 +348,7 @@ function validateStudents(students) {
   return students.filter(isValidStudent);
 }
 
-// === دوال التصفية ===
+// === Filter Functions ===
 function filterStudentsByType(students, filterType) {
   const filterStrategies = {
     all: () => true,
@@ -374,18 +361,18 @@ function filterStudentsByType(students, filterType) {
   return filterFn ? students.filter(filterFn) : students;
 }
 
-// === دوال الحساب ===
+// === Calculation Functions ===
 function calculateAverage(students) {
   const totalScore = students.reduce((sum, s) => sum + s.score, 0);
   return totalScore / students.length;
 }
 
 function determineGradeStatus(average) {
-  if (average >= GRADE_THRESHOLDS.excellent) return "ممتاز";
-  if (average >= GRADE_THRESHOLDS.veryGood) return "جيد جداً";
-  if (average >= GRADE_THRESHOLDS.good) return "جيد";
-  if (average >= GRADE_THRESHOLDS.passing) return "مقبول";
-  return "راسب";
+  if (average >= GRADE_THRESHOLDS.excellent) return "Excellent";
+  if (average >= GRADE_THRESHOLDS.veryGood) return "Very Good";
+  if (average >= GRADE_THRESHOLDS.good) return "Good";
+  if (average >= GRADE_THRESHOLDS.passing) return "Passing";
+  return "Failing";
 }
 
 function calculateStatistics(students) {
@@ -394,24 +381,24 @@ function calculateStatistics(students) {
   return { average, status, count: students.length };
 }
 
-// === دوال العرض ===
+// === Display Functions ===
 function createStudentRow(student) {
   return "<tr><td>" + student.name + "</td><td>" + student.score + "</td></tr>";
 }
 
 function generateReportTable(students) {
-  const header = "<tr><th>الاسم</th><th>الدرجة</th></tr>";
+  const header = "<tr><th>Name</th><th>Score</th></tr>";
   const rows = students.map(createStudentRow).join("");
   return "<table>" + header + rows + "</table>";
 }
 
-// === التشغيل ===
+// === Execution ===
 const students = [
-  { name: "أحمد", score: 95 },
-  { name: "سارة", score: 87 },
-  { name: "محمد", score: 45 },
-  { name: "فاطمة", score: 72 },
-  { name: "خالد", score: 38 },
+  { name: "Ahmed", score: 95 },
+  { name: "Sara", score: 87 },
+  { name: "Mohamed", score: 45 },
+  { name: "Fatma", score: 72 },
+  { name: "Khaled", score: 38 },
 ];
 
 const validStudents = validateStudents(students);
@@ -419,10 +406,10 @@ const passedStudents = filterStudentsByType(validStudents, "passed");
 const statistics = calculateStatistics(passedStudents);
 const report = generateReportTable(passedStudents);
 
-console.log("الإحصائيات:", statistics);
-console.log("التقرير:", report);`;
+console.log("Statistics:", statistics);
+console.log("Report:", report);`;
 
-  const codeChallenge = `// ❌ كود غير نظيف - نظام حساب الفواتير
+const codeChallenge = `// ❌ Unclean code - Invoice calculation system
 function calc(d) {
   let t = 0;
   for (let i = 0; i < d.length; i++) {
@@ -445,265 +432,265 @@ function fmt(d) {
   return r;
 }
 
-// استخدام
+// Usage
 let items = [
-  { n: "كتاب", p: 50, q: 3 },
-  { n: "قلم", p: 10, q: 10 },
-  { n: "دفتر", p: 25, q: 5 },
+  { n: "Book", p: 50, q: 3 },
+  { n: "Pen", p: 10, q: 10 },
+  { n: "Notebook", p: 25, q: 5 },
 ];
 let result = calc(items);
 let text = fmt(items);
 console.log(text);
 console.log(result);`;
 
+const cheatSheetData = {
+  en: {
+    title: "Clean Code Quick Reference",
+    columns: [
+      {
+        heading: "Naming rules:",
+        items: [
+          "Use descriptive, clear names",
+          "Make names read like a story",
+          "Avoid abbreviated names",
+          "Use constants for magic numbers",
+        ],
+      },
+      {
+        heading: "Function rules:",
+        items: [
+          "Each function does one thing only",
+          "Keep functions small (under 20 lines)",
+          "Use clear parameters",
+          "Split long functions",
+        ],
+      },
+      {
+        heading: "Organization principles:",
+        items: [
+          "DRY: Don't repeat yourself",
+          "KISS: Keep it simple and stupid",
+          "Single Responsibility: one responsibility",
+          "Separation of Concerns: separate concerns",
+        ],
+      },
+      {
+        heading: "Comments:",
+        items: [
+          "Explain WHY not WHAT",
+          "Don't comment obvious code",
+          "Use JSDoc for public functions",
+          "Update comments with code",
+        ],
+      },
+    ],
+  },
+  fr: {
+    title: "Référence rapide du Code Propre",
+    columns: [
+      {
+        heading: "Règles de nommage :",
+        items: [
+          "Utilisez des noms descriptifs et clairs",
+          "Faites lire les noms comme une histoire",
+          "Évitez les noms abrégés",
+          "Utilisez des constantes pour les nombres magiques",
+        ],
+      },
+      {
+        heading: "Règles des fonctions :",
+        items: [
+          "Chaque fonction ne fait qu'une chose",
+          "Gardez les fonctions petites (moins de 20 lignes)",
+          "Utilisez des paramètres clairs",
+          "Divisez les fonctions longues",
+        ],
+      },
+      {
+        heading: "Principes d'organisation :",
+        items: [
+          "DRY : Ne vous répétez pas",
+          "KISS : Gardez-le simple",
+          "Responsabilité unique : une responsabilité",
+          "Séparation des responsabilités : séparez les préoccupations",
+        ],
+      },
+      {
+        heading: "Commentaires :",
+        items: [
+          "Expliquez POURQUOI pas QUOI",
+          "Ne commentez pas le code évident",
+          "Utilisez JSDoc pour les fonctions publiques",
+          "Mettez à jour les commentaires avec le code",
+        ],
+      },
+    ],
+  },
+  de: {
+    title: "Schnellreferenz für Sauber-Code",
+    columns: [
+      {
+        heading: "Benennungsregeln:",
+        items: [
+          "Verwenden Sie beschreibende, klare Namen",
+          "Lassen Sie Namen wie eine Geschichte lesen",
+          "Vermeiden Sie abgekürzte Namen",
+          "Verwenden Sie Konstanten für Zahlenmagie",
+        ],
+      },
+      {
+        heading: "Funktionsregeln:",
+        items: [
+          "Jede Funktion tut nur eine Sache",
+          "Halten Sie Funktionen klein (unter 20 Zeilen)",
+          "Verwenden Sie klare Parameter",
+          "Teilen Sie lange Funktionen auf",
+        ],
+      },
+      {
+        heading: "Organisationsprinzipien:",
+        items: [
+          "DRY: Wiederholen Sie sich nicht",
+          "KISS: Halten Sie es einfach",
+          "Verantwortliche Einzelheit: eine Verantwortung",
+          "Trennung der Anliegen: trennen Sie Anliegen",
+        ],
+      },
+      {
+        heading: "Kommentare:",
+        items: [
+          "Erklären Sie WARUM nicht WAS",
+          "Kommentieren Sie nicht offensichtlichen Code",
+          "Verwenden Sie JSDokumentation für öffentliche Funktionen",
+          "Aktualisieren Sie Kommentare mit dem Code",
+        ],
+      },
+    ],
+  },
+};
+
+function renderContent(item) {
+  if (item.type === "p") {
+    return <p dangerouslySetInnerHTML={{ __html: item.text }} />;
+  }
+  if (item.type === "li") {
+    return <li dangerouslySetInnerHTML={{ __html: item.text }} />;
+  }
+  if (item.type === "callout") {
+    return (
+      <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+        <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
+          💡 {item.title}:
+        </p>
+        <p dangerouslySetInnerHTML={{ __html: item.text }} />
+      </div>
+    );
+  }
+  if (item.type === "callout-accent") {
+    return (
+      <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+        <p className="font-bold mb-2" style={{ color: "var(--accent)" }}>
+          ✅ {item.title}:
+        </p>
+        <p dangerouslySetInnerHTML={{ __html: item.text }} />
+      </div>
+    );
+  }
+  if (item.type === "callout-primary") {
+    return (
+      <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+        <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>
+          🔍 {item.title}:
+        </p>
+        <p dangerouslySetInnerHTML={{ __html: item.text }} />
+      </div>
+    );
+  }
+  return null;
+}
+
+const stepCodeMap = {
+  "Step 1: Analyze the Bad Code": codeBadCode,
+  "Step 2: Name Variables and Functions": codeStep2,
+  "Step 3: Split Functions (Extract Functions)": codeStep3,
+  "Step 4: Remove Duplication (DRY)": codeStep4,
+  "Step 5: Add Useful Comments": codeStep5,
+  "Step 6: Final Result": codeFinal,
+};
+
+export default function CleanCodeFinalProject() {
+  const { lang } = useLanguage();
+  const lessonInfo = getLessonBySlug("clean-code", "06-clean-code-final-project");
+  const content = rawTranslations[lang] || rawTranslations.en;
+
+  if (!content) return null;
+
+  const answers = correctAnswers[lang] || correctAnswers.en;
+  const cs = cheatSheetData[lang] || cheatSheetData.en;
+
   return (
-    <div dir="rtl" className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-4xl mx-auto px-4 py-8 space-y-12">
+    <div className="flex flex-col lg:flex-row gap-8">
+      <div className="flex-1 min-w-0">
         <LessonHeader
-          stage={lesson.stage}
-          lesson={lesson}
-          lessonIndex={lesson.lessonIndex}
-          totalLessons={lesson.totalLessons}
+          stage={lessonInfo.stage}
+          lesson={lessonInfo}
+          lessonIndex={lessonInfo.lessonIndex}
+          totalLessons={lessonInfo.totalLessons}
         />
 
-        <LessonSection title="نظرة عامة على المشروع">
-          <p style={{ color: "var(--foreground)" }}>
-            في هذا المشروع النهائي، ستقوم بتطبيق جميع مبادئ Clean Code التي تعلمتها في الدورة السابقة
-            على كود حقيقي. ستبدأ بمشروع يحتوي على كود غير نظيف (messy code)، ثم تحلل المشاكل فيه،
-            وأخيراً تعيد كتابته بشكل نظيف واحترافي.
-          </p>
-          <div
-            className="p-5 rounded-xl my-4 border"
-            style={{ background: "rgba(168, 85, 247, 0.08)", borderColor: "var(--primary)" }}
-          >
-            <h3 className="font-bold text-lg mb-3" style={{ color: "var(--primary)" }}>
-              ما سنفعله في هذا المشروع:
-            </h3>
-            <ul className="space-y-2 text-sm" style={{ color: "var(--foreground)" }}>
-              <li>1. تحليل الكود السيئ وتحديد المشاكل</li>
-              <li>2. تسمية المتغيرات والدوال بشكل صحيح</li>
-              <li>3. تقسيم الدوال الطويلة إلى دوال صغيرة</li>
-              <li>4. إزالة التكرار (DRY Principle)</li>
-              <li>5. إضافة التعليقات المفيدة</li>
-              <li>6. عرض النتيجة النهائية</li>
-            </ul>
-          </div>
-        </LessonSection>
-
-        <LessonSection title="الخطوة 1: تحليل الكود السيئ">
-          <p style={{ color: "var(--foreground)" }}>
-            هذا كود مأخوذ من نظام إدارة طلاب. الكود يعمل بشكل صحيح، لكنه يحتوي على مشاكل كثيرة
-            تجعله صعب الصيانة والقراءة. دعنا نحلل المشاكل واحدة تلو الأخرى.
-          </p>
-          <CodeBlock
-            language="javascript"
-            code={codeBadCode}
-          />
-
-          <div
-            className="p-5 rounded-xl my-4 border"
-            style={{ background: "rgba(239, 68, 68, 0.08)", borderColor: "var(--danger)" }}
-          >
-            <h3 className="font-bold text-lg mb-3" style={{ color: "var(--danger)" }}>
-              المشاكل في الكود أعلاه:
-            </h3>
-            <ul className="space-y-2 text-sm" style={{ color: "var(--foreground)" }}>
-              <li><strong>أسماء متغيرات غير واضحة:</strong> d, t, r, s, n - لا تعطي فكرة عن محتواها</li>
-              <li><strong>دوال طويلة ومركبة:</strong> دالة calc تفعل 3 أشياء مختلفة في مكان واحد</li>
-              <li><strong>تكرار الكود:</strong> شرط if/else for كل نوع تصفية مكرر</li>
-              <li><strong>عدم وجود تعليقات:</strong> لا توجد أي تعليقات تشرح الغرض</li>
-              <li><strong>استخدام أرقام سحرية:</strong> 50, 90, 80, 70, 60 بدون تسمية</li>
-              <li><strong>اختلاط الاهتمامات:</strong> دالة rpt تخلط البيانات مع HTML</li>
-            </ul>
-          </div>
-        </LessonSection>
-
-        <LessonSection title="الخطوة 2: تسمية المتغيرات والدوال">
-          <p style={{ color: "var(--foreground)" }}>
-            أول خطوة في تحسين الكود هي تسمية كل شيء بشكل واضح ووصفي. الأسماء الجيدة تغنيك
-            عن التعليقات وتجعل الكود يقرأ كقصة.
-          </p>
-          <CodeBlock
-            language="javascript"
-            code={codeStep2}
-          />
-          <div
-            className="p-4 rounded-xl my-4"
-            style={{ background: "rgba(34, 197, 94, 0.08)" }}
-          >
-            <h4 className="font-bold mb-2" style={{ color: "var(--accent)" }}>التحسينات:</h4>
-            <ul className="text-sm space-y-1" style={{ color: "var(--foreground)" }}>
-              <li>• <code>d</code> → <code>students</code>: واضح أنه قائمة طلاب</li>
-              <li>• <code>t</code> → <code>filterType</code>: يوضح أنه نوع التصفية</li>
-              <li>• <code>r</code> → <code>filteredStudents</code>: النتيجة المصفاة</li>
-              <li>• <code>s</code> → <code>score</code>: الدرجة</li>
-              <li>• <code>n</code> → <code>name</code>: الاسم</li>
-              <li>• <code>proc</code> → <code>filterStudentsByType</code>: وظيفة الدالة واضحة</li>
-              <li>• <code>calc</code> → <code>calculateStatistics</code>: يحسب إحصائيات</li>
-              <li>• <code>rpt</code> → <code>generateReportTable</code>: يُنشئ جدول تقرير</li>
-            </ul>
-          </div>
-        </LessonSection>
-
-        <LessonSection title="الخطوة 3: تقسيم الدوال (Extract Functions)">
-          <p style={{ color: "var(--foreground)" }}>
-            الدالة الطويلة يجب تقسيمها إلى دوال أصغر تفعل شيئاً واحداً فقط. هذا يجعل الكود
-            أسهل في القراءة والاختبار وإعادة الاستخدام.
-          </p>
-          <CodeBlock
-            language="javascript"
-            code={codeStep3}
-          />
-        </LessonSection>
-
-        <LessonSection title="الخطوة 4: إزالة التكرار (DRY)">
-          <p style={{ color: "var(--foreground)" }}>
-            مبدأ DRY (Don&apos;t Repeat Yourself) يقول: أي قطعة معرفة يجب أن يكون لها تمثيل واحد فقط.
-            عند إيجاد تكرار في الكود، نستخلصه إلى دالة مشتركة.
-          </p>
-          <CodeBlock
-            language="javascript"
-            code={codeStep4}
-          />
-        </LessonSection>
-
-        <LessonSection title="الخطوة 5: إضافة التعليقات المفيدة">
-          <p style={{ color: "var(--foreground)" }}>
-            التعليقات الجيدة تشرح <strong>لماذا</strong> وليس <strong>ماذا</strong>. الكود الجيد يشرح
-            نفسه، لكن أحياناً نحتاج لتعليق يوضح السبب وراء قرار معماري أو قيد معين.
-          </p>
-          <CodeBlock
-            language="javascript"
-            code={codeStep5}
-          />
-        </LessonSection>
-
-        <LessonSection title="الخطوة 6: النتيجة النهائية">
-          <p style={{ color: "var(--foreground)" }}>
-            الآن دعنا نرى الكود النظيف الكامل بعد تطبيق جميع المبادئ. الكود الناتج أسهل في القراءة
-            والصيانة والاختبار.
-          </p>
-          <CodeBlock
-            language="javascript"
-            code={codeFinal}
-          />
-
-          <div
-            className="p-5 rounded-xl my-4 border"
-            style={{ background: "rgba(34, 197, 94, 0.08)", borderColor: "var(--accent)" }}
-          >
-            <h3 className="font-bold text-lg mb-3" style={{ color: "var(--accent)" }}>
-              مقارنة بين الكود القديم والجديد:
-            </h3>
-            <ul className="space-y-2 text-sm" style={{ color: "var(--foreground)" }}>
-              <li>• <strong>قابلية القراءة:</strong> الكود يقرأ كقصة بدل ألغاز</li>
-              <li>• <strong>قابلية الصيانة:</strong> تغيير درجة النجاح يتطلب تغيير مكان واحد فقط</li>
-              <li>• <strong>قابلية الاختبار:</strong> كل دالة يمكن اختبارها بشكل مستقل</li>
-              <li>• <strong>إعادة الاستخدام:</strong> الدوال يمكن استخدامها في أجزاء مختلفة من التطبيق</li>
-              <li>• <strong>قابلية التوسيع:</strong> إضافة فلتر جديد = إضافة سطر واحد في filterStrategies</li>
-            </ul>
-          </div>
-        </LessonSection>
-
-        <LessonSection title="اختبار المعرفة">
-          <Quiz
-            question="أي من الأسماء التالية هي أفضل تسمية لدالة تحسب متوسط درجات الطلاب؟"
-            options={["calc", "doStuff", "calculateAverageScore", "func1"]}
-            correctAnswer={2}
-            explanation="calculateAverageScore هي الأفضل لأنها تصف بوضوح ما تفعله الدالة: تحسب متوسط الدرجات."
-          />
-          <Quiz
-            question="ما مبدأ DRY الذي ناقشناه في هذا الدرس؟"
-            options={[
-              "Don't Repeat Yourself - لا تكرر نفسك",
-              "Do Right Yesterday - افعل الصحيح بالأمس",
-              "Don't Rest Yesterday - لا ت أمس",
-              "Design Related Yields - التصميم المرتبط بالعائد",
-            ]}
-            correctAnswer={0}
-            explanation="DRY يعني لا تكرر نفسك. أي قطعة معرفة أو منطق يجب أن يكون لها تمثيل واحد فقط في النظام."
-          />
-          <Quiz
-            question="لماذا نحول الأرقام السحرية مثل 50 و 90 إلى ثوابت؟"
-            options={[
-              "لأن JavaScript لا يدعم الأرقام",
-              "لأن الثوابت أسهل في التغيير وتجعل الكود أوضح",
-              "لأن الأرقام تسبب أخطاء",
-              "لأن الثوابت أسرع في التنفيذ",
-            ]}
-            correctAnswer={1}
-            explanation="الثوابت تجعل الكود أسهل في الصيانة (تغيير مكان واحد فقط) وتجعل الكود أوضح (PASSING_SCORE بدلاً من 50)."
-          />
-        </LessonSection>
-
-        <LessonSection title="تحدي عملي">
-          <Challenge title="إعادة هيكلة نظام حساب الفواتير">
-            <p style={{ color: "var(--foreground)" }}>
-              الكود التالي يمثل نظام حساب فواتير بسيط لكنه غير نظيف. مهمتك هي تطبيق جميع مبادئ
-              Clean Code التي تعلمتها:
-            </p>
-            <ul className="space-y-1 my-2" style={{ color: "var(--foreground)" }}>
-              <li>• سمِ المتغيرات والدوال بشكل وصفي</li>
-              <li>• قسّم الدوال الطويلة إلى دوال صغيرة</li>
-              <li>• أزل التكرار</li>
-              <li>• حوّل الأرقام السحرية إلى ثوابت</li>
-              <li>• أضف تعليقات مفيدة حيث يلزم</li>
-            </ul>
-            <CodeBlock
-              language="javascript"
-              code={codeChallenge}
-            />
-          </Challenge>
-        </LessonSection>
-
-        <LessonSection title="ملخص المشروع">
-          <CheatSheet title="ملخص Clean Code - مرجع سريع">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ color: "var(--foreground)" }}>
-              <div>
-                <h4 className="font-bold mb-2" style={{ color: "var(--primary)" }}>قواعد التسمية</h4>
-                <ul className="text-sm space-y-1">
-                  <li>• استخدم أسماء وصفية وواضحة</li>
-                  <li>• اجعل الأسماء تقرأ كقصة</li>
-                  <li>• تجنب الأسماء المختصرة</li>
-                  <li>• استخدم ثوابت للأرقام السحرية</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-bold mb-2" style={{ color: "var(--primary)" }}>قواعد الدوال</h4>
-                <ul className="text-sm space-y-1">
-                  <li>• كل دالة تفعل شيئاً واحداً فقط</li>
-                  <li>• اجعل الدوال صغيرة (أقل من 20 سطر)</li>
-                  <li>• استخدم параметры واضحة</li>
-                  <li>• قسّم الدوال الطويلة</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-bold mb-2" style={{ color: "var(--primary)" }}>مبادئ التنظيم</h4>
-                <ul className="text-sm space-y-1">
-                  <li>• DRY: لا تكرر نفسك</li>
-                  <li>• KISS: اجعله بسيطاً وحمقاً</li>
-                  <li>• Single Responsibility: مسؤولية واحدة</li>
-                  <li>• Separation of Concerns: فصل الاهتمامات</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-bold mb-2" style={{ color: "var(--primary)" }}>التعليقات</h4>
-                <ul className="text-sm space-y-1">
-                  <li>• شرح الـ "لماذا" وليس الـ "ماذا"</li>
-                  <li>• لا تعلّق على الكود الواضح</li>
-                  <li>• استخدم JSDoc للدوال العامة</li>
-                  <li>• حدّث التعليقات مع الكود</li>
-                </ul>
-              </div>
-            </div>
-          </CheatSheet>
-        </LessonSection>
+        {content.sections.map((section, i) => {
+          if (section.title === "Knowledge Test") {
+            return content.quiz && content.quiz.map((q, qi) => (
+              <Quiz
+                key={`quiz-${qi}`}
+                question={q.question}
+                options={q.options}
+                correctAnswer={answers[qi]}
+                explanation={q.explanation}
+              />
+            ));
+          }
+          if (section.title === "Practical Challenge") {
+            return (
+              <Challenge key={i} title={content.challenge.title} description={<p>{content.challenge.description}</p>}>
+                <CodeBlock language="javascript" code={codeChallenge} />
+              </Challenge>
+            );
+          }
+          if (section.title === "Project Summary") {
+            return (
+              <CheatSheet key={i} title={cs.title}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {cs.columns.map((col, ci) => (
+                    <div key={ci}>
+                      <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>{col.heading}</p>
+                      <ul className="text-sm space-y-1">
+                        {col.items.map((item, j) => (
+                          <li key={j}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </CheatSheet>
+            );
+          }
+          const codeForStep = stepCodeMap[section.title];
+          return (
+            <LessonSection key={i} title={section.title}>
+              {section.content.map((item, j) => (
+                <div key={j}>{renderContent(item)}</div>
+              ))}
+              {codeForStep && <CodeBlock language="javascript" code={codeForStep} />}
+            </LessonSection>
+          );
+        })}
 
         <LessonNavigation
-          prevLesson={lesson.prevLesson}
-          prevStage={lesson.prevLessonStage}
-          nextLesson={lesson.nextLesson}
-          nextStage={lesson.nextLessonStage}
+          prevLesson={lessonInfo.prevLesson}
+          prevStage={lessonInfo.prevLessonStage}
+          nextLesson={lessonInfo.nextLesson}
+          nextStage={lessonInfo.nextLessonStage}
         />
       </div>
     </div>

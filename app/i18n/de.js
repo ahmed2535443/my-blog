@@ -42,13 +42,22 @@ const de = {
     subtitle: "{stages} Lernphasen • {lessons} Lektionen • Von Null zum Profi",
     lessons: "Lektionen",
   },
+  breadcrumbs: {
+    home: "Startseite",
+    curriculum: "Lehrplan",
+  },
   stage: {
     backToRoadmap: "Zurück zum Lernweg",
+    notFound: "Phase nicht gefunden",
     duration: "Dauer",
     minute: "Min",
     minutes: "Min",
     hour: "Stunde",
     hours: "Stunden",
+    lesson: "Lektion",
+    of: "/",
+    info: "💡 Dieser Lehrplan ist für 2025-2026 mit den neuesten Praktiken und Technologien aktualisiert",
+    infoReact: "💡 Dieser Lehrplan ist für Next.js 16 und React 19 angepasst",
   },
   components: {
     quiz: {

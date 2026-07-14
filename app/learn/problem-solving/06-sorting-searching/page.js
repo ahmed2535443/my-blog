@@ -1,13 +1,13 @@
 "use client";
 
+import { useLanguage } from "@/components/LanguageProvider";
+import rawTranslations from "@/i18n/lessons/problem-solving/06-sorting-searching";
 import ProblemCard from "@/components/ProblemCard";
 import LessonSection from "@/components/LessonSection";
 import LessonHeader from "@/components/LessonHeader";
 import LessonNavigation from "@/components/LessonNavigation";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
-
-const lesson = getLessonBySlug("problem-solving", "06-sorting-searching");
 
 const problems = [
   {
@@ -453,7 +453,7 @@ TimeMap.prototype.get = function (key, timestamp) {
     difficulty: "hard",
     category: "Sorting",
     description:
-      "لديك `n` كرة مغناطيسية على خط عدد صحيح `position` حيث `position[i]` هو موقع الكرة الثانية. اختر `m` كرات ووضعها على مواقع مختلفة. القوة المغناطيسية بين كرتين هي القيمة المطلقة للفرق بين موقعيهما. اكتب دالة تجد الحد الأدنى للقوة المغناطيسية القصوى بين أي كرتين. يجب أن تزيد `position` لتكون أكبر قوة مغناطيسية ممكنة هي الأقل.",
+      "لديك `n` كرة مغناطيسية على خط عدد صحيح `position` حيث `position[i]` هو موقع الكرة الثانية. اختر `m` كرات ووضعها على مواقع مختلفة. القوة المغناطيسية بين كرتين هي القيمة المطلقة للفرق بين موقعيهما. اكتب دالة تجد الحد الأدنى للقوة المغناطيسية القصى بين أي كرتين. يجب أن تزيد `position` لتكون أكبر قوة مغناطيسية ممكنة هي الأقل.",
     examples: [
       {
         input: "position = [1,2,3,4,7], m = 3",
@@ -565,52 +565,38 @@ const cheatSheet = {
   ],
 };
 
-const lessonContent = {
-  title: "Sorting & Searching",
-  stage: lesson?.stage || "Problem Solving",
-  lessonIndex: lesson?.lessonIndex || 5,
-  totalLessons: lesson?.totalLessons || 10,
-  prevLesson: lesson?.prevLesson || "two-pointers",
-  prevLessonStage: lesson?.prevLessonStage || "Problem Solving",
-  nextLesson: lesson?.nextLesson || "dynamic-programming",
-  nextLessonStage: lesson?.nextLessonStage || "Problem Solving",
-};
+function renderContent(item) {
+  if (item.type === "p") return <p dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "li") return <li dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "callout") return (
+    <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+      <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>💡 {item.title}:</p>
+      <p dangerouslySetInnerHTML={{ __html: item.text }} />
+    </div>
+  );
+  return null;
+}
 
 export default function SortingSearchingPage() {
+  const { lang } = useLanguage();
+  const lesson = getLessonBySlug("problem-solving", "06-sorting-searching");
+  const content = rawTranslations ? (rawTranslations[lang] || rawTranslations.en) : null;
+
   return (
     <div dir="rtl" className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-12">
         <LessonHeader
-          stage={lessonContent.stage}
-          lesson={lessonContent}
-          lessonIndex={lessonContent.lessonIndex}
-          totalLessons={lessonContent.totalLessons}
+          stage={lesson.stage}
+          lesson={lesson}
+          lessonIndex={lesson.lessonIndex}
+          totalLessons={lesson.totalLessons}
         />
 
-        <LessonSection
-          title="مقدمة في Sorting & Searching"
-          content="الفرز والبحث من أكثر الخوارزميات استخدامًا في علوم الحاسوب. البحث الثنائي يسمح بالبحث في مصفوفة مرتبة بتعقيد زمني O(log n)، بينما خوارزميات الفرز تُرتب البيانات لتسهيل عمليات البحث والمعالجة."
-        />
-
-        <LessonSection
-          title="البحث الثنائي"
-          content="البحث الثنائي هو خوارزمية بحث تعمل على تقسيم نطاق البحث في كل خطوة. نستخدم مؤشرين `left` و `right` لتحديد الحدود، ونحسب `mid` في كل تكرار. إذا كان العنصر الأوسط يساوي الهدف، نرجع فهرسه. وإلا نستبعد النصف الذي لا يحتوي على الهدف."
-        />
-
-        <LessonSection
-          title="الفرز في JavaScript"
-          content="توفر JavaScript دالة `Array.prototype.sort()` التي ترتب المصفوفة. يجب تمرير دالة مقارنة `(a, b) => a - b` للترتيب التصاعدي أو `(a, b) => b - a` للترتيب التنازلي. بدون دالة مقارنة، يتم ترتيب العناصر كنصوص."
-        />
-
-        <LessonSection
-          title="الخوارزميات الشاملة"
-          content="Quick Sort و Merge Sort من أكثر خوارزميات الفرز استخدامًا. Quick Sort يستخدم نهج Divide and Conquer مع مقارنة عنصر محوري. Merge Sort يقسم المصفوفة إلى نصفين، يفرز كل نصف، ثم يدمج النتائج."
-        />
-
-        <LessonSection
-          title="التمارين"
-          content="حل المشاكل التالية لتطبيق مفاهيم Sorting & Searching:"
-        />
+        {content && content.sections.map((section, i) => (
+          <LessonSection key={i} title={section.title}>
+            {section.content.map((item, j) => <div key={j}>{renderContent(item)}</div>)}
+          </LessonSection>
+        ))}
 
         {problems.map((problem) => (
           <ProblemCard
@@ -630,10 +616,10 @@ export default function SortingSearchingPage() {
         <CheatSheet title={cheatSheet.title} sections={cheatSheet.sections} />
 
         <LessonNavigation
-          prevLesson={lessonContent.prevLesson}
-          prevStage={lessonContent.prevLessonStage}
-          nextLesson={lessonContent.nextLesson}
-          nextStage={lessonContent.nextLessonStage}
+          prevLesson={lesson.prevLesson}
+          prevStage={lesson.prevLessonStage}
+          nextLesson={lesson.nextLesson}
+          nextStage={lesson.nextLessonStage}
         />
       </div>
     </div>

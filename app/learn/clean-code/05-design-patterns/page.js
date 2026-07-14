@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/components/LanguageProvider";
+import rawTranslations from "@/i18n/lessons/clean-code/05-design-patterns";
 import CodeBlock from "@/components/CodeBlock";
 import LessonSection from "@/components/LessonSection";
 import LessonHeader from "@/components/LessonHeader";
@@ -9,10 +11,9 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-export default function DesignPatternsLesson() {
-  const lesson = getLessonBySlug("clean-code", "05-design-patterns");
+const correctAnswers = { en: [1], fr: [1], de: [1] };
 
-  const codeSingleton = `class DatabaseConnection {
+const codeSingleton = `class DatabaseConnection {
   static instance = null;
   constructor() {
     if (DatabaseConnection.instance) return DatabaseConnection.instance;
@@ -20,11 +21,11 @@ export default function DesignPatternsLesson() {
     DatabaseConnection.instance = this;
   }
   createConnection() {
-    console.log('تم إنشاء اتصال جديد بقاعدة البيانات');
+    console.log('New database connection created');
     return { host: 'localhost', port: 5432 };
   }
   query(sql) {
-    console.log('تنفيذ الاستعلام:', sql);
+    console.log('Executing query:', sql);
   }
 }
 
@@ -32,7 +33,7 @@ const db1 = new DatabaseConnection();
 const db2 = new DatabaseConnection();
 console.log(db1 === db2); // true`;
 
-  const codeFactory = `class User {
+const codeFactory = `class User {
   constructor(name, role) {
     this.name = name;
     this.role = role;
@@ -70,17 +71,17 @@ class UserFactory {
       case "teacher":
         return new Teacher(name);
       default:
-        throw new Error("نوع المستخدم غير معروف");
+        throw new Error("Unknown user type");
     }
   }
 }
 
-const admin = UserFactory.createUser("أحمد", "admin");
-const student = UserFactory.createUser("سارة", "student");
+const admin = UserFactory.createUser("Ahmed", "admin");
+const student = UserFactory.createUser("Sara", "student");
 console.log(admin.permissions); // ["read", "write", "delete"]
 console.log(student.permissions); // ["read"]`;
 
-  const codeObserver = `class EventEmitter {
+const codeObserver = `class EventEmitter {
   constructor() {
     this.listeners = {};
   }
@@ -108,21 +109,19 @@ console.log(student.permissions); // ["read"]`;
 const emitter = new EventEmitter();
 
 function onUserLogin(user) {
-  console.log("تم تسجيل دخول:", user.name);
+  console.log("User logged in:", user.name);
 }
 
 function sendWelcomeEmail(user) {
-  console.log("إرسال بريد ترحيبي إلى:", user.email);
+  console.log("Sending welcome email to:", user.email);
 }
 
 emitter.on("login", onUserLogin);
 emitter.on("login", sendWelcomeEmail);
 
-emitter.emit("login", { name: "محمد", email: "mohamed@example.com" });
-// تم تسجيل دخول: محمد
-// إرسال بريد ترحيبي إلى: mohamed@example.com`;
+emitter.emit("login", { name: "Mohamed", email: "mohamed@example.com" });`;
 
-  const codeModule = `const Calculator = (function () {
+const codeModule = `const Calculator = (function () {
   let result = 0;
 
   function add(value) {
@@ -160,9 +159,9 @@ emitter.emit("login", { name: "محمد", email: "mohamed@example.com" });
 
 Calculator.add(10).multiply(2).subtract(5);
 console.log(Calculator.getResult()); // 15
-console.log(Calculator.result); // undefined - مخفي داخل الوحدة`;
+console.log(Calculator.result); // undefined - hidden inside module`;
 
-  const codeStrategy = `const pricingStrategies = {
+const codeStrategy = `const pricingStrategies = {
   regular: (price) => price,
   discount: (price) => price * 0.9,
   vip: (price) => price * 0.75,
@@ -192,144 +191,237 @@ class ShoppingCart {
 }
 
 const cart = new ShoppingCart();
-cart.addItem({ name: "كتاب", price: 50, quantity: 2 });
-cart.addItem({ name: "قلم", price: 10, quantity: 5 });
+cart.addItem({ name: "Book", price: 50, quantity: 2 });
+cart.addItem({ name: "Pen", price: 10, quantity: 5 });
 
-console.log(cart.calculateTotal()); // 150 (بدون خصم)
+console.log(cart.calculateTotal()); // 150 (no discount)
 cart.setStrategy("vip");
-console.log(cart.calculateTotal()); // 112.5 (خصم VIP 25%)`;
+console.log(cart.calculateTotal()); // 112.5 (25% VIP discount)`;
+
+const cheatSheetData = {
+  en: {
+    title: "Design Patterns Quick Reference",
+    columns: [
+      {
+        heading: "Creational Patterns:",
+        items: [
+          '<strong style={{ color: "var(--primary)" }}>Singleton</strong> - One instance only. For shared resources.',
+          '<strong style={{ color: "var(--primary)" }}>Factory</strong> - Creates objects based on inputs. Separates creation from usage.',
+        ],
+      },
+      {
+        heading: "Structural & Behavioral Patterns:",
+        items: [
+          '<strong style={{ color: "var(--primary)" }}>Observer</strong> - Notifies observers on state change. Used in events.',
+          '<strong style={{ color: "var(--primary)" }}>Module</strong> - Encapsulates data and functions. Hides internal details.',
+          '<strong style={{ color: "var(--primary)" }}>Strategy</strong> - Makes algorithms interchangeable. Used in different behaviors.',
+        ],
+      },
+    ],
+  },
+  fr: {
+    title: "Référence rapide des patrons de conception",
+    columns: [
+      {
+        heading: "Patrons de création :",
+        items: [
+          '<strong style={{ color: "var(--primary)" }}>Singleton</strong> - Une seule instance. Pour les ressources partagées.',
+          '<strong style={{ color: "var(--primary)" }}>Factory</strong> - Crée des objets basés sur les entrées. Sépare la création de l\'utilisation.',
+        ],
+      },
+      {
+        heading: "Patrons structurels et comportementaux :",
+        items: [
+          '<strong style={{ color: "var(--primary)" }}>Observer</strong> - Notifie les observateurs lors du changement d\'état. Utilisé dans les événements.',
+          '<strong style={{ color: "var(--primary)" }}>Module</strong> - Encapsule les données et fonctions. Cache les détails internes.',
+          '<strong style={{ color: "var(--primary)" }}>Strategy</strong> - Rend les algorithmes interchangeables. Utilisé dans les différents comportements.',
+        ],
+      },
+    ],
+  },
+  de: {
+    title: "Schnellreferenz für Entwurfsmuster",
+    columns: [
+      {
+        heading: "Erstellungsmuster:",
+        items: [
+          '<strong style={{ color: "var(--primary)" }}>Singleton</strong> - Nur eine Instanz. Für gemeinsame Ressourcen.',
+          '<strong style={{ color: "var(--primary)" }}>Factory</strong> - Erstellt Objekte basierend auf Eingaben. Trennt Erstellung von Verwendung.',
+        ],
+      },
+      {
+        heading: "Struktur- und Verhaltensmuster:",
+        items: [
+          '<strong style={{ color: "var(--primary)" }}>Observer</strong> - Benachrichtigt Beobachter bei Zustandsänderung. In Ereignissen verwendet.',
+          '<strong style={{ color: "var(--primary)" }}>Module</strong> - Kapselt Daten und Funktionen. Verbirgt interne Details.',
+          '<strong style={{ color: "var(--primary)" }}>Strategy</strong> - Macht Algorithmen austauschbar. In verschiedenen Verhaltensweisen verwendet.',
+        ],
+      },
+    ],
+  },
+};
+
+function renderContent(item) {
+  if (item.type === "p") {
+    return <p dangerouslySetInnerHTML={{ __html: item.text }} />;
+  }
+  if (item.type === "li") {
+    return <li dangerouslySetInnerHTML={{ __html: item.text }} />;
+  }
+  if (item.type === "callout") {
+    return (
+      <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+        <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
+          💡 {item.title}:
+        </p>
+        <p dangerouslySetInnerHTML={{ __html: item.text }} />
+      </div>
+    );
+  }
+  if (item.type === "callout-accent") {
+    return (
+      <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+        <p className="font-bold mb-2" style={{ color: "var(--accent)" }}>
+          ✅ {item.title}:
+        </p>
+        <p dangerouslySetInnerHTML={{ __html: item.text }} />
+      </div>
+    );
+  }
+  if (item.type === "callout-primary") {
+    return (
+      <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+        <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>
+          🔍 {item.title}:
+        </p>
+        <p dangerouslySetInnerHTML={{ __html: item.text }} />
+      </div>
+    );
+  }
+  return null;
+}
+
+export default function DesignPatternsLesson() {
+  const { lang } = useLanguage();
+  const lessonInfo = getLessonBySlug("clean-code", "05-design-patterns");
+  const content = rawTranslations[lang] || rawTranslations.en;
+
+  if (!content) return null;
+
+  const answers = correctAnswers[lang] || correctAnswers.en;
+  const cs = cheatSheetData[lang] || cheatSheetData.en;
 
   return (
-    <div dir="rtl" className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-4xl mx-auto px-4 py-8 space-y-12">
+    <div className="flex flex-col lg:flex-row gap-8">
+      <div className="flex-1 min-w-0">
         <LessonHeader
-          stage={lesson.stage}
-          lesson={lesson}
-          lessonIndex={lesson.lessonIndex}
-          totalLessons={lesson.totalLessons}
+          stage={lessonInfo.stage}
+          lesson={lessonInfo}
+          lessonIndex={lessonInfo.lessonIndex}
+          totalLessons={lessonInfo.totalLessons}
         />
 
-        <LessonSection title="مقدمة عن أنماط التصميم">
-          <p style={{ color: "var(--foreground)" }}>
-            أنماط التصميم (Design Patterns) هي حلول مُجربة وموثقة للمشاكل الشائعة في تصميم البرمجيات.
-            تُعدّ من أساسيات كتابة كود نظيف وقابل للصيانة، حيث توفر لغة مشتركة بين المطورين
-            وتساعد في بناء هياكل مرنة وقابلة للتوسيع.
-          </p>
-        </LessonSection>
-
-        <LessonSection title="نمط Singleton - النموذج الوحيد">
-          <p style={{ color: "var(--foreground)" }}>
-            نموذج Singleton يضمن وجود نسخة واحدة فقط من الفئة (Class) في وقت واحد،
-            ويُوفّر نقطة وصول عامة له. يُستخدم عندما تحتاج إلى إدارة موارد مشتركة مثل
-            اتصال قاعدة البيانات أو إعدادات التطبيق.
-          </p>
-          <CodeBlock
-            language="javascript"
-            code={codeSingleton}
-          />
-        </LessonSection>
-
-        <LessonSection title="نمط Factory - نمط المصنع">
-          <p style={{ color: "var(--foreground)" }}>
-            نموذج Factory يُوفّر طريقة لإنشاء كائنات دون تحديد الفئة الدقيقة للإنشاء.
-            يُفصل عملية الإنشاء من الاستخدام، مما يجعل الكود أكثر مرونة وقابلية للصيانة.
-          </p>
-          <CodeBlock
-            language="javascript"
-            code={codeFactory}
-          />
-        </LessonSection>
-
-        <LessonSection title="نمط Observer - نمط المراقب">
-          <p style={{ color: "var(--foreground)" }}>
-            نموذج Observer يُنشئ علاقة واحد-إلى-كثير بين الكائنات، حيث يُبلّغ الكائن المُراقب (Subject)
-            جميع المراقبين (Observers) عند تغيير حالته. يُستخدم بكثرة في البرمجة المُستندة للأحداث
-            (Event-Driven Programming).
-          </p>
-          <CodeBlock
-            language="javascript"
-            code={codeObserver}
-          />
-        </LessonSection>
-
-        <LessonSection title="نمط Module - نمط الوحدة">
-          <p style={{ color: "var(--foreground)" }}>
-            نموذج Module يُوفر تغليف (Encapsulation) للبيانات والوظائف، حيث يُخفي التفاصيل الداخلية
-            ويُ暴露 فقط الواجهة العامة. يُساعد في تنظيم الكود وتجنب التلوث النطاسي (Namespace Pollution).
-          </p>
-          <CodeBlock
-            language="javascript"
-            code={codeModule}
-          />
-        </LessonSection>
-
-        <LessonSection title="نمط Strategy - نمط الاستراتيجية">
-          <p style={{ color: "var(--foreground)" }}>
-            نموذج Strategy يُعرّف مجموعة من الخوارزميات ويجعلها قابلة للتبديل (Interchangeable).
-            يُسمح للكائن بتغيير سلوكه في وقت التشغيل دون تعديل الكود الأصلي. يُستخدم في
-            الحسابات المختلفة أو تكتيكات الفرز.
-          </p>
-          <CodeBlock
-            language="javascript"
-            code={codeStrategy}
-          />
-        </LessonSection>
-
-        <LessonSection title="اختبار المعرفة">
-          <Quiz
-            question="أي من أنماط التصميم التالية يُستخدم لإنشاء كائن واحد فقط في التطبيق؟"
-            options={[
-              "Factory Pattern",
-              "Singleton Pattern",
-              "Observer Pattern",
-              "Strategy Pattern",
-            ]}
-            correctAnswer={1}
-            explanation="نمط Singleton يضمن وجود نسخة واحدة فقط من الفئة في وقت واحد، ويُستخدم لإدارة الموارد المشتركة."
-          />
-        </LessonSection>
-
-        <LessonSection title="تحدي عملي">
-          <Challenge title="تطبيق نظام إشعارات باستخدام نمط Observer">
-            <p style={{ color: "var(--foreground)" }}>
-              أنشئ نظام إشعارات يدعم التسجيل في أنواع مختلفة من الإشعارات (بريد إلكتروني، رسالة نصية، إشعار داخل التطبيق).
-              يجب أن يدعم النظام:
-            </p>
-            <ul style={{ color: "var(--foreground)" }}>
-              <li>إضافة مُشتركين لأنواع مختلفة من الإشعارات</li>
-              <li>إرسال إشعارات فقط للمشتركين في النوع المحدد</li>
-              <li>إلغاء الاشتراك من نوع معين</li>
-              <li>عرض جميع المشتركين لكل نوع</li>
-            </ul>
-          </Challenge>
-        </LessonSection>
-
-        <LessonSection title="ملخص الأنماط">
-          <CheatSheet title="أنماط التصميم - ملخص سريع">
-            <div style={{ color: "var(--foreground)" }}>
-              <h4 style={{ color: "var(--primary)" }}>Singleton Pattern</h4>
-              <p>ينشئ نسخة واحدة فقط من الفئة. يُستخدم للموارد المشتركة.</p>
-
-              <h4 style={{ color: "var(--primary)" }}>Factory Pattern</h4>
-              <p>ينشئ كائنات بناءً على المدخلات. يفصل الإنشاء عن الاستخدام.</p>
-
-              <h4 style={{ color: "var(--primary)" }}>Observer Pattern</h4>
-              <p>يُبلّغ المراقبين عند تغيير الحالة. يُستخدم في الأحداث.</p>
-
-              <h4 style={{ color: "var(--primary)" }}>Module Pattern</h4>
-              <p>يُغلف البيانات والوظائف. يُخفي التفاصيل الداخلية.</p>
-
-              <h4 style={{ color: "var(--primary)" }}>Strategy Pattern</h4>
-              <p>يجعل الخوارزميات قابلة للتبديل. يُستخدم في سلوكيات مختلفة.</p>
-            </div>
-          </CheatSheet>
-        </LessonSection>
+        {content.sections.map((section, i) => {
+          if (section.title === "Knowledge Test") {
+            return content.quiz && content.quiz.map((q, qi) => (
+              <Quiz
+                key={`quiz-${qi}`}
+                question={q.question}
+                options={q.options}
+                correctAnswer={answers[qi]}
+                explanation={q.explanation}
+              />
+            ));
+          }
+          if (section.title === "Practical Challenge") {
+            return (
+              <Challenge key={i} title={content.challenge.title} description={<p>{content.challenge.description}</p>}>
+                <CodeBlock language="javascript" code={codeSingleton} />
+              </Challenge>
+            );
+          }
+          if (section.title === "Singleton Pattern") {
+            return (
+              <LessonSection key={i} title={section.title}>
+                {section.content.map((item, j) => (
+                  <div key={j}>{renderContent(item)}</div>
+                ))}
+                <CodeBlock language="javascript" code={codeSingleton} />
+              </LessonSection>
+            );
+          }
+          if (section.title === "Factory Pattern") {
+            return (
+              <LessonSection key={i} title={section.title}>
+                {section.content.map((item, j) => (
+                  <div key={j}>{renderContent(item)}</div>
+                ))}
+                <CodeBlock language="javascript" code={codeFactory} />
+              </LessonSection>
+            );
+          }
+          if (section.title === "Observer Pattern") {
+            return (
+              <LessonSection key={i} title={section.title}>
+                {section.content.map((item, j) => (
+                  <div key={j}>{renderContent(item)}</div>
+                ))}
+                <CodeBlock language="javascript" code={codeObserver} />
+              </LessonSection>
+            );
+          }
+          if (section.title === "Module Pattern") {
+            return (
+              <LessonSection key={i} title={section.title}>
+                {section.content.map((item, j) => (
+                  <div key={j}>{renderContent(item)}</div>
+                ))}
+                <CodeBlock language="javascript" code={codeModule} />
+              </LessonSection>
+            );
+          }
+          if (section.title === "Strategy Pattern") {
+            return (
+              <LessonSection key={i} title={section.title}>
+                {section.content.map((item, j) => (
+                  <div key={j}>{renderContent(item)}</div>
+                ))}
+                <CodeBlock language="javascript" code={codeStrategy} />
+              </LessonSection>
+            );
+          }
+          if (section.title === "Patterns Summary") {
+            return (
+              <CheatSheet key={i} title={cs.title}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {cs.columns.map((col, ci) => (
+                    <div key={ci}>
+                      <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>{col.heading}</p>
+                      <ul className="text-sm space-y-1">
+                        {col.items.map((item, j) => (
+                          <li key={j} dangerouslySetInnerHTML={{ __html: item }} />
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </CheatSheet>
+            );
+          }
+          return (
+            <LessonSection key={i} title={section.title}>
+              {section.content.map((item, j) => (
+                <div key={j}>{renderContent(item)}</div>
+              ))}
+            </LessonSection>
+          );
+        })}
 
         <LessonNavigation
-          prevLesson={lesson.prevLesson}
-          prevStage={lesson.prevLessonStage}
-          nextLesson={lesson.nextLesson}
-          nextStage={lesson.nextLessonStage}
+          prevLesson={lessonInfo.prevLesson}
+          prevStage={lessonInfo.prevLessonStage}
+          nextLesson={lessonInfo.nextLesson}
+          nextStage={lessonInfo.nextLessonStage}
         />
       </div>
     </div>

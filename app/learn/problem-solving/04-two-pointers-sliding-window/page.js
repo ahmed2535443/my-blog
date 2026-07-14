@@ -1,3 +1,7 @@
+"use client";
+
+import { useLanguage } from "@/components/LanguageProvider";
+import rawTranslations from "@/i18n/lessons/problem-solving/04-two-pointers-sliding-window";
 import ProblemCard from "@/components/ProblemCard";
 import LessonSection from "@/components/LessonSection";
 import LessonHeader from "@/components/LessonHeader";
@@ -5,8 +9,22 @@ import LessonNavigation from "@/components/LessonNavigation";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
+function renderContent(item) {
+  if (item.type === "p") return <p dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "li") return <li dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "callout") return (
+    <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+      <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>💡 {item.title}:</p>
+      <p dangerouslySetInnerHTML={{ __html: item.text }} />
+    </div>
+  );
+  return null;
+}
+
 export default function TwoPointersSlidingWindow() {
+  const { lang } = useLanguage();
   const lesson = getLessonBySlug("problem-solving", "04-two-pointers-sliding-window");
+  const content = rawTranslations ? (rawTranslations[lang] || rawTranslations.en) : null;
 
   return (
     <div dir="rtl" className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -18,55 +36,29 @@ export default function TwoPointersSlidingWindow() {
           totalLessons={lesson.totalLessons}
         />
 
-        {/* ========================================== */}
-        {/* مقدمة عن Two Pointers و Sliding Window */}
-        {/* ========================================== */}
-        <LessonSection title="ما هي تقنيات Two Pointers و Sliding Window؟">
-          <p>
-            <strong>Two Pointers (مؤشران)</strong> و <strong>Sliding Window (نافذة منزلقة)</strong> هما من أهم تقنيات حل المشاكل في البرمجة التنافسية. تُستخدمان لحل مشاكل المصفوفات والنصوص بكفاءة عالية باستخدام مساحة إضافية O(1) أو O(n).
-          </p>
+        {content && content.sections.map((section, i) => (
+          <LessonSection key={i} title={section.title}>
+            {section.content.map((item, j) => <div key={j}>{renderContent(item)}</div>)}
+          </LessonSection>
+        ))}
 
-          <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-            <p className="font-bold mb-2" style={{ color: "var(--primary)" }}>
-              Two Pointers (مؤشران):
-            </p>
-            <p>
-              نستخدم مؤشرين يتحركان من طرفي المصفوفة أو من جهة واحدة. كل مؤشر يتحقق من عنصر معين ونحركهما حسب الشرط. مناسب للمشاكل التي تحتاج مقارنة عناصر أو البحث عن أزواج.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-            <p className="font-bold mb-2" style={{ color: "var(--accent)" }}>
-              Sliding Window (نافذة منزلقة):
-            </p>
-            <p>
-              نستخدم نافذة بحجم ثابت أو متغير تتحرك عبر المصفوفة أو النص. يتم تحديث النتيجة عند إضافة عنصر جديد وإزالة عنصر قديم. مناسب للمشاكل التي تطلب أطول/أقصر نافذة满足 شرط معين.
-            </p>
-          </div>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* مشاكل Two Pointers - سهل */}
-        {/* ========================================== */}
-        <LessonSection title="مشاكل Two Pointers - سهل">
-          {/* Problem 1: Valid Palindrome */}
-          <ProblemCard
-            id={1}
-            title="Valid Palindrome"
-            difficulty="easy"
-            category="Two Pointers"
-            description="معطى نص s، أعد true إذا كان palindrome (يُقرأ بنفس الطريقة من الأمام والخلف). يُسمح بتجاهل الأحرف غير الأبجدية والأرقام والمسافات."
-            examples={[
-              { input: 's = "A man, a plan, a canal: Panama"', output: "true" },
-              { input: 's = "race a car"', output: "false" },
-              { input: 's = " "', output: "true" },
-            ]}
-            hints={[
-              "استخدم مؤشرين، واحد من البداية وواحد من النهاية",
-              "تخطَّ الأحرف غير الأبجدية والأرقام",
-              "قارن الحرف السفلي مع النظير له من الجهة الأخرى",
-            ]}
-            solution={`function isPalindrome(s) {
+        <ProblemCard
+          id={1}
+          title="Valid Palindrome"
+          difficulty="easy"
+          category="Two Pointers"
+          description="معطى نص s، أعد true إذا كان palindrome (يُقرأ بنفس الطريقة من الأمام والخلف). يُسمح بتجاهل الأحرف غير الأبجدية والأرقام والمسافات."
+          examples={[
+            { input: 's = "A man, a plan, a canal: Panama"', output: "true" },
+            { input: 's = "race a car"', output: "false" },
+            { input: 's = " "', output: "true" },
+          ]}
+          hints={[
+            "استخدم مؤشرين، واحد من البداية وواحد من النهاية",
+            "تخطَّ الأحرف غير الأبجدية والأرقام",
+            "قارن الحرف السفلي مع النظير له من الجهة الأخرى",
+          ]}
+          solution={`function isPalindrome(s) {
   let left = 0;
   let right = s.length - 1;
 
@@ -90,26 +82,25 @@ function isAlphaNum(c) {
     (c >= "0" && c <= "9")
   );
 }`}
-            solutionApproach="استخدم مؤشرين من الطرفين، تخطَّ غير الأبجدية، قارن الحروف بصغري."
-          />
+          solutionApproach="استخدم مؤشرين من الطرفين، تخطَّ غير الأبجدية، قارن الحروف بصغري."
+        />
 
-          {/* Problem 2: Merge Sorted Array */}
-          <ProblemCard
-            id={2}
-            title="Merge Sorted Array"
-            difficulty="easy"
-            category="Two Pointers"
-            description="أعد دمج مصفوفتين مرتبتين nums1 و nums2 في مصفوفة واحدة مرتبة داخل nums1. مصفوفة nums1 لها حجم m + n حيث m هو عدد العناصر الأصلية و n عدد عناصر nums2."
-            examples={[
-              { input: "nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3", output: "[1,2,2,3,5,6]" },
-              { input: "nums1 = [1], m = 1, nums2 = [], n = 0", output: "[1]" },
-            ]}
-            hints={[
-              "ابدأ من نهاية المصفوفتين",
-              "ضع العنصر الأكبر في المكان الأخير من nums1",
-              "إذا انتهت إحدى المصفوفتين، انسخ باقي الأخرى",
-            ]}
-            solution={`function merge(nums1, m, nums2, n) {
+        <ProblemCard
+          id={2}
+          title="Merge Sorted Array"
+          difficulty="easy"
+          category="Two Pointers"
+          description="أعد دمج مصفوفتين مرتبتين nums1 و nums2 في مصفوفة واحدة مرتبة داخل nums1. مصفوفة nums1 لها حجم m + n حيث m هو عدد العناصر الأصلية و n عدد عناصر nums2."
+          examples={[
+            { input: "nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3", output: "[1,2,2,3,5,6]" },
+            { input: "nums1 = [1], m = 1, nums2 = [], n = 0", output: "[1]" },
+          ]}
+          hints={[
+            "ابدأ من نهاية المصفوفتين",
+            "ضع العنصر الأكبر في المكان الأخير من nums1",
+            "إذا انتهت إحدى المصفوفتين، انسخ باقي الأخرى",
+          ]}
+          solution={`function merge(nums1, m, nums2, n) {
   let i = m - 1;
   let j = n - 1;
   let k = m + n - 1;
@@ -131,26 +122,25 @@ function isAlphaNum(c) {
     k--;
   }
 }`}
-            solutionApproach="ادمج من النهاية باستخدام مؤشرين، ضع العنصر الأكبر في المكان الأخير أولاً."
-          />
+          solutionApproach="ادمج من النهاية باستخدام مؤشرين، ضع العنصر الأكبر في المكان الأخير أولاً."
+        />
 
-          {/* Problem 3: Remove Duplicates */}
-          <ProblemCard
-            id={3}
-            title="Remove Duplicates from Sorted Array"
-            difficulty="easy"
-            category="Two Pointers"
-            description="أعد عدد العناصر الفريدة في المصفوفة المرتبة nums. يجب تعديل المصفوفة لتكون العناصر الفريدة في أولية فقط. لا تستخدم مساحة إضافية O(n)."
-            examples={[
-              { input: "nums = [1,1,2]", output: "2, nums1 = [1,2,_]" },
-              { input: "nums = [0,0,1,1,1,2,2,3,3,4]", output: "5, nums1 = [0,1,2,3,4,_]" },
-            ]}
-            hints={[
-              "استخدم مؤشرين:一个是 للقراءة والآخر للكتابة",
-              "إذا كان العنصر الحالي مختلف عن السابق، اكتبه",
-              "مؤشر الكتابة يتحرك فقط عند إضافة عنصر جديد",
-            ]}
-            solution={`function removeDuplicates(nums) {
+        <ProblemCard
+          id={3}
+          title="Remove Duplicates from Sorted Array"
+          difficulty="easy"
+          category="Two Pointers"
+          description="أعد عدد العناصر الفريدة في المصفوفة المرتبة nums. يجب تعديل المصفوفة لتكون العناصر الفريدة في أولية فقط. لا تستخدم مساحة إضافية O(n)."
+          examples={[
+            { input: "nums = [1,1,2]", output: "2, nums1 = [1,2,_]" },
+            { input: "nums = [0,0,1,1,1,2,2,3,3,4]", output: "5, nums1 = [0,1,2,3,4,_]" },
+          ]}
+          hints={[
+            "استخدم مؤشرين: واحد للقراءة والآخر للكتابة",
+            "إذا كان العنصر الحالي مختلف عن السابق، اكتبه",
+            "مؤشر الكتابة يتحرك فقط عند إضافة عنصر جديد",
+          ]}
+          solution={`function removeDuplicates(nums) {
   if (nums.length === 0) return 0;
 
   let write = 0;
@@ -164,33 +154,27 @@ function isAlphaNum(c) {
 
   return write + 1;
 }`}
-            solutionApproach="مؤشران: read للقراءة و write للكتابة. اكتب فقط العناصر الجديدة."
-          />
-        </LessonSection>
+          solutionApproach="مؤشران: read للقراءة و write للكتابة. اكتب فقط العناصر الجديدة."
+        />
 
-        {/* ========================================== */}
-        {/* مشاكل Two Pointers - متوسط */}
-        {/* ========================================== */}
-        <LessonSection title="مشاكل Two Pointers - متوسط">
-          {/* Problem 4: Two Sum II */}
-          <ProblemCard
-            id={4}
-            title="Two Sum II - Input Array Is Sorted"
-            difficulty="medium"
-            category="Two Pointers"
-            description="أعد فهرسي العنصرين في مصفوفة مرتبة numbers بحيث يكون مجموعهما يساوي target. يجب أن يكون الحل بشكل 1-indexed. لا تستخدم نفس العنصر مرتين."
-            examples={[
-              { input: "numbers = [2,7,11,15], target = 9", output: "[1,2]" },
-              { input: "numbers = [2,3,4], target = 6", output: "[1,3]" },
-              { input: "numbers = [-1,0], target = -1", output: "[1,2]" },
-            ]}
-            hints={[
-              "المصفوفة مرتبة، استغل هذا",
-              "ابدأ بمؤشر من البداية ومؤشر من النهاية",
-              "إذا كان المجموع أقل من target، حرّك المؤشر الأيسر لليمين",
-              "إذا كان المجموع أكبر من target، حرّك المؤشر الأيمن لليسار",
-            ]}
-            solution={`function twoSum(numbers, target) {
+        <ProblemCard
+          id={4}
+          title="Two Sum II - Input Array Is Sorted"
+          difficulty="medium"
+          category="Two Pointers"
+          description="أعد فهرسي العنصرين في مصفوفة مرتبة numbers بحيث يكون مجموعهما يساوي target. يجب أن يكون الحل بشكل 1-indexed. لا تستخدم نفس العنصر مرتين."
+          examples={[
+            { input: "numbers = [2,7,11,15], target = 9", output: "[1,2]" },
+            { input: "numbers = [2,3,4], target = 6", output: "[1,3]" },
+            { input: "numbers = [-1,0], target = -1", output: "[1,2]" },
+          ]}
+          hints={[
+            "المصفوفة مرتبة، استغل هذا",
+            "ابدأ بمؤشر من البداية ومؤشر من النهاية",
+            "إذا كان المجموع أقل من target، حرّك المؤشر الأيسر لليمين",
+            "إذا كان المجموع أكبر من target، حرّك المؤشر الأيمن لليسار",
+          ]}
+          solution={`function twoSum(numbers, target) {
   let left = 0;
   let right = numbers.length - 1;
 
@@ -208,27 +192,26 @@ function isAlphaNum(c) {
 
   return [];
 }`}
-            solutionApproach="مؤشران من الطرفين، حرّك حسب المجموع مقارنة بـ target."
-          />
+          solutionApproach="مؤشران من الطرفين، حرّك حسب المجموع مقارنة بـ target."
+        />
 
-          {/* Problem 5: 3Sum Closest */}
-          <ProblemCard
-            id={5}
-            title="3Sum Closest"
-            difficulty="medium"
-            category="Two Pointers"
-            description="أعد مجموع ثلاثة عناصر في nums يكون أقرب إلى target. يوجد حل واحد فقط للسؤال."
-            examples={[
-              { input: "nums = [-1,2,1,-4], target = 1", output: "2" },
-              { input: "nums = [0,1,2], target = 3", output: "3" },
-            ]}
-            hints={[
-              "رتب المصفوفة أولاً",
-              "ثبّت عنصراً واستخدم مؤشرين للباقي",
-              "حسّن أقرب مجموع مع كل تكرار",
-              "تحرك بالمؤشر بناءً على مقارنة المجموع مع target",
-            ]}
-            solution={`function threeSumClosest(nums, target) {
+        <ProblemCard
+          id={5}
+          title="3Sum Closest"
+          difficulty="medium"
+          category="Two Pointers"
+          description="أعد مجموع ثلاثة عناصر في nums يكون أقرب إلى target. يوجد حل واحد فقط للسؤال."
+          examples={[
+            { input: "nums = [-1,2,1,-4], target = 1", output: "2" },
+            { input: "nums = [0,1,2], target = 3", output: "3" },
+          ]}
+          hints={[
+            "رتب المصفوفة أولاً",
+            "ثبّت عنصراً واستخدم مؤشرين للباقي",
+            "حسّن أقرب مجموع مع كل تكرار",
+            "تحرك بالمؤشر بناءً على مقارنة المجموع مع target",
+          ]}
+          solution={`function threeSumClosest(nums, target) {
   nums.sort((a, b) => a - b);
   let closest = nums[0] + nums[1] + nums[2];
 
@@ -255,27 +238,26 @@ function isAlphaNum(c) {
 
   return closest;
 }`}
-            solutionApproach="رتب ثم ثبّت عنصراً واستخدم مؤشرين. حسّن أقرب مجموع مع كل خطوة."
-          />
+          solutionApproach="رتب ثم ثبّت عنصراً واستخدم مؤشرين. حسّن أقرب مجموع مع كل خطوة."
+        />
 
-          {/* Problem 6: Container With Most Water */}
-          <ProblemCard
-            id={6}
-            title="Container With Most Water"
-            difficulty="medium"
-            category="Two Pointers"
-            description="أوجد أكبر مساحة يمكن أن يحتويها الماء مع خطوط ارتفاعات height. المساحة محسوبة كـ min(height[left], height[right]) * (right - left)."
-            examples={[
-              { input: "height = [1,8,6,2,5,4,8,3,7]", output: "49" },
-              { input: "height = [1,1]", output: "1" },
-            ]}
-            hints={[
-              "ابدأ بمؤشر من كل طرف",
-              "احسب المساحة الحالية",
-              "حرّك المؤشر الذي يملك ارتفاع أقل",
-              "لا يمكن تحسين المساحة إلا بزيادة الارتفاع الأصغر",
-            ]}
-            solution={`function maxArea(height) {
+        <ProblemCard
+          id={6}
+          title="Container With Most Water"
+          difficulty="medium"
+          category="Two Pointers"
+          description="أوجد أكبر مساحة يمكن أن يحتويها الماء مع خطوط ارتفاعات height. المساحة محسوبة كـ min(height[left], height[right]) * (right - left)."
+          examples={[
+            { input: "height = [1,8,6,2,5,4,8,3,7]", output: "49" },
+            { input: "height = [1,1]", output: "1" },
+          ]}
+          hints={[
+            "ابدأ بمؤشر من كل طرف",
+            "احسب المساحة الحالية",
+            "حرّك المؤشر الذي يملك ارتفاع أقل",
+            "لا يمكن تحسين المساحة إلا بزيادة الارتفاع الأصغر",
+          ]}
+          solution={`function maxArea(height) {
   let left = 0;
   let right = height.length - 1;
   let maxWater = 0;
@@ -294,66 +276,27 @@ function isAlphaNum(c) {
 
   return maxWater;
 }`}
-            solutionApproach="مؤشران من الطرفين، حرّك المؤشر الأصغر لتحسين المساحة."
-          />
+          solutionApproach="مؤشران من الطرفين، حرّك المؤشر الأصغر لتحسين المساحة."
+        />
 
-          {/* Problem 10: Minimum Size Subarray Sum */}
-          <ProblemCard
-            id={10}
-            title="Minimum Size Subarray Sum"
-            difficulty="medium"
-            category="Sliding Window"
-            description="أوجد أطول نافذة فرعية (subarray) مجموع عناصرها أكبر من أو يساوي target. إذا لم توجد، أعد 0."
-            examples={[
-              { input: "target = 7, nums = [2,3,1,2,4,3]", output: "2" },
-              { input: "target = 4, nums = [1,4,4]", output: "1" },
-              { input: "target = 11, nums = [1,1,1,1,1,1,1,1]", output: "0" },
-            ]}
-            hints={[
-              "استخدم نافذة منزلقة (Sliding Window)",
-              "وسّع النافذة بإضافة عنصر من اليمين",
-              "قلّص النافذة بإزالة عنصر من اليسار",
-              "تحديث الأدنى عند كل نافذة صالحة",
-            ]}
-            solution={`function minSubArrayLen(target, nums) {
-  let minLength = Infinity;
-  let windowSum = 0;
-  let left = 0;
-
-  for (let right = 0; right < nums.length; right++) {
-    windowSum += nums[right];
-
-    while (windowSum >= target) {
-      minLength = Math.min(minLength, right - left + 1);
-      windowSum -= nums[left];
-      left++;
-    }
-  }
-
-  return minLength === Infinity ? 0 : minLength;
-}`}
-            solutionApproach="نافذة منزلقة قابلة للتوسيع والتقليص. وسّع بإضافة وقلّص بإزالة."
-          />
-
-          {/* Problem 7: Longest Substring Without Repeating Characters */}
-          <ProblemCard
-            id={7}
-            title="Longest Substring Without Repeating Characters"
-            difficulty="medium"
-            category="Sliding Window"
-            description="أوجد طول أطول نص فرعي (substring) لا يحتوي على أحرف متكررة."
-            examples={[
-              { input: 's = "abcabcbb"', output: "3" },
-              { input: 's = "bbbbb"', output: "1" },
-              { input: 's = "pwwkew"', output: "3" },
-            ]}
-            hints={[
-              "استخدم نافذة منزلقة مع Set أو Map",
-              "أضف الحرف الجديد للنافذة",
-              "إذا كان الحرف مكرراً، أزل العناصر من اليسار حتى الإزالة",
-              "حدّث أطول طول مع كل خطوة",
-            ]}
-            solution={`function lengthOfLongestSubstring(s) {
+        <ProblemCard
+          id={7}
+          title="Longest Substring Without Repeating Characters"
+          difficulty="medium"
+          category="Sliding Window"
+          description="أوجد طول أطول نص فرعي (substring) لا يحتوي على أحرف متكررة."
+          examples={[
+            { input: 's = "abcabcbb"', output: "3" },
+            { input: 's = "bbbbb"', output: "1" },
+            { input: 's = "pwwkew"', output: "3" },
+          ]}
+          hints={[
+            "استخدم نافذة منزلقة مع Set أو Map",
+            "أضف الحرف الجديد للنافذة",
+            "إذا كان الحرف مكرراً، أزل العناصر من اليسار حتى الإزالة",
+            "حدّث أطول طول مع كل خطوة",
+          ]}
+          solution={`function lengthOfLongestSubstring(s) {
   const charSet = new Set();
   let left = 0;
   let maxLength = 0;
@@ -369,27 +312,26 @@ function isAlphaNum(c) {
 
   return maxLength;
 }`}
-            solutionApproach="نافذة منزلقة مع Set لتتبع الأحرف. أزل عند التكرار وحدّث الأطول."
-          />
+          solutionApproach="نافذة منزلقة مع Set لتتبع الأحرف. أزل عند التكرار وحدّث الأطول."
+        />
 
-          {/* Problem 8: Permutation in String */}
-          <ProblemCard
-            id={8}
-            title="Permutation in String"
-            difficulty="medium"
-            category="Sliding Window"
-            description="أعد true إذا كان s2 يحتوي على ترتيب (permutation) لأي نص فرعي بطول s1 في أي مكان منه."
-            examples={[
-              { input: 's1 = "ab", s2 = "eidbaooo"', output: "true" },
-              { input: 's1 = "ab", s2 = "eidboaoo"', output: "false" },
-            ]}
-            hints={[
-              "استخدم نافذة منزلقة بطول s1",
-              "قارن تكرار الحروف في كل نافذة مع s1",
-              "استخدم مصفوفة تكرار بطول 26 للحرف",
-              "حدّث التكرار عند إضافة حرف وإزالة آخر",
-            ]}
-            solution={`function checkInclusion(s1, s2) {
+        <ProblemCard
+          id={8}
+          title="Permutation in String"
+          difficulty="medium"
+          category="Sliding Window"
+          description="أعد true إذا كان s2 يحتوي على ترتيب (permutation) لأي نص فرعي بطول s1 في أي مكان منه."
+          examples={[
+            { input: 's1 = "ab", s2 = "eidbaooo"', output: "true" },
+            { input: 's1 = "ab", s2 = "eidboaoo"', output: "false" },
+          ]}
+          hints={[
+            "استخدم نافذة منزلقة بطول s1",
+            "قارن تكرار الحروف في كل نافذة مع s1",
+            "استخدم مصفوفة تكرار بطول 26 للحرف",
+            "حدّث التكرار عند إضافة حرف وإزالة آخر",
+          ]}
+          solution={`function checkInclusion(s1, s2) {
   if (s1.length > s2.length) return false;
 
   const count1 = new Array(26).fill(0);
@@ -411,27 +353,26 @@ function isAlphaNum(c) {
 
   return false;
 }`}
-            solutionApproach="نافذة بطول s1 مع مصفوفة تكرار. قارن التكرارات في كل نافذة."
-          />
+          solutionApproach="نافذة بطول s1 مع مصفوفة تكرار. قارن التكرارات في كل نافذة."
+        />
 
-          {/* Problem 9: Longest Repeating Character Replacement */}
-          <ProblemCard
-            id={9}
-            title="Longest Repeating Character Replacement"
-            difficulty="medium"
-            category="Sliding Window"
-            description="أوجد أطول نص فرعي يحتوي على حرف مكرر واحد فقط يمكن تحقيقه بـ k استبدال حرفي."
-            examples={[
-              { input: 's = "ABAB", k = 2', output: "4" },
-              { input: 's = "AABABBA", k = 1', output: "4" },
-            ]}
-            hints={[
-              "استخدم نافذة منزلقة مع عدّاد تكرار",
-              "طول النافذة - أكثر حرف تكرراً = عدد الاستبدالات المطلوبة",
-              "إذا كانت الاستبدالات المطلوبة > k، قلّص النافذة",
-              "حدّث أطول طول مع كل خطوة صالحة",
-            ]}
-            solution={`function characterReplacement(s, k) {
+        <ProblemCard
+          id={9}
+          title="Longest Repeating Character Replacement"
+          difficulty="medium"
+          category="Sliding Window"
+          description="أوجد أطول نص فرعي يحتوي على حرف مكرر واحد فقط يمكن تحقيقه بـ k استبدال حرفي."
+          examples={[
+            { input: 's = "ABAB", k = 2', output: "4" },
+            { input: 's = "AABABBA", k = 1', output: "4" },
+          ]}
+          hints={[
+            "استخدم نافذة منزلقة مع عدّاد تكرار",
+            "طول النافذة - أكثر حرف تكرراً = عدد الاستبدالات المطلوبة",
+            "إذا كانت الاستبدالات المطلوبة > k، قلّص النافذة",
+            "حدّث أطول طول مع كل خطوة صالحة",
+          ]}
+          solution={`function characterReplacement(s, k) {
   const count = new Array(26).fill(0);
   let left = 0;
   let maxLength = 0;
@@ -452,32 +393,63 @@ function isAlphaNum(c) {
 
   return maxLength;
 }`}
-            solutionApproach="نافذة منزلقة مع تتبع أكثر حرف تكرراً. طول النافذة - maxCount = الاستبدالات."
-          />
-        </LessonSection>
+          solutionApproach="نافذة منزلقة مع تتبع أكثر حرف تكرراً. طول النافذة - maxCount = الاستبدالات."
+        />
 
-        {/* ========================================== */}
-        {/* مشاكل Sliding Window - صعب */}
-        {/* ========================================== */}
-        <LessonSection title="مشاكل Sliding Window - صعب">
-          {/* Problem 11: Sliding Window Maximum */}
-          <ProblemCard
-            id={11}
-            title="Sliding Window Maximum"
-            difficulty="hard"
-            category="Sliding Window"
-            description="أعد مصفوفة من الحد الأقصى لكل نافذة بطول k تتحرك عبر المصفوفة nums من اليسار لليمين."
-            examples={[
-              { input: "nums = [1,3,-1,-3,5,3,6,7], k = 3", output: "[3,3,5,5,6,7]" },
-              { input: "nums = [1], k = 1", output: "[1]" },
-            ]}
-            hints={[
-              "استخدم Deque (طابور مزدوج الأطراف)",
-              "احفظ فقط العناصر المفيدة في الـ Deque",
-              "أزل العناصر الأصغر من الخلف عند الإضافة",
-              "أزل العناصر الخارجة من النافذة من الأمام",
-            ]}
-            solution={`function maxSlidingWindow(nums, k) {
+        <ProblemCard
+          id={10}
+          title="Minimum Size Subarray Sum"
+          difficulty="medium"
+          category="Sliding Window"
+          description="أوجد أطول نافذة فرعية (subarray) مجموع عناصرها أكبر من أو يساوي target. إذا لم توجد، أعد 0."
+          examples={[
+            { input: "target = 7, nums = [2,3,1,2,4,3]", output: "2" },
+            { input: "target = 4, nums = [1,4,4]", output: "1" },
+            { input: "target = 11, nums = [1,1,1,1,1,1,1,1]", output: "0" },
+          ]}
+          hints={[
+            "استخدم نافذة منزلقة (Sliding Window)",
+            "وسّع النافذة بإضافة عنصر من اليمين",
+            "قلّص النافذة بإزالة عنصر من اليسار",
+            "تحديث الأدنى عند كل نافذة صالحة",
+          ]}
+          solution={`function minSubArrayLen(target, nums) {
+  let minLength = Infinity;
+  let windowSum = 0;
+  let left = 0;
+
+  for (let right = 0; right < nums.length; right++) {
+    windowSum += nums[right];
+
+    while (windowSum >= target) {
+      minLength = Math.min(minLength, right - left + 1);
+      windowSum -= nums[left];
+      left++;
+    }
+  }
+
+  return minLength === Infinity ? 0 : minLength;
+}`}
+          solutionApproach="نافذة منزلقة قابلة للتوسيع والتقليص. وسّع بإضافة وقلّص بإزالة."
+        />
+
+        <ProblemCard
+          id={11}
+          title="Sliding Window Maximum"
+          difficulty="hard"
+          category="Sliding Window"
+          description="أعد مصفوفة من الحد الأقصى لكل نافذة بطول k تتحرك عبر المصفوفة nums من اليسار لليمين."
+          examples={[
+            { input: "nums = [1,3,-1,-3,5,3,6,7], k = 3", output: "[3,3,5,5,6,7]" },
+            { input: "nums = [1], k = 1", output: "[1]" },
+          ]}
+          hints={[
+            "استخدم Deque (طابور مزدوج الأطراف)",
+            "احفظ فقط العناصر المفيدة في الـ Deque",
+            "أزل العناصر الأصغر من الخلف عند الإضافة",
+            "أزل العناصر الخارجة من النافذة من الأمام",
+          ]}
+          solution={`function maxSlidingWindow(nums, k) {
   const result = [];
   const deque = [];
 
@@ -498,28 +470,27 @@ function isAlphaNum(c) {
 
   return result;
 }`}
-            solutionApproach="Deque يحتفظ بالعناصر النزولية. أزل الأصغر من الخلف والأقدم من الأمام."
-          />
+          solutionApproach="Deque يحتفظ بالعناصر النزولية. أزل الأصغر من الخلف والأقدم من الأمام."
+        />
 
-          {/* Problem 12: Minimum Window Substring */}
-          <ProblemCard
-            id={12}
-            title="Minimum Window Substring"
-            difficulty="hard"
-            category="Sliding Window"
-            description="أوجد أقصر نص فرعي في s يحتوي على كل حروف t. إذا لم يوجد، أعد空字符串."
-            examples={[
-              { input: 's = "ADOBECODEBANC", t = "ABC"', output: "BANC" },
-              { input: 's = "a", t = "a"', output: "a" },
-              { input: 's = "a", t = "aa"', output: "" },
-            ]}
-            hints={[
-              "استخدم نافذة منزلقة مع عدّاد تكرار",
-              "وسّع النافذة حتى تحتوي كل حروف t",
-              "قلّص من اليسار للبحث عن أقصر نافذة",
-              "استخدم متغير لعدد الحروف المطلوبة التي تم تلبيتها",
-            ]}
-            solution={`function minWindow(s, t) {
+        <ProblemCard
+          id={12}
+          title="Minimum Window Substring"
+          difficulty="hard"
+          category="Sliding Window"
+          description="أوجد أقصر نص فرعي في s يحتوي على كل حروف t. إذا لم يوجد، أعد السلسلة الفارغة."
+          examples={[
+            { input: 's = "ADOBECODEBANC", t = "ABC"', output: "BANC" },
+            { input: 's = "a", t = "a"', output: "a" },
+            { input: 's = "a", t = "aa"', output: "" },
+          ]}
+          hints={[
+            "استخدم نافذة منزلقة مع عدّاد تكرار",
+            "وسّع النافذة حتى تحتوي كل حروف t",
+            "قلّص من اليسار للبحث عن أقصر نافذة",
+            "استخدم متغير لعدد الحروف المطلوبة التي تم تلبيتها",
+          ]}
+          solution={`function minWindow(s, t) {
   if (t.length > s.length) return "";
 
   const map = new Map();
@@ -559,13 +530,9 @@ function isAlphaNum(c) {
 
   return minLen === Infinity ? "" : s.substring(minStart, minStart + minLen);
 }`}
-            solutionApproach="نافذة منزلقة مع عدّاد تكرار ومتغير formed لتتبع الحروف المطلوبة."
-          />
-        </LessonSection>
+          solutionApproach="نافذة منزلقة مع عدّاد تكرار ومتغير formed لتتبع الحروف المطلوبة."
+        />
 
-        {/* ========================================== */}
-        {/* Cheat Sheet */}
-        {/* ========================================== */}
         <CheatSheet title="ملخص Two Pointers & Sliding Window">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -593,9 +560,9 @@ while (left < right) {
                   <p className="font-bold" style={{ color: "var(--secondary)" }}>النمط الأساسي</p>
                   <pre className="mt-1 text-xs font-mono" style={{ direction: "ltr", textAlign: "left" }}>{`let left = 0;
 for (let right = 0; right < n; right++) {
-  // أضف элемент[right]
-  while (شرط_الťقلیص) {
-    // أزل элемент[left]
+  // أضف element[right]
+  while (شرط_التقلیص) {
+    // أزل element[left]
     left++;
   }
   // حدّث النتيجة
@@ -612,9 +579,6 @@ for (let right = 0; right < n; right++) {
           </div>
         </CheatSheet>
 
-        {/* ========================================== */}
-        {/* التنقل بين الدروس */}
-        {/* ========================================== */}
         <LessonNavigation
           prevLesson={lesson.prevLesson}
           prevStage={lesson.prevLessonStage}

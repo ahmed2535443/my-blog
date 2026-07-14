@@ -1,34 +1,34 @@
-// =====================================================
-// ملف: LessonHeader.js
-// المكان: app/components/LessonHeader.js
-// الوظيفة: مكون رأس صفحة الدرس - العنوان والوصف ومدة الدرس
-// =====================================================
+"use client";
 
 import Link from "next/link";
+import { useLanguage } from "./LanguageProvider";
+import { getTranslatedLesson, getTranslatedStage } from "@/data/curriculumTranslations";
 
 export default function LessonHeader({ stage, lesson, lessonIndex, totalLessons }) {
+  const { t, lang } = useLanguage();
+  const translatedLesson = getTranslatedLesson(lesson, stage.id, lang);
+  const translatedStage = getTranslatedStage(stage, lang);
+
   return (
     <header className="mb-10">
-      {/* مسار التعلم (Breadcrumb) */}
       <div className="flex items-center gap-2 text-sm mb-6" style={{ color: "var(--muted)" }}>
         <Link href="/" className="hover:text-[var(--primary)] transition-colors">
-          الرئيسية
+          {t.breadcrumbs.home}
         </Link>
         <span>/</span>
         <Link href={`/learn/${stage.id}`} className="hover:text-[var(--primary)] transition-colors">
-          {stage.icon} {stage.title}
+          {stage.icon} {translatedStage.title}
         </Link>
         <span>/</span>
-        <span style={{ color: "var(--foreground)" }}>{lesson.title}</span>
+        <span style={{ color: "var(--foreground)" }}>{translatedLesson.title}</span>
       </div>
 
-      {/* رقم الدرس */}
       <div className="flex items-center gap-3 mb-4">
         <span
           className="px-3 py-1 rounded-full text-sm font-bold"
           style={{ background: stage.color + "20", color: stage.color }}
         >
-          الدرس {lessonIndex + 1} / {totalLessons}
+          {t.stage.lesson} {lessonIndex + 1} {t.stage.of} {totalLessons}
         </span>
         {lesson.duration && (
           <span
@@ -40,15 +40,13 @@ export default function LessonHeader({ stage, lesson, lessonIndex, totalLessons 
         )}
       </div>
 
-      {/* العنوان */}
       <h1 className="text-4xl font-extrabold mb-3" style={{ color: "var(--foreground)" }}>
-        {lesson.title}
+        {translatedLesson.title}
       </h1>
 
-      {/* الوصف */}
-      {lesson.description && (
+      {translatedLesson.description && (
         <p className="text-lg" style={{ color: "var(--muted)" }}>
-          {lesson.description}
+          {translatedLesson.description}
         </p>
       )}
     </header>

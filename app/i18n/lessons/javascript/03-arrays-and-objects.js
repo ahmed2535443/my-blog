@@ -1,0 +1,283 @@
+const translations = {
+  en: {
+    sections: [
+      { title: "What Are Arrays and Objects?", content: [
+        { type: "p", text: "In programming, we always need to store collections of data. Imagine you want to store the names of 10 students - would you create 10 separate variables? That's not practical!" },
+        { type: "p", text: "This is where <strong>Arrays</strong> and <strong>Objects</strong> come in as fundamental solutions for organizing data in JavaScript." },
+        { type: "callout", title: "Array:", text: "An ordered list of elements, like a shopping list: [\"apple\", \"banana\", \"milk\"]. Each element has an index starting from 0." },
+        { type: "callout", title: "Object:", text: "A collection of named values, like an ID card: it has a name, age, and major. Each value has a key and a value." },
+        { type: "p", text: "We'll also learn modern ES6+ tools like Destructuring, Spread/Rest, and Template Literals that make working with data much easier." },
+      ]},
+      { title: "Why Use Arrays and Objects?", content: [
+        { type: "li", text: "<strong>Data Organization:</strong> Instead of defining dozens of separate variables, we organize them in one place." },
+        { type: "li", text: "<strong>Easy Modification:</strong> You can add or remove elements easily without changing the code structure." },
+        { type: "li", text: "<strong>Iteration:</strong> You can loop through all elements with a single loop." },
+        { type: "li", text: "<strong>Data Passing:</strong> You can send a complete data set as a single argument to functions." },
+        { type: "li", text: "<strong>Representing Real Data:</strong> Data in real life comes as lists (arrays) and info cards (objects)." },
+      ]},
+      { title: "The Problem It Solves", content: [
+        { type: "p", text: "Imagine building an e-commerce app and needing to store products. Without arrays and objects, you'd need a variable for each property of each product!" },
+        { type: "p", text: "<strong>Arrays and objects solve this</strong> by enabling you to organize data into logical structures that are easy to read and modify." },
+      ]},
+      { title: "Simple Explanation", content: [
+        { type: "p", text: "<strong>First: Arrays</strong> - An ordered list of elements enclosed in square brackets []. Each element has an index starting from 0." },
+        { type: "p", text: "<strong>Second: Objects</strong> - A collection of named values enclosed in curly brackets {}. Each value has a key and a value separated by a colon." },
+        { type: "callout", title: "Simple Analogy:", text: "An Array is like a queue: each person has a sequential number. An Object is like an ID card: each piece of information has a clear name." },
+        { type: "p", text: "<strong>Third: The Key Difference</strong> - Arrays are accessed by numeric index, objects by string key. Arrays are ordered, objects are unordered." },
+      ]},
+      { title: "Simple Example", content: [
+        { type: "p", text: "<strong>Basic Array Operations:</strong> push, unshift, pop, shift, indexOf, includes" },
+        { type: "p", text: "<strong>Splice and Slice:</strong> splice modifies the original array, slice returns a new array without modifying the original." },
+        { type: "p", text: "<strong>Basic Object Operations:</strong> add property, modify value, delete property, check property existence, nested objects." },
+      ]},
+      { title: "Practical Example: Task Management System", content: [
+        { type: "p", text: "Let's build a practical example combining arrays and objects in a simple Todo App:" },
+        { type: "callout", title: "What Did We Learn?", text: "How to use an object to represent a single task, an array to store the task list, functions with arrays and objects, forEach for iteration, find and filter for search and filtering." },
+      ]},
+      { title: "What Happens Behind the Scenes?", content: [
+        { type: "p", text: "<strong>How Arrays Work in Memory:</strong> The browser allocates memory, stores indexes, and in objects, keys store references to values in memory." },
+        { type: "p", text: "<strong>Internal Work of push and pop:</strong> push adds an element at the end, pop removes the last element and returns it, splice is more complex - modifies from any position." },
+        { type: "callout", title: "Did You Know?", text: "Arrays in JavaScript are not binary arrays like in C. They are special objects with properties like length and methods like push and pop." },
+      ]},
+      { title: "Array Iteration", content: [
+        { type: "p", text: "<strong>Classic for loop:</strong> Traditional approach with full control." },
+        { type: "p", text: "<strong>for...of:</strong> Iterates over values directly (easier and clearer)." },
+        { type: "p", text: "<strong>forEach method:</strong> Takes a callback function executed for each element." },
+        { type: "p", text: "<strong>Object iteration: for...in</strong> - Iterates over keys." },
+        { type: "callout", title: "Which to Use?", text: "Use for...of to iterate over values only. Use forEach when you also need the index. Use regular for when you need full control (like skipping or reversing)." },
+      ]},
+      { title: "Destructuring", content: [
+        { type: "p", text: "<strong>Destructuring</strong> is one of the most important ES6 features. It lets you extract values from arrays or objects and store them in variables in a single line." },
+        { type: "p", text: "1) Array Destructuring - extract values by position, skip elements, use default values." },
+        { type: "p", text: "2) Object Destructuring - extract values by key name, rename variables, use default values." },
+        { type: "p", text: "3) Nested Destructuring - destructure deeply nested objects and arrays." },
+      ]},
+      { title: "Spread and Rest Operators", content: [
+        { type: "p", text: "<strong>Spread (...)</strong> expands an array or object into separate elements. Used for copying, merging, and adding elements." },
+        { type: "p", text: "<strong>Rest Parameters (...)</strong> collect remaining elements into a single array. The opposite of Spread - it collects instead of spreading." },
+        { type: "callout", title: "Key Difference:", text: "Spread (...) on the right of assignment (=) expands elements. Rest (...) on the left of assignment (=) collects elements." },
+      ]},
+      { title: "Template Literals", content: [
+        { type: "p", text: "<strong>Template Literals</strong> are a modern way to write strings in JavaScript using backtick marks instead of quotes." },
+        { type: "p", text: "1) Expression Interpolation - embed variables and expressions in strings." },
+        { type: "p", text: "2) Multi-line Strings - write strings across multiple lines naturally." },
+        { type: "p", text: "3) Tagged Templates - advanced template processing." },
+      ]},
+      { title: "Common Mistakes", content: [
+        { type: "li", text: "<strong>Forgetting that indexes start at 0:</strong> Use fruits[fruits.length - 1] for the last element." },
+        { type: "li", text: "<strong>Confusing splice and slice:</strong> splice modifies the original, slice returns a new array." },
+        { type: "li", text: "<strong>Copying objects incorrectly:</strong> Use { ...obj } or Object.assign() instead of direct assignment." },
+        { type: "li", text: "<strong>Using for...in on arrays:</strong> Use for...of for arrays instead." },
+        { type: "li", text: "<strong>Forgetting backtick marks with Template Literals:</strong> Use backticks, not quotes." },
+        { type: "li", text: "<strong>Using var with loops:</strong> Always use let in for loops." },
+      ]},
+      { title: "Best Practices", content: [
+        { type: "li", text: "<strong>Use const as default:</strong> For arrays and objects unless you'll reassign them entirely." },
+        { type: "li", text: "<strong>Use Destructuring for conciseness:</strong> Instead of writing person.name multiple times." },
+        { type: "li", text: "<strong>Use Spread for copying data:</strong> Don't modify original arrays or objects directly." },
+        { type: "li", text: "<strong>Use Template Literals over concatenation:</strong> Easier to read and more efficient." },
+        { type: "li", text: "<strong>Use for...of for arrays:</strong> Easier and clearer than traditional loops." },
+        { type: "li", text: "<strong>Write semantic names:</strong> Array names should be plural (students), object names singular (student)." },
+      ]},
+      { title: "Lesson Summary", content: [
+        { type: "li", text: "<strong>Arrays:</strong> Ordered lists of elements, accessed by numeric index." },
+        { type: "li", text: "<strong>Objects:</strong> Collections of named values, accessed by key." },
+        { type: "li", text: "<strong>Destructuring:</strong> Extract values from arrays/objects into variables in one line." },
+        { type: "li", text: "<strong>Spread Operator:</strong> Copy and merge arrays/objects." },
+        { type: "li", text: "<strong>Rest Parameters:</strong> Collect remaining elements into one array." },
+        { type: "li", text: "<strong>Template Literals:</strong> Write strings with expression interpolation using backticks." },
+        { type: "li", text: "<strong>Iteration:</strong> for...of for arrays, for...in for objects." },
+      ]},
+    ],
+    quiz: [
+      { question: "What is the result of the following code?", options: ["name = 'Ahmed' and age = 25 and city = 'Cairo'", "name = { name: 'Ahmed' } and age = { age: 25 }", "Execution error (Syntax Error)", "name = 'Ahmed' and city = 'Riyadh'"], correctAnswer: 0, explanation: "Using Destructuring, the object person's values are extracted to corresponding variables." },
+      { question: "What is the difference between splice and slice?", options: ["splice returns a new array, slice modifies the original", "splice modifies the original array, slice returns a new array", "Neither modifies the original array", "splice works only with numbers, slice works with any type"], correctAnswer: 1, explanation: "splice() modifies the original array by deleting and adding, while slice() returns a new array without changing the original." },
+      { question: "What is the basic difference between Spread and Rest?", options: ["Spread collects elements, Rest spreads them", "Spread expands elements (separates them), Rest collects elements into one array", "Both are the same with different names", "Spread works only with arrays, Rest only with objects"], correctAnswer: 1, explanation: "Spread (...) takes elements from an array/object and separates them, while Rest (...) collects multiple elements into one array." },
+    ],
+    challenge: { title: "Challenge: Student System", description: "Create a simple student management system using arrays and objects: 1. Create an array with 3 student objects, 2. Use Destructuring to extract the first student's name and grade, 3. Use Spread to create a copy and add a new student, 4. Use Template Literals to print each student's info." },
+    cheatSheet: { title: "Cheat Sheet: Arrays, Objects & ES6+", items: [
+      { label: "Array Methods", description: "push() add end | unshift() add start | pop() remove end | shift() remove start | splice() add/remove | slice() extract | indexOf() find index | includes() check existence" },
+      { label: "Object Methods", description: "Object.keys() keys | Object.values() values | Object.entries() key-value pairs" },
+      { label: "Destructuring", description: "let [a, b] = arr | let { name, age } = obj | Nested: let { address: { city } } = obj" },
+      { label: "Spread / Rest", description: "Spread: [...arr] { ...obj} | Rest: let [first, ...rest] = arr" },
+      { label: "Template Literals", description: "`Hello ${name}` | Multi-line strings | Expression interpolation" },
+    ]},
+  },
+  fr: {
+    sections: [
+      { title: "Que Sont les Tableaux et les Objets ?", content: [
+        { type: "p", text: "En programmation, nous avons toujours besoin de stocker des collections de données. Imaginez que vous voulez stocker les noms de 10 étudiants - créeriez-vous 10 variables séparées ? Ce n'est pas pratique !" },
+        { type: "p", text: "C'est ici que les <strong>Tableaux</strong> et les <strong>Objets</strong> interviennent comme solutions fondamentales pour organiser les données en JavaScript." },
+        { type: "callout", title: "Tableau :", text: "Une liste ordonnée d'éléments, comme une liste de courses : [\"pomme\", \"banane\", \"lait\"]. Chaque élément a un index commençant à 0." },
+        { type: "callout", title: "Objet :", text: "Une collection de valeurs nommées, comme une carte d'identité : elle a un nom, un âge et une spécialité. Chaque valeur a une clé et une valeur." },
+      ]},
+      { title: "Pourquoi Utiliser les Tableaux et les Objets ?", content: [
+        { type: "li", text: "<strong>Organisation des Données :</strong> Au lieu de définir des dizaines de variables séparées, nous les organisons en un seul endroit." },
+        { type: "li", text: "<strong>Modification Facile :</strong> Vous pouvez ajouter ou supprimer des éléments facilement." },
+        { type: "li", text: "<strong>Itération :</strong> Vous pouvez parcourir tous les éléments avec une seule boucle." },
+        { type: "li", text: "<strong>Passage des Données :</strong> Vous pouvez envoyer un ensemble de données complet comme argument unique." },
+        { type: "li", text: "<strong>Représentation des Données Réelles :</strong> Les données dans la vie réelle viennent sous forme de listes (tableaux) et de cartes d'information (objets)." },
+      ]},
+      { title: "Le Problème qu'Elle Résout", content: [
+        { type: "p", text: "Imaginez construire une application e-commerce et avoir besoin de stocker des produits. Sans tableaux et objets, vous auriez besoin d'une variable pour chaque propriété de chaque produit !" },
+        { type: "p", text: "<strong>Les tableaux et objets résolvent ce problème</strong> en vous permettant d'organiser les données en structures logiques faciles à lire et à modifier." },
+      ]},
+      { title: "Explication Simple", content: [
+        { type: "p", text: "<strong>D'abord : Les Tableaux</strong> - Une liste ordonnée d'éléments entourée de crochets []. Chaque élément a un index commençant à 0." },
+        { type: "p", text: "<strong>Ensuite : Les Objets</strong> - Une collection de valeurs nommées entourée d'accolades {}. Chaque valeur a une clé et une valeur séparées par deux-points." },
+        { type: "callout", title: "Analogie Simple :", text: "Un tableau est comme une file d'attente : chaque personne a un numéro séquentiel. Un objet est comme une carte d'identité : chaque information a un nom clair." },
+        { type: "p", text: "<strong>La Différence Clé</strong> - Les tableaux sont accédés par index numérique, les objets par clé de chaîne. Les tableaux sont ordonnés, les objets ne le sont pas." },
+      ]},
+      { title: "Exemple Simple", content: [
+        { type: "p", text: "<strong>Opérations de Base sur les Tableaux :</strong> push, unshift, pop, shift, indexOf, includes" },
+        { type: "p", text: "<strong>Splice et Slice :</strong> splice modifie le tableau original, slice retourne un nouveau tableau." },
+        { type: "p", text: "<strong>Opérations de Base sur les Objets :</strong> ajouter une propriété, modifier une valeur, supprimer une propriété, objets imbriqués." },
+      ]},
+      { title: "Exemple Pratique : Système de Gestion de Tâches", content: [
+        { type: "p", text: "Construisons un exemple pratique combinant tableaux et objets dans une application Todo simple :" },
+        { type: "callout", title: "Qu'avons-Nous Appris ?", text: "Comment utiliser un objet pour représenter une tâche, un tableau pour stocker la liste, des fonctions avec tableaux et objets, forEach pour l'itération, find et filter pour la recherche." },
+      ]},
+      { title: "Que Se Passe-T-il en Coulisse ?", content: [
+        { type: "p", text: "<strong>Comment les Tableaux Fonctionnent en Mémoire :</strong> Le navigateur alloue de la mémoire, stocke les index, et dans les objets, les clés stockent des références aux valeurs." },
+        { type: "callout", title: "Le Saviez-Vous ?", text: "Les tableaux en JavaScript ne sont pas des tableaux binaires comme en C. Ce sont des objets spéciaux avec des propriétés comme length et des méthodes comme push et pop." },
+      ]},
+      { title: "Itération des Tableaux", content: [
+        { type: "p", text: "<strong>Boucle for classique :</strong> Approche traditionnelle avec contrôle complet." },
+        { type: "p", text: "<strong>for...of :</strong> Itère sur les valeurs directement (plus facile et plus clair)." },
+        { type: "p", text: "<strong>Méthode forEach :</strong> Prend une fonction callback exécutée pour chaque élément." },
+        { type: "p", text: "<strong>Itération des objets : for...in</strong> - Itère sur les clés." },
+      ]},
+      { title: "Destructuration", content: [
+        { type: "p", text: "La <strong>Destructuration</strong> est l'une des fonctionnalités les plus importantes d'ES6. Elle vous permet d'extraire des valeurs de tableaux ou d'objets et de les stocker dans des variables en une seule ligne." },
+      ]},
+      { title: "Opérateurs Spread et Rest", content: [
+        { type: "p", text: "<strong>Spread (...)</strong> expand un tableau ou un objet en éléments séparés. Utilisé pour copier, fusionner et ajouter des éléments." },
+        { type: "p", text: "<strong>Rest (...)</strong> collecte les éléments restants dans un seul tableau. L'inverse de Spread." },
+      ]},
+      { title: "Template Literals", content: [
+        { type: "p", text: "Les <strong>Template Literals</strong> sont une manière moderne d'écrire des chaînes en JavaScript avec des backticks." },
+      ]},
+      { title: "Erreurs Courantes", content: [
+        { type: "li", text: "<strong>Oublier que les index commencent à 0 :</strong> Utilisez fruits[fruits.length - 1] pour le dernier élément." },
+        { type: "li", text: "<strong>Confondre splice et slice :</strong> splice modifie l'original, slice retourne un nouveau tableau." },
+        { type: "li", text: "<strong>Copier les objets incorrectement :</strong> Utilisez { ...obj } ou Object.assign()." },
+        { type: "li", text: "<strong>Utiliser for...in sur les tableaux :</strong> Utilisez for...of pour les tableaux." },
+      ]},
+      { title: "Bonnes Pratiques", content: [
+        { type: "li", text: "<strong>Utilisez const par défaut :</strong> Pour les tableaux et objets sauf réaffectation totale." },
+        { type: "li", text: "<strong>Utilisez la Destructuration :</strong> Au lieu d'écrire person.name plusieurs fois." },
+        { type: "li", text: "<strong>Utilisez Spread pour copier :</strong> Ne modifiez pas les tableaux/objets originaux directement." },
+        { type: "li", text: "<strong>Utilisez les Template Literals :</strong> Plus faciles à lire que la concaténation." },
+      ]},
+      { title: "Résumé du Cours", content: [
+        { type: "li", text: "<strong>Tableaux :</strong> Listes ordonnées d'éléments, accédés par index numérique." },
+        { type: "li", text: "<strong>Objets :</strong> Collections de valeurs nommées, accédés par clé." },
+        { type: "li", text: "<strong>Destructuration :</strong> Extraire des valeurs en une ligne." },
+        { type: "li", text: "<strong>Spread Operator :</strong> Copier et fusionner tableaux/objets." },
+        { type: "li", text: "<strong>Rest Parameters :</strong> Collecter les éléments restants." },
+        { type: "li", text: "<strong>Template Literals :</strong> Écrire des chaînes avec interpolation." },
+        { type: "li", text: "<strong>Itération :</strong> for...of pour les tableaux, for...in pour les objets." },
+      ]},
+    ],
+    quiz: [
+      { question: "Quel est le résultat du code suivant ?", options: ["name = 'Ahmed' et age = 25 et city = 'Le Caire'", "name = { name: 'Ahmed' }", "Erreur de syntaxe", "name = 'Ahmed' et city = 'Riyad'"], correctAnswer: 0, explanation: "La Destructuration extrait les valeurs de l'objet vers les variables correspondantes." },
+      { question: "Quelle est la différence entre splice et slice ?", options: ["splice retourne un nouveau tableau, slice modifie l'original", "splice modifie le tableau original, slice retourne un nouveau tableau", "Les deux ne modifient pas l'original", "splice ne fonctionne qu'avec les nombres"], correctAnswer: 1, explanation: "splice() modifie le tableau original, slice() retourne un nouveau tableau sans modifier l'original." },
+    ],
+    challenge: { title: "Défi : Système d'Étudiants", description: "Créez un système simple de gestion d'étudiants en utilisant tableaux et objets." },
+    cheatSheet: { title: "Aide-Mémoire : Tableaux, Objets & ES6+", items: [
+      { label: "Méthodes de Tableau", description: "push() ajouter fin | unshift() ajouter début | pop() supprimer fin | shift() supprimer début | splice() ajouter/supprimer | slice() extraire" },
+      { label: "Méthodes d'Objet", description: "Object.keys() clés | Object.values() valeurs | Object.entries() paires clé-valeur" },
+      { label: "Destructuration", description: "let [a, b] = arr | let { name, age } = obj" },
+      { label: "Spread / Rest", description: "Spread: [...arr] { ...obj} | Rest: let [first, ...rest] = arr" },
+    ]},
+  },
+  de: {
+    sections: [
+      { title: "Was Sind Arrays und Objekte?", content: [
+        { type: "p", text: "In der Programmierung müssen wir immer Datensammlungen speichern. Stellen Sie sich vor, Sie möchten die Namen von 10 Schülern speichern - würden Sie 10 separate Variablen erstellen? Das ist nicht praktisch!" },
+        { type: "p", text: "Hier kommen <strong>Arrays</strong> und <strong>Objekte</strong> als grundlegende Lösungen zur Datenorganisation in JavaScript." },
+        { type: "callout", title: "Array:", text: "Eine geordnete Liste von Elementen, wie eine Einkaufsliste: [\"Apfel\", \"Banane\", \"Milch\"]. Jedes Element hat einen Index, der bei 0 beginnt." },
+        { type: "callout", title: "Objekt:", text: "Eine Sammlung benannter Werte, wie ein Ausweis: Sie hat einen Namen, ein Alter und eine Fachrichtung. Jeder Wert hat einen Schlüssel und einen Wert." },
+      ]},
+      { title: "Warum Arrays und Objekte Verwenden?", content: [
+        { type: "li", text: "<strong>Datenorganisation:</strong> Anstatt Dutzende separater Variablen zu definieren." },
+        { type: "li", text: "<strong>Einfache Änderung:</strong> Elemente einfach hinzufügen oder entfernen." },
+        { type: "li", text: "<strong>Schleifen:</strong> Alle Elemente mit einer einzigen Schleife durchlaufen." },
+        { type: "li", text: "<strong>Datenübertragung:</strong> Ein vollständiges Datenset als einzelnes Argument senden." },
+        { type: "li", text: "<strong>Darstellung realer Daten:</strong> Daten im wirklichen Leben kommen als Listen (Arrays) und Info-Karten (Objekte)." },
+      ]},
+      { title: "Das Problem, das Es Löst", content: [
+        { type: "p", text: "Stellen Sie sich vor, Sie bauen eine E-Commerce-App und müssen Produkte speichern. Ohne Arrays und Objekte bräuchten Sie eine Variable für jede Eigenschaft jedes Produkts!" },
+        { type: "p", text: "<strong>Arrays und Objekte lösen dieses Problem</strong>, indem sie Daten in logische Strukturen organisieren." },
+      ]},
+      { title: "Einfache Erklärung", content: [
+        { type: "p", text: "<strong>Zuerst: Arrays</strong> - Eine geordnete Liste von Elementen in eckigen Klammern []. Jedes Element hat einen Index ab 0." },
+        { type: "p", text: "<strong>Dann: Objekte</strong> - Eine Sammlung benannter Werte in geschweiften Klammern {}. Jeder Wert hat einen Schlüssel und einen Wert, getrennt durch Doppelpunkt." },
+        { type: "callout", title: "Einfache Analogie:", text: "Ein Array ist wie eine Schlange: jede Person hat eine fortlaufende Nummer. Ein Objekt ist wie ein Ausweis: jede Information hat einen klaren Namen." },
+      ]},
+      { title: "Einfaches Beispiel", content: [
+        { type: "p", text: "<strong>Grundlegende Array-Operationen:</strong> push, unshift, pop, shift, indexOf, includes" },
+        { type: "p", text: "<strong>Splice und Slice:</strong> splice ändert das Original-Array, slice gibt ein neues Array zurück." },
+        { type: "p", text: "<strong>Grundlegende Objekt-Operationen:</strong> Eigenschaft hinzufügen, Wert ändern, Eigenschaft löschen, verschachtelte Objekte." },
+      ]},
+      { title: "Praktisches Beispiel: Aufgabenverwaltungssystem", content: [
+        { type: "p", text: "Erstellen wir ein praktisches Beispiel, das Arrays und Objekte in einer einfachen Todo-App kombiniert:" },
+        { type: "callout", title: "Was Haben Wir Gelernt?", text: "Wie man ein Objekt für eine Aufgabe, ein Array für die Aufgabenliste, Funktionen mit Arrays und Objekten, forEach für Iteration, find und filter für Suche verwendet." },
+      ]},
+      { title: "Was Passiert Hinter den Kulissen?", content: [
+        { type: "p", text: "<strong>Wie Arrays im Speicher Funktionieren:</strong> Der Browser weist Speicher zu, speichert Indizes, und bei Objekten speichern Schlüssel Referenzen auf Werte." },
+        { type: "callout", title: "Wussten Sie?", text: "Arrays in JavaScript sind keine binären Arrays wie in C. Sie sind spezielle Objekte mit Eigenschaften wie length und Methoden wie push und pop." },
+      ]},
+      { title: "Array-Iteration", content: [
+        { type: "p", text: "<strong>Klassische for-Schleife:</strong> Traditioneller Ansatz mit vollständiger Kontrolle." },
+        { type: "p", text: "<strong>for...of:</strong> Iteriert direkt über Werte (einfacher und klarer)." },
+        { type: "p", text: "<strong>forEach-Methode:</strong> Nimmt eine Callback-Funktion, die für jedes Element ausgeführt wird." },
+        { type: "p", text: "<strong>Objekt-Iteration: for...in</strong> - Iteriert über Schlüssel." },
+      ]},
+      { title: "Destructuring", content: [
+        { type: "p", text: "<strong>Destructuring</strong> ist eine der wichtigsten ES6-Funktionen. Sie ermöglicht das Extrahieren von Werten aus Arrays oder Objekten in einer einzigen Zeile." },
+      ]},
+      { title: "Spread- und Rest-Operatoren", content: [
+        { type: "p", text: "<strong>Spread (...)</strong> expandiert ein Array oder Objekt in separate Elemente. Zum Kopieren, Zusammenführen und Hinzufügen." },
+        { type: "p", text: "<strong>Rest (...)</strong> sammelt verbleibende Elemente in einem einzigen Array. Das Gegenteil von Spread." },
+      ]},
+      { title: "Template Literals", content: [
+        { type: "p", text: "<strong>Template Literals</strong> sind eine moderne Möglichkeit, Zeichenketten in JavaScript mit Backticks zu schreiben." },
+      ]},
+      { title: "Häufige Fehler", content: [
+        { type: "li", text: "<strong>Vergessen, dass Indizes bei 0 beginnen:</strong> Verwenden Sie fruits[fruits.length - 1] für das letzte Element." },
+        { type: "li", text: "<strong>Verwechslung von splice und slice:</strong> splice ändert das Original, slice gibt ein neues Array zurück." },
+        { type: "li", text: "<strong>Objekte falsch kopieren:</strong> Verwenden Sie { ...obj } oder Object.assign()." },
+        { type: "li", text: "<strong>for...in auf Arrays verwenden:</strong> Verwenden Sie for...of für Arrays." },
+      ]},
+      { title: "Best Practices", content: [
+        { type: "li", text: "<strong>Verwenden Sie const als Standard:</strong> Für Arrays und Objekte bei vollständiger Neuzuweisung." },
+        { type: "li", text: "<strong>Verwenden Sie Destructuring:</strong> Statt person.name mehrmals zu schreiben." },
+        { type: "li", text: "<strong>Verwenden Sie Spread zum Kopieren:</strong> Ändern Sie Originale nicht direkt." },
+        { type: "li", text: "<strong>Verwenden Sie Template Literals:</strong> Einfacher zu lesen als Verkettung." },
+      ]},
+      { title: "Kurszusammenfassung", content: [
+        { type: "li", text: "<strong>Arrays:</strong> Geordnete Listen, zugänglich über numerischen Index." },
+        { type: "li", text: "<strong>Objekte:</strong> Sammlungen benannter Werte, zugänglich über Schlüssel." },
+        { type: "li", text: "<strong>Destructuring:</strong> Werte in einer Zeile extrahieren." },
+        { type: "li", text: "<strong>Spread Operator:</strong> Arrays/Objekte kopieren und zusammenführen." },
+        { type: "li", text: "<strong>Rest Parameters:</strong> Verbleibende Elemente sammeln." },
+        { type: "li", text: "<strong>Template Literals:</strong> Zeichenketten mit Interpolation schreiben." },
+        { type: "li", text: "<strong>Iteration:</strong> for...of für Arrays, for...in für Objekte." },
+      ]},
+    ],
+    quiz: [
+      { question: "Was ist das Ergebnis des folgenden Codes?", options: ["name = 'Ahmed' und age = 25", "name = { name: 'Ahmed' }", "Syntaxfehler", "name = 'Ahmed' und city = 'Riad'"], correctAnswer: 0, explanation: "Destructuring extrahiert die Werte des Objekts in die entsprechenden Variablen." },
+      { question: "Was ist der Unterschied zwischen splice und slice?", options: ["splice gibt ein neues Array zurück, slice ändert das Original", "splice ändert das Original-Array, slice gibt ein neues Array zurück", "Beide ändern das Original nicht", "splice funktioniert nur mit Zahlen"], correctAnswer: 1, explanation: "splice() ändert das Original-Array, slice() gibt ein neues Array zurück." },
+    ],
+    challenge: { title: "Herausforderung: Schülersystem", description: "Erstellen Sie ein einfaches Schülerverwaltungssystem mit Arrays und Objekten." },
+    cheatSheet: { title: "Spickzettel: Arrays, Objekte & ES6+", items: [
+      { label: "Array-Methoden", description: "push() Ende hinzufügen | unshift() Anfang hinzufügen | pop() Ende entfernen | shift() Anfang entfernen | splice() hinzufügen/entfernen | slice() extrahieren" },
+      { label: "Objekt-Methoden", description: "Object.keys() Schlüssel | Object.values() Werte | Object.entries() Schlüssel-Wert-Paare" },
+      { label: "Destructuring", description: "let [a, b] = arr | let { name, age } = obj" },
+      { label: "Spread / Rest", description: "Spread: [...arr] { ...obj} | Rest: let [first, ...rest] = arr" },
+    ]},
+  },
+};
+
+export default translations;

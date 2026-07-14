@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/components/LanguageProvider";
+import rawTranslations from "@/i18n/lessons/problem-solving/09-stack-queue";
 import LessonSection from "@/components/LessonSection";
 import LessonHeader from "@/components/LessonHeader";
 import LessonNavigation from "@/components/LessonNavigation";
@@ -7,8 +9,22 @@ import CheatSheet from "@/components/CheatSheet";
 import ProblemCard from "@/components/ProblemCard";
 import { getLessonBySlug } from "@/data/curriculum";
 
+function renderContent(item) {
+  if (item.type === "p") return <p dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "li") return <li dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "callout") return (
+    <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+      <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>💡 {item.title}:</p>
+      <p dangerouslySetInnerHTML={{ __html: item.text }} />
+    </div>
+  );
+  return null;
+}
+
 export default function StackQueue() {
+  const { lang } = useLanguage();
   const lesson = getLessonBySlug("problem-solving", "09-stack-queue");
+  const content = rawTranslations ? (rawTranslations[lang] || rawTranslations.en) : null;
 
   return (
     <div dir="rtl" className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -20,95 +36,13 @@ export default function StackQueue() {
           totalLessons={lesson.totalLessons}
         />
 
-        {/* ========================================== */}
-        {/* القسم الأول: ما هو Stack */}
-        {/* ========================================== */}
-        <LessonSection title="ما هو Stack (المكدس)؟">
-          <p>
-            <strong>Stack (المكدس)</strong> هو بنية بيانات تتبع مبدأ <strong>LIFO (Last In, First Out)</strong> — آخر عنصر يُضاف هو أول عنصر يُستخرج.
-          </p>
-
-          <div
-            className="p-4 rounded-xl my-4 border"
-            style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-          >
-            <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
-              💡 تشبيه:
-            </p>
-            <p>
-              تخيل رزمة أطباق — آخر طبق تضعه هو أول طبق تأخذه. المكدس يعمل بنفس الطريقة تماماً.
-            </p>
-          </div>
-
-          <p>
-            العمليات الأساسية على Stack:
-          </p>
-          <ul>
-            <li><strong>push(x):</strong> إضافة عنصر x إلى أعلى المكدس.</li>
-            <li><strong>pop():</strong> إزالة العنصر الموجود في أعلى المكدس وإعادته.</li>
-            <li><strong>top() / peek():</strong> الاطلاع على العنصر الأعلى دون إزالته.</li>
-            <li><strong>isEmpty():</strong> التحقق ما إذا كان المكدس فارغاً.</li>
-          </ul>
-
-          <p>
-            استخدامات Stack في البرمجة:
-          </p>
-          <ul>
-            <li>التحقق من توازن الأقواس (Balanced Parentheses).</li>
-            <li>تنفيذ الدوال بشكل متداخل (Function Call Stack).</li>
-            <li>البحث في العمق (DFS).</li>
-            <li>تحريك التاريخ (Undo/Redo).</li>
-          </ul>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الثاني: ما هو Queue */}
-        {/* ========================================== */}
-        <LessonSection title="ما هو Queue (الطابور)؟">
-          <p>
-            <strong>Queue (الطابور)</strong> هو بنية بيانات تتبع مبدأ <strong>FIFO (First In, First Out)</strong> — أول عنصر يُضاف هو أول عنصر يُستخرج.
-          </p>
-
-          <div
-            className="p-4 rounded-xl my-4 border"
-            style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-          >
-            <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
-              💡 تشبيه:
-            </p>
-            <p>
-              تخيل طابور في صندوق البنك — أول شخص وصل هو أول شخص يُخدم. الطابور يعمل بنفس الطريقة.
-            </p>
-          </div>
-
-          <p>
-            العمليات الأساسية على Queue:
-          </p>
-          <ul>
-            <li><strong>enqueue(x):</strong> إضافة عنصر x إلى نهاية الطابور.</li>
-            <li><strong>dequeue():</strong> إزالة العنصر الموجود في مقدمة الطابور وإعادته.</li>
-            <li><strong>front():</strong> الاطلاع على العنصر الأمامي دون إزالته.</li>
-            <li><strong>isEmpty():</strong> التحقق ما إذا كان الطابور فارغاً.</li>
-          </ul>
-
-          <p>
-            استخدامات Queue في البرمجة:
-          </p>
-          <ul>
-            <li>البحث في العرض (BFS).</li>
-            <li>معالجة المهام بالترتيب (Task Scheduling).</li>
-            <li>طباعة المهام (Printer Queue).</li>
-            <li>التعامل مع الأحداث بالترتيب (Event Processing).</li>
-          </ul>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الثالث: مشاكل Stack */}
-        {/* ========================================== */}
+        {content && content.sections.map((section, i) => (
+          <LessonSection key={i} title={section.title}>
+            {section.content.map((item, j) => <div key={j}>{renderContent(item)}</div>)}
+          </LessonSection>
+        ))}
 
         <LessonSection title="مشاكل تطبيقية">
-
-          {/* المشكلة 1: Valid Parentheses */}
           <ProblemCard
             id={1}
             title="Valid Parentheses"
@@ -151,13 +85,12 @@ export default function StackQueue() {
             solutionApproach="الحل باستخدام Stack: نمر على كل حرف في النص. إذا كان قوساً مفتوحاً نضعه في Stack. إذا كان قوساً مغلقاً نتحقق أن أعلى عنصر في Stack هو المقابل له، ثم نزيله. في النهاية، إذا كان Stack فارغاً فالنص متوازن."
           />
 
-          {/* المشكلة 2: Min Stack */}
           <ProblemCard
             id={2}
             title="Min Stack"
             difficulty="easy"
             category="Stack"
-            description="صمم مكدساً (Stack) يدعم العمليات الأساسية的所有 (push, pop, top) وعملية إضافية هي getMin() لإرجاع أقل عنصر في المكدس. يجب أن تكون العمليات الثلاث الأساسية جميعها بأقل تعقيد ممكن O(1)."
+            description="صمم مكدساً (Stack) يدعم العمليات الأساسية (push, pop, top) وعملية إضافية هي getMin() لإرجاع أقل عنصر في المكدس. يجب أن تكون العمليات الثلاث الأساسية جميعها بأقل تعقيد ممكن O(1)."
             examples={[
               { input: "MinStack stack = new MinStack();\nstack.push(-2);\nstack.push(0);\nstack.push(-3);\nstack.getMin();", output: "-3" },
               { input: "stack.pop();\nstack.top();", output: "0" },
@@ -200,7 +133,6 @@ export default function StackQueue() {
             solutionApproach="الحل باستخدام Stack مزدوج: Stack أساسي لتخزين العناصر، وStack مساعد (minStack) لتخزين أقل عنصر في كل مرحلة. عند الإضافة، نضيف للـ minStack فقط إذا كان العنصر أقل من أو يساوي الأدنى الحالي. هذا يضمن أن getMin() دائماً O(1)."
           />
 
-          {/* المشكلة 3: Implement Queue using Stacks */}
           <ProblemCard
             id={3}
             title="Implement Queue using Stacks"
@@ -248,20 +180,19 @@ export default function StackQueue() {
             solutionApproach="الحل باستخدام Stack مزدوج: Stack للإدخال وآخر للإخراج. عند الطلب، إذا كان Stack الإخراج فارغاً ننقل جميع العناصر من Stack الإدخال إليه. كل عنصر يُنقل مرة واحدة فقط على الأكثر، مما يعطي amortized O(1) لكل عملية."
           />
 
-          {/* المشكلة 4: Daily Temperatures */}
           <ProblemCard
             id={4}
             title="Daily Temperatures"
             difficulty="medium"
             category="Stack"
-            description="أ given an array of integers temperatures represents the daily temperatures, return an array answer such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature. If there is no future day for which this is possible, keep answer[i] == 0 instead."
+            description="معطى مصفوفة من درجات الحرارة اليومية، أرجع مصفوفة حيث answer[i] هو عدد الأيام التي يجب الانتظار للحصول على درجة حرارة أعلى. إذا لم تكن هناك يوم أبعد لهذا، أبقِ answer[i] == 0."
             examples={[
               { input: "temperatures = [73,74,75,71,69,72,76,73]", output: "[1,1,4,2,1,1,0,0]" },
               { input: "temperatures = [30,40,50,60]", output: "[1,1,1,0]" },
               { input: "temperatures = [30,60,90]", output: "[1,1,0]" },
             ]}
             hints={[
-              "استخدم Stack لتخزين الفهارس (indices) لدرجات الحرارة التي لم تجد لها يوماً أدفأ بعد.",
+              "استخدم Stack لتخزين الفهارس لدرجات الحرارة التي لم تجد لها يوماً أدفأ بعد.",
               "عندما تجد درجة حرارة أعلى من درجة الحرارة في أعلى Stack، حساب الفرق في الفهارس.",
               "المصفوفة الناتجة تحتوي على عدد الأيام التي يجب الانتظار للحصول على حرارة أعلى.",
             ]}
@@ -283,7 +214,6 @@ export default function StackQueue() {
             solutionApproach="الحل باستخدام Monotonic Stack: نمر على كل درجة حرارة. إذا كانت أعلى من درجة الحرارة في أعلى Stack، نحسب الفرق في الفهارس ونزيل العناصر من Stack. Stack يبقى متوازياً تصاعدياً لدرجات الحرارة."
           />
 
-          {/* المشكلة 5: Generate Parentheses */}
           <ProblemCard
             id={5}
             title="Generate Parentheses"
@@ -322,7 +252,6 @@ export default function StackQueue() {
             solutionApproach="الحل باستخدام Backtracking مع Stack: نبني النص حرفاً حرفاً. يمكننا إضافة قوس مفتوح فقط إذا كان عدد المفتوحة أقل من n، وإضافة قوس مغلق فقط إذا كان عدد المغلقة أقل من المفتوحة. هذا يضمن أن جميع التركيبات المولدة صحيحة ومتوازنة."
           />
 
-          {/* المشكلة 6: Evaluate Reverse Polish Notation */}
           <ProblemCard
             id={6}
             title="Evaluate Reverse Polish Notation"
@@ -362,7 +291,6 @@ export default function StackQueue() {
             solutionApproach="الحل باستخدام Stack: نمر على كل رمز. إذا كان رقماً نضعه في Stack. إذا كان رمز عمليات نأخذ آخر رقمين من Stack ونقوم بالعملية ثم نضع النتيجة في Stack. في النهاية، النتيجة هي العنصر الوحيد المتبقى في Stack."
           />
 
-          {/* المشكلة 7: Decode String */}
           <ProblemCard
             id={7}
             title="Decode String"
@@ -407,13 +335,12 @@ export default function StackQueue() {
             solutionApproach="الحل باستخدام Stack مزدوج: Stack للأعداد وآخر للنصوص. عند '[' نحفظ العدد والنص الحالي ونبدأ نصاً جديداً. عند ']' ن取出 العدد والنص المحفوظ ونكرر النص الحالي بعدد المرات ثم ندمجه مع النص السابق."
           />
 
-          {/* المشكلة 8: Largest Rectangle in Histogram */}
           <ProblemCard
             id={8}
             title="Largest Rectangle in Histogram"
             difficulty="hard"
             category="Stack"
-            description="أ given an array of integers heights representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram."
+            description="معطى مصفوفة تمثل ارتفاعات أعمدة في رسم بياني شريطي، أرجع مساحة أكبر مستطيل في الرسم البياني."
             examples={[
               { input: "heights = [2,1,5,6,2,3]", output: "10" },
               { input: "heights = [2,4]", output: "4" },
@@ -441,12 +368,8 @@ export default function StackQueue() {
 }`}
             solutionApproach="الحل باستخدام Monotonic Stack: نضيف 0 في النهاية لضمان معالجة جميع العناصر. لكل عنصر، إذا كان أقل من أعلى Stack، نحسب المساحة للعمود الأعلى (الارتفاع * العرض). العرض هو الفرق بين الفهرس الحالي وفهرس العنصر السابق في Stack."
           />
-
         </LessonSection>
 
-        {/* ========================================== */}
-        {/* Cheat Sheet */}
-        {/* ========================================== */}
         <CheatSheet title="ملخص Stack & Queue">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -487,9 +410,6 @@ export default function StackQueue() {
           </div>
         </CheatSheet>
 
-        {/* ========================================== */}
-        {/* التنقل بين الدروس */}
-        {/* ========================================== */}
         <LessonNavigation
           prevLesson={lesson.prevLesson}
           prevStage={lesson.prevLessonStage}

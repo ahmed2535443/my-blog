@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/components/LanguageProvider";
+import rawTranslations from "@/i18n/lessons/problem-solving/05-recursion-backtracking";
 import LessonSection from "@/components/LessonSection";
 import LessonHeader from "@/components/LessonHeader";
 import LessonNavigation from "@/components/LessonNavigation";
@@ -7,8 +9,22 @@ import CheatSheet from "@/components/CheatSheet";
 import ProblemCard from "@/components/ProblemCard";
 import { getLessonBySlug } from "@/data/curriculum";
 
+function renderContent(item) {
+  if (item.type === "p") return <p dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "li") return <li dangerouslySetInnerHTML={{ __html: item.text }} />;
+  if (item.type === "callout") return (
+    <div className="p-4 rounded-xl my-4 border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+      <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>💡 {item.title}:</p>
+      <p dangerouslySetInnerHTML={{ __html: item.text }} />
+    </div>
+  );
+  return null;
+}
+
 export default function RecursionBacktracking() {
+  const { lang } = useLanguage();
   const lesson = getLessonBySlug("problem-solving", "05-recursion-backtracking");
+  const content = rawTranslations ? (rawTranslations[lang] || rawTranslations.en) : null;
 
   return (
     <div dir="rtl" className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -20,79 +36,14 @@ export default function RecursionBacktracking() {
           totalLessons={lesson.totalLessons}
         />
 
-        {/* ========================================== */}
-        {/* القسم الأول: ما هو الاستدعاء الذاتي */}
-        {/* ========================================== */}
-        <LessonSection title="ما هو الاستدعاء الذاتي (Recursion)؟">
-          <p>
-            <strong>الاستدعاء الذاتي (Recursion)</strong> هو تقنية برمجية حيث تستدعي الدالة نفسها لحل مشكلة أصغر.
-            كل استدعاء ذاتي يجب أن يحتوي على <strong>حالة أساسية (Base Case)</strong> توقف التكرار، و<strong>حالة عامة (Recursive Case)</strong>
-            تتقدم نحو الحالة الأساسية.
-          </p>
-
-          <div
-            className="p-4 rounded-xl my-4 border"
-            style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-          >
-            <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
-              💡 تشبيه:
-            </p>
-            <p>
-              تخيل أنك تنظر في مرآة أمام مرآة أخرى - الصورة تتكرر无穷但终有尽头.
-              الاستدعاء الذاتي يعمل بنفس الطريقة: الدالة تستدعي نفسها حتى تصل إلى شرط يوقفها.
-            </p>
-          </div>
-
-          <p>
-            كل دالة استدعاء ذاتي يجب أن تحتوي على عنصرَين أساسيَّين:
-          </p>
-          <ul>
-            <li><strong>الحالة الأساسية (Base Case):</strong> الشرط الذي يتوقف عنده الاستدعاء الذاتي ويعيد قيمة مباشرة.</li>
-            <li><strong>الحالة العامة (Recursive Case):</strong> الجزء الذي يستدعي الدالة نفسها مع مدخلات أصغر.</li>
-          </ul>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الثاني: ما هو Backtracking */}
-        {/* ========================================== */}
-        <LessonSection title="ما هو Backtracking (العودة الخلفية)؟">
-          <p>
-            <strong>Backtracking</strong> هو خوارزمية تستخدم الاستدعاء الذاتي لاستكشاف جميع الحلول الممكنة لمشكلة ما.
-            تعمل بمنطق "الجرب والخطأ": تقوم باختيار حل جزئي، ثم تتقدم، وإذا وجدت أن هذا المسار لا يؤدي إلى حل صحيح، <strong>تعود خطوة للخلف</strong>
-            وتجرب مساراً مختلفاً.
-          </p>
-
-          <p>
-            Backtracking هي خوارزمية شائعة جداً لحل مشاكل مثل:
-          </p>
-          <ul>
-            <li>مسألة N-Queens</li>
-            <li>ملء Sudoku</li>
-            <li>البحث في Words</li>
-            <li>إيجاد جميع التركيبات والمجموعات</li>
-          </ul>
-
-          <div
-            className="p-4 rounded-xl my-4 border"
-            style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-          >
-            <p className="font-bold mb-2" style={{ color: "var(--accent)" }}>
-              ✅ الفرق بين Recursion و Backtracking:
-            </p>
-            <p>
-              كل Backtracking يستخدم Recursion، لكن ليس كل Recursion هو Backtracking.
-              الـ Backtracking هو نوع خاص من الاستدعاء الذاتي يركز على استكشاف جميع الحلول الممكنة والعودة عند الفشل.
-            </p>
-          </div>
-        </LessonSection>
-
-        {/* ========================================== */}
-        {/* القسم الثالث: المشاكل */}
-        {/* ========================================== */}
+        {content && content.sections.map((section, i) => (
+          <LessonSection key={i} title={section.title}>
+            {section.content.map((item, j) => <div key={j}>{renderContent(item)}</div>)}
+          </LessonSection>
+        ))}
 
         <LessonSection title="مشاكل تطبيقية">
 
-          {/* المشكلة 1: Fibonacci */}
           <ProblemCard
             id={1}
             title="Fibonacci"
@@ -128,7 +79,6 @@ export default function RecursionBacktracking() {
             solutionApproach="الحل: استخدام Memoization لتخزين القيم المحسوبة مسبقاً وتجنب إعادة الحساب. Base Case: n <= 1 → return n. Recursive Case: fib(n) = fib(n-1) + fib(n-2)."
           />
 
-          {/* المشكلة 2: Power of Two */}
           <ProblemCard
             id={2}
             title="Power of Two"
@@ -155,7 +105,6 @@ export default function RecursionBacktracking() {
             solutionApproach="الحل بالاستدعاء الذاتي: Base Case: n === 1 → true, n <= 0 → false, n % 2 !== 0 → false. Recursive Case: isPowerOfTwo(n / 2)."
           />
 
-          {/* المشكلة 3: Subsets */}
           <ProblemCard
             id={3}
             title="Subset"
@@ -190,7 +139,6 @@ export default function RecursionBacktracking() {
             solutionApproach="الحل باستخدام Backtracking: نبدأ من كل عنصر ونستكشف إضافته مع جميع العناصر التي تليه. في كل خطوة نضيف المجموعة الحالية للنتيجة ثم نكمل."
           />
 
-          {/* المشكلة 4: Permutations */}
           <ProblemCard
             id={4}
             title="Permutations"
@@ -228,7 +176,6 @@ export default function RecursionBacktracking() {
             solutionApproach="الحل باستخدام Backtracking: في كل خطوة نختار عنصراً من العناصر المتبقية ونضيفه للترتيب الحالي، ثم نكمل مع باقي العناصر."
           />
 
-          {/* المشكلة 5: Combination Sum */}
           <ProblemCard
             id={5}
             title="Combinations Sum"
@@ -267,7 +214,6 @@ export default function RecursionBacktracking() {
             solutionApproach="الحل باستخدام Backtracking: نبدأ من كل عنصر ونضيفه للمجموعة الحالية، ثم نتحقق إذا كان المجموع يساوي target أو أكبر منه. يمكننا استخدام نفس العنصر عدة مرات."
           />
 
-          {/* المشكلة 6: N-Queens */}
           <ProblemCard
             id={6}
             title="N-Queens"
@@ -317,7 +263,6 @@ export default function RecursionBacktracking() {
             solutionApproach="الحل باستخدام Backtracking: نضع ملكة صف تلو الآخر. في كل صف نجرب وضع الملكة في كل عمود ونتحقق أنها لا تهاجم أي ملكة في صفوف سابقة."
           />
 
-          {/* المشكلة 7: Sudoku Solver */}
           <ProblemCard
             id={7}
             title="Sudoku Solver"
@@ -369,13 +314,12 @@ export default function RecursionBacktracking() {
             solutionApproach="الحل باستخدام Backtracking: نبحث عن خلية فارغة، نجرب الأرقام من 1 إلى 9، نتحقق من صحتها في السطر والعمود والمربع 3×3، ثم نكمل الحل. إذا فشلنا نعود للخلف."
           />
 
-          {/* المشكلة 8: Word Search */}
           <ProblemCard
             id={8}
             title="Word Search"
             difficulty="hard"
             category="Backtracking"
-            description="أgiven a 2D grid of characters and a word, determine if the word exists in the grid. The word can be constructed from letters of sequentially adjacent cells (horizontally or vertically). The same cell may not be used more than once."
+            description="معطى شبكة من الأحرف وكلمة، حدد ما إذا كانت الكلمة موجودة في الشبكة. يمكن بناء الكلمة من أحرف خلايا متتالية أفقياً أو عمودياً. لا يمكن استخدام نفس الخلية أكثر من مرة."
             examples={[
               { input: "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCCED\"", output: "true" },
               { input: "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"SEE\"", output: "true" },
@@ -415,13 +359,12 @@ export default function RecursionBacktracking() {
             solutionApproach="الحل باستخدام Backtracking: نبحث عن الحرف الأول في اللوحة، ثم نتبع المسار في كل الاتجاهات الأربعة، ونتأكد من عدم تكرار نفس الخلية."
           />
 
-          {/* المشكلة 9: Palindrome Partitioning */}
           <ProblemCard
             id={9}
             title="Palindrome Partitioning"
             difficulty="hard"
             category="Backtracking"
-            description="أgiven a string s, partition s such that every substring of the partition is a palindrome. Return all possible palindrome partitioning of s."
+            description="معطى سلسلة s، قسّم s بحيث كل جزء فرعي من التقسيم يكون palindrome. أرجع جميع التقسيمات الممكنة لـ s."
             examples={[
               { input: "s = \"aab\"", output: "[[\"a\",\"a\",\"b\"],[\"aa\",\"b\"]]" },
               { input: "s = \"a\"", output: "[[\"a\"]]" },
@@ -466,13 +409,12 @@ export default function RecursionBacktracking() {
             solutionApproach="الحل باستخدام Backtracking: نقسم النص عند كل موضع ونتحقق إذا كان الجزء Palindrome. إذا كان كذلك نتابع التقسيم مع باقي النص."
           />
 
-          {/* المشكلة 10: Letter Combinations of a Phone Number */}
           <ProblemCard
             id={10}
             title="Letter Combinations of a Phone Number"
             difficulty="hard"
             category="Backtracking"
-            description="أgiven a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent (like phone keypad mappings)."
+            description="معطى سلسلة تحتوي على أرقام من 2-9، أرجع جميع تركيبات الأحرف الممكنة التي يمكن تمثيلها بالأرقام (مثل تخطيط لوحة المفاتيح)."
             examples={[
               { input: "digits = \"23\"", output: "[\"ad\",\"ae\",\"af\",\"bd\",\"be\",\"bf\",\"cd\",\"ce\",\"cf\"]" },
               { input: "digits = \"\"", output: "[]" },
@@ -508,14 +450,11 @@ export default function RecursionBacktracking() {
   backtrack(0, '');
   return result;
 }`}
-            solutionApproach="الحل باستخدام Backtracking: نخزن أحرف كل رقم في خريطة، ثم نستكشف جميع التركيبات الممكنة ب appending حرف لكل رقم تدريجياً."
+            solutionApproach="الحل باستخدام Backtracking: نخزن أحرف كل رقم في خريطة، ثم نستكشف جميع التركيبات الممكنة بـ appending حرف لكل رقم تدريجياً."
           />
 
         </LessonSection>
 
-        {/* ========================================== */}
-        {/* Cheat Sheet */}
-        {/* ========================================== */}
         <CheatSheet title="ملخص Recursion & Backtracking">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -556,9 +495,6 @@ export default function RecursionBacktracking() {
           </div>
         </CheatSheet>
 
-        {/* ========================================== */}
-        {/* التنقل بين الدروس */}
-        {/* ========================================== */}
         <LessonNavigation
           prevLesson={lesson.prevLesson}
           prevStage={lesson.prevLessonStage}

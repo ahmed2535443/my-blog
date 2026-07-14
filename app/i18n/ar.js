@@ -45,14 +45,23 @@ const ar = {
     subtitle: "{stages} مراحل تعليمية • {lessons} درس • من الصفر إلى الاحتراف",
     lessons: "درس",
   },
-  // Stage pages
+  // Breadcrumbs & Stage pages
+  breadcrumbs: {
+    home: "الرئيسية",
+    curriculum: "المنهج",
+  },
   stage: {
     backToRoadmap: "العودة لخريطة التعلم",
+    notFound: "المرحلة غير موجودة",
     duration: "مدة",
     minute: "دقيقة",
     minutes: "دقائق",
     hour: "ساعة",
     hours: "ساعات",
+    lesson: "الدرس",
+    of: "/",
+    info: "💡 هذا المنهج مُحدَّث لـ 2025-2026 مع أحدث الممارسات والتقنيات",
+    infoReact: "💡 هذا المنهج مُعدَّل للعمل مع Next.js 16 و React 19",
   },
   // Components
   components: {
