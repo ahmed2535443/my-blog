@@ -11,122 +11,170 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { ar: [1, 1, 1], en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
+const correctAnswers = { ar: [1, 1, 0], en: [1, 1, 0], fr: [1, 1, 0], de: [1, 1, 0] };
 
 const challengeCode = `# الخطوة 1: إنشاء مشروع Next.js جديد
-npx create-next-app@latest my-clerk-project
-# اختر: JavaScript, App Router, src directory: No
+npx create-next-app@latest my-app --yes
 
 # الخطوة 2: تثبيت Clerk
-cd my-clerk-project
+cd my-app
 npm install @clerk/nextjs
 
-# الخطوة 3: إنشاء ملف .env.local وأضف مفاتيح Clerk
-# NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
-# CLERK_SECRET_KEY=sk_test_...
+# الخطوة 3: إنشاء ملف .env.local
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxx
+CLERK_SECRET_KEY=sk_test_xxx
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/
+NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/
 
-# الخطوة 4: أضف ClerkProvider إلى app/layout.js
+# الخطوة 4: إنشاء middleware.ts في جذر المشروع
 
-# الخطوة 5: أنشئ ملف proxy.ts لإعداد الوسيط
+# الخطوة 5: إضافة ClerkProvider في app/layout.js
 
-# الخطوة 6: أنشئ مسار تسجيل الدخول
+# الخطوة 6: إنشاء صفحة Sign-In
 # app/sign-in/[[...sign-in]]/page.js
 
-# الخطوة 7: أنشئ مسار إنشاء حساب
+# الخطوة 7: إنشاء صفحة Sign-Up
 # app/sign-up/[[...sign-up]]/page.js
 
-# الخطوة 8: شغّل المشروع
+# الخطوة 8: إنشاء صفحة Dashboard محمية
+# app/dashboard/page.js
+
+# الخطوة 9: تعديل الصفحة الرئيسية
+# app/page.js مع SignedIn و SignedOut
+
+# شغّل المشروع
 npm run dev`;
 
 const cheatSheetData = {
   ar: {
-    title: "ملخص مراجعة إعداد Clerk",
+    title: "ملخص إعداد Clerk الشامل",
     columns: [
       {
-        heading: "خطوات التثبيت:",
+        heading: "الخطوات:",
         items: [
-          '<code className="inline-code">npm install @clerk/nextjs</code> - تثبيت حزمة Clerk',
-          '<code className="inline-code">.env.local</code> - إضافة المفاتيح العامة والسرية',
-          '<code className="inline-code">ClerkProvider</code> - لف التطبيق في layout.js',
-          '<code className="inline-code">proxy.ts</code> - وسيط لحماية المسارات',
-          '<code className="inline-code">sign-in/[[...sign-in]]</code> - مسار تسجيل الدخول',
-          '<code className="inline-code">sign-up/[[...sign-up]]</code> - مسار التسجيل',
+          "1. npx create-next-app@latest my-app --yes",
+          "2. npm install @clerk/nextjs",
+          "3. إنشاء .env.local بمفاتيح Clerk",
+          "4. إنشاء middleware.ts لحماية المسارات",
+          "5. إضافة ClerkProvider في layout.js",
+          "6. إنشاء صفحة Sign-In",
+          "7. إنشاء صفحة Sign-Up",
+          "8. إنشاء Dashboard محمي",
+          "9. تعديل الصفحة الرئيسية مع SignedIn/SignedOut",
         ],
       },
       {
-        heading: "الأوامر الرئيسية:",
+        heading: "الكود الأساسي:",
+        code: '// .env.local\nNEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxx\nCLERK_SECRET_KEY=sk_test_xxx\n\n// middleware.ts\nimport { clerkMiddleware, createRouteMatcher } from \'@clerk/nextjs/server\';\nconst isPublicRoute = createRouteMatcher([\'/\']);\nexport default clerkMiddleware(async (auth, req) => {\n  if (!isPublicRoute(req)) await auth.protect();\n});',
+        codeLanguage: "typescript",
+      },
+      {
+        heading: "الصفحات:",
         items: [
-          '<code className="inline-code">clerk init</code> - الإعداد الأولي للمشروع',
-          '<code className="inline-code">clerk doctor</code> - تشخيص مشاكل الإعداد',
-          '<code className="inline-code">clerk env pull</code> - سحب متغيرات البيئة من لوحة التحكم',
+          "sign-in/[[...sign-in]]/page.js → <SignIn />",
+          "sign-up/[[...sign-up]]/page.js → <SignUp />",
+          "dashboard/page.js → auth() + currentUser()",
+          "page.js → <SignedIn> + <SignedOut>",
         ],
       },
     ],
   },
   en: {
-    title: "Clerk Setup Checklist",
+    title: "Complete Clerk Setup Cheat Sheet",
     columns: [
       {
-        heading: "Installation Steps:",
+        heading: "Steps:",
         items: [
-          '<code className="inline-code">npm install @clerk/nextjs</code> - Install Clerk package',
-          '<code className="inline-code">.env.local</code> - Add publishable and secret keys',
-          '<code className="inline-code">ClerkProvider</code> - Wrap app in layout.js',
-          '<code className="inline-code">proxy.ts</code> - Middleware for route protection',
-          '<code className="inline-code">sign-in/[[...sign-in]]</code> - Sign-in route',
-          '<code className="inline-code">sign-up/[[...sign-up]]</code> - Sign-up route',
+          "1. npx create-next-app@latest my-app --yes",
+          "2. npm install @clerk/nextjs",
+          "3. Create .env.local with Clerk keys",
+          "4. Create middleware.ts for route protection",
+          "5. Add ClerkProvider to layout.js",
+          "6. Create Sign-In page",
+          "7. Create Sign-Up page",
+          "8. Create protected Dashboard",
+          "9. Modify home page with SignedIn/SignedOut",
         ],
       },
       {
-        heading: "Key Commands:",
+        heading: "Basic Code:",
+        code: '// .env.local\nNEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxx\nCLERK_SECRET_KEY=sk_test_xxx\n\n// middleware.ts\nimport { clerkMiddleware, createRouteMatcher } from \'@clerk/nextjs/server\';\nconst isPublicRoute = createRouteMatcher([\'/\']);\nexport default clerkMiddleware(async (auth, req) => {\n  if (!isPublicRoute(req)) await auth.protect();\n});',
+        codeLanguage: "typescript",
+      },
+      {
+        heading: "Pages:",
         items: [
-          '<code className="inline-code">clerk init</code> - Initial project setup',
-          '<code className="inline-code">clerk doctor</code> - Diagnose setup issues',
-          '<code className="inline-code">clerk env pull</code> - Pull env vars from dashboard',
+          "sign-in/[[...sign-in]]/page.js → <SignIn />",
+          "sign-up/[[...sign-up]]/page.js → <SignUp />",
+          "dashboard/page.js → auth() + currentUser()",
+          "page.js → <SignedIn> + <SignedOut>",
         ],
       },
     ],
   },
   fr: {
-    title: "Clerk Configuration Fiche mémo",
+    title: "Configuration complète Clerk",
     columns: [
       {
-        heading: "Étapes d'installation:",
+        heading: "Étapes:",
         items: [
-          '<code className="inline-code">npm install @clerk/nextjs</code> - Installer le package Clerk',
-          '<code className="inline-code">.env.local</code> - Ajouter les clés',
-          '<code className="inline-code">ClerkProvider</code> - Envelopper l\'app dans layout.js',
-          '<code className="inline-code">proxy.ts</code> - Middleware pour la protection des routes',
-          '<code className="inline-code">sign-in/[[...sign-in]]</code> - Route de connexion',
+          "1. npx create-next-app@latest my-app --yes",
+          "2. npm install @clerk/nextjs",
+          "3. Créer .env.local avec les clés Clerk",
+          "4. Créer middleware.ts pour la protection",
+          "5. Ajouter ClerkProvider dans layout.js",
+          "6. Créer la page Sign-In",
+          "7. Créer la page Sign-Up",
+          "8. Créer un Dashboard protégé",
+          "9. Modifier la page d'accueil avec SignedIn/SignedOut",
         ],
       },
       {
-        heading: "Commandes clés:",
+        heading: "Code de base:",
+        code: '// .env.local\nNEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxx\nCLERK_SECRET_KEY=sk_test_xxx',
+        codeLanguage: "bash",
+      },
+      {
+        heading: "Pages:",
         items: [
-          '<code className="inline-code">clerk init</code> - Configuration initiale',
-          '<code className="inline-code">clerk doctor</code> - Diagnostiquer les problèmes',
+          "sign-in/[[...sign-in]]/page.js → <SignIn />",
+          "sign-up/[[...sign-up]]/page.js → <SignUp />",
+          "dashboard/page.js → auth() + currentUser()",
+          "page.js → <SignedIn> + <SignedOut>",
         ],
       },
     ],
   },
   de: {
-    title: "Clerk Einrichtung Spickzettel",
+    title: "Vollständige Clerk-Einrichtung",
     columns: [
       {
-        heading: "Installationsschritte:",
+        heading: "Schritte:",
         items: [
-          '<code className="inline-code">npm install @clerk/nextjs</code> - Clerk-Paket installieren',
-          '<code className="inline-code">.env.local</code> - Schlüssel hinzufügen',
-          '<code className="inline-code">ClerkProvider</code> - App in layout.js einbinden',
-          '<code className="inline-code">proxy.ts</code> - Middleware für Routenschutz',
-          '<code className="inline-code">sign-in/[[...sign-in]]</code> - Anmelderoute',
+          "1. npx create-next-app@latest my-app --yes",
+          "2. npm install @clerk/nextjs",
+          "3. .env.local mit Clerk-Schlüsseln erstellen",
+          "4. middleware.ts für Routenschutz erstellen",
+          "5. ClerkProvider in layout.js hinzufügen",
+          "6. Sign-In-Seite erstellen",
+          "7. Sign-Up-Seite erstellen",
+          "8. Geschütztes Dashboard erstellen",
+          "9. Startseite mit SignedIn/SignedOut anpassen",
         ],
       },
       {
-        heading: "Wichtige Befehle:",
+        heading: "Grundcode:",
+        code: '// .env.local\nNEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxx\nCLERK_SECRET_KEY=sk_test_xxx',
+        codeLanguage: "bash",
+      },
+      {
+        heading: "Seiten:",
         items: [
-          '<code className="inline-code">clerk init</code> - Ersteinrichtung',
-          '<code className="inline-code">clerk doctor</code> - Probleme diagnostizieren',
+          "sign-in/[[...sign-in]]/page.js → <SignIn />",
+          "sign-up/[[...sign-up]]/page.js → <SignUp />",
+          "dashboard/page.js → auth() + currentUser()",
+          "page.js → <SignedIn> + <SignedOut>",
         ],
       },
     ],
