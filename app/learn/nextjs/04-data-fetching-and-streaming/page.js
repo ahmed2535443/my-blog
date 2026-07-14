@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2, 2, 2, 1], fr: [1, 2, 2, 2, 1], de: [1, 2, 2, 2, 1] };
+const correctAnswers = { en: [1, 2, 2, 2, 1], fr: [1, 2, 2, 2, 1], de: [1, 2, 2, 2, 1], ar: [1, 2, 2, 2, 1] };
 
 const challengeCode = `// الحل الكامل
 
@@ -336,6 +336,76 @@ export default function Loading() {
   return <p>Wird geladen...</p>;
 }
 // Wird automatisch für jede Seite in dashboard/ angezeigt`,
+        codeLanguage: "jsx",
+      },
+    ],
+  },
+  ar: {
+    title: "ملخص مراجعة جلب البيانات والبث",
+    columns: [
+      {
+        heading: "جلب البيانات في Server Component:",
+        code: `// بسيط: async/await مباشرة
+async function Page() {
+  const res = await fetch("/api/data");
+  const data = await res.json();
+  return <div>{data.name}</div>;
+}
+
+// مع التخزين المؤقت
+const res = await fetch("/api/data", {
+  next: { revalidate: 3600 }
+});
+
+// بدون تخزين مؤقت
+const res = await fetch("/api/data", {
+  cache: "no-store"
+});
+
+// مع الوسوم
+const res = await fetch("/api/data", {
+  next: { tags: ["data"] }
+});`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "الجلب المتوازي:",
+        code: `// Promise.all - يفشل إذا فشل أحدهما
+const [a, b] = await Promise.all([
+  fetch("/api/a"),
+  fetch("/api/b"),
+]);
+
+// Promise.allSettled - أكثر أماناً
+const results = await Promise.allSettled([
+  fetch("/api/a"),
+  fetch("/api/b"),
+]);`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "البث باستخدام Suspense:",
+        code: `import { Suspense } from "react";
+
+async function Page() {
+  return (
+    <div>
+      <FastComponent />
+      <Suspense fallback={<Loading />}>
+        <SlowComponent />
+      </Suspense>
+    </div>
+  );
+}`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "loading.js:",
+        code: `// app/dashboard/loading.js
+export default function Loading() {
+  return <p>جاري التحميل...</p>;
+}
+// يعرض تلقائياً لكل صفحة في dashboard/`,
         codeLanguage: "jsx",
       },
     ],

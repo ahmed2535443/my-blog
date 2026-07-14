@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1, 1, 2], fr: [1, 1, 1, 1, 2], de: [1, 1, 1, 1, 2] };
+const correctAnswers = { en: [1, 1, 1, 1, 2], fr: [1, 1, 1, 1, 2], de: [1, 1, 1, 1, 2], ar: [1, 1, 1, 1, 2] };
 
 const challengeCode = `// نموذج error.js رئيسي
 "use client";
@@ -313,6 +313,92 @@ export default function GlobalError({ error, reset }) {
       <body>
         <h2>Globaler Fehler</h2>
         <button onClick={reset}>Neu laden</button>
+      </body>
+    </html>
+  );
+}`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "notFound() & redirect():",
+        code: `import { notFound } from "next/navigation";
+
+export default async function Page({ params }) {
+  const data = await fetchData(params.id);
+  if (!data) notFound();
+  return <div>{data.title}</div>;
+}
+
+import { redirect } from "next/navigation";
+
+async function getData() {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Failed");
+    return res.json();
+  } catch {
+    redirect("/error");
+  }
+}`,
+        codeLanguage: "jsx",
+      },
+    ],
+  },
+  ar: {
+    title: "ملخص مراجعة معالجة الأخطاء",
+    columns: [
+      {
+        heading: "error.js",
+        items: [
+          "يلتقط الأخطاء في أجزاء المسارات المتداخلة",
+          "يجب أن يكون مكون عميل",
+          "يتلقى خصائص error و reset",
+        ],
+        code: `"use client";
+
+export default function Error({ error, reset }) {
+  return (
+    <div>
+      <h2>خطأ!</h2>
+      <p>{error.message}</p>
+      <button onClick={reset}>إعادة المحاولة</button>
+    </div>
+  );
+}`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "not-found.js",
+        items: [
+          "صفحة 404 مخصصة",
+          "تُشغّل بدالة notFound()",
+        ],
+        code: `import Link from "next/link";
+
+export default function NotFound() {
+  return (
+    <div>
+      <h2>404 - الصفحة غير موجودة</h2>
+      <Link href="/">العودة للرئيسية</Link>
+    </div>
+  );
+}`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "global-error.js",
+        items: [
+          "يلتقط أخطاء التخطيط الجذري",
+          "يجب أن يحتوي على وسوم html و body",
+        ],
+        code: `"use client";
+
+export default function GlobalError({ error, reset }) {
+  return (
+    <html lang="ar">
+      <body>
+        <h2>خطأ عام</h2>
+        <button onClick={reset}>إعادة التحميل</button>
       </body>
     </html>
   );

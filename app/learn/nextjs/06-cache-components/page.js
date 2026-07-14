@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1, 1, 1], fr: [1, 1, 1, 1, 1], de: [1, 1, 1, 1, 1] };
+const correctAnswers = { en: [1, 1, 1, 1, 1], fr: [1, 1, 1, 1, 1], de: [1, 1, 1, 1, 1], ar: [1, 1, 1, 1, 1] };
 
 const challengeCode = `// الحل الكامل
 
@@ -249,6 +249,56 @@ async function Page() {
       },
       {
         heading: "Invalidierung:",
+        code: `import { revalidateTag, updateTag }
+  from "next/cache";
+
+revalidateTag("products");
+updateTag("products");`,
+        codeLanguage: "jsx",
+      },
+    ],
+  },
+  ar: {
+    title: "ملخص مراجعة Cache Components",
+    columns: [
+      {
+        heading: 'تعليمة "use cache":',
+        code: `// تخزين مؤقت على مستوى الدالة
+async function getProducts() {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("products");
+  return await db.products.findMany();
+}
+
+// تخزين مؤقت على مستوى الملف
+"use cache";
+async function Page() {
+  const data = await fetchData();
+  return <div>{data}</div>;
+}`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "أنماط cacheLife:",
+        items: [
+          '<code className="inline-code">"seconds"</code> - 30 ثانية (بيانات مباشرة)',
+          '<code className="inline-code">"minutes"</code> - 5 دقائق (بيانات عادية)',
+          '<code className="inline-code">"hours"</code> - ساعة واحدة (شبه ثابتة)',
+          '<code className="inline-code">"days"</code> - يوم واحد (بيانات ثابتة)',
+          '<code className="inline-code">"max"</code> - 30 يوماً (ثابتة جداً)',
+        ],
+      },
+      {
+        heading: "أنواع التخزين المؤقت:",
+        items: [
+          '<code className="inline-code">"use cache"</code> - في الذاكرة (الأسرع)',
+          '<code className="inline-code">"use cache: remote"</code> - خارجي (Redis)',
+          '<code className="inline-code">"use cache: private"</code> - لكل طلب (مخصص للمستخدم)',
+        ],
+      },
+      {
+        heading: "الإبطال:",
         code: `import { revalidateTag, updateTag }
   from "next/cache";
 

@@ -8,6 +8,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useLanguage } from "./LanguageProvider";
 
 function getInitialCompletedCount(stageId) {
   if (typeof window === "undefined") return 0;
@@ -21,6 +22,7 @@ function getInitialCompletedCount(stageId) {
 
 export default function StageCard({ stage, index }) {
   const [completedCount] = useState(() => getInitialCompletedCount(stage.id));
+  const { t } = useLanguage();
 
   const percentage = Math.round((completedCount / stage.lessons.length) * 100);
   const isCompleted = percentage === 100;
@@ -58,7 +60,7 @@ export default function StageCard({ stage, index }) {
             className="px-3 py-1 rounded-full text-xs font-bold"
             style={{ background: "var(--accent)", color: "var(--background)" }}
           >
-            مكتمل ✓
+            {t.stage.completed}
           </span>
         )}
         {isStarted && !isCompleted && (
@@ -66,7 +68,7 @@ export default function StageCard({ stage, index }) {
             className="px-3 py-1 rounded-full text-xs font-bold"
             style={{ background: "var(--primary)", color: "var(--background)" }}
           >
-            قيد التقدم
+            {t.stage.inProgress}
           </span>
         )}
       </div>
@@ -83,7 +85,7 @@ export default function StageCard({ stage, index }) {
 
       {/* عدد الدروس */}
       <p className="text-xs mb-3" style={{ color: "var(--muted)" }}>
-        {stage.lessons.length} درس
+        {stage.lessons.length} {t.stage.lessonsCount}
       </p>
 
       {/* شريط التقدم */}

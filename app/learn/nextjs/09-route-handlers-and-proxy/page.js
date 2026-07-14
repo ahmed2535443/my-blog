@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2, 1, 1, 2], fr: [1, 2, 1, 1, 2], de: [1, 2, 1, 1, 2] };
+const correctAnswers = { en: [1, 2, 1, 1, 2], fr: [1, 2, 1, 1, 2], de: [1, 2, 1, 1, 2], ar: [1, 2, 1, 1, 2] };
 
 const challengeCode = `// 1. ملف app/api/todos/route.js
 import { NextResponse } from "next/server";
@@ -236,6 +236,55 @@ export const config = {
       },
       {
         heading: "Proxy:",
+        code: `import { NextResponse } from "next/server";
+
+export function proxy(request) {
+  if (!request.cookies.get("token")) {
+    return NextResponse.redirect(
+      new URL("/login", request.url)
+    );
+  }
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: ["/dashboard/:path*"],
+};`,
+        codeLanguage: "jsx",
+      },
+    ],
+  },
+  ar: {
+    title: "ملخص مراجعة Route Handlers والـ Proxy",
+    columns: [
+      {
+        heading: "معالج GET:",
+        code: `export async function GET(request) {
+  const data = await fetchData();
+  return Response.json(data);
+}`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "معالج POST:",
+        code: `export async function POST(request) {
+  const body = await request.json();
+  const result = await createItem(body);
+  return Response.json(result, { status: 201 });
+}`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "معالج مسار ديناميكي:",
+        code: `export async function GET(request, { params }) {
+  const { id } = await params;
+  const item = await getItem(id);
+  return Response.json(item);
+}`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "الـ Proxy:",
         code: `import { NextResponse } from "next/server";
 
 export function proxy(request) {

@@ -58,6 +58,27 @@ const fr = {
     of: "/",
     info: "💡 Ce programme est mis à jour pour 2025-2026 avec les dernières pratiques et technologies",
     infoReact: "💡 Ce programme est adapté pour Next.js 16 et React 19",
+    completed: "Terminé ✓",
+    inProgress: "En cours",
+    lessonsCount: "leçons",
+  },
+  progress: {
+    completedOf: "{count} sur {total} leçons terminées",
+  },
+  problem: {
+    easy: "Facile",
+    medium: "Moyen",
+    hard: "Difficile",
+    examples: "Exemples :",
+    showHint: "Indice",
+    hideHint: "Masquer l'indice",
+    hint: "Indice :",
+    showSolution: "Voir la solution",
+    hideSolution: "Masquer la solution",
+  },
+  navigation: {
+    prevLesson: "Leçon précédente",
+    nextLesson: "Leçon suivante",
   },
   components: {
     quiz: {

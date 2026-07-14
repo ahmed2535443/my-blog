@@ -1,15 +1,11 @@
-// =====================================================
-// ملف: LessonNavigation.js
-// المكان: app/components/LessonNavigation.js
-// الوظيفة: مكون التنقل بين الدروس - زر الدرس السابق وال التالي
-// =====================================================
-
 import Link from "next/link";
+import { useLanguage } from "./LanguageProvider";
 
 export default function LessonNavigation({ prevLesson, prevStage, nextLesson, nextStage }) {
+  const { t } = useLanguage();
+
   return (
     <div className="flex justify-between items-center mt-12 pt-8 border-t" style={{ borderColor: "var(--border)" }}>
-      {/* زر الدرس السابق */}
       <div className="flex-1">
         {prevLesson ? (
           <Link
@@ -22,7 +18,7 @@ export default function LessonNavigation({ prevLesson, prevStage, nextLesson, ne
           >
             <span className="text-2xl">→</span>
             <div>
-              <p className="text-sm" style={{ color: "var(--muted)" }}>الدرس السابق</p>
+              <p className="text-sm" style={{ color: "var(--muted)" }}>{t.navigation.prevLesson}</p>
               <p className="font-bold" style={{ color: "var(--foreground)" }}>
                 {prevStage.icon} {prevLesson.title}
               </p>
@@ -33,7 +29,6 @@ export default function LessonNavigation({ prevLesson, prevStage, nextLesson, ne
         )}
       </div>
 
-      {/* زر الدرس التالي */}
       <div className="flex-1 flex justify-end">
         {nextLesson ? (
           <Link
@@ -45,7 +40,7 @@ export default function LessonNavigation({ prevLesson, prevStage, nextLesson, ne
             }}
           >
             <div className="text-left">
-              <p className="text-sm" style={{ color: "var(--muted)" }}>الدرس التالي</p>
+              <p className="text-sm" style={{ color: "var(--muted)" }}>{t.navigation.nextLesson}</p>
               <p className="font-bold" style={{ color: "var(--foreground)" }}>
                 {nextStage.icon} {nextLesson.title}
               </p>

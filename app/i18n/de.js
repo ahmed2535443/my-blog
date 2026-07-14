@@ -58,6 +58,27 @@ const de = {
     of: "/",
     info: "💡 Dieser Lehrplan ist für 2025-2026 mit den neuesten Praktiken und Technologien aktualisiert",
     infoReact: "💡 Dieser Lehrplan ist für Next.js 16 und React 19 angepasst",
+    completed: "Abgeschlossen ✓",
+    inProgress: "In Bearbeitung",
+    lessonsCount: "Lektionen",
+  },
+  progress: {
+    completedOf: "{count} von {total} Lektionen abgeschlossen",
+  },
+  problem: {
+    easy: "Einfach",
+    medium: "Mittel",
+    hard: "Schwer",
+    examples: "Beispiele:",
+    showHint: "Hinweis",
+    hideHint: "Hinweis verbergen",
+    hint: "Hinweis:",
+    showSolution: "Lösung zeigen",
+    hideSolution: "Lösung verbergen",
+  },
+  navigation: {
+    prevLesson: "Vorherige Lektion",
+    nextLesson: "Nächste Lektion",
   },
   components: {
     quiz: {

@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2, 1], fr: [1, 2, 1], de: [1, 2, 1] };
+const correctAnswers = { ar: [1, 2, 1], en: [1, 2, 1], fr: [1, 2, 1], de: [1, 2, 1] };
 
 const challengeCode = `// مثال بسيط: كيفية استخدام Clerk في مشروع Next.js
 // أولاً: استيراد المكونات من Clerk
@@ -31,6 +31,32 @@ export default async function DashboardPage() {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص مراجعة البدء مع Clerk",
+    columns: [
+      {
+        heading: "أساسيات Clerk:",
+        items: [
+          '<code className="inline-code">Clerk</code> - منصة مصادقة وإدارة مستخدمين كاملة',
+          '<code className="inline-code">@clerk/nextjs</code> - Clerk SDK لـ Next.js',
+          '<code className="inline-code">currentUser()</code> - دالة خادم لجلب بيانات المستخدم الكاملة',
+          '<code className="inline-code">auth()</code> - دالة خادم لجلب معلومات المصادقة',
+          '<code className="inline-code">useUser()</code> - خطاف عميل لبيانات المستخدم',
+          '<code className="inline-code">useAuth()</code> - خطاف عميل لمعلومات المصادقة',
+        ],
+      },
+      {
+        heading: "المكونات الرئيسية:",
+        items: [
+          '<code className="inline-code">{"<SignIn />"}</code> - مكون تسجيل الدخول',
+          '<code className="inline-code">{"<SignUp />"}</code> - مكون التسجيل',
+          '<code className="inline-code">{"<UserButton />"}</code> - صورة المستخدم والقائمة',
+          '<code className="inline-code">{"<UserProfile />"}</code> - صفحة إدارة الملف الشخصي',
+          '<code className="inline-code">{"<OrganizationSwitcher />"}</code> - محوّل المنظمات',
+        ],
+      },
+    ],
+  },
   en: {
     title: "Clerk Getting Started Cheat Sheet",
     columns: [

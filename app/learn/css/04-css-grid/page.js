@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1], fr: [1, 1], de: [1, 1] };
+const correctAnswers = { ar: [1, 1], en: [1, 1], fr: [1, 1], de: [1, 1] };
 
 const challengeCode = `.dashboard {
   display: grid;
@@ -33,6 +33,54 @@ const challengeCode = `.dashboard {
 /* أضف تنسيقات إضافية هنا */`;
 
 const cheatSheetData = {
+  ar: {
+    title: "مرجع: CSS Grid + Subgrid",
+    columns: [
+      {
+        heading: "حاوية Grid:",
+        items: [
+          '<code className="inline-code">display: grid</code> - تفعيل Grid',
+          '<code className="inline-code">grid-template-columns</code> - تحديد مسارات الأعمدة',
+          '<code className="inline-code">grid-template-rows</code> - تحديد مسارات الصفوف',
+          '<code className="inline-code">grid-template-areas</code> - مناطق التخطيط المسماة',
+          '<code className="inline-code">gap</code> - المسافة بين خلايا الشبكة',
+          '<code className="inline-code">grid-auto-flow</code> - row | column | dense',
+        ],
+      },
+      {
+        heading: "عناصر Grid:",
+        items: [
+          '<code className="inline-code">grid-column</code> - start / end | span N',
+          '<code className="inline-code">grid-row</code> - start / end | span N',
+          '<code className="inline-code">grid-area</code> - اسم | row-start / col-start',
+          '<code className="inline-code">justify-self</code> - محاذاة عنصر واحد أفقياً',
+          '<code className="inline-code">align-self</code> - محاذاة عنصر واحد عمودياً',
+        ],
+      },
+      {
+        heading: "أنماط شائعة:",
+        code: `/* بطاقات متجاوبة */
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+/* توسيط */
+display: grid; place-items: center;
+
+/* شريط جانبي + محتوى */
+grid-template-columns: 250px 1fr;`,
+        codeLanguage: "css",
+      },
+      {
+        heading: "Grid مقابل Flexbox:",
+        items: [
+          "صف أزرار -> Flexbox (1D)",
+          "شبكة بطاقات -> Grid (2D)",
+          "توسيط عنصر -> كلاهما يعمل",
+          "شريط التنقل -> Flexbox",
+          "لوحة تحكم بمناطق مسماة -> Grid",
+        ],
+      },
+    ],
+  },
   en: {
     title: "Reference Sheet: CSS Grid + Subgrid",
     columns: [

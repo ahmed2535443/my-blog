@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
+const correctAnswers = { ar: [1, 1, 1], en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
 
 const challengeCode = `"use client";
 
@@ -111,6 +111,27 @@ export default function ProfilePage() {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص مراجعة المستخدمين والجلسات",
+    columns: [
+      {
+        heading: "المكونات:",
+        items: [
+          '<code className="inline-code">{"<UserButton />"}</code> - صورة المستخدم مع قائمة منسدلة',
+          '<code className="inline-code">{"<UserProfile />"}</code> - صفحة إدارة الملف الشخصي الكاملة',
+        ],
+      },
+      {
+        heading: "خطافات العميل:",
+        items: [
+          '<code className="inline-code">useUser()</code> - user, isLoaded, isSignedIn',
+          '<code className="inline-code">useAuth()</code> - userId, sessionId, getToken, signOut, has',
+          '<code className="inline-code">useSession()</code> - معلومات الجلسة الحالية',
+          '<code className="inline-code">useSessionList()</code> - جميع الجلسات النشطة',
+        ],
+      },
+    ],
+  },
   en: {
     title: "User & Sessions Reference",
     columns: [

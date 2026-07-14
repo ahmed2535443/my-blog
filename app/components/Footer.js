@@ -52,7 +52,7 @@ export default function Footer() {
               {t.footer.techs}
             </h4>
             <div className="flex flex-wrap gap-2">
-              {["HTML", "CSS", "Tailwind", "JavaScript", "React", "Next.js", "Supabase", "Clerk"].map((tech) => (
+              {["HTML", "CSS", "Tailwind", "JavaScript", "TypeScript", "Clean Code", "React", "Next.js", "Supabase", "Clerk"].map((tech) => (
                 <span
                   key={tech}
                   className="px-3 py-1 rounded-full text-xs"

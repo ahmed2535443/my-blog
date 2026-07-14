@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1, 1], fr: [1, 1, 1, 1], de: [1, 1, 1, 1] };
+const correctAnswers = { ar: [1, 1, 1, 1], en: [1, 1, 1, 1], fr: [1, 1, 1, 1], de: [1, 1, 1, 1] };
 
 const challengeCode = `function BlogPage() {
   const posts = [
@@ -56,6 +56,17 @@ const challengeCode = `function BlogPage() {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "مرجع سريع للمتجاوب والوضع الداكن والحالات",
+    columns: [
+      { heading: "نقاط التوقف:", items: ["sm: 640px (هاتف كبير)", "md: 768px (جهاز لوحي)", "lg: 1024px (حاسوب)", "xl: 1280px (سطح مكتب)", "2xl: 1536px (شاشة كبيرة)"] },
+      { heading: "الحالات التفاعلية:", items: ["hover: تمرير الماوس", "focus: عند التركيز (ماوس+لوحة مفاتيح)", "focus-visible: لوحة المفاتيح فقط ✅", "active: أثناء الضغط", "disabled: العنصر معطّل", "first/last, odd/even: في المصفوفات"] },
+      { heading: "الوضع الداكن:", items: ["dark:bg-gray-900 (خلفية داكنة)", "dark:text-white (نص فاتح)", "dark:border-gray-700 (حدود فاتحة)", "dark:hover:bg-gray-800 (تمرير داكن)", "التفعيل: أضف فئة dark إلى html"] },
+      { heading: "group و peer:", items: ["group → أضف للأصل", "group-hover: أنماط الأبناء عند تمرير الأصل", "peer → أضف للشقيق", "peer-focus: أنماط الإخوة عند التركيز", "peer-checked: أنماط عند التحديد"] },
+      { heading: "التصنيفات الافتراضية:", items: ["placeholder:text-gray-400", "selection:bg-indigo-200", "file:bg-indigo-50", "marker:text-indigo-600", "before/after بقيم عشوائية"] },
+      { heading: "نمط الألوان:", items: ["bg-white / dark:bg-gray-900 (الصفحة)", "bg-gray-50 / dark:bg-gray-800 (البطاقات)", "text-gray-900 / dark:text-white (الأساسي)", "text-gray-600 / dark:text-gray-400 (الثانوي)", "transition-all duration-300"] },
+    ],
+  },
   en: {
     title: "Responsive, Dark Mode & States Quick Reference",
     columns: [
@@ -92,6 +103,7 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: { title: "المشروع المصغّر: صفحة مدونة", description: "أنشئ صفحة مدونة متجاوبة مع الوضع الداكن وتأثيرات التمرير والحالات التفاعلية.", items: ["شبكة متجاوبة (عمود واحد على الهاتف، 2 md، 3 lg)", "دعم تبديل الوضع الداكن", "group-hover على البطاقات (تكبير الصورة، تغيير لون النص)", "focus-visible على الروابط", "انتقالات سلسة على جميع التغييرات", "شريط تنقل متجاوب"], hint: "استخدم group على عناصر البطاقة، و group-hover:scale-110 على الصور، و dark: لفئات الوضع الداكن." },
   en: { title: "Mini Project: Blog Page", description: "Build a responsive blog page with dark mode, group hover effects, and interactive states.", items: ["Responsive grid (1 col mobile, 2 md, 3 lg)", "Dark mode toggle support", "group-hover on cards (image zoom, text color)", "focus-visible on links", "Smooth transitions on all changes", "Responsive navigation bar"], hint: "Use group on card elements, group-hover:scale-110 on images, and dark: prefix for dark mode classes." },
   fr: { title: "Mini Projet: Page Blog", description: "Construisez une page blog responsive avec mode sombre et effets hover.", items: ["Grille responsive (1 col mobile, 2 md, 3 lg)", "Support du mode sombre", "group-hover sur cartes (zoom image)", "focus-visible sur liens", "Transitions fluides", "Barre de navigation responsive"], hint: "Utilisez group sur les cartes, group-hover:scale-110 sur images, et dark: pour le mode sombre." },
   de: { title: "Mini-Projekt: Blog-Seite", description: "Erstellen Sie eine responsive Blog-Seite mit Dunkelmodus und Hover-Effekten.", items: ["Responsives Raster (1 Spalte mobil, 2 md, 3 lg)", "Dunkelmodus-Unterstützung", "group-hover auf Karten (Bild-Zoom)", "focus-visible auf Links", "Sanfte Übergänge", "Responsive Navigationsleiste"], hint: "Verwenden Sie group auf Karten, group-hover:scale-110 auf Bildern, und dark: für den Dunkelmodus." },

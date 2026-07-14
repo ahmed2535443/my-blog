@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2, 2, 1, 1, 0, 2, 2], fr: [1, 2, 2, 1, 1, 0, 2, 2], de: [1, 2, 2, 1, 1, 0, 2, 2] };
+const correctAnswers = { ar: [1, 2, 2, 1, 1, 0, 2, 2], en: [1, 2, 2, 1, 1, 0, 2, 2], fr: [1, 2, 2, 1, 1, 0, 2, 2], de: [1, 2, 2, 1, 1, 0, 2, 2] };
 
 const challengeCode = `.card-wrapper {
   container-type: inline-size;
@@ -42,6 +42,57 @@ const challengeCode = `.card-wrapper {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "مرجع سريع: التصميم المتجاوب الحديث",
+    columns: [
+      {
+        heading: "استعلامات الحاوية:",
+        code: `.container {
+  container-type: inline-size;
+  container-name: my-container;
+}
+
+@container my-container (min-width: 500px) {
+  .child { /* ... */ }
+}`,
+        codeLanguage: "css",
+      },
+      {
+        heading: "clamp() - قيم سائلة:",
+        code: `/* clamp(min, مفضل, max) */
+font-size: clamp(1rem, 2.5vw, 2rem);
+padding: clamp(1rem, 3vw, 3rem);
+width: clamp(300px, 80%, 1200px);
+
+:root {
+  --space-xs: clamp(0.25rem, 0.5vw, 0.5rem);
+  --space-sm: clamp(0.5rem, 1vw, 1rem);
+  --space-md: clamp(1rem, 2vw, 2rem);
+}`,
+        codeLanguage: "css",
+      },
+      {
+        heading: "min() و max():",
+        code: `/* min() - الأصغر من قيمتين */
+width: min(80%, 800px);
+
+/* max() - الأكبر من قيمتين */
+width: max(300px, 50%);`,
+        codeLanguage: "css",
+      },
+      {
+        heading: "الخصائص المنطقية:",
+        items: [
+          '<code className="inline-code">width</code> -> <code className="inline-code">inline-size</code>',
+          '<code className="inline-code">height</code> -> <code className="inline-code">block-size</code>',
+          '<code className="inline-code">margin-left</code> -> <code className="inline-code">margin-inline-start</code>',
+          '<code className="inline-code">margin-right</code> -> <code className="inline-code">margin-inline-end</code>',
+          '<code className="inline-code">padding-top</code> -> <code className="inline-code">padding-block-start</code>',
+          '<code className="inline-code">text-align: left</code> -> <code className="inline-code">text-align: start</code>',
+        ],
+      },
+    ],
+  },
   en: {
     title: "Quick Reference: Modern Responsive Design",
     columns: [

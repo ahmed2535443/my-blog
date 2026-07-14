@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
+const correctAnswers = { ar: [1, 1, 1], en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
 
 const challengeCode = `# الخطوة 1: إنشاء مشروع Next.js جديد
 npx create-next-app@latest my-clerk-project
@@ -39,6 +39,30 @@ npm install @clerk/nextjs
 npm run dev`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص مراجعة إعداد Clerk",
+    columns: [
+      {
+        heading: "خطوات التثبيت:",
+        items: [
+          '<code className="inline-code">npm install @clerk/nextjs</code> - تثبيت حزمة Clerk',
+          '<code className="inline-code">.env.local</code> - إضافة المفاتيح العامة والسرية',
+          '<code className="inline-code">ClerkProvider</code> - لف التطبيق في layout.js',
+          '<code className="inline-code">proxy.ts</code> - وسيط لحماية المسارات',
+          '<code className="inline-code">sign-in/[[...sign-in]]</code> - مسار تسجيل الدخول',
+          '<code className="inline-code">sign-up/[[...sign-up]]</code> - مسار التسجيل',
+        ],
+      },
+      {
+        heading: "الأوامر الرئيسية:",
+        items: [
+          '<code className="inline-code">clerk init</code> - الإعداد الأولي للمشروع',
+          '<code className="inline-code">clerk doctor</code> - تشخيص مشاكل الإعداد',
+          '<code className="inline-code">clerk env pull</code> - سحب متغيرات البيئة من لوحة التحكم',
+        ],
+      },
+    ],
+  },
   en: {
     title: "Clerk Setup Checklist",
     columns: [

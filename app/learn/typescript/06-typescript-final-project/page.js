@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
+const correctAnswers = { ar: [1, 1, 1], en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
 
 const challengeCode = `// === 1. نظام التعليقات ===
 interface Comment {
@@ -96,6 +96,65 @@ function sendNotification(notification: Notification): void {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص المشروع الأخير لـ TypeScript",
+    columns: [
+      {
+        heading: "الدرس 1: مقدمة:",
+        items: [
+          "TypeScript = JS + Types",
+          "مترجم tsc",
+          "tsconfig.json",
+          "التبنّي التدريجي",
+        ],
+      },
+      {
+        heading: "الدرس 2: الأنواع الأساسية:",
+        items: [
+          "string, number, boolean",
+          "any مقابل unknown",
+          "اتحاد (|) حرفي",
+          "tuple, enum",
+        ],
+      },
+      {
+        heading: "الدرس 3: الواجهات:",
+        items: [
+          "interface مقابل type",
+          "extends, readonly",
+          "Pick, Omit, Partial",
+          "الاتحادات المميزة",
+        ],
+      },
+      {
+        heading: "الدرس 4: العامة:",
+        items: [
+          "<T>(value: T): T",
+          "T extends Type",
+          "keyof, typeof",
+          "حراس النوع",
+        ],
+      },
+      {
+        heading: "الدرس 5: React:",
+        items: [
+          "كتابة أنواع الخصائص",
+          "كتابة أنواع الخطافات",
+          "معالجي الأحداث",
+          "العامة في React",
+        ],
+      },
+      {
+        heading: "الدرس 6: المشروع:",
+        items: [
+          "الأنواع المُعلَّمة",
+          "نمط المستودع",
+          "الأنواع المُmapped",
+          "تطبيق إدارة المهام",
+        ],
+      },
+    ],
+  },
   en: {
     title: "TypeScript Final Project Cheat Sheet",
     columns: [

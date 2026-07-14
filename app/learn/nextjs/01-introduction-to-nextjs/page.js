@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2, 2, 1, 2], fr: [1, 2, 2, 1, 2], de: [1, 2, 2, 1, 2] };
+const correctAnswers = { en: [1, 2, 2, 1, 2], fr: [1, 2, 2, 1, 2], de: [1, 2, 2, 1, 2], ar: [1, 2, 2, 1, 2] };
 
 const challengeCode = `// app/page.js - بعد التعديل
 import Link from "next/link";
@@ -149,6 +149,47 @@ const cheatSheetData = {
           'Cache Components - "use cache"',
           "React Compiler stabil",
           "Proxy statt Middleware",
+        ],
+      },
+    ],
+  },
+  ar: {
+    title: "ملخص مراجعة مقدمة Next.js - الدرس 1",
+    columns: [
+      {
+        heading: "الأوامر الأساسية:",
+        items: [
+          '<code className="inline-code">npx create-next-app@latest</code> - إنشاء مشروع جديد',
+          '<code className="inline-code">npm run dev</code> - تشغيل وضع التطوير',
+          '<code className="inline-code">npm run build</code> - بناء نسخة الإنتاج',
+          '<code className="inline-code">npm run start</code> - تشغيل الإنتاج',
+        ],
+      },
+      {
+        heading: "هيكل app/ الأساسي:",
+        code: `app/
+├── layout.js     # التخطيط الرئيسي
+├── page.js       # الصفحة الرئيسية /
+├── loading.js    # حالة التحميل
+├── error.js      # معالجة الأخطاء
+└── not-found.js  # صفحة 404`,
+        codeLanguage: "bash",
+      },
+      {
+        heading: "متغيرات البيئة:",
+        items: [
+          '<code className="inline-code">.env</code> - عامة',
+          '<code className="inline-code">.env.local</code> - محلية (سرية)',
+          'بادئة <code className="inline-code">NEXT_PUBLIC_</code> للوصول من المتصفح',
+        ],
+      },
+      {
+        heading: "ما الجديد في v16:",
+        items: [
+          "Turbopack كافتراضي - أسرع 5 مرات",
+          'Cache Components - "use cache"',
+          "React Compiler مستقر",
+          "Proxy بدلاً من Middleware",
         ],
       },
     ],

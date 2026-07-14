@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1], fr: [1], de: [1] };
+const correctAnswers = { ar: [1, 1], en: [1, 1], fr: [1], de: [1] };
 
 const challengeCode = `npm install @supabase/supabase-js @supabase/ssr
 
@@ -33,21 +33,21 @@ export async function createClient() {
 }`;
 
 const cheatSheetData = {
-  en: {
-    title: "Supabase Setup Cheat Sheet",
+  ar: {
+    title: "ملخص مراجعة إعداد Supabase",
     columns: [
       {
-        heading: "Key Points:",
+        heading: "نقاط رئيسية:",
         items: [
-          "Use @supabase/ssr (not auth-helpers)",
-          "Server Client for Server Components/Actions",
-          "Browser Client for Client Components",
-          "Middleware refreshes sessions",
-          "Store keys in .env.local with NEXT_PUBLIC_ prefix",
+          "استخدم @supabase/ssr (وليس auth-helpers)",
+          "عميل الخادم لمكونات وإجراءات الخادم",
+          "عميل المتصفح لمكونات العميل",
+          "الوسيط يُحدّث الجلسات",
+          "خزّن المفاتيح في .env.local مع بادئة NEXT_PUBLIC_",
         ],
       },
       {
-        heading: "Example:",
+        heading: "مثال:",
         code: `npm install @supabase/supabase-js @supabase/ssr
 
 # utils/supabase/server.ts

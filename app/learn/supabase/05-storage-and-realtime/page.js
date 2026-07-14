@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [2, 2, 1, 1], fr: [1], de: [1] };
+const correctAnswers = { ar: [2, 2, 1, 1], en: [2, 2, 1, 1], fr: [1], de: [1] };
 
 const challengeCode = `// Create bucket
 const { data, error } = await supabase.storage.createBucket('avatars', {
@@ -40,20 +40,20 @@ const channel = supabase
   .subscribe()`;
 
 const cheatSheetData = {
-  en: {
-    title: "Storage & Realtime Cheat Sheet",
+  ar: {
+    title: "ملخص مراجعة التخزين والوقت الفوري",
     columns: [
       {
-        heading: "Key Points:",
+        heading: "نقاط رئيسية:",
         items: [
-          ".from('bucket') — select storage bucket",
-          ".upload('path', file) — upload file",
-          ".getPublicUrl('path') — get file URL",
-          "RLS — Row Level Security for storage",
-          "CREATE POLICY — define access rules",
-          "Database Changes — listen to table changes",
-          "Broadcast — instant messaging between users",
-          "Presence — track online users",
+          ".from('bucket') — اختيار نبضة التخزين",
+          ".upload('path', file') — رفع ملف",
+          ".getPublicUrl('path') — جلب رابط الملف",
+          "RLS — الأمان على مستوى الصف للتخزين",
+          "CREATE POLICY — تحديد قواعد الوصول",
+          "Database Changes — الاستماع لتغييرات الجداول",
+          "Broadcast — مراسلة فورية بين المستخدمين",
+          "Presence — تتبع المستخدمين المتصلين",
         ],
       },
       {

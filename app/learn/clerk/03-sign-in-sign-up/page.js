@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2, 1], fr: [1, 2, 1], de: [1, 2, 1] };
+const correctAnswers = { ar: [1, 2, 1], en: [1, 2, 1], fr: [1, 2, 1], de: [1, 2, 1] };
 
 const challengeCode = `"use client";
 
@@ -61,6 +61,29 @@ export default function LandingPage() {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص مراجعة طرق المصادقة",
+    columns: [
+      {
+        heading: "مكونات النماذج:",
+        items: [
+          '<code className="inline-code">{"<SignIn />"}</code> - نموذج تسجيل دخول كامل',
+          '<code className="inline-code">{"<SignUp />"}</code> - نموذج تسجيل كامل',
+          '<code className="inline-code">{"<SignInButton />"}</code> - زر تسجيل الدخول (يدعم mode="modal" و "navigation")',
+          '<code className="inline-code">{"<SignUpButton />"}</code> - زر التسجيل (يدعم mode="modal" و "navigation")',
+        ],
+      },
+      {
+        heading: "العرض الشرطي:",
+        items: [
+          '<code className="inline-code">{"<Show when=\\"signed-in\\">"}</code> - عرض عند تسجيل الدخول',
+          '<code className="inline-code">{"<Show when=\\"signed-out\\">"}</code> - عرض عند تسجيل الخروج',
+          '<code className="inline-code">useAuth()</code> - خطاف عميل لحالة المصادقة',
+          '<code className="inline-code">useUser()</code> - خطاف عميل لبيانات المستخدم',
+        ],
+      },
+    ],
+  },
   en: {
     title: "Auth Components Reference",
     columns: [

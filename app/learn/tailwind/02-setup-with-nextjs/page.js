@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1, 2], fr: [1, 1, 1, 2], de: [1, 1, 1, 2] };
+const correctAnswers = { ar: [1, 1, 1, 2], en: [1, 1, 1, 2], fr: [1, 1, 1, 2], de: [1, 1, 1, 2] };
 
 const challengeCode = `export default function UserCard() {
   return (
@@ -36,6 +36,15 @@ const challengeCode = `export default function UserCard() {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "دليل إعداد Tailwind v4",
+    columns: [
+      { heading: "1. التثبيت:", code: "npm install tailwindcss @tailwindcss/postcss", codeLanguage: "bash" },
+      { heading: "2. postcss.config.mjs:", code: `const config = {\n  plugins: {\n    "@tailwindcss/postcss": {},\n  },\n};\nexport default config;`, codeLanguage: "javascript" },
+      { heading: "3. globals.css:", code: `@import "tailwindcss";`, codeLanguage: "css" },
+      { heading: "4. VS Code:", items: ["Tailwind CSS IntelliSense", "Tailwind CSS Snippets", "Prettier + Tailwind Plugin"] },
+    ],
+  },
   en: {
     title: "Tailwind v4 Setup Guide",
     columns: [
@@ -66,6 +75,7 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: { title: "المشروع المصغّر: Next.js + Tailwind v4", description: "أنشئ مشروع Next.js جديد مع إعداد Tailwind v4 من الصفر.", items: ["إنشاء تطبيق Next.js باستخدام create-next-app", "تثبيت tailwindcss و @tailwindcss/postcss", "إنشاء postcss.config.mjs", "إعداد globals.css باستخدام @import", "بناء مكون UserCard"], hint: "اتبع الدليل خطوة بخطوة أعلاه." },
   en: { title: "Mini Project: Next.js + Tailwind v4", description: "Create a new Next.js project with Tailwind v4 setup from scratch.", items: ["Create Next.js app with create-next-app", "Install tailwindcss and @tailwindcss/postcss", "Create postcss.config.mjs", "Set up globals.css with @import", "Build a UserCard component"], hint: "Follow the step-by-step guide above." },
   fr: { title: "Mini Projet: Next.js + Tailwind v4", description: "Créez un nouveau projet Next.js avec configuration Tailwind v4.", items: ["Créer l'app avec create-next-app", "Installer tailwindcss et @tailwindcss/postcss", "Créer postcss.config.mjs", "Configurer globals.css", "Construire un composant UserCard"], hint: "Suivez le guide étape par étape ci-dessus." },
   de: { title: "Mini-Projekt: Next.js + Tailwind v4", description: "Erstellen Sie ein neues Next.js-Projekt mit Tailwind v4.", items: ["Next.js-App mit create-next-app erstellen", "tailwindcss und @tailwindcss/postcss installieren", "postcss.config.mjs erstellen", "globals.css einrichten", "UserCard-Komponente erstellen"], hint: "Folgen Sie dem Schritt-für-Schritt-Leitfaden oben." },

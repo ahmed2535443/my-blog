@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
+const correctAnswers = { ar: [1, 1, 1], en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
 
 const challengeCode = `// task-manager - مشروع إدارة المهام الكامل
 // هيكل المشروع:
@@ -45,6 +45,32 @@ task-manager/
 └── .env.local`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص مراجعة Clerk الكامل",
+    columns: [
+      {
+        heading: "المكونات الأساسية:",
+        items: [
+          '<code className="inline-code">{"<ClerkProvider />"}</code> - لف التطبيق لسياق Clerk',
+          '<code className="inline-code">{"<SignIn />"}</code> / <code className="inline-code">{"<SignUp />"}</code> - مكونات واجهة المصادقة',
+          '<code className="inline-code">{"<UserButton />"}</code> - زر الملف الشخصي',
+          '<code className="inline-code">{"<UserProfile />"}</code> - إدارة الملف الشخصي الكاملة',
+          '<code className="inline-code">{"<Show />"}</code> - العرض الشرطي',
+        ],
+      },
+      {
+        heading: "الخطافات والدوال:",
+        items: [
+          '<code className="inline-code">useUser()</code> - الوصول لبيانات المستخدم (عميل)',
+          '<code className="inline-code">useAuth()</code> - الوصول لحالة المصادقة (عميل)',
+          '<code className="inline-code">useSession()</code> - معلومات الجلسة الحالية',
+          '<code className="inline-code">auth()</code> - فحص المصادقة من الخادم',
+          '<code className="inline-code">currentUser()</code> - جلب كائن المستخدم الكامل (خادم)',
+          '<code className="inline-code">clerkMiddleware()</code> - حماية المسارات عالمياً',
+        ],
+      },
+    ],
+  },
   en: {
     title: "Clerk Complete Cheat Sheet",
     columns: [

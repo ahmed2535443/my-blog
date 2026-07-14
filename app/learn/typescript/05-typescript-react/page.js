@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 0, 1], fr: [1, 0, 1], de: [1, 0, 1] };
+const correctAnswers = { ar: [1, 0, 1], en: [1, 0, 1], fr: [1, 0, 1], de: [1, 0, 1] };
 
 const challengeCode = `interface ButtonProps {
   text: string;
@@ -40,6 +40,29 @@ function Button(props: ButtonProps) {
 <Button text="Click me" onClick={() => console.log("clicked")} />`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص TypeScript React",
+    columns: [
+      {
+        heading: "أنماط المكونات:",
+        items: [
+          ".tsx — امتداد ملف TypeScript React",
+          "interface Props {} — تعريف نوع خصائص المكون",
+          "function Comp({}: Props) — كتابة نوع الخصائص في الدالة",
+          "React.FC — نوع المكون الدالة (أقل شيوعاً)",
+        ],
+      },
+      {
+        heading: "الخطافات والأحداث:",
+        items: [
+          "useState<Type>(init) — كتابة نوع الحالة بالعام",
+          "React.FormEvent — نوع حدث النموذج",
+          "React.ChangeEvent — نوع حدث تغيير الإدخال",
+          "useRef<Type>(init) — مرجع مكتوب بنوع",
+        ],
+      },
+    ],
+  },
   en: {
     title: "TypeScript React Cheat Sheet",
     columns: [

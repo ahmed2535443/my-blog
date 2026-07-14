@@ -1,18 +1,8 @@
-// =====================================================
-// ملف: ProgressBar.js (مُحدَّث)
-// المكان: app/components/ProgressBar.js
-// الوظيفة: مكون شريط التقدم - يعرض نسبة إتمام الدروس
-// =====================================================
-
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "./LanguageProvider";
 
-// =====================================================
-// 💡 نقرأ القيمة الأولية من localStorage مباشرة
-//    بدلاً من استخدام useEffect لقراءتها
-//    هذا هو النمط المُوصى به في React 19
-// =====================================================
 function getInitialProgress(stageId) {
   if (typeof window === "undefined") return 0;
 
@@ -25,25 +15,22 @@ function getInitialProgress(stageId) {
 }
 
 export default function ProgressBar({ stageId, totalLessons }) {
-  // نمرر دالة للـ useState لتقرأ القيمة الأولية مرة واحدة فقط
   const [completedCount] = useState(() => getInitialProgress(stageId));
+  const { t } = useLanguage();
 
-  // حساب النسبة المئوية
   const percentage = totalLessons > 0 ? Math.round((completedCount / totalLessons) * 100) : 0;
 
   return (
     <div className="w-full">
-      {/* نص التقدم */}
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm" style={{ color: "var(--muted)" }}>
-          {completedCount} من {totalLessons} درس مكتمل
+          {t.progress.completedOf.replace("{count}", completedCount).replace("{total}", totalLessons)}
         </span>
         <span className="text-sm font-bold" style={{ color: "var(--accent)" }}>
           {percentage}%
         </span>
       </div>
 
-      {/* شريط التقدم */}
       <div
         className="w-full h-3 rounded-full overflow-hidden"
         style={{ background: "var(--border)" }}

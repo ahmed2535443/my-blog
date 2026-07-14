@@ -62,6 +62,27 @@ const ar = {
     of: "/",
     info: "💡 هذا المنهج مُحدَّث لـ 2025-2026 مع أحدث الممارسات والتقنيات",
     infoReact: "💡 هذا المنهج مُعدَّل للعمل مع Next.js 16 و React 19",
+    completed: "مكتمل ✓",
+    inProgress: "قيد التقدم",
+    lessonsCount: "درس",
+  },
+  progress: {
+    completedOf: "{count} من {total} درس مكتمل",
+  },
+  problem: {
+    easy: "سهل",
+    medium: "متوسط",
+    hard: "صعب",
+    examples: "أمثلة:",
+    showHint: "تلميح",
+    hideHint: "إخفاء التلميح",
+    hint: "تلميح:",
+    showSolution: "عرض الحل",
+    hideSolution: "إخفاء الحل",
+  },
+  navigation: {
+    prevLesson: "الدرس السابق",
+    nextLesson: "الدرس التالي",
   },
   // Components
   components: {

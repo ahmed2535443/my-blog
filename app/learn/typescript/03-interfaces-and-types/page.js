@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
+const correctAnswers = { ar: [1, 1, 1], en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
 
 const challengeCode = `// Build a type system for a blog
 interface Post {
@@ -48,6 +48,29 @@ type PostWithComments = Post & {
 };`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص الواجهات والأنواع",
+    columns: [
+      {
+        heading: "مميزات الواجهة:",
+        items: [
+          "interface — يُعرّف شكل الكائن",
+          "readonly — الخاصية غير قابلة للتغيير",
+          "?: — خاصية اختيارية",
+          "extends — الوراثة من واجهة أخرى",
+        ],
+      },
+      {
+        heading: "أسماء الأنواع البديلة:",
+        items: [
+          "type — أكثر مرونة من interface",
+          "A & B — تقاطع (يجمع الأنواع)",
+          "A | B — اتحاد (A أو B)",
+          "type Point = { x: number; y: number }",
+        ],
+      },
+    ],
+  },
   en: {
     title: "Interfaces and Types Cheat Sheet",
     columns: [

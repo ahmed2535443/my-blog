@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [2, 1, 1], fr: [2, 1, 1], de: [2, 1, 1] };
+const correctAnswers = { ar: [2, 1, 1], en: [2, 1, 1], fr: [2, 1, 1], de: [2, 1, 1] };
 
 const challengeCode = `// Create variables with different types
 let name: string = 'Ahmed';
@@ -41,6 +41,29 @@ id = 123;   // OK
 // id = true;  // Error!`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص الأنواع الأساسية",
+    columns: [
+      {
+        heading: "الأنواع الأولية:",
+        items: [
+          "string — نوع النص",
+          "number — نوع رقمي (صحيح، عائم، عشري)",
+          "boolean — نوع صحيح/خطأ",
+          "null / undefined — غياب القيمة",
+        ],
+      },
+      {
+        heading: "صيغة النوع:",
+        items: [
+          "T[] أو Array<T> — نوع المصفوفة",
+          "interface — يُعرّف شكل الكائن",
+          "A | B — نوع اتحاد (A أو B)",
+          "?: — خاصية اختيارية",
+        ],
+      },
+    ],
+  },
   en: {
     title: "Basic Types Cheat Sheet",
     columns: [

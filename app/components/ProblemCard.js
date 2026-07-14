@@ -1,12 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const difficultyConfig = {
-  easy: { label: "سهل", color: "#22c55e", bg: "rgba(34, 197, 94, 0.1)" },
-  medium: { label: "متوسط", color: "#fbbf24", bg: "rgba(251, 191, 36, 0.1)" },
-  hard: { label: "صعب", color: "#ef4444", bg: "rgba(239, 68, 68, 0.1)" },
-};
+import { useLanguage } from "./LanguageProvider";
 
 export default function ProblemCard({
   id,
@@ -21,6 +16,13 @@ export default function ProblemCard({
 }) {
   const [showHint, setShowHint] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
+  const { t } = useLanguage();
+
+  const difficultyConfig = {
+    easy: { label: t.problem.easy, color: "#22c55e", bg: "rgba(34, 197, 94, 0.1)" },
+    medium: { label: t.problem.medium, color: "#fbbf24", bg: "rgba(251, 191, 36, 0.1)" },
+    hard: { label: t.problem.hard, color: "#ef4444", bg: "rgba(239, 68, 68, 0.1)" },
+  };
   const diff = difficultyConfig[difficulty] || difficultyConfig.easy;
 
   return (
@@ -83,7 +85,7 @@ export default function ProblemCard({
       {examples.length > 0 && (
         <div className="px-5 pb-4">
           <p className="font-bold text-sm mb-2" style={{ color: "var(--secondary)" }}>
-            📋 أمثلة:
+            📋 {t.problem.examples}
           </p>
           <div className="space-y-2">
             {examples.map((ex, i) => (
@@ -138,7 +140,7 @@ export default function ProblemCard({
               border: `1px solid ${showHint ? "var(--border)" : "rgba(251, 191, 36, 0.3)"}`,
             }}
           >
-            💡 {showHint ? "إخفاء التلميح" : "تلميح"}
+            💡 {showHint ? t.problem.hideHint : t.problem.showHint}
           </button>
         )}
         {solution && (
@@ -152,7 +154,7 @@ export default function ProblemCard({
               border: `1px solid ${showSolution ? "var(--border)" : "rgba(34, 197, 94, 0.3)"}`,
             }}
           >
-            ✅ {showSolution ? "إخفاء الحل" : "عرض الحل"}
+            ✅ {showSolution ? t.problem.hideSolution : t.problem.showSolution}
           </button>
         )}
       </div>
@@ -167,7 +169,7 @@ export default function ProblemCard({
           }}
         >
           <p className="font-bold text-sm mb-2" style={{ color: "var(--secondary)" }}>
-            💡 تلميح:
+            💡 {t.problem.hint}
           </p>
           <ul className="space-y-1">
             {hints.map((hint, i) => (

@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [3, 1], fr: [2], de: [2] };
+const correctAnswers = { ar: [3, 1], en: [3, 1], fr: [2], de: [2] };
 
 const challengeCode = `// Sign up
 const { data, error } = await supabase.auth.signUp({
@@ -32,23 +32,23 @@ await supabase.auth.signOut();
 const { data: { user } } = await supabase.auth.getUser();`;
 
 const cheatSheetData = {
-  en: {
-    title: "Supabase Auth Cheat Sheet",
+  ar: {
+    title: "ملخص مراجعة مصادقة Supabase",
     columns: [
       {
-        heading: "Key Points:",
+        heading: "نقاط رئيسية:",
         items: [
-          "signUp({email, password}) — register new user",
-          "signInWithPassword({email, password}) — sign in",
-          "signInWithOAuth({provider}) — social login",
-          "signOut() — sign out current user",
-          "getSession() — get current session",
-          "getUser() — get current user info",
-          "onAuthStateChange() — listen for auth changes",
+          "signUp({email, password}) — تسجيل مستخدم جديد",
+          "signInWithPassword({email, password}) — تسجيل الدخول",
+          "signInWithOAuth({provider}) — تسجيل الدخول الاجتماعي",
+          "signOut() — تسجيل خروج المستخدم الحالي",
+          "getSession() — الحصول على الجلسة الحالية",
+          "getUser() — الحصول على معلومات المستخدم الحالي",
+          "onAuthStateChange() — الاستماع لتغييرات المصادقة",
         ],
       },
       {
-        heading: "Example:",
+        heading: "مثال:",
         code: `// Sign up
 const { data, error } = await supabase.auth.signUp({
   email: 'user@example.com',

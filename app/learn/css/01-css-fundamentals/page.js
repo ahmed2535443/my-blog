@@ -11,11 +11,60 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2], fr: [1, 2], de: [1, 2] };
+const correctAnswers = { ar: [1, 2], en: [1, 2], fr: [1, 2], de: [1, 2] };
 
 const challengeCode = `/* أكمل الكود هنا */`;
 
 const cheatSheetData = {
+  ar: {
+    title: "مرجع CSS سريع - الدرس 1",
+    columns: [
+      {
+        heading: "الوحدات:",
+        items: [
+          '<code className="inline-code">px</code> - ثابت: حدود، أيقونات',
+          '<code className="inline-code">rem</code> - حجم خط الجذر: خطوط، مسافات',
+          '<code className="inline-code">em</code> - حجم خط الأب: عناصر متداخلة',
+          '<code className="inline-code">%</code> - الأب: تخطيط نسبي',
+          '<code className="inline-code">vw / vh</code> - منطقة العرض: أحجام متجاوبة',
+          '<code className="inline-code">dvh</code> - ارتفاع منطقة العرض الديناميكي',
+          '<code className="inline-code">clamp()</code> - الحد الأدنى + المرن + الأقصى',
+        ],
+      },
+      {
+        heading: "الألوان:",
+        items: [
+          '<code className="inline-code">#hex</code> - سريع وشائع',
+          '<code className="inline-code">rgb()</code> - مع دعم الشفافية: rgba()',
+          '<code className="inline-code">hsl()</code> - سهل التعديل',
+          '<code className="inline-code">oklch()</code> - حديث ودقيق بصرياً',
+          '<code className="inline-code">color-mix()</code> - خلط لونين',
+          '<code className="inline-code">light-dark()</code> - ألوان السمة التلقائية',
+        ],
+      },
+      {
+        heading: "أنواع العرض:",
+        items: [
+          '<code className="inline-code">block</code> - سطر جديد + عرض كامل',
+          '<code className="inline-code">inline</code> - نفس السطر + عرض المحتوى',
+          '<code className="inline-code">inline-block</code> - نفس السطر + يقبل الأبعاد',
+          '<code className="inline-code">none</code> - إخفاء تام + لا مساحة',
+          '<code className="inline-code">flex</code> - تخطيط مرن',
+          '<code className="inline-code">grid</code> - تخطيط شبكة',
+        ],
+      },
+      {
+        heading: "النوعية:",
+        items: [
+          "1. العناصر (p, div) -> 0-0-1",
+          "2. الفئات (.class) -> 0-1-0",
+          "3. المعرّفات (#id) -> 1-0-0",
+          "4. Inline (style=&quot;&quot;) -> 1-0-0-0",
+          "5. !important -> الأعلى",
+        ],
+      },
+    ],
+  },
   en: {
     title: "CSS Cheat Sheet - Lesson 1",
     columns: [
@@ -162,6 +211,18 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: {
+    title: "مشروع صغير: بطاقة هوية شخصية",
+    description: "أنشئ صفحة HTML تحتوي على بطاقة هوية شخصية تتضمن:",
+    items: [
+      'اسمك كعنوان رئيسي <code>&lt;h1&gt;</code>',
+      'وصف مختصر عنك في فقرة <code>&lt;p&gt;</code>',
+      'قائمة بمهاراتك <code>&lt;ul&gt;</code>',
+      'قائمة مرقمة بخبراتك <code>&lt;ol&gt;</code>',
+      'رابط لصفحتك أو بريدك الإلكتروني <code>&lt;a&gt;</code>',
+    ],
+    hint: "ستحتاج وسوم جديدة لم تتعلمها بعد مثل <code>&lt;a&gt;</code> للروابط. يمكنك البحث عنها في Google أو الانتظار حتى الدرس القادم!",
+  },
   en: {
     title: "Mini Project: Personal ID Card",
     description: "Create an HTML page containing a personal ID card that includes:",

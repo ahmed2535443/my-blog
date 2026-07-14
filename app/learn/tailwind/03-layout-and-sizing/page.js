@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1, 1], fr: [1, 1, 1, 1], de: [1, 1, 1, 1] };
+const correctAnswers = { ar: [1, 1, 1, 1], en: [1, 1, 1, 1], fr: [1, 1, 1, 1], de: [1, 1, 1, 1] };
 
 const challengeCode = `<nav className="flex items-center justify-between px-6 py-3 bg-white shadow-md">
   <div className="flex items-center gap-2">
@@ -31,6 +31,17 @@ const challengeCode = `<nav className="flex items-center justify-between px-6 py
 </nav>`;
 
 const cheatSheetData = {
+  ar: {
+    title: "Tailwind CSS التخطيط والقياس",
+    columns: [
+      { heading: "التباعد:", items: ["p-1 = 0.25rem (4px)", "p-4 = 1rem (16px)", "p-8 = 2rem (32px)", "mx-auto = توسيط أفقي", "gap-4 = 1rem بين العناصر"] },
+      { heading: "Flexbox:", items: ["flex, flex-col, flex-row", "flex-wrap, flex-nowrap", "justify-start/center/end/between", "items-start/center/end/stretch", "flex-1, flex-auto, flex-none"] },
+      { heading: "Grid:", items: ["grid, grid-cols-1/2/3/4", "col-span-2, row-span-2", "gap-4, gap-x-6 gap-y-4", "grid-flow-col/row/dense", "auto-cols-max/min/fr"] },
+      { heading: "القياس:", items: ["w-32/64/96 = عرض ثابت", "w-full/1/2/1/3/2/3 = نسبة مئوية", "h-32/64, h-full, h-screen", "min-h-screen, max-w-4xl", "size-32 = عرض + ارتفاع"] },
+      { heading: "الموضع:", items: ["relative, absolute, fixed, sticky", "top-0, right-0, bottom-0, left-0", "inset-0 = جميع الاتجاهات", "z-0, z-10, z-20", "sticky top-0 = رأس ثابت"] },
+      { heading: "المتجاوب:", items: ["flex-col → md:flex-row", "grid-cols-1 → md:grid-cols-2", "p-4 → lg:p-8", "w-full → md:w-1/2", "الهاتف أولاً: أولاً ثم sm/md/lg/xl"] },
+    ],
+  },
   en: {
     title: "Tailwind CSS Layout & Sizing",
     columns: [
@@ -67,6 +78,7 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: { title: "المشروع المصغّر: تخطيط صفحة هبوط", description: "أنشئ صفحة هبوط مع قسم بطل وشبكة ميزات وتذييل باستخدام Flex و Grid.", items: ["قسم بطل بخلفية متدرجة", "شبكة الميزات (عمود واحد على الهاتف، 3 أعمدة على سطح المكتب)", "قسم بطاقات الأسعار", "تذييل بتخطيط متعدد الأعمدة", "كل ذلك باستخدام فئات Tailwind المساعدة"], hint: "استخدم flex-col sm:flex-row لأزرار القسم البطل، و grid-cols-1 md:grid-cols-3 لشبكة الميزات." },
   en: { title: "Mini Project: Landing Page Layout", description: "Build a landing page with hero, features grid, and footer using Flex and Grid.", items: ["Hero section with gradient background", "Features grid (1 col mobile, 3 cols desktop)", "Pricing cards section", "Footer with multi-column layout", "All using Tailwind utility classes"], hint: "Use flex-col sm:flex-row for the hero buttons, and grid-cols-1 md:grid-cols-3 for the features grid." },
   fr: { title: "Mini Projet: Page d'Accueil", description: "Construisez une page d'accueil avec héros, grille de fonctionnalités et pied de page.", items: ["Section héros avec arrière-plan dégradé", "Grille de fonctionnalités (1 col mobile, 3 cols bureau)", "Section cartes de tarification", "Pied de page multi-colonnes", "Tout en classes Tailwind"], hint: "Utilisez flex-col sm:flex-row pour les boutons héros, et grid-cols-1 md:grid-cols-3 pour la grille." },
   de: { title: "Mini-Projekt: Landing Page Layout", description: "Erstellen Sie eine Landing Page mit Hero, Features-Grid und Footer.", items: ["Hero-Bereich mit Verlauf-Hintergrund", "Features-Grid (1 Spalte mobil, 3 Spalten Desktop)", "Preiskarten-Bereich", "Footer mit Mehrspalten-Layout", "Alles mit Tailwind Utility-Klassen"], hint: "Verwenden Sie flex-col sm:flex-row für Hero-Buttons und grid-cols-1 md:grid-cols-3 für das Features-Grid." },

@@ -811,7 +811,7 @@ export const stages = [
 ];
 
 // =====================================================
-// دالة مساعدة: الحصول على مرحلة بناءً على她的 id
+// دالة مساعدة: الحصول على مرحلة بناءً على her id
 // =====================================================
 export function getStageById(stageId) {
   return stages.find((stage) => stage.id === stageId);
@@ -827,7 +827,7 @@ export function getLessonBySlug(stageId, lessonSlug) {
   const lesson = stage.lessons.find((l) => l.slug === lessonSlug);
   if (!lesson) return null;
 
-  // ن找回 index الدرس لحساب الدرس السابق وال التالي
+  // نحصل على index الدرس لحساب الدرس السابق وال التالي
   const lessonIndex = stage.lessons.indexOf(lesson);
 
   // نحصل على مرحلة سابقة و تالية

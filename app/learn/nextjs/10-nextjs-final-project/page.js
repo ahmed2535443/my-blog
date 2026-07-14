@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1, 1, 2], fr: [1, 1, 1, 1, 2], de: [1, 1, 1, 1, 2] };
+const correctAnswers = { en: [1, 1, 1, 1, 2], fr: [1, 1, 1, 1, 2], de: [1, 1, 1, 1, 2], ar: [1, 1, 1, 1, 2] };
 
 const challengeCode = `// صفحة تصنيف في /blog/category/[name]
 import { notFound } from "next/navigation";
@@ -201,6 +201,48 @@ export default function RootLayout({ children }) {
       {
         heading: "Server Components:",
         code: `// Kein "use client" = Server Component
+async function MyComponent() {
+  const data = await fetch("https://api.example.com/data");
+  const json = await data.json();
+  return <div>{json.title}</div>;
+}`,
+        codeLanguage: "jsx",
+      },
+    ],
+  },
+  ar: {
+    title: "Next.js 16 - ملخص مراجعة شامل",
+    columns: [
+      {
+        heading: "البدء السريع:",
+        code: `npx create-next-app@latest my-app
+cd my-app
+npm run dev`,
+        codeLanguage: "bash",
+      },
+      {
+        heading: "التوجيه الأساسي:",
+        code: `app/page.js                    → /
+app/about/page.js              → /about
+app/blog/[slug]/page.js        → /blog/:slug
+app/(auth)/login/page.js       → /login`,
+        codeLanguage: "bash",
+      },
+      {
+        heading: "التخطيطات:",
+        code: `// app/layout.js
+export default function RootLayout({ children }) {
+  return (
+    <html lang="ar" dir="rtl">
+      <body>{children}</body>
+    </html>
+  );
+}`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "مكونات الخادم:",
+        code: `// بدون "use client" = Server Component
 async function MyComponent() {
   const data = await fetch("https://api.example.com/data");
   const json = await data.json();

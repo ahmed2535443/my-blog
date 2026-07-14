@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [2, 1], fr: [2, 1], de: [2, 1] };
+const correctAnswers = { ar: [2, 1], en: [2, 1], fr: [2, 1], de: [2, 1] };
 
 const challengeCode = `.navbar {
   display: flex;
@@ -43,6 +43,51 @@ const challengeCode = `.navbar {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "مرجع: Flexbox + place-items",
+    columns: [
+      {
+        heading: "خصائص حاوية Flex:",
+        items: [
+          '<code className="inline-code">display: flex</code> - تفعيل Flexbox',
+          '<code className="inline-code">flex-direction</code> - row | column | row-reverse | column-reverse',
+          '<code className="inline-code">flex-wrap</code> - nowrap | wrap | wrap-reverse',
+          '<code className="inline-code">justify-content</code> - flex-start | center | space-between | space-around',
+          '<code className="inline-code">align-items</code> - flex-start | center | stretch | baseline',
+          '<code className="inline-code">gap</code> - المسافة بين العناصر',
+        ],
+      },
+      {
+        heading: "خصائص عناصر Flex:",
+        items: [
+          '<code className="inline-code">flex-grow</code> - مقدار نمو العنصر نسبياً',
+          '<code className="inline-code">flex-shrink</code> - مقدار تقلص العنصر عند عدم وجود مساحة',
+          '<code className="inline-code">flex-basis</code> - الحجم الافتراضي قبل النمو/التقلص',
+          '<code className="inline-code">flex</code> - اختصار: grow shrink basis',
+          '<code className="inline-code">align-self</code> - تجاوز align-items لعنصر واحد',
+          '<code className="inline-code">order</code> - تغيير الترتيب المرئي دون تغيير HTML',
+        ],
+      },
+      {
+        heading: "أنماط شائعة:",
+        items: [
+          "توسيط: justify-content: center; align-items: center;",
+          "شريط التنقل: justify-content: space-between; align-items: center;",
+          "الأعمدة: align-items: stretch;",
+          "التفاف: flex-wrap: wrap; gap: 1rem;",
+        ],
+      },
+      {
+        heading: "الطريقة القديمة مقابل Flexbox:",
+        items: [
+          "توسيط أفقي: margin: 0 auto -> justify-content: center",
+          "توسيط عمودي: position: absolute + transform -> align-items: center",
+          "أعمدة متساوية: display: table-cell -> display: flex; align-items: stretch",
+          "تخطيط Float: float: left -> display: flex; flex-wrap: wrap",
+        ],
+      },
+    ],
+  },
   en: {
     title: "Reference Sheet: Flexbox + place-items",
     columns: [

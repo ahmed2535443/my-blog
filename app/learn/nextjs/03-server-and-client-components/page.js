@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 2, 1, 2, 1], fr: [1, 2, 1, 2, 1], de: [1, 2, 1, 2, 1] };
+const correctAnswers = { en: [1, 2, 1, 2, 1], fr: [1, 2, 1, 2, 1], de: [1, 2, 1, 2, 1], ar: [1, 2, 1, 2, 1] };
 
 const challengeCode = `// الإجابة الصحيحة:
 
@@ -202,6 +202,54 @@ const cheatSheetData = {
           "localStorage, window",
           "Context Providers",
           "Custom Hooks (wenn eines der obigen verwendet wird)",
+        ],
+      },
+    ],
+  },
+  ar: {
+    title: "ملخص مراجعة مكونات الخادم مقابل العميل",
+    columns: [
+      {
+        heading: "مكون الخادم ✅",
+        items: [
+          "✅ الافتراضي (لا يحتاج 'use client')",
+          "✅ يصل إلى قاعدة البيانات والملفات مباشرة",
+          "✅ مفاتيح API آمنة",
+          "✅ يحسّن محركات البحث",
+          "✅ لا يُرسل JavaScript إضافي",
+          "❌ لا يمكنه استخدام useState/useEffect",
+          "❌ لا يمكنه معالجة الأحداث",
+        ],
+      },
+      {
+        heading: "مكون العميل 🔵",
+        items: [
+          '✅ يحتاج "use client" في الأعلى',
+          "✅ يمكنه استخدام useState/useEffect",
+          "✅ يمكنه معالجة الأحداث",
+          "✅ يمكنه استخدام واجهات برمجة المتصفح",
+          "❌ يزيد حجم JavaScript",
+          "❌ لا يصل إلى قاعدة البيانات مباشرة",
+          "❌ لا يمكنه استيراد Server Component",
+        ],
+      },
+      {
+        heading: "قواعد التناوب:",
+        items: [
+          "الخادم → العميل: <strong>مسموح ✅</strong>",
+          "العميل → الخادم: <strong>محظور ❌</strong>",
+          'الحل: استخدم <code>children</code> لتمرير محتوى الخادم إلى العميل',
+        ],
+      },
+      {
+        heading: "متى تختار مكون العميل:",
+        items: [
+          "useState, useReducer",
+          "useEffect",
+          "onClick, onSubmit",
+          "localStorage, window",
+          "مقدمات السياق",
+          "Hooks مخصصة (إذا كنت تستخدم أي مما سبق)",
         ],
       },
     ],

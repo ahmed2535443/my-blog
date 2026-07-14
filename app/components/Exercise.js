@@ -35,10 +35,9 @@ export default function Exercise({ title, description, initialCode, children }) 
         dir="ltr"
         className="w-full p-4 rounded-lg border text-sm font-mono resize-y min-h-[120px] focus:outline-none focus:ring-2"
         style={{
-          background: "#0f172a",
-          color: "#e2e8f0",
+          background: "var(--background)",
+          color: "var(--foreground)",
           borderColor: "var(--border)",
-          focusRingColor: "var(--primary)",
         }}
         placeholder={t.components.exercise.placeholder}
         spellCheck={false}

@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1], fr: [1], de: [1] };
+const correctAnswers = { ar: [1, 1, 1], en: [1, 1, 1], fr: [1], de: [1] };
 
 const challengeCode = `// Add task categories
 CREATE TABLE categories (
@@ -31,25 +31,25 @@ ALTER TABLE tasks ADD COLUMN priority TEXT
   CHECK (priority IN ('low', 'medium', 'high', 'urgent'));`;
 
 const cheatSheetData = {
-  en: {
-    title: "Supabase Complete Cheat Sheet",
+  ar: {
+    title: "ملخص مراجعة Supabase الكامل",
     columns: [
       {
-        heading: "Key Points:",
+        heading: "نقاط رئيسية:",
         items: [
-          "createClient(url, key) — initialize client",
-          ".from('table').select('*') — read data",
-          ".insert({}) — create record",
-          ".update({}).eq('id', val) — update record",
-          ".delete().eq('id', val) — delete record",
-          "signUp() / signInWithPassword() — auth",
-          ".upload('path', file) — upload file",
-          "RLS + Policies — row level security",
-          ".env.local — store environment variables",
+          "createClient(url, key) — تهيئة العميل",
+          ".from('table').select('*') — قراءة البيانات",
+          ".insert({}) — إنشاء سجل",
+          ".update({}).eq('id', val) — تحديث سجل",
+          ".delete().eq('id', val) — حذف سجل",
+          "signUp() / signInWithPassword() — المصادقة",
+          ".upload('path', file) — رفع ملف",
+          "RLS + Policies — الأمان على مستوى الصف",
+          ".env.local — تخزين متغيرات البيئة",
         ],
       },
       {
-        heading: "Example:",
+        heading: "مثال:",
         code: `// CRUD
 await supabase.from('tasks').insert({ title: 'New' })
 const { data } = await supabase.from('tasks').select('*')

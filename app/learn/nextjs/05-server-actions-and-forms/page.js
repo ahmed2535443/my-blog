@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1, 1, 1], fr: [1, 1, 1, 1, 1], de: [1, 1, 1, 1, 1] };
+const correctAnswers = { en: [1, 1, 1, 1, 1], fr: [1, 1, 1, 1, 1], de: [1, 1, 1, 1, 1], ar: [1, 1, 1, 1, 1] };
 
 const challengeCode = `// الحل الكامل
 
@@ -409,6 +409,90 @@ revalidateTag("products");`,
 
 export async function createItem(formData) {
   // ... Daten speichern
+  redirect("/items");
+}`,
+        codeLanguage: "jsx",
+      },
+    ],
+  },
+  ar: {
+    title: "ملخص مراجعة Server Actions",
+    columns: [
+      {
+        heading: "أساسيات Server Actions:",
+        code: `// تعريف Server Action
+"use server";
+
+export async function addItem(formData) {
+  const name = formData.get("name");
+  await db.items.create({ data: { name } });
+  revalidatePath("/items");
+}
+
+// استخدام مع النموذج
+<form action={addItem}>
+  <input name="name" />
+  <button type="submit">إرسال</button>
+</form>
+
+// استخدام مع onClick
+"use client";
+import { useTransition } from "react";
+
+function Button({ action }) {
+  const [isPending, startTransition] = useTransition();
+  return (
+    <button onClick={() => startTransition(action)}
+            disabled={isPending}>
+      {isPending ? "..." : "نقر"}
+    </button>
+  );
+}`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "useActionState:",
+        code: `"use client";
+import { useActionState } from "react";
+
+const initialState = { error: null };
+
+async function action(prev, formData) {
+  const name = formData.get("name");
+  if (!name) return { error: "الاسم مطلوب" };
+  return { error: null };
+}
+
+function Form() {
+  const [state, formAction, isPending] =
+    useActionState(action, initialState);
+
+  return (
+    <form action={formAction}>
+      <input name="name" disabled={isPending} />
+      {state.error && <p>{state.error}</p>}
+      <button disabled={isPending}>إرسال</button>
+    </form>
+  );
+}`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "التحقق من الصلابة:",
+        code: `import { revalidatePath, revalidateTag }
+  from "next/cache";
+
+revalidatePath("/");
+revalidatePath("/blog");
+revalidateTag("products");`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "إعادة التوجيه:",
+        code: `import { redirect } from "next/navigation";
+
+export async function createItem(formData) {
+  // ... حفظ البيانات
   redirect("/items");
 }`,
         codeLanguage: "jsx",

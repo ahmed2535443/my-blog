@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1, 1, 1], fr: [1, 1, 1, 1, 1], de: [1, 1, 1, 1, 1] };
+const correctAnswers = { en: [1, 1, 1, 1, 1], fr: [1, 1, 1, 1, 1], de: [1, 1, 1, 1, 1], ar: [1, 1, 1, 1, 1] };
 
 const challengeCode = `// استبدال جميع صور img بمكون next/image
 import Image from "next/image";
@@ -291,6 +291,83 @@ export const metadata = {
 };
 
 // Dynamisch
+export async function generateMetadata({ params }) {
+  const post = await getPost(params.slug);
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: { images: [post.image] },
+  };
+}`,
+        codeLanguage: "jsx",
+      },
+    ],
+  },
+  ar: {
+    title: "ملخص مراجعة الصور والخطوط والبيانات الوصفية",
+    columns: [
+      {
+        heading: "next/image - محلية:",
+        code: `import Image from "next/image";
+
+<Image
+  src="/images/photo.jpg"
+  width={500}
+  height={300}
+  alt="وصف الصورة"
+/>`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "next/image - عن بُعد:",
+        code: `// next.config.ts
+images: {
+  remotePatterns: [
+    { protocol: "https", hostname: "example.com" }
+  ]
+}
+
+// في الصفحة
+<Image
+  src="https://example.com/photo.jpg"
+  width={500}
+  height={300}
+  alt="صورة عن بُعد"
+/>`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "next/font - من Google:",
+        code: `import { Cairo, Inter } from "next/font/google";
+
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
+  variable: "--font-cairo",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+// في التخطيط
+<body className={\`\${cairo.variable} \${inter.variable}\`}>`,
+        codeLanguage: "jsx",
+      },
+      {
+        heading: "البيانات الوصفية:",
+        code: `// ثابتة
+export const metadata = {
+  title: "عنوان الصفحة",
+  description: "وصف الصفحة",
+  openGraph: {
+    title: "عنوان OG",
+    description: "وصف OG",
+    images: ["/og-image.jpg"],
+  },
+};
+
+// ديناميكية
 export async function generateMetadata({ params }) {
   const post = await getPost(params.slug);
   return {

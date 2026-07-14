@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [0, 2, 1], fr: [0], de: [0] };
+const correctAnswers = { ar: [0, 2, 1], en: [0, 2, 1], fr: [0], de: [0] };
 
 const challengeCode = `CREATE TABLE posts (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -28,22 +28,22 @@ await supabase.from('posts').insert([
 ]);`;
 
 const cheatSheetData = {
-  en: {
-    title: "Database & CRUD Cheat Sheet",
+  ar: {
+    title: "ملخص مراجعة قواعد البيانات و CRUD",
     columns: [
       {
-        heading: "Key Points:",
+        heading: "نقاط رئيسية:",
         items: [
-          "Tables: collections of related data with rows and columns",
-          "CRUD: Create, Read, Update, Delete",
-          ".from('table') — select a table",
-          ".select('*') — select all columns",
-          ".eq('col', val) — where column equals value",
-          "Always use filters with update/delete!",
+          "الجداول: مجموعات بيانات مرتبطة مع صفوف وأعمدة",
+          "CRUD: الإنشاء والقراءة والتحديث والحذف",
+          ".from('table') — اختيار جدول",
+          ".select('*') — اختيار جميع الأعمدة",
+          ".eq('col', val') — حيث العمود يساوي القيمة",
+          "استخدم دائماً الفلاتر مع update/delete!",
         ],
       },
       {
-        heading: "Example:",
+        heading: "مثال:",
         code: `// Create
 await supabase.from('posts').insert({ title: 'Hello' });
 

@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1, 1], fr: [1, 1, 1, 1], de: [1, 1, 1, 1] };
+const correctAnswers = { ar: [1, 1, 1, 1], en: [1, 1, 1, 1], fr: [1, 1, 1, 1], de: [1, 1, 1, 1] };
 
 const challengeCode = `function ProfileCard() {
   return (
@@ -53,6 +53,35 @@ const challengeCode = `function ProfileCard() {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "مرجع سريع لـ Tailwind CSS",
+    columns: [
+      {
+        heading: "التخطيط:",
+        items: ["flex, grid, hidden, block, inline-block", "items-center, items-start, items-end", "justify-center, justify-between, justify-start, justify-end", "flex-col, flex-row, flex-wrap", "gap-4, gap-2, gap-8"],
+      },
+      {
+        heading: "التباعد:",
+        items: ["p-1 = 0.25rem, p-4 = 1rem, p-8 = 2rem", "px-4 = padding-left & right", "py-4 = padding-top & bottom", "m-4 = margin, mx-auto = center", "mt-4, mb-4, ml-auto, mr-auto"],
+      },
+      {
+        heading: "الألوان:",
+        items: ["bg-white, bg-black, bg-gray-100, bg-gray-900", "bg-red-500, bg-blue-500, bg-green-500", "text-white, text-gray-500, text-red-500", "border-gray-200"],
+      },
+      {
+        heading: "الطباعة:",
+        items: ["text-xs = 0.75rem, text-sm = 0.875rem", "text-base = 1rem, text-lg = 1.125rem", "text-xl = 1.25rem, text-2xl = 1.5rem", "font-normal = 400, font-bold = 700", "text-center, text-right, text-left"],
+      },
+      {
+        heading: "الحدود وأنصاف الأقطار:",
+        items: ["border = 1px, border-2 = 2px", "border-dashed, border-dotted, border-double", "rounded = 0.25rem, rounded-lg = 0.5rem", "rounded-xl = 0.75rem, rounded-full = 9999px"],
+      },
+      {
+        heading: "المتجاوب:",
+        items: ["sm: 640px, md: 768px", "lg: 1024px, xl: 1280px", "2xl: 1536px", "نهج الهاتف أولاً"],
+      },
+    ],
+  },
   en: {
     title: "Tailwind CSS - Quick Reference",
     columns: [
@@ -143,6 +172,12 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: {
+    title: "المشروع المصغّر: بطاقة ملف شخصي",
+    description: "أنشئ مكون بطاقة ملف شخصي باستخدام Tailwind CSS فقط:",
+    items: ["صورة أفاتار دائرية", "اسم المستخدم كعنوان غامق", "نبذة شخصية كنص ثانوي", "زر متابعة بتأثير التمرير", "تخطيط متجاوب (مكدس على الهاتف، أفقي على سطح المكتب)"],
+    hint: "استخدم flex-col md:flex-row للتخطيط المتجاوب، و rounded-full للأفاتار الدائري، و transition-colors لتأثيرات التمرير السلسة.",
+  },
   en: {
     title: "Mini Project: Profile Card",
     description: "Create a profile card component using Tailwind CSS only:",

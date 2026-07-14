@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
+const correctAnswers = { ar: [1, 1, 1], en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
 
 const challengeCode = `// الحل المتوقع لـ proxy.ts
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
@@ -50,6 +50,28 @@ export const config = {
 };`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص مراجعة حماية المسارات",
+    columns: [
+      {
+        heading: "الوسيط (proxy.ts):",
+        items: [
+          '<code className="inline-code">await auth.protect()</code> - حماية المسارات الأساسية',
+          '<code className="inline-code">await auth.protect({ role: "org:admin" })</code> - حماية قائمة على الأدوار',
+          '<code className="inline-code">await auth.protect({ permission: "org:course:create" })</code> - حماية قائمة على الأذونات',
+          '<code className="inline-code">createRouteMatcher()</code> - مطابقة أنماط المسارات',
+        ],
+      },
+      {
+        heading: "مكونات الخادم والإجراءات:",
+        items: [
+          '<code className="inline-code">const { userId } = await auth()</code> - جلب معرف المستخدم',
+          '<code className="inline-code">if (!userId) redirect("/sign-in")</code> - إعادة توجيه إذا لم يكن مسجلاً',
+          '<code className="inline-code">sessionClaims?.metadata?.role</code> - جلب دور المستخدم',
+        ],
+      },
+    ],
+  },
   en: {
     title: "Route Protection Patterns",
     columns: [

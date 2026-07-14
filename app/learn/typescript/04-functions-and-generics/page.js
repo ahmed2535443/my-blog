@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [0, 1, 0], fr: [0, 1, 0], de: [0, 1, 0] };
+const correctAnswers = { ar: [0, 1, 0], en: [0, 1, 0], fr: [0, 1, 0], de: [0, 1, 0] };
 
 const challengeCode = `// Generic utility functions
 function identity<T>(arg: T): T {
@@ -37,6 +37,29 @@ const firstNum = first([1, 2, 3]);
 const pairs = zip(['a', 'b'], [1, 2]);`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص الدوال والعامة",
+    columns: [
+      {
+        heading: "صيغة الدالة:",
+        items: [
+          "function name(p: type): type — دالة مكتوبة بنوع",
+          "param?: type — معامل اختياري",
+          "param = value — قيمة معامل افتراضية",
+          "const fn = (p: type): type => — دالة سهمية",
+        ],
+      },
+      {
+        heading: "العامة والحراس:",
+        items: [
+          "<T> — معامل نوع عام",
+          "إحلال الدالة — توقيعات متعددة",
+          "typeof value === 'string' — حارس نوع",
+          "T extends Type — قيد عام",
+        ],
+      },
+    ],
+  },
   en: {
     title: "Functions and Generics Cheat Sheet",
     columns: [

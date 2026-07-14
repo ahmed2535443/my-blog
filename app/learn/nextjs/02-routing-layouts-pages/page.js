@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [2, 1, 1, 1, 2], fr: [2, 1, 1, 1, 2], de: [2, 1, 1, 1, 2] };
+const correctAnswers = { en: [2, 1, 1, 1, 2], fr: [2, 1, 1, 1, 2], de: [2, 1, 1, 1, 2], ar: [2, 1, 1, 1, 2] };
 
 const challengeCode = `// app/layout.js - التخطيط الرئيسي
 import Link from "next/link";
@@ -169,6 +169,46 @@ const cheatSheetData = {
           "Dateiname muss genau page.js sein",
           "params ist ein Promise - verwende await",
           "layout.js ist immer Server Component",
+        ],
+      },
+    ],
+  },
+  ar: {
+    title: "ملخص مراجعة التوجيه - الدرس 2",
+    columns: [
+      {
+        heading: "هيكل المسار:",
+        items: [
+          '<code className="inline-code">page.js</code> - صفحة المسار',
+          '<code className="inline-code">layout.js</code> - التخطيط المشترك',
+          '<code className="inline-code">[slug]/page.js</code> - مسار ديناميكي',
+          '<code className="inline-code">(group)/page.js</code> - مجموعة مسارات',
+          '<code className="inline-code">@slot/page.js</code> - مسار متوازي',
+        ],
+      },
+      {
+        heading: "التنقل:",
+        items: [
+          '<code className="inline-code">{"<Link href=\"/about\">"}</code> - رابط التنقل',
+          '<code className="inline-code">router.push()</code> - تنقل برمجي',
+          '<code className="inline-code">router.replace()</code> - استبدال',
+          '<code className="inline-code">router.back()</code> - رجوع',
+        ],
+      },
+      {
+        heading: "مفاهيم متقدمة:",
+        items: [
+          '<code className="inline-code">generateStaticParams</code> - إنشاء مسارات ثابتة',
+          '<code className="inline-code">params</code> - كائن يحتوي على slug',
+          '<code className="inline-code">(.)</code> <code className="inline-code">(..)</code> - مسارات اعتراضية',
+        ],
+      },
+      {
+        heading: "قواعد مهمة:",
+        items: [
+          "اسم الملف يجب أن يكون بالضبط page.js",
+          "params هو Promise - استخدم await",
+          "layout.js هو دائماً Server Component",
         ],
       },
     ],

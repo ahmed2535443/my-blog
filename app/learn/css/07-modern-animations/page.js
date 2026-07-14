@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1], fr: [1, 1], de: [1, 1] };
+const correctAnswers = { ar: [1, 1], en: [1, 1], fr: [1, 1], de: [1, 1] };
 
 const challengeCode = `/* CSS Animation Challenge */
 
@@ -37,6 +37,71 @@ const challengeCode = `/* CSS Animation Challenge */
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "مرجع سريع: إتقان الرسوم المتحركة CSS",
+    columns: [
+      {
+        heading: "دوال التسهيل الجديدة:",
+        code: `/* linear() - تسهيل مخصص */
+--ease-spring: linear(
+  0, 0.006, 0.025 2.8%,
+  0.539 18.9%, 0.849 31.5%,
+  1.006 51.2%, 0.968 55.2%
+);
+
+/* view() - مدفوع بالتمرير */
+animation-timeline: view();
+animation-range: entry 0% cover 100%;
+
+/* scroll() - مدفوع بالتمرير */
+animation-timeline: scroll();`,
+        codeLanguage: "css",
+      },
+      {
+        heading: "نطاقات الجدول الزمني:",
+        code: `/* نطاقات دخول/خروج محددة */
+animation-range: entry 0% entry 100%;
+animation-range: exit 0% exit 100%;
+
+/* نطاقات التغطية */
+animation-range: cover 0% cover 50%;
+
+/* نطاقات مسماة */
+animation-range: normal;`,
+        codeLanguage: "css",
+      },
+      {
+        heading: "الأداء:",
+        items: [
+          "جيد: transform، opacity (متسارع بالـ GPU)",
+          "سيء: width، height، margin، padding (يسبب إعادة حساب التخطيط)",
+          "نصيحة: will-change: transform لرسوم متحركة أكثر سلاسة",
+          "نصيحة: استخدم contain: layout لعزل الرسوم المتحركة",
+        ],
+      },
+      {
+        heading: "أمثلة سريعة:",
+        code: `/* مؤشر تقدم التمرير */
+.progress {
+  animation: grow linear;
+  animation-timeline: scroll();
+}
+
+/* ظهور عند التمرير */
+.card {
+  animation: fade-in linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}`,
+        codeLanguage: "css",
+      },
+    ],
+  },
   en: {
     title: "Quick Reference: CSS Animation Mastery",
     columns: [

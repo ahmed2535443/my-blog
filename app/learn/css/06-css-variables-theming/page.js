@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1], fr: [1, 1], de: [1, 1] };
+const correctAnswers = { ar: [1, 1], en: [1, 1], fr: [1, 1], de: [1, 1] };
 
 const challengeCode = `/* CSS Variables Theming Challenge */
 
@@ -50,6 +50,74 @@ const challengeCode = `/* CSS Variables Theming Challenge */
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص - متغيرات CSS + السمات",
+    columns: [
+      {
+        heading: "تعريف واستخدام المتغيرات:",
+        code: `/* تعريف */
+:root {
+  --color-primary: #2563eb;
+  --spacing-md: 1rem;
+}
+
+/* استخدام */
+.element {
+  color: var(--color-primary);
+  padding: var(--spacing-md);
+}
+
+/* مع قيمة افتراضية */
+.element {
+  color: var(--color-primary, #3b82f6);
+}`,
+        codeLanguage: "css",
+      },
+      {
+        heading: "color-mix() - خلط الألوان:",
+        code: `/* درجات اللون الأساسي */
+--primary-100: color-mix(in oklch, var(--primary) 20%, white);
+--primary-500: var(--primary);
+--primary-900: color-mix(in oklch, var(--primary) 80%, black);
+
+/* خلط لونين */
+half-blue: color-mix(in oklch, blue 50%, red);`,
+        codeLanguage: "css",
+      },
+      {
+        heading: "light-dark() - ألوان تلقائية:",
+        code: `body { color-scheme: light dark; }
+
+.card {
+  background: light-dark(#ffffff, #1e293b);
+  color: light-dark(#111827, #e5e7eb);
+  border: 1px solid light-dark(#e5e7eb, #334151);
+}`,
+        codeLanguage: "css",
+      },
+      {
+        heading: "نمط تبديل السمة:",
+        code: `:root, [data-theme="light"] {
+  color-scheme: light;
+  --bg: #ffffff;
+  --text: #111827;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --text: #e2e8f0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+  }
+}`,
+        codeLanguage: "css",
+      },
+    ],
+  },
   en: {
     title: "Cheat Sheet - CSS Variables + Theming",
     columns: [

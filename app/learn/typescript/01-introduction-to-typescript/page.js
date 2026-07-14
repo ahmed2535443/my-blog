@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1], fr: [1, 1], de: [1, 1] };
+const correctAnswers = { ar: [1, 1], en: [1, 1], fr: [1, 1], de: [1, 1] };
 
 const challengeCode = `function greet(name: string, age: number): string {
   return \`مرحباً \${name}، عمرك \${age} سنة\`;
@@ -27,6 +27,27 @@ console.log(greet("أحمد", 25));
 // greet("أحمد");       // ❌ missing parameter age`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص مقدمة TypeScript",
+    columns: [
+      {
+        heading: "المفاهيم الأساسية:",
+        items: [
+          "نظام الأنواع — يضيف معلومات النوع إلى الكود قبل التجميع",
+          "tsc (المترجم) — يُترجم .ts إلى .js ويتحقق من الأنواع",
+          "التبنّي التدريجي — يمكن تحويل JavaScript إلى TypeScript تدريجياً",
+        ],
+      },
+      {
+        heading: "الأوامر الأساسية:",
+        items: [
+          "npm install -g typescript — تثبيت TypeScript عالمياً",
+          "tsc --init — إنشاء tsconfig.json",
+          "tsc file.ts — ترجمة ملف TypeScript",
+        ],
+      },
+    ],
+  },
   en: {
     title: "TypeScript Introduction Cheat Sheet",
     columns: [

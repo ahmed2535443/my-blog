@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1, 1], fr: [1, 1, 1, 1], de: [1, 1, 1, 1] };
+const correctAnswers = { ar: [1, 1, 1, 1], en: [1, 1, 1, 1], fr: [1, 1, 1, 1], de: [1, 1, 1, 1] };
 
 const challengeCode = `/* Modern Selectors Challenge */
 
@@ -57,6 +57,49 @@ const challengeCode = `/* Modern Selectors Challenge */
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص: المحددات الحديثة + CSS Nesting",
+    columns: [
+      {
+        heading: "المحددات الأساسية:",
+        items: [
+          '<code className="inline-code">عنصر</code> - p { }',
+          '<code className="inline-code">فئة</code> - .btn { }',
+          '<code className="inline-code">معرّف</code> - #header { }',
+          '<code className="inline-code">سمة</code> - [type="text"]',
+        ],
+      },
+      {
+        heading: "المحرّكات:",
+        items: [
+          '<code className="inline-code">ابن ></code> - .nav > li (ابنة مباشرة)',
+          '<code className="inline-code">تابع</code> - .nav a (أي تابع)',
+          '<code className="inline-code">مجاور +</code> - h2 + p (الأخ المجاور التالي)',
+          '<code className="inline-code">عام ~</code> - h2 ~ p (جميع الإخوة التاليين)',
+        ],
+      },
+      {
+        heading: "المحددات الحديثة:",
+        items: [
+          '<code className="inline-code">:has()</code> - محدد الأب (ينسّق الأب بناءً على الأبناء)',
+          '<code className="inline-code">:is()</code> - تجميع المحددات (يأخذ أعلى نوعية)',
+          '<code className="inline-code">:where()</code> - نوعية صفرية (ممتاز لإعادة التعيين)',
+        ],
+      },
+      {
+        heading: "CSS Nesting:",
+        code: `.parent {
+  background: white;
+
+  & .child { color: red; }
+  &:hover { background: gray; }
+  &::before { content: ""; }
+  &.active { color: blue; }
+}`,
+        codeLanguage: "css",
+      },
+    ],
+  },
   en: {
     title: "Cheat Sheet: Modern Selectors + CSS Nesting",
     columns: [

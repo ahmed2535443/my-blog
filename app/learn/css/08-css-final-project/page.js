@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
+const correctAnswers = { ar: [1, 1, 1], en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
 
 const challengeDescription = {
   en: "Create a new section titled 'What Our Customers Say' with 3 animated testimonial cards. Each card should include: user image (placeholder), name, position, and testimonial. Use CSS Grid with auto-fit/minmax, add scroll-reveal animations, and make cards adapt with Container Queries.",

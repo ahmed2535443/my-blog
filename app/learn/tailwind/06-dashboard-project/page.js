@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 2], fr: [1, 1, 2], de: [1, 1, 2] };
+const correctAnswers = { ar: [1, 1, 2], en: [1, 1, 2], fr: [1, 1, 2], de: [1, 1, 2] };
 
 const challengeCode = `function RecentActivity() {
   const activities = [
@@ -43,6 +43,17 @@ const challengeCode = `function RecentActivity() {
 }`;
 
 const cheatSheetData = {
+  ar: {
+    title: "لوحة التحكم Tailwind - مرجع كامل",
+    columns: [
+      { heading: "التخطيط:", items: ["flex → حاوية flex", "flex-col → تكدس عمودي", "flex-1 → أخذ المساحة المتبقية", "items-center → توسيط عمودي", "justify-between → مسافة بين", "gap-3/gap-4/gap-6 → التباعد"] },
+      { heading: "الشبكة:", items: ["grid → حاوية شبكة", "grid-cols-1/2/3/4", "md:grid-cols-2 (لوحي)", "lg:grid-cols-4 (سطح مكتب)", "col-span-2 → امتداد عمودين"] },
+      { heading: "المتجاوب:", items: ["sm: 640px", "md: 768px", "lg: 1024px", "xl: 1280px", "2xl: 1536px"] },
+      { heading: "الوضع الداكن:", items: ["dark:bg-gray-800", "dark:text-gray-200", "dark:border-gray-700", "dark:hover:bg-gray-700"] },
+      { heading: "التمرير والتركيز:", items: ["hover:bg-* / hover:text-*", "hover:shadow-md", "focus:outline-none focus:ring-2", "focus:ring-offset-2", "active:bg-*"] },
+      { heading: "الانتقالات:", items: ["transition-all", "transition-colors", "transition-shadow", "duration-200 / duration-300"] },
+    ],
+  },
   en: {
     title: "Tailwind Dashboard - Complete Reference",
     columns: [
@@ -79,6 +90,7 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: { title: "مشروع لوحة التحكم مكتمل", description: "لقد أنشأت لوحة تحكم كاملة مع شريط جانبي ورأس وبطاقات إحصائيات وجدول بيانات ووضع داكن.", items: ["شريط جانبي بالتنقل", "رأس ببحث وإشعارات", "بطاقات إحصائيات بتخطيط شبكي", "جدول بيانات بـ overflow-x-auto", "تبديل الوضع الداكن", "كل ذلك باستخدام Tailwind CSS فقط"], hint: "راجع كل مكون وافهم كيف تعمل flex و grid و dark: و hover: و transition معاً." },
   en: { title: "Dashboard Project Complete", description: "You've built a complete dashboard with sidebar, header, stats cards, data table, and dark mode.", items: ["Sidebar with navigation", "Header with search and notifications", "Stats cards with grid layout", "Data table with overflow-x-auto", "Dark mode toggle", "All using Tailwind CSS only"], hint: "Review each component and understand how flex, grid, dark:, hover:, and transition work together." },
   fr: { title: "Projet Dashboard Terminé", description: "Vous avez construit un dashboard complet avec sidebar, en-tête, cartes stats et mode sombre.", items: ["Sidebar avec navigation", "En-tête avec recherche et notifications", "Cartes stats avec grille", "Tableau avec overflow-x-auto", "Basculement mode sombre", "Tout en Tailwind CSS uniquement"], hint: "Revuez chaque composant et comprenez comment flex, grid, dark:, hover:, et transition fonctionnent ensemble." },
   de: { title: "Dashboard-Projekt Abgeschlossen", description: "Sie haben ein vollständiges Dashboard mit Sidebar, Header, Statistik-Karten und Dunkelmodus erstellt.", items: ["Sidebar mit Navigation", "Header mit Suche und Benachrichtigungen", "Statistik-Karten mit Raster", "Datentabelle mit overflow-x-auto", "Dunkelmodus-Umschaltung", "Alles nur mit Tailwind CSS"], hint: "Überprüfen Sie jede Komponente und verstehen Sie, wie flex, grid, dark:, hover: und transition zusammenarbeiten." },

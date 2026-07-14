@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [2, 2, 0, 2], fr: [2], de: [2] };
+const correctAnswers = { ar: [2, 2, 0, 2], en: [2, 2, 0, 2], fr: [2], de: [2] };
 
 const challengeCode = `// Go to supabase.com and create a free account
 // Create a new project with a unique name
@@ -22,6 +22,36 @@ const challengeCode = `// Go to supabase.com and create a free account
 supabase.from('todos').select('*')`;
 
 const cheatSheetData = {
+  ar: {
+    title: "ملخص مراجعة البدء مع Supabase",
+    columns: [
+      {
+        heading: "نقاط رئيسية:",
+        items: [
+          "Supabase هو BaaS مفتوح المصدر مبني على PostgreSQL",
+          "المكونات: قاعدة البيانات، المصادقة، التخزين، الوقت الفوري، Edge Functions",
+          "عميل JS واحد: @supabase/supabase-js",
+          "الاستعلامات تُترجم إلى SQL عبر PostgREST",
+          "مثالي لـ MVPs، تطبيقات الوقت الفوري، تجنب الارتباط بمزوّد",
+        ],
+      },
+      {
+        heading: "مثال:",
+        code: `// Install
+npm install @supabase/supabase-js
+
+// Create client
+import { createClient } from '@supabase/supabase-js'
+const supabase = createClient(url, key)
+
+// Fetch data
+const { data, error } = await supabase
+  .from('todos')
+  .select('*')`,
+        codeLanguage: "javascript",
+      },
+    ],
+  },
   en: {
     title: "Supabase Getting Started Cheat Sheet",
     columns: [

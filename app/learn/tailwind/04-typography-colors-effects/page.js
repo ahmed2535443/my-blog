@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { en: [1, 1, 2, 2], fr: [1, 1, 2, 2], de: [1, 1, 2, 2] };
+const correctAnswers = { ar: [1, 1, 2, 2], en: [1, 1, 2, 2], fr: [1, 1, 2, 2], de: [1, 1, 2, 2] };
 
 const challengeCode = `<div className="max-w-sm rounded-2xl overflow-hidden shadow-xl bg-white">
   <div className="bg-gradient-to-r from-indigo-500 to-purple-600 h-24" />
@@ -31,6 +31,17 @@ const challengeCode = `<div className="max-w-sm rounded-2xl overflow-hidden shad
 </div>`;
 
 const cheatSheetData = {
+  ar: {
+    title: "مرجع سريع للطباعة والألوان والتأثيرات",
+    columns: [
+      { heading: "الطباعة:", items: ["text-xs ... text-9xl (أحجام)", "font-thin ... font-black (أوزان)", "font-sans | font-serif | font-mono (عائلات)", "leading-none ... leading-loose (ارتفاعات)", "tracking-tighter ... tracking-widest (تباعد)"] },
+      { heading: "الألوان:", items: ["bg-* | text-* | border-*", "ring-* | placeholder-* | divide-*", "bg-blue-500/75 (شفافية 75%)", "50 | 100 | 200 ... 900 | 950 (11 درجة)"] },
+      { heading: "الخلفيات والحدود:", items: ["bg-gradient-to-r/l/t/b/tr/bl/tl/br", "from-* | via-* | to-*", "bg-cover | bg-contain | bg-auto", "border | border-2 | border-4 | border-8", "rounded-none ... rounded-full"] },
+      { heading: "الظلال:", items: ["shadow-none | sm | md | lg | xl | 2xl | inner", "[text-shadow:...] (قيم عشوائية)"] },
+      { heading: "الشفافية والدمج:", items: ["opacity-0 ... opacity-100", "mix-blend-multiply | screen | overlay", "bg-blend-multiply | screen | overlay"] },
+      { heading: "الانتقالات:", items: ["transition | transition-all | transition-colors", "duration-75 ... duration-1000", "ease-linear | in | out | in-out", "animate-spin | ping | pulse | bounce"] },
+    ],
+  },
   en: {
     title: "Typography, Colors & Effects Quick Reference",
     columns: [
@@ -67,6 +78,7 @@ const cheatSheetData = {
 };
 
 const miniProject = {
+  ar: { title: "المشروع المصغّر: بطاقة منتج", description: "أنشئ بطاقة منتج مع طباعة وألوان وتدرجات وظلال.", items: ["خلفية رأس متدرجة", "أفاتار دائري بحد", "عنوان غامق ونص ثانوي", "أزرار متابعة ورسالة بتأثيرات التمرير", "ظل بطاقة بزوايا مدورة"], hint: "استخدم bg-gradient-to-r from-indigo-500 to-purple-600 للرأس، و rounded-full للأفاتار، و shadow-xl للبطاقة." },
   en: { title: "Mini Project: Profile Card", description: "Create a profile card with typography, colors, gradients, and shadows.", items: ["Gradient header background", "Circular avatar with border", "Bold name and secondary bio text", "Follow and Message buttons with hover effects", "Card shadow with rounded corners"], hint: "Use bg-gradient-to-r from-indigo-500 to-purple-600 for the header, rounded-full for the avatar, and shadow-xl for the card." },
   fr: { title: "Mini Projet: Carte de Profil", description: "Créez une carte de profil avec typographie, couleurs, dégradés et ombres.", items: ["Arrière-plan en-tête dégradé", "Avatar circulaire avec bordure", "Nom en gras et bio secondaire", "Boutons avec effets hover", "Carte avec ombre et coins arrondis"], hint: "Utilisez bg-gradient-to-r pour l'en-tête, rounded-full pour l'avatar, et shadow-xl pour la carte." },
   de: { title: "Mini-Projekt: Profilkarte", description: "Erstellen Sie eine Profilkarte mit Typografie, Farben, Verläufen und Schatten.", items: ["Verlauf-Hintergrund im Header", "Kreisförmiges Avatar mit Rahmen", "Fetter Name und sekundäre Bio", "Follow- und Message-Buttons mit Hover", "Karte mit Schatten und abgerundeten Ecken"], hint: "Verwenden Sie bg-gradient-to-r für den Header, rounded-full für das Avatar, und shadow-xl für die Karte." },

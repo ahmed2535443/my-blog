@@ -58,6 +58,27 @@ const en = {
     of: "/",
     info: "💡 This curriculum is updated for 2025-2026 with the latest practices and technologies",
     infoReact: "💡 This curriculum is adapted for Next.js 16 and React 19",
+    completed: "Completed ✓",
+    inProgress: "In Progress",
+    lessonsCount: "lessons",
+  },
+  progress: {
+    completedOf: "{count} of {total} lessons completed",
+  },
+  problem: {
+    easy: "Easy",
+    medium: "Medium",
+    hard: "Hard",
+    examples: "Examples:",
+    showHint: "Show Hint",
+    hideHint: "Hide Hint",
+    hint: "Hint:",
+    showSolution: "Show Solution",
+    hideSolution: "Hide Solution",
+  },
+  navigation: {
+    prevLesson: "Previous Lesson",
+    nextLesson: "Next Lesson",
   },
   components: {
     quiz: {
