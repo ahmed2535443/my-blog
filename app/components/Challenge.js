@@ -1,11 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useLanguage } from "./LanguageProvider";
 
 export default function Challenge({ title, description, children }) {
   const { t } = useLanguage();
   const [showSolution, setShowSolution] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    if (showSolution) {
+      requestAnimationFrame(() => setIsVisible(true));
+    } else {
+      setIsVisible(false);
+    }
+  }, [showSolution]);
 
   return (
     <div
@@ -28,7 +38,7 @@ export default function Challenge({ title, description, children }) {
 
       <button
         onClick={() => setShowSolution(!showSolution)}
-        className="px-5 py-2 rounded-lg font-bold text-sm transition-all duration-200"
+        className="px-5 py-2 rounded-lg font-bold text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
         style={{
           background: showSolution ? "var(--border)" : "var(--secondary)",
           color: showSolution ? "var(--foreground)" : "var(--background)",
@@ -38,20 +48,30 @@ export default function Challenge({ title, description, children }) {
         {showSolution ? t.components.challenge.hideSolution : t.components.challenge.showSolution}
       </button>
 
-      {showSolution && children && (
-        <div
-          className="mt-4 p-4 rounded-lg border"
-          style={{
-            background: "rgba(251, 191, 36, 0.05)",
-            borderColor: "var(--secondary)",
-          }}
-        >
-          <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
-            {t.components.challenge.solution}
-          </p>
-          <div style={{ color: "var(--foreground)" }}>{children}</div>
-        </div>
-      )}
+      <div
+        ref={contentRef}
+        className="overflow-hidden transition-all duration-300 ease-in-out"
+        style={{
+          maxHeight: showSolution && isVisible ? `${contentRef.current?.scrollHeight + 20}px` : "0px",
+          opacity: showSolution && isVisible ? 1 : 0,
+          marginTop: showSolution && isVisible ? "16px" : "0px",
+        }}
+      >
+        {children && (
+          <div
+            className="p-4 rounded-lg border"
+            style={{
+              background: "rgba(251, 191, 36, 0.05)",
+              borderColor: "var(--secondary)",
+            }}
+          >
+            <p className="font-bold mb-2" style={{ color: "var(--secondary)" }}>
+              {t.components.challenge.solution}
+            </p>
+            <div style={{ color: "var(--foreground)" }}>{children}</div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

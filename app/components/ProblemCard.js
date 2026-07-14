@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useLanguage } from "./LanguageProvider";
 
 export default function ProblemCard({
@@ -16,6 +16,10 @@ export default function ProblemCard({
 }) {
   const [showHint, setShowHint] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
+  const [hintVisible, setHintVisible] = useState(false);
+  const [solutionVisible, setSolutionVisible] = useState(false);
+  const hintRef = useRef(null);
+  const solutionRef = useRef(null);
   const { t } = useLanguage();
 
   const difficultyConfig = {
@@ -24,6 +28,22 @@ export default function ProblemCard({
     hard: { label: t.problem.hard, color: "#ef4444", bg: "rgba(239, 68, 68, 0.1)" },
   };
   const diff = difficultyConfig[difficulty] || difficultyConfig.easy;
+
+  useEffect(() => {
+    if (showHint) {
+      requestAnimationFrame(() => setHintVisible(true));
+    } else {
+      setHintVisible(false);
+    }
+  }, [showHint]);
+
+  useEffect(() => {
+    if (showSolution) {
+      requestAnimationFrame(() => setSolutionVisible(true));
+    } else {
+      setSolutionVisible(false);
+    }
+  }, [showSolution]);
 
   return (
     <div
@@ -132,7 +152,7 @@ export default function ProblemCard({
         {hints.length > 0 && (
           <button
             onClick={() => { setShowHint(!showHint); setShowSolution(false); }}
-            className="px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200"
+            className="px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 hover:opacity-90 active:scale-95"
             style={{
               background: showHint ? "var(--border)" : "rgba(251, 191, 36, 0.15)",
               color: showHint ? "var(--foreground)" : "var(--secondary)",
@@ -146,7 +166,7 @@ export default function ProblemCard({
         {solution && (
           <button
             onClick={() => { setShowSolution(!showSolution); setShowHint(false); }}
-            className="px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200"
+            className="px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 hover:opacity-90 active:scale-95"
             style={{
               background: showSolution ? "var(--border)" : "rgba(34, 197, 94, 0.15)",
               color: showSolution ? "var(--foreground)" : "var(--accent)",
@@ -159,67 +179,85 @@ export default function ProblemCard({
         )}
       </div>
 
-      {/* Hint */}
-      {showHint && hints.length > 0 && (
-        <div
-          className="mx-5 mb-4 p-4 rounded-lg border"
-          style={{
-            background: "rgba(251, 191, 36, 0.05)",
-            borderColor: "var(--secondary)",
-          }}
-        >
-          <p className="font-bold text-sm mb-2" style={{ color: "var(--secondary)" }}>
-            💡 {t.problem.hint}
-          </p>
-          <ul className="space-y-1">
-            {hints.map((hint, i) => (
-              <li
-                key={i}
-                className="text-sm"
-                style={{ color: "var(--foreground)" }}
-              >
-                • {hint}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {/* Solution */}
-      {showSolution && solution && (
-        <div
-          className="mx-5 mb-4 rounded-lg overflow-hidden border"
-          style={{
-            background: "rgba(34, 197, 94, 0.05)",
-            borderColor: "var(--accent)",
-          }}
-        >
-          {solutionApproach && (
-            <div
-              className="px-4 py-2 border-b text-sm font-bold"
-              style={{
-                borderColor: "rgba(34, 197, 94, 0.2)",
-                color: "var(--accent)",
-              }}
-            >
-              🎯 {solutionApproach}
-            </div>
-          )}
-          <pre
-            className="p-4 text-sm font-mono overflow-x-auto"
+      {/* Hint with smooth animation */}
+      <div
+        ref={hintRef}
+        className="overflow-hidden transition-all duration-300 ease-in-out"
+        style={{
+          maxHeight: showHint && hintVisible ? `${hintRef.current?.scrollHeight + 20}px` : "0px",
+          opacity: showHint && hintVisible ? 1 : 0,
+        }}
+      >
+        {hints.length > 0 && (
+          <div
+            className="mx-5 mb-4 p-4 rounded-lg border"
             style={{
-              color: "var(--foreground)",
-              direction: "ltr",
-              textAlign: "left",
-              lineHeight: "1.7",
-              margin: 0,
-              background: "transparent",
+              background: "rgba(251, 191, 36, 0.05)",
+              borderColor: "var(--secondary)",
             }}
           >
-            {solution}
-          </pre>
-        </div>
-      )}
+            <p className="font-bold text-sm mb-2" style={{ color: "var(--secondary)" }}>
+              💡 {t.problem.hint}
+            </p>
+            <ul className="space-y-1">
+              {hints.map((hint, i) => (
+                <li
+                  key={i}
+                  className="text-sm"
+                  style={{ color: "var(--foreground)" }}
+                >
+                  • {hint}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+
+      {/* Solution with smooth animation */}
+      <div
+        ref={solutionRef}
+        className="overflow-hidden transition-all duration-300 ease-in-out"
+        style={{
+          maxHeight: showSolution && solutionVisible ? `${solutionRef.current?.scrollHeight + 20}px` : "0px",
+          opacity: showSolution && solutionVisible ? 1 : 0,
+        }}
+      >
+        {solution && (
+          <div
+            className="mx-5 mb-4 rounded-lg overflow-hidden border"
+            style={{
+              background: "rgba(34, 197, 94, 0.05)",
+              borderColor: "var(--accent)",
+            }}
+          >
+            {solutionApproach && (
+              <div
+                className="px-4 py-2 border-b text-sm font-bold"
+                style={{
+                  borderColor: "rgba(34, 197, 94, 0.2)",
+                  color: "var(--accent)",
+                }}
+              >
+                🎯 {solutionApproach}
+              </div>
+            )}
+            <pre
+              className="p-4 text-sm font-mono overflow-x-auto"
+              style={{
+                color: "var(--foreground)",
+                direction: "ltr",
+                textAlign: "left",
+                lineHeight: "1.7",
+                margin: 0,
+                background: "transparent",
+              }}
+            >
+              {solution}
+            </pre>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
