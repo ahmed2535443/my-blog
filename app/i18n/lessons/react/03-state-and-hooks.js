@@ -4,6 +4,7 @@ const translations = {
       { title: "ما هو الحالة (State)؟", content: [
         { type: "p", text: "<strong>الحالة (State)</strong> هي بيانات تتغير مع الوقت وتؤثر على ما يعرضه المكون. عند تغيير الحالة، يُعيد React عرض المكون تلقائياً." },
         { type: "p", text: "فكّر في الحالة كـ <strong>ذاكرة</strong> للمكون: تتذكر الأشياء بين العروض." },
+        { type: "callout", title: "تشبيه بسيط", text: "الحالة مثل <strong>مفتاح النور</strong>. عندما تضغط على المفتاح، يتغير حالة النور (مضاء/مطفأ). هذا التغيير يُنعكس على الغرفة (واجهة المستخدم). الحالة في React كذلك — تتغير بفعل المستخدم، وتنعكس على الواجهة تلقائياً." },
         { type: "p", text: "على سبيل المثال، العداد يحتاج إلى تذكر العدد الحالي. المفتاح يحتاج إلى تذكر الرؤية. نموذج تسجيل الدخول يحتاج إلى تذكر ما إذا كان المستخدم قد أدخل بياناته." },
       ]},
       { title: "لماذا نحتاج إلى الحالة؟", content: [
@@ -44,6 +45,7 @@ const translations = {
       ]},
       { title: "الحالة مقابل الخصائص", content: [
         { type: "p", text: "الخصائص تأتي من المكون الأصل (خارجية، للقراءة فقط). الحالة داخلية للمكون (قراءة وكتابة)." },
+        { type: "callout", title: "تشبيه بسيط", text: "الحالة والخصائص مثل <strong>القائمة والطلب</strong> في مطعم. القائمة (Props) تأتي من المطعم — أنت لا تستطيع تغييرها. الطلب (State) هو ما تختاره أنت — يمكنك تغييره كما تشاء. القائمة هي مدخلات خارجية، والطلب هو قرارك الداخلي." },
         { type: "li", text: "<strong>الخصائص:</strong> تأتي من الأصل، للقراءة فقط، مثل معاملات الدالة" },
         { type: "li", text: "<strong>الحالة:</strong> داخلية للمكون، يمكن تغييرها بـ setState، مثل المتغيرات المحلية" },
       ]},
@@ -74,6 +76,7 @@ const translations = {
       { title: "What is State?", content: [
         { type: "p", text: "<strong>State</strong> is data that changes over time and affects what the component displays. When state changes, React re-renders the component automatically." },
         { type: "p", text: "Think of State as the component's <strong>memory</strong>: it remembers things between renders." },
+        { type: "callout", title: "Simple Analogy", text: "State is like a light switch. When you press the switch, the light state changes (on/off). This change is reflected in the room (the UI). React State works the same way — it changes based on user action, and the UI updates automatically." },
         { type: "p", text: "For example, a counter needs to remember the current number. A toggle needs to remember visibility. A login form needs to remember if the user has entered their data." },
       ]},
       { title: "Why Do We Need State?", content: [

@@ -11,7 +11,7 @@ import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
 import { getLessonBySlug } from "@/data/curriculum";
 
-const correctAnswers = { ar: [1, 1, 2, 2, 0], en: [1, 1, 2, 2, 0], fr: [1, 1, 2, 2, 0], de: [1, 1, 2, 2, 0] };
+const correctAnswers = { ar: [1, 0, 1], en: [1, 0, 1], fr: [1, 0, 1], de: [1, 0, 1] };
 
 const challengeCode = `function UserProfile({ name, role, bio }) {
   return (

@@ -3,6 +3,7 @@ const translations = {
     sections: [
       { title: "ما هي Context API؟", content: [
         { type: "p", text: "Context API هو آلية تسمح لك بمشاركة البيانات بين المكونات <strong>دون تمرير الخصائص يدوياً</strong> في كل مستوى." },
+        { type: "callout", title: "تشبيه بسيط", text: "Context مثل <strong>الراديو</strong>. بدلاً من أن ترسل رسالة لكل شخص على حدة (تمرير Props)، تُبث الرسالة عبر الراديوeveryone يستمع在同一时间. أي مكون يمكنه \"الاستماع\" للبيانات بدون تمرير يدوي." },
         { type: "p", text: "يحل مشكلة <strong>تنقل الخصائص (prop drilling)</strong> حيث يجب أن تمر البيانات عبر العديد من المكونات الوسيطة." },
         { type: "p", text: "فكّر في Context كـ \"حالة عامة\" يمكن لأي مكون الوصول إليها." },
       ]},
@@ -49,6 +50,7 @@ const translations = {
     sections: [
       { title: "What is Context API?", content: [
         { type: "p", text: "Context API is a mechanism that lets you share data between components <strong>without passing props manually</strong> at every level." },
+        { type: "callout", title: "Simple Analogy", text: "Context is like a <strong>radio</strong>. Instead of sending a message to each person individually (passing Props), you broadcast the message via radio — everyone listens at the same time. Any component can listen to the data without manual passing." },
         { type: "p", text: "It solves the <strong>prop drilling</strong> problem where data has to pass through many intermediate components." },
         { type: "p", text: "Think of Context as a \"global state\" that any component can access." },
       ]},

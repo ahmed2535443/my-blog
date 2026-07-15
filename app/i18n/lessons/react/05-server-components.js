@@ -3,6 +3,7 @@ const translations = {
     sections: [
       { title: "ما هي مكونات الخادم؟", content: [
         { type: "p", text: "مكونات الخادم هي مكونات React تعمل <strong>فقط على الخادم</strong>. لا تنقل JavaScript أبداً إلى العميل، مما يجعل تطبيقك أسرع وأخف." },
+        { type: "callout", title: "تشبيه بسيط", text: "مكون الخادم مثل <strong>المطبخ</strong> — يُحضّر الطعام (يجلب البيانات) بعيداً عن العميل. مكون العميل مثل <strong>طاولة التقديم</strong> — يعرض الطعام (الواجهة) للمستخدم ويتفاعل معه. لا تريد إرسال المطبخ بأكمله للعميل!" },
         { type: "p", text: "في Next.js 13+، جميع المكونات في مجلد <code>app/</code> هي مكونات خادم افتراضياً." },
         { type: "p", text: "يمكن لمكونات الخادم الوصول مباشرة إلى قواعد البيانات وأنظمة الملفات والموارد الخادم الأخرى." },
       ]},
@@ -44,6 +45,7 @@ const translations = {
     sections: [
       { title: "What are Server Components?", content: [
         { type: "p", text: "Server Components are React components that run <strong>only on the server</strong>. They never ship JavaScript to the client, making your app faster and lighter." },
+        { type: "callout", title: "Simple Analogy", text: "A Server Component is like a <strong>kitchen</strong> — it prepares food (fetches data) away from the client. A Client Component is like a <strong>dining table</strong> — it serves food (the UI) to the user and interacts with them. You would not send the entire kitchen to the client!" },
         { type: "p", text: "In Next.js 13+, all components in the <code>app/</code> directory are Server Components by default." },
         { type: "p", text: "Server Components can directly access databases, file systems, and other server-side resources." },
       ]},

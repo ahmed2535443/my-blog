@@ -3,6 +3,7 @@ const translations = {
     sections: [
       { title: "ما هو useEffect؟", content: [
         { type: "p", text: "<code>useEffect</code> هو خطاف يسمح لك بتشغيل <strong>التأثيرات الجانبية</strong> في مكونات الدالة. ينفذ العمليات بعد العرض." },
+        { type: "callout", title: "تشبيه بسيط", text: "useEffect مثل <strong>البريد الوارد</strong>. كلما وصل بريد جديد (تغيير في التبعيات)، تفتح الصندوق (تنفذ الدالة). إذا حدّدت شروطاً (مصفوفة التبعيات)، فتح الصندوق فقط عندما تتحقق الشروط. بدون شروط، تفتحه كل مرة." },
         { type: "p", text: "التأثيرات الجانبية هي عمليات مثل: جلب البيانات من API، إعداد اشتراكات، مؤقتات، أو تعديل DOM مباشر." },
         { type: "p", text: "الصيغة الأساسية: <code>useEffect(() => {}, [])</code>" },
       ]},
@@ -43,6 +44,7 @@ const translations = {
     sections: [
       { title: "What is useEffect?", content: [
         { type: "p", text: "<code>useEffect</code> is a Hook that lets you run <strong>side effects</strong> in function components. It performs operations after rendering." },
+        { type: "callout", title: "Simple Analogy", text: "useEffect is like your inbox. Every time new mail arrives (a dependency changes), you open the box (run the function). If you set conditions (dependency array), you only open when conditions are met. Without conditions, you open it every time." },
         { type: "p", text: "Side effects are operations like: fetching data from an API, setting up subscriptions, timers, or direct DOM manipulation." },
         { type: "p", text: "The basic syntax: <code>useEffect(() => {}, [])</code>" },
       ]},

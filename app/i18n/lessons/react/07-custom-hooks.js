@@ -3,6 +3,7 @@ const translations = {
     sections: [
       { title: "ما هي الخطافات المخصصة؟", content: [
         { type: "p", text: "الخطافات المخصصة هي دوال JavaScript تبدأ بـ <code>use</code> ويمكنها استخدام خطافات أخرى داخلها." },
+        { type: "callout", title: "تشبيه بسيط", text: "الخطافة المخصصة مثل <strong>وصفة طبخ</strong>. أنت تكتب الوصفة مرة واحدة (الدالة)، ثم تستخدمها كلما أردت طبخ هذا الطبق. يمكنك تعديل المقادير (المعاملات) حسب الحاجة. الوصفة قابلة لإعادة الاستخدام وتنطبق على مكونات مختلفة." },
         { type: "p", text: "تسمح لك باستخراج منطق المكون في دوال قابلة لإعادة الاستخدام، وتجنب تكرار الكود." },
         { type: "p", text: "الخطافات المخصصة هي طريقة لإعادة استخدام المنطق الم满的状态 بين مكونات مختلفة." },
       ]},
@@ -51,6 +52,7 @@ const translations = {
     sections: [
       { title: "What are Custom Hooks?", content: [
         { type: "p", text: "Custom Hooks are JavaScript functions that start with <code>use</code> and can use other Hooks inside them." },
+        { type: "callout", title: "Simple Analogy", text: "A Custom Hook is like a <strong>recipe</strong>. You write the recipe once (the function), then use it whenever you want to cook that dish. You can adjust the ingredients (parameters) as needed. The recipe is reusable and applies to different components." },
         { type: "p", text: "They let you extract component logic into reusable functions, avoiding code duplication." },
         { type: "p", text: "Custom Hooks are a way to reuse stateful logic between different components." },
       ]},

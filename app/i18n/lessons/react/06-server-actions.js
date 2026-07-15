@@ -3,6 +3,7 @@ const translations = {
     sections: [
       { title: "ما هي إجراءات الخادم؟", content: [
         { type: "p", text: "إجراءات الخادم هي دوال تعمل <strong>فقط على الخادم</strong>. تتعامل مع إرسال النماذج وعمليات قاعدة البيانات والمهام الخادم الأخرى." },
+        { type: "callout", title: "تشبيه بسيط", text: "إجراء الخادم مثل <strong>صندوق بريد</strong>. أنت تكتب رسالة (تبيانات النموذج) وتحطها في الصندوق. تلقائياً تصل الرسالة إلى الخادم وتُعالج. لا تحتاج لكتابة كود اتصال معقد — فقط ضع البيانات في الصندوق!" },
         { type: "p", text: "في Next.js 13+، حدد الدالة بـ <code>\"use server\"</code> لجعلها إجراء خادم." },
         { type: "p", text: "يمكن استدعاء إجراءات الخادم من مكونات العميل أو النماذج أو حتى مكونات الخادم." },
       ]},
@@ -42,6 +43,7 @@ const translations = {
     sections: [
       { title: "What are Server Actions?", content: [
         { type: "p", text: "Server Actions are functions that run <strong>only on the server</strong>. They handle form submissions, database operations, and other server-side tasks." },
+        { type: "callout", title: "Simple Analogy", text: "A Server Action is like a <strong>mailbox</strong>. You write a message (form data) and drop it in the box. The message automatically reaches the server and gets processed. You do not need to write complex connection code — just put the data in the mailbox!" },
         { type: "p", text: "In Next.js 13+, mark a function with <code>\"use server\"</code> to make it a Server Action." },
         { type: "p", text: "Server Actions can be called from Client Components, forms, or even Server Components." },
       ]},
