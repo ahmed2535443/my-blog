@@ -46,7 +46,26 @@
       { term: "redirect('/path')", definition: "إعادة التوجيه بعد النجاح" },
       { term: "useActionState()", definition: "إدارة حالة النموذج" },
       { term: "useTransition()", definition: "تتبع الحالة المعلقة" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "كيف تنشئ Server Action؟",
+        answer: "أضف 'use server' في أعلى الملف.",
+        difficulty: "easy"
+      },
+      {
+        question: "ما الفائدة؟",
+        answer: "تalam النماذج بدون API routes منفصلة.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "استخدم useActionState",
+        description: "يدير حالة النموذج تلقائياً مع Server Actions في React 19",
+        icon: "brain"
+      }
+    ]
   },
   en: {
     sections: [
@@ -95,7 +114,26 @@
       { term: "redirect('/path')", definition: "Redirect after success" },
       { term: "useActionState()", definition: "Manage form state" },
       { term: "useTransition()", definition: "Track pending state" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "How do you create a Server Action?",
+        answer: "Add 'use server' at the top of the file.",
+        difficulty: "easy"
+      },
+      {
+        question: "What is the benefit?",
+        answer: "Handle forms without separate API routes.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "Use useActionState",
+        description: "Manages form state automatically with Server Actions in React 19",
+        icon: "brain"
+      }
+    ]
   },
   fr: {
     sections: [

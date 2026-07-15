@@ -50,7 +50,13 @@ const translations = {
       { term: "Extract complex conditions", definition: "Turn complex conditions into well-named functions" },
       { term: "Avoid deep nesting", definition: "Use early returns to flatten code structure" },
       { term: "Keep conditions simple", definition: "Avoid complex conditions in if statements" },
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "How do you write clean functions?", answer: "Single responsibility, few parameters, avoid side effects.", difficulty: "easy" }
+    ],
+    tricks: [
+      { title: "Use early returns", description: "To avoid deep if/else nesting", type: "brain" }
+    ]
   },
   fr: {
     sections: [

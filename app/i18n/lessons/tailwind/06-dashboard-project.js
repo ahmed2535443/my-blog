@@ -62,7 +62,13 @@ const translations = {
       { term: "divide-y", definition: "فواصل أفقية بين العناصر" },
       { term: "dark:bg-gray-800", definition: "خلفية الوضع الداكن" },
       { term: "transition-colors duration-300", definition: "انتقال سلس للألوان" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "كيف تبني مشروع Tailwind كامل؟", answer: "التخطيط → الألوان → المكونات → التجاوب → الإنتاج.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "استخدم Prettier Plugin", description: "لقسمة Classes تلقائياً وتحسين القراءة", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -127,7 +133,13 @@ const translations = {
       { term: "divide-y", definition: "Horizontal dividers between items" },
       { term: "dark:bg-gray-800", definition: "Dark mode background" },
       { term: "transition-colors duration-300", definition: "Smooth color transition" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "How do you build a complete Tailwind project?", answer: "Planning → Colors → Components → Responsive → Production.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "Use Prettier Plugin", description: "For auto-sorting classes and improving readability", type: "brain" }
+    ]
   },
   fr: {
     sections: [

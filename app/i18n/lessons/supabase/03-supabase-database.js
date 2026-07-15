@@ -55,7 +55,14 @@
       { term: ".update({})", definition: "تعديل سجل موجود" },
       { term: ".delete()", definition: "إزالة سجل" },
       { term: ".eq('col', val)", definition: "حيث العمود يساوي القيمة" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "كيف تنشئ جدول في Supabase؟", a: "من Table Editor أو SQL Editor مباشرة.", difficulty: "easy" },
+      { q: "ما هي RLS؟", a: "Row Level Security — تحدد من يمكنه قراءة/تعديل كل صف.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "فعّل RLS دائماً", description: "بدون RLS، أي شخص يمكنه الوصول لبياناتك", icon: "brain" },
+    ]
   },
   en: {
     sections: [
@@ -113,7 +120,14 @@
       { term: ".update({})", definition: "Modify existing record" },
       { term: ".delete()", definition: "Remove record" },
       { term: ".eq('col', val)", definition: "Where column equals value" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "How do you create a table in Supabase?", a: "From the Table Editor or SQL Editor directly.", difficulty: "easy" },
+      { q: "What is RLS?", a: "Row Level Security — controls who can read/update each row.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "Always enable RLS", description: "Without RLS, anyone can access your data", icon: "brain" },
+    ]
   },
   fr: {
     sections: [

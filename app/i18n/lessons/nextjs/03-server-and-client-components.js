@@ -49,7 +49,31 @@
       { term: "'use client'", definition: "تعليمة لتحويل إلى مكون عميل" },
       { term: "التناوب", definition: "الخادم يمكنه استيراد العميل، وليس العكس" },
       { term: "خاصية children", definition: "تمرير محتوى الخادم إلى مكونات العميل" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "ما الفرق بين Server و Client Component؟",
+        answer: "Server: يعمل على الخادم، لا تفاعل. Client: يعمل في المتصفح، يدعم Hooks.",
+        difficulty: "easy"
+      },
+      {
+        question: "متى تستخدم 'use client'؟",
+        answer: "عندما تحتاج useState، useEffect، أو أحداث تفاعلية.",
+        difficulty: "easy"
+      },
+      {
+        question: "لماذا Server Components أسرع؟",
+        answer: "لا تُرسل JavaScript إلى العميل، وتمارس البيانات مباشرة من الخادم.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "لا تضع 'use client' في_root layout",
+        description: "اجعل layout الرئيسي server component قدر الإمكان",
+        icon: "brain"
+      }
+    ]
   },
   en: {
     sections: [
@@ -101,7 +125,31 @@
       { term: "'use client'", definition: "Directive to convert to Client Component" },
       { term: "Interleaving", definition: "Server can import Client, not vice versa" },
       { term: "children prop", definition: "Pass Server content to Client components" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "What is the difference between Server and Client Components?",
+        answer: "Server: runs on server, no interactivity. Client: runs in browser, supports Hooks.",
+        difficulty: "easy"
+      },
+      {
+        question: "When to use 'use client'?",
+        answer: "When you need useState, useEffect, or interactive events.",
+        difficulty: "easy"
+      },
+      {
+        question: "Why are Server Components faster?",
+        answer: "They don't send JavaScript to the client and fetch data directly from the server.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "Don't put 'use client' in root layout",
+        description: "Keep the main layout as a server component as much as possible",
+        icon: "brain"
+      }
+    ]
   },
   fr: {
     sections: [

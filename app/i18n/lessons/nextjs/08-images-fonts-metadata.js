@@ -26,7 +26,26 @@
       { term: "next/font", definition: "تحميل خطوط محسّن" },
       { term: "export const metadata = {}", definition: "بيانات وصفية للصفحة لتحسين محركات البحث" },
       { term: "generateMetadata()", definition: "دالة بيانات وصفية ديناميكية" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "لماذا نستخدم next/image بدلاً من img العادي؟",
+        answer: "يوفر auto optimization و lazy loading و responsive images.",
+        difficulty: "easy"
+      },
+      {
+        question: "كيف تضيف metadata للصفحات؟",
+        answer: "استخدم دالة generateMetadata أو كائن metadata في ملف الصفحة.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "استخدم next/font",
+        description: "لتحميل الخطوط محلياً وتحسين الأداء بدلاً من Google Fonts",
+        icon: "brain"
+      }
+    ]
   },
   en: {
     sections: [
@@ -55,7 +74,26 @@
       { term: "next/font", definition: "Optimized font loading" },
       { term: "export const metadata = {}", definition: "Page metadata for SEO" },
       { term: "generateMetadata()", definition: "Dynamic metadata function" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "Why use next/image instead of regular img?",
+        answer: "It provides auto optimization, lazy loading, and responsive images.",
+        difficulty: "easy"
+      },
+      {
+        question: "How do you add metadata to pages?",
+        answer: "Use generateMetadata function or metadata object in the page file.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "Use next/font",
+        description: "To load fonts locally and improve performance instead of Google Fonts",
+        icon: "brain"
+      }
+    ]
   },
   fr: {
     sections: [

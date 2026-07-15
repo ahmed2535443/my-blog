@@ -61,7 +61,13 @@ const translations = {
       { term: "Meaningful messages", definition: "Error messages should clearly describe what went wrong" },
       { term: "Async error handling", definition: "Use try-catch with async/await, catch Promise rejections" },
       { term: "Error boundaries", definition: "Catch errors at appropriate levels in your code" },
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "When should you refactor code?", answer: "When you notice a code smell or when adding a new feature.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "Use small steps", description: "Don't try to refactor everything at once", type: "brain" }
+    ]
   },
   fr: {
     sections: [

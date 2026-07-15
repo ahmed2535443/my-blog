@@ -31,7 +31,13 @@
       { term: "user.primaryEmailAddress", definition: "البريد الإلكتروني الأساسي" },
       { term: "useOrganization()", definition: "الوصول إلى بيانات المنظمة" },
       { term: "Webhooks", definition: "إشعارات الأحداث" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "كيف تحفظ بيانات المستخدم الإضافية؟", a: "استخدم webhook لإنشاء profile في قاعدة البيانات عند التسجيل.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "استخدم UserButton component", description: "زر جاهز يعرض معلومات المستخدم وخيارات تسجيل الخروج", icon: "brain" },
+    ]
   },
   en: {
     sections: [
@@ -65,7 +71,13 @@
       { term: "user.primaryEmailAddress", definition: "Primary email" },
       { term: "useOrganization()", definition: "Access organization data" },
       { term: "Webhooks", definition: "Event notifications" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "How do you store additional user data?", a: "Use a webhook to create a profile in the database upon registration.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "Use UserButton component", description: "A ready-made button showing user info and sign-out options", icon: "brain" },
+    ]
   },
   fr: {
     sections: [

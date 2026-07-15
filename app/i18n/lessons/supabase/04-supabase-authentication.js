@@ -32,7 +32,13 @@
       { term: "getSession()", definition: "الحصول على الجلسة الحالية" },
       { term: "getUser()", definition: "الحصول على معلومات المستخدم الحالي" },
       { term: "onAuthStateChange()", definition: "الاستماع لتغييرات المصادقة" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "كيف تضيف تسجيل دخول بـ Google؟", a: "فعّل Google provider في Dashboard وأضف الكود في تطبيقك.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "استخدم Supabase Auth Helpers", description: "مكتبة تسهل المصادقة في Next.js", icon: "brain" },
+    ]
   },
   en: {
     sections: [
@@ -67,7 +73,13 @@
       { term: "getSession()", definition: "Get current session" },
       { term: "getUser()", definition: "Get current user info" },
       { term: "onAuthStateChange()", definition: "Listen for auth changes" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "How do you add Google sign-in?", a: "Enable Google provider in Dashboard and add the code to your app.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "Use Supabase Auth Helpers", description: "A library that simplifies authentication in Next.js", icon: "brain" },
+    ]
   },
   fr: {
     sections: [

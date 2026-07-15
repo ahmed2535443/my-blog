@@ -62,7 +62,13 @@
       { term: "MFA", definition: "المصادقة متعددة العوامل" },
       { term: "Organizations", definition: "مساحات عمل الفريق" },
       { term: "Webhooks", definition: "إشعارات الأحداث" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "كيف تبني تطبيق مصادقة كامل بـ Clerk؟", a: "Setup → signIn/signUp → protect routes → user management → settings.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "استخدم Clerk Webhooks", description: "لمزامنة بيانات المستخدم مع قاعدة البيانات", icon: "brain" },
+    ]
   },
   en: {
     sections: [
@@ -127,7 +133,13 @@
       { term: "MFA", definition: "Multi-Factor Authentication" },
       { term: "Organizations", definition: "Team workspaces" },
       { term: "Webhooks", definition: "Event notifications" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "How do you build a full auth app with Clerk?", a: "Setup → signIn/signUp → protect routes → user management → settings.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "Use Clerk Webhooks", description: "To sync user data with your database", icon: "brain" },
+    ]
   },
   fr: {
     sections: [

@@ -9,6 +9,7 @@ import LessonNavigation from "@/components/LessonNavigation";
 import Quiz from "@/components/Quiz";
 import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
+import LessonExtras from "@/components/LessonExtras";
 import { getLessonBySlug } from "@/data/curriculum";
 
 const correctAnswers = { ar: [1, 1, 1], en: [1, 1, 1], fr: [1, 1, 1], de: [1, 1, 1] };
@@ -38,11 +39,12 @@ const cheatSheetData = {
         ],
       },
       {
-        heading: "الأمر:",
+        heading: "خطوات الإعداد بـ Vite:",
         items: [
-          "1. ثبّت Node.js",
-          "2. npx create-react-app my-app",
-          "3. cd my-app && npm start",
+          "1. npm create vite@latest my-app -- --template react",
+          "2. cd my-app",
+          "3. npm install",
+          "4. npm run dev",
         ],
       },
     ],
@@ -161,6 +163,8 @@ export default function IntroductionToReact() {
             ))}
           </div>
         </CheatSheet>
+
+        <LessonExtras content={content} />
 
         <LessonNavigation
           prevLesson={lessonInfo.prevLesson}

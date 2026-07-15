@@ -46,7 +46,14 @@ const translations = {
       { term: "type", definition: "اسم نوع بديل — أكثر مرونة" },
       { term: "A & B", definition: "تقاطع — يجمع الأنواع" },
       { term: "A | B", definition: "اتحاد — A أو B" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "ما الفرق بين interface و type؟", answer: "كلاهما يعرّف أشكال البيانات. Interface قابل للتمديد، type أكثر مرونة.", difficulty: "medium" },
+      { question: "متى نستخدم type بدلاً من interface؟", answer: "لـ Union types و Intersection types و الأشكال المعقدة.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "استخدم Partial<T>", description: "لجعل جميع الخصائص اختيارية في object", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -95,7 +102,14 @@ const translations = {
       { term: "type", definition: "Type alias — more flexible" },
       { term: "A & B", definition: "Intersection — combines types" },
       { term: "A | B", definition: "Union — A or B" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "What is the difference between interface and type?", answer: "Both define data shapes. Interface is extensible, type is more flexible.", difficulty: "medium" },
+      { question: "When do we use type instead of interface?", answer: "For Union types, Intersection types, and complex shapes.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "Use Partial<T>", description: "To make all properties optional in an object", type: "brain" }
+    ]
   },
   fr: {
     sections: [

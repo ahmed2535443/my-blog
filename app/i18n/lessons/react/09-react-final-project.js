@@ -93,7 +93,16 @@ const translations = {
       { term: "القوائم", definition: "عرض وتصفية وترتيب مجموعات المهام" },
       { term: "التخزين المحلي", definition: "حفظ المهام والتفضيلات" },
       { term: "تبديل السمة", definition: "سمة فاتحة/داكنة مع متغيرات CSS" },
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "كيف تدير الحالة المعقدة في مشروع حقيقي؟", answer: "استخدم Context + useReducer أو مكتبة إدارة حالة مثل Zustand.", difficulty: "medium" },
+      { question: "ما هي أفضل طريقة لتنظيم ملفات المشروع؟", answer: "حسب الميزة: features/auth, features/tasks. وليس حسب النوع: components, hooks.", difficulty: "hard" },
+    ],
+    libraries: [
+      { name: "Zustand", description: "إدارة حالة بسيطة وخفيفة لـ React", url: "https://zustand-demo.pmnd.rs", category: "state" },
+      { name: "React Hook Form", description: "إدارة النماذج بكفاءة عالية", url: "https://react-hook-form.com", category: "forms" },
+      { name: "Framer Motion", description: "مكتبة رسوم متحركة سهلة لـ React", url: "https://www.framer.com/motion", category: "animation" },
+    ]
   },
   en: {
     sections: [
@@ -189,7 +198,16 @@ const translations = {
       { term: "Lists", definition: "Render, filter, and sort task collections" },
       { term: "Local storage", definition: "Persist tasks and preferences" },
       { term: "Theme switching", definition: "Light/dark theme with CSS variables" },
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "How do you manage complex state in a real project?", answer: "Use Context + useReducer or a state management library like Zustand.", difficulty: "medium" },
+      { question: "What is the best way to organize project files?", answer: "By feature: features/auth, features/tasks. Not by type: components, hooks.", difficulty: "hard" },
+    ],
+    libraries: [
+      { name: "Zustand", description: "Simple and lightweight state management for React", url: "https://zustand-demo.pmnd.rs", category: "state" },
+      { name: "React Hook Form", description: "Efficient form management", url: "https://react-hook-form.com", category: "forms" },
+      { name: "Framer Motion", description: "Easy animation library for React", url: "https://www.framer.com/motion", category: "animation" },
+    ]
   },
   fr: {
     sections: [

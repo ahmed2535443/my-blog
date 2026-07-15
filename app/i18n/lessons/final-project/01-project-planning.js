@@ -93,7 +93,13 @@ const translations = {
         { title: "3. اختيار التقنيات", content: "اختر الأدوات المناسبة لمشروعك" },
         { title: "4. تخطيط الهيكل", content: "حدد هيكل الملفات والمجلدات" }
       ]
-    }
+    },
+    interviewQuestions: [
+      { question: "ما هو المشروع النهائي؟", answer: "تطبيق مدونة كامل يجمع كل ما تعلمته.", difficulty: "easy" }
+    ],
+    tricks: [
+      { title: "خطط أولاً", description: "لا تبدأ بالكود مباشرة. اكتب المتطلبات والتصميم أولاً.", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -189,7 +195,13 @@ const translations = {
         { title: "3. Choose Technologies", content: "Choose the right tools for your project" },
         { title: "4. Plan the Structure", content: "Define the file and folder structure" }
       ]
-    }
+    },
+    interviewQuestions: [
+      { question: "What is the final project?", answer: "A complete blog application that combines everything you learned.", difficulty: "easy" }
+    ],
+    tricks: [
+      { title: "Plan first", description: "Don't start coding directly. Write requirements and design first.", type: "brain" }
+    ]
   },
   fr: {
     sections: [

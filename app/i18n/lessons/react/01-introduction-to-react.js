@@ -95,7 +95,20 @@ const translations = {
       ]},
       { heading: "خطوات الإعداد بـ Vite:", code: "npm create vite@latest my-app -- --template react\ncd my-app\nnpm install\nnpm run dev" },
       { heading: "مكون أساسي:", code: "function Greeting() {\n  return <h1>مرحباً بالعالم!</h1>;\n}\n\nexport default Greeting;" },
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "ما الفرق بين React ومكتبة JavaScript أخرى؟", answer: "React يوفر DOM افتراضي لأداء أفضل، ونظام بيئي كبير، ومجتمع ضخم. كما أنه يدعم Server Components في Next.js.", difficulty: "medium" },
+      { question: "ماذا يحدث عندما تستدعي setState؟", answer: "يجدول React تحديث الحالة ويعيد عرض المكون في دورة تحديث واحدة.", difficulty: "medium" },
+      { question: "لماذا نستخدم JSX بدلاً من HTML العادي؟", answer: "JSX يجعل الكود أكثر وضوحاً ويسهل قراءته، ويحوله Babel إلى استدعاءات دوال JavaScript.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "استخدم React Developer Tools", description: "اضغط F12 وانتقل إلى تبويب Components لفحص شجرة المكونات", icon: "brain" },
+      { title: "ابدأ بـ Vite دائماً", description: "Vite أسرع بكثير من Create React App وبدأ يُستخدم في جميع المشاريع الحديثة", icon: "rocket" },
+    ],
+    libraries: [
+      { name: "Vite", description: "أداة بناء سريعة جداً لمشاريع JavaScript", url: "https://vitejs.dev", category: "tools" },
+      { name: "React Developer Tools", description: "إضافة المتصفح لفحص مكونات React", url: "https://react.dev/learn/react-developer-tools", category: "tools" },
+    ]
   },
   en: {
     sections: [
@@ -193,7 +206,20 @@ const translations = {
       ]},
       { heading: "Vite Setup:", code: "npm create vite@latest my-app -- --template react\ncd my-app\nnpm install\nnpm run dev" },
       { heading: "Basic Component:", code: "function Greeting() {\n  return <h1>Hello World!</h1>;\n}\n\nexport default Greeting;" },
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "What is the difference between React and another JavaScript library?", answer: "React provides a Virtual DOM for better performance, a large ecosystem, and a huge community. It also supports Server Components in Next.js.", difficulty: "medium" },
+      { question: "What happens when you call setState?", answer: "React schedules the state update and re-renders the component in a single update cycle.", difficulty: "medium" },
+      { question: "Why do we use JSX instead of plain HTML?", answer: "JSX makes code more readable and easier to write, and Babel transpiles it into regular JavaScript function calls.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "Use React Developer Tools", description: "Press F12 and go to the Components tab to inspect the component tree", icon: "brain" },
+      { title: "Always start with Vite", description: "Vite is much faster than Create React App and is used in all modern projects", icon: "rocket" },
+    ],
+    libraries: [
+      { name: "Vite", description: "An extremely fast build tool for JavaScript projects", url: "https://vitejs.dev", category: "tools" },
+      { name: "React Developer Tools", description: "Browser extension for inspecting React components", url: "https://react.dev/learn/react-developer-tools", category: "tools" },
+    ]
   },
   fr: {
     sections: [

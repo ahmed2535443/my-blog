@@ -86,7 +86,13 @@ const translations = {
         { term: "npm run dev", definition: "تشغيل خادم التطوير" },
         { term: "مسح الملفات", definition: "تلقائي في v4 — لا حاجة لمسارات" }
       ]
-    }
+    },
+    interviewQuestions: [
+      { question: "كيف تنشئ تصميم responsive بـ Tailwind؟", answer: "استخدم breakpoint prefixes: sm: md: lg: xl:", difficulty: "easy" }
+    ],
+    tricks: [
+      { title: "استخدم @apply", description: "لا تُكثر من @apply. استخدمه فقط للفئات المتكررة جداً.", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -175,7 +181,13 @@ const translations = {
         { term: "npm run dev", definition: "Start development server" },
         { term: "File scanning", definition: "Automatic in v4 — no paths needed" }
       ]
-    }
+    },
+    interviewQuestions: [
+      { question: "How do you create a responsive design with Tailwind?", answer: "Use breakpoint prefixes: sm: md: lg: xl:", difficulty: "easy" }
+    ],
+    tricks: [
+      { title: "Use @apply", description: "Don't overuse @apply. Only use it for very repetitive classes.", type: "brain" }
+    ]
   },
   fr: {
     sections: [

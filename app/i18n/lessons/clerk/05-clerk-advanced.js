@@ -32,7 +32,13 @@
       { term: "auth.protect()", definition: "طلب المصادقة" },
       { term: "appearance={{}}", definition: "تخصيص أنماط المكونات" },
       { term: "Clerk + Supabase", definition: "دمج المصادقة + قاعدة البيانات" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "كيف تحمي مسارات في Next.js مع Clerk؟", a: "أضف matcher في middleware.ts و protects: true.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "استخدم auth() في Server Components", description: "للتحقق من المستخدم في Server Components مباشرة", icon: "brain" },
+    ]
   },
   en: {
     sections: [
@@ -67,7 +73,13 @@
       { term: "auth.protect()", definition: "Require authentication" },
       { term: "appearance={{}}", definition: "Customize component styles" },
       { term: "Clerk + Supabase", definition: "Auth + Database integration" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "How do you protect routes in Next.js with Clerk?", a: "Add matcher in middleware.ts and use auth.protect().", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "Use auth() in Server Components", description: "To verify the user directly in Server Components", icon: "brain" },
+    ]
   },
   fr: {
     sections: [

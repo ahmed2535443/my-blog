@@ -49,7 +49,14 @@ const translations = {
       { term: ": string", definition: "تعليق نوع النص" },
       { term: ": number", definition: "تعليق نوع الرقم" },
       { term: ": boolean", definition: "تعليق نوع المنطقي" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "ما هو TypeScript؟", answer: "لغة برمجة تُضيف typing إلى JavaScript وتتحول إلى JavaScript عادي.", difficulty: "easy" },
+      { question: "لماذا نستخدم TypeScript؟", answer: "يكتشف الأخطاء مبكراً، يحسن IDE support، وي Documentation أفضل.", difficulty: "easy" }
+    ],
+    tricks: [
+      { title: "ابدأ بـ strict mode", description: "أضف strict: true في tsconfig.json للحصول على أفضل حماية", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -101,7 +108,14 @@ const translations = {
       { term: ": string", definition: "String type annotation" },
       { term: ": number", definition: "Number type annotation" },
       { term: ": boolean", definition: "Boolean type annotation" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "What is TypeScript?", answer: "A programming language that adds typing to JavaScript and compiles to plain JavaScript.", difficulty: "easy" },
+      { question: "Why do we use TypeScript?", answer: "It catches errors early, improves IDE support, and provides better documentation.", difficulty: "easy" }
+    ],
+    tricks: [
+      { title: "Start with strict mode", description: "Add strict: true in tsconfig.json for the best protection", type: "brain" }
+    ]
   },
   fr: {
     sections: [

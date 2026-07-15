@@ -99,7 +99,16 @@ const translations = {
         "القيم الافتراضية مع المعاملات الافتراضية",
       ]},
       { heading: "مثال أساسي:", code: "function Greeting({ name, age = 25 }) {\n  return (\n    <div>\n      <h1>مرحباً {name}</h1>\n      <p>العمر: {age}</p>\n    </div>\n  );\n}\n\n// الاستخدام\n<Greeting name=\"Ahmed\" />" },
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "ما الفرق بين Props و State؟", answer: "الخصائص تأتي من المكون الأصل (للقراءة فقط)، الحالة داخل المكون (قابلة للتغيير).", difficulty: "easy" },
+      { question: "لماذا نستخدم key في القوائم؟", answer: "React يستخدم key لمعرفة العناصر التي تغيرت وأيها أُضيفت أو حُذفت، مما يحسن الأداء.", difficulty: "medium" },
+      { question: "ما هي children props؟", answer: "خاصية خاصة تحتوي على المحتوى بين علامتي البداية والنهاية للمكون.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "استخدم Object Destructuring", description: "بدلاً من props.name و props.age، اكتب {name, age} في توقيع الدالة", icon: "brain" },
+      { title: "لا تدمّر Props", description: "لا تُنشئ متغيرات جديدة من Props unless必需 — استخدمها مباشرة", icon: "zap" },
+    ]
   },
   en: {
     sections: [
@@ -201,7 +210,16 @@ const translations = {
         "Default values with default parameters",
       ]},
       { heading: "Basic Example:", code: "function Greeting({ name, age = 25 }) {\n  return (\n    <div>\n      <h1>Hello {name}</h1>\n      <p>Age: {age}</p>\n    </div>\n  );\n}\n\n// Usage\n<Greeting name=\"Ahmed\" />" },
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "What is the difference between Props and State?", answer: "Props come from the parent component (read-only), while State is internal to the component (mutable).", difficulty: "easy" },
+      { question: "Why do we use keys in lists?", answer: "React uses keys to identify which items have changed, been added, or been removed, improving performance.", difficulty: "medium" },
+      { question: "What are children props?", answer: "A special prop that contains the content between the opening and closing tags of a component.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "Use Object Destructuring", description: "Instead of props.name and props.age, write {name, age} in the function signature", icon: "brain" },
+      { title: "Do not destroy Props", description: "Do not create new variables from Props unnecessarily — use them directly", icon: "zap" },
+    ]
   },
   fr: {
     sections: [

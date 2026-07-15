@@ -43,7 +43,26 @@
       { term: "<Suspense fallback={...}>", definition: "حدود البث" },
       { term: "loading.js", definition: "واجهة تحميل تلقائية" },
       { term: "Promise.all()", definition: "جلب بيانات متوازي" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "كيف تجلب البيانات في Next.js 13+؟",
+        answer: "استخدم async/await مباشرة في Server Components. لا need لـ useEffect.",
+        difficulty: "easy"
+      },
+      {
+        question: "ما هو streaming؟",
+        answer: "عرض أجزاء من الصفحة تدريجياً بدلاً من الانتظار للتحميل الكامل.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "استخدم React Cache",
+        description: "لتجنب جلب البيانات نفسة عدة مرات في مكونات مختلفة",
+        icon: "brain"
+      }
+    ]
   },
   en: {
     sections: [
@@ -89,7 +108,26 @@
       { term: "<Suspense fallback={...}>", definition: "Streaming boundary" },
       { term: "loading.js", definition: "Automatic loading UI" },
       { term: "Promise.all()", definition: "Parallel data fetching" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "How do you fetch data in Next.js 13+?",
+        answer: "Use async/await directly in Server Components. No need for useEffect.",
+        difficulty: "easy"
+      },
+      {
+        question: "What is streaming?",
+        answer: "Displaying parts of the page progressively instead of waiting for full load.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "Use React Cache",
+        description: "To avoid fetching the same data multiple times in different components",
+        icon: "brain"
+      }
+    ]
   },
   fr: {
     sections: [

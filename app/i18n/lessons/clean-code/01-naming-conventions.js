@@ -62,7 +62,14 @@ const translations = {
         '<code className="inline-code">isValid</code> وليس <code className="inline-code">check</code> - الأسماء تصف المحتوى',
         'التزم بنمط واحد طوال المشروع - كن متسقاً',
       ]},
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "ما هو Clean Code؟", answer: "كود واضح، سهل القراءة، وقابل للصيانة.", difficulty: "easy" },
+      { question: "لماذا Clean Code مهم؟", answer: "يقلل الأخطاء ويسهل التعاون ويوفر وقت التطوير.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "اقرأ كود الآخرين", description: "أفضل طريقة لتعلم Clean Code هي قراءة مشاريع مفتوحة المصدر", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -127,7 +134,14 @@ const translations = {
         '<code className="inline-code">isValid</code> not <code className="inline-code">check</code> - Names describe content',
         'Stick to one pattern throughout the project - Be consistent',
       ]},
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "What is Clean Code?", answer: "Code that is clear, easy to read, and maintainable.", difficulty: "easy" },
+      { question: "Why is Clean Code important?", answer: "It reduces errors, facilitates collaboration, and saves development time.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "Read others' code", description: "The best way to learn Clean Code is to read open source projects", type: "brain" }
+    ]
   },
   fr: {
     sections: [

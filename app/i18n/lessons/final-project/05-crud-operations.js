@@ -44,7 +44,15 @@
       { title: "طرق Supabase", content: ".insert([{}]) .select() .update({}) .delete() .eq()" },
       { title: "Server Actions", content: "حدد بـ 'use server'، تلقي FormData، استخدم revalidatePath()" },
       { title: "التحديثات التفاؤلية", content: "useOptimistic لتحديثات واجهة المستخدم الفورية، العودة في حالة الخطأ" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "كيف تدير أخطاء المشروع؟", answer: "اكتب اختبارات، استخدم linting، و راجع الكود باستمرار.", difficulty: "medium" },
+      { question: "كيف تُحسّن أداء المشروع؟", answer: "قلل الـ bundle size، استخدم lazy loading، وحسّن الصور.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "استخدم Git branches", description: "افصل كل ميزة في branch منفصل", type: "brain" },
+      { title: "اكتب tests", description: "لا تنشر ميزة بدون اختبارات", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -91,7 +99,15 @@
       { title: "Supabase Methods", content: ".insert([{}]) .select() .update({}) .delete() .eq()" },
       { title: "Server Actions", content: "Mark with 'use server', receive FormData, use revalidatePath()" },
       { title: "Optimistic Updates", content: "useOptimistic for immediate UI updates, revert on error" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "How do you manage project errors?", answer: "Write tests, use linting, and review code regularly.", difficulty: "medium" },
+      { question: "How do you improve project performance?", answer: "Reduce bundle size, use lazy loading, and optimize images.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "Use Git branches", description: "Separate each feature in its own branch", type: "brain" },
+      { title: "Write tests", description: "Never deploy a feature without tests", type: "brain" }
+    ]
   },
   fr: {
     sections: [

@@ -47,6 +47,13 @@ const translations = {
       { heading: "الهيكل الأساسي:", items: ['function useCounter(initialValue = 0) {', '  const [count, setCount] = useState(initialValue);', '  const increment = () => setCount(c => c + 1);', '  return { count, increment };', '}'] },
       { heading: "الاستخدام:", items: ['const { count, increment } = useCounter(0);'] },
     ]},
+    interviewQuestions: [
+      { question: "ما هي القاعدة الوحيدة للخطافات المخصصة؟", answer: "يجب أن تبدأ بكلمة 'use'.", difficulty: "easy" },
+      { question: "هل تتشارك الخطافات المخصصة الحالة بين المكونات؟", answer: "لا. كل مكون يحصل على نسخته الخاصة من الحالة.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "سمّ خطافاتك بوضوح", description: "useFetch، useToggle، useLocalStorage — الاسم يصف ما تفعله", icon: "brain" },
+    ]
   },
   en: {
     sections: [
@@ -96,6 +103,13 @@ const translations = {
       { heading: "Basic Structure:", items: ['function useCounter(initialValue = 0) {', '  const [count, setCount] = useState(initialValue);', '  const increment = () => setCount(c => c + 1);', '  return { count, increment };', '}'] },
       { heading: "Usage:", items: ['const { count, increment } = useCounter(0);'] },
     ]},
+    interviewQuestions: [
+      { question: "What is the only rule for custom hooks?", answer: "They must start with the word 'use'.", difficulty: "easy" },
+      { question: "Do custom hooks share state between components?", answer: "No. Each component gets its own independent instance of the state.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "Name your hooks clearly", description: "useFetch, useToggle, useLocalStorage — the name describes what it does", icon: "brain" },
+    ]
   },
   fr: {
     sections: [

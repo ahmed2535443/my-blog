@@ -51,7 +51,15 @@
       { title: "التقسيم", content: "offset = (page - 1) * limit، .range(offset, offset + limit - 1)" },
       { title: "معلمات URL", content: "searchParams.q للاستعلام، searchParams.page لرقم الصفحة" },
       { title: "Debounce", content: "useDebounce(value, 300) يؤخر التنفيذ حتى يتوقف الكتابة" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "كيف تدير أخطاء المشروع؟", answer: "اكتب اختبارات، استخدم linting، و راجع الكود باستمرار.", difficulty: "medium" },
+      { question: "كيف تُحسّن أداء المشروع؟", answer: "قلل الـ bundle size، استخدم lazy loading، وحسّن الصور.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "استخدم Git branches", description: "افصل كل ميزة في branch منفصل", type: "brain" },
+      { title: "اكتب tests", description: "لا تنشر ميزة بدون اختبارات", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -105,7 +113,15 @@
       { title: "Pagination", content: "offset = (page - 1) * limit, .range(offset, offset + limit - 1)" },
       { title: "URL Parameters", content: "searchParams.q for query, searchParams.page for page number" },
       { title: "Debounce", content: "useDebounce(value, 300) delays execution until typing stops" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "How do you manage project errors?", answer: "Write tests, use linting, and review code regularly.", difficulty: "medium" },
+      { question: "How do you improve project performance?", answer: "Reduce bundle size, use lazy loading, and optimize images.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "Use Git branches", description: "Separate each feature in its own branch", type: "brain" },
+      { title: "Write tests", description: "Never deploy a feature without tests", type: "brain" }
+    ]
   },
   fr: {
     sections: [

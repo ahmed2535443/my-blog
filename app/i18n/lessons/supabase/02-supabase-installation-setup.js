@@ -38,7 +38,14 @@
       { term: "NEXT_PUBLIC_SUPABASE_URL", definition: "متغير بيئة للرابط" },
       { term: "NEXT_PUBLIC_SUPABASE_ANON_KEY", definition: "متغير بيئة لمفتاح Anon" },
       { term: ".env.local", definition: "ملف لتخزين متغيرات البيئة" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "كيف تنشئ جدول في Supabase؟", a: "من Table Editor أو SQL Editor مباشرة.", difficulty: "easy" },
+      { q: "ما هي RLS؟", a: "Row Level Security — تحدد من يمكنه قراءة/تعديل كل صف.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "فعّل RLS دائماً", description: "بدون RLS، أي شخص يمكنه الوصول لبياناتك", icon: "brain" },
+    ]
   },
   en: {
     sections: [
@@ -79,7 +86,14 @@
       { term: "NEXT_PUBLIC_SUPABASE_URL", definition: "Environment variable for URL" },
       { term: "NEXT_PUBLIC_SUPABASE_ANON_KEY", definition: "Environment variable for anon key" },
       { term: ".env.local", definition: "File to store environment variables" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "How do you create a table in Supabase?", a: "From the Table Editor or SQL Editor directly.", difficulty: "easy" },
+      { q: "What is RLS?", a: "Row Level Security — controls who can read/update each row.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "Always enable RLS", description: "Without RLS, anyone can access your data", icon: "brain" },
+    ]
   },
   fr: {
     sections: [

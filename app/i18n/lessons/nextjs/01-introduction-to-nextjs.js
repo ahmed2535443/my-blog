@@ -66,7 +66,31 @@
       { term: "app/page.js", definition: "الصفحة الرئيسية" },
       { term: "NEXT_PUBLIC_", definition: "بادئة متغيرات العميل" },
       { term: "Turbopack", definition: "الحزمة الافتراضية - أسرع 5 مرات" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "ما الفرق بين Next.js و React العادي؟",
+        answer: "Next.js يضيف routing، server rendering، API routes، وتحسينات أداء. React فقط UI library.",
+        difficulty: "easy"
+      },
+      {
+        question: "لماذا نستخدم Next.js بدلاً من Create React App؟",
+        answer: "Next.js يوفر SSR/SSG و routing مدمج وأداء أفضل و SEO أفضل.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "ابدأ بـ create-next-app",
+        description: "الأمر الأسرع لإنشاء مشروع Next.js مع جميع الإعدادات",
+        icon: "rocket"
+      },
+      {
+        title: "استخدم app router",
+        description: "app router أحدث وأفضل من pages router",
+        icon: "brain"
+      }
+    ]
   },
   en: {
     sections: [
@@ -135,7 +159,31 @@
       { term: "app/page.js", definition: "Home page" },
       { term: "NEXT_PUBLIC_", definition: "Client-side env prefix" },
       { term: "Turbopack", definition: "Default bundler - 5x faster" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "What is the difference between Next.js and plain React?",
+        answer: "Next.js adds routing, server rendering, API routes, and performance optimizations. React is just a UI library.",
+        difficulty: "easy"
+      },
+      {
+        question: "Why use Next.js instead of Create React App?",
+        answer: "Next.js provides SSR/SSG, built-in routing, better performance, and better SEO.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "Start with create-next-app",
+        description: "The fastest way to create a Next.js project with all settings",
+        icon: "rocket"
+      },
+      {
+        title: "Use app router",
+        description: "App router is newer and better than pages router",
+        icon: "brain"
+      }
+    ]
   },
   fr: {
     sections: [

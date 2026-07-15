@@ -39,6 +39,15 @@ const translations = {
       { heading: "الصيغة الأساسية:", items: ['useEffect(() => {}, [])'] },
       { heading: "مع التنظيف:", items: ['useEffect(() => { const sub = subscribe(); return () => sub.unsubscribe(); }, [])'] },
     ]},
+    interviewQuestions: [
+      { question: "متى يُنفذ useEffect بدون مصفوفة تبعيات؟", answer: "بعد كل عرض — هذا نادراً ما يكون مطلوباً وسبب شائع للأخطاء.", difficulty: "medium" },
+      { question: "لماذا نحتاج دالة التنظيف؟", answer: "لتنظيف الاشتراكات أو المؤقتات عند فك تثبيت المكون لتجنب تسريب الذاكرة.", difficulty: "medium" },
+      { question: "ما الفرق بين [] و [dep] في مصفوفة التبعيات؟", answer: "فارغة [] = مرة واحدة فقط. [dep] = عند تغيير dep.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "اجمع التبعيات دائماً", description: "نسيان تبعية يسبب أخطاء صعبة الاكتشاف. استخدم ESLint plugin.", icon: "brain" },
+      { title: "لا تجعل async useEffect", description: "استخدم دالة async منفصلة داخل useEffect بدلاً من جعل التأثير async مباشرة", icon: "zap" },
+    ]
   },
   en: {
     sections: [
@@ -80,6 +89,15 @@ const translations = {
       { heading: "Basic Syntax:", items: ['useEffect(() => {}, [])'] },
       { heading: "With Cleanup:", items: ['useEffect(() => { const sub = subscribe(); return () => sub.unsubscribe(); }, [])'] },
     ]},
+    interviewQuestions: [
+      { question: "When does useEffect run without a dependency array?", answer: "After every render — this is rarely needed and is a common source of bugs.", difficulty: "medium" },
+      { question: "Why do we need the cleanup function?", answer: "To clean up subscriptions or timers when unmounting the component to prevent memory leaks.", difficulty: "medium" },
+      { question: "What is the difference between [] and [dep] in the dependency array?", answer: "Empty [] = runs only once. [dep] = runs when dep changes.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "Always include dependencies", description: "Missing a dependency causes hard-to-find bugs. Use the ESLint plugin.", icon: "brain" },
+      { title: "Do not make async useEffect", description: "Use a separate async function inside useEffect instead of making the effect directly async", icon: "zap" },
+    ]
   },
   fr: {
     sections: [

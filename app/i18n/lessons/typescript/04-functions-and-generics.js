@@ -49,7 +49,17 @@ const translations = {
       { term: "<T>", definition: "معامل نوع عام" },
       { term: "إحلال الدالة", definition: "توقيعات نوع متعددة" },
       { term: "typeof value === 'string'", definition: "حارس نوع" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "كيف نُعرّف أنواع المعاملات والإرجاع في الدوال؟", answer: "function name(param: type): returnType { }", difficulty: "easy" },
+      { question: "ما هي Function Overloading؟", answer: "تعريف عدة توقيعات لدالة واحدة باستخدام parameter types مختلفة.", difficulty: "medium" },
+      { question: "ما هي Generics؟", answer: "نوع مُعامل (type parameter) يسمح بإنشاء مكونات/دوال قابلة لإعادة الاستخدام بأنواع مختلفة.", difficulty: "medium" },
+      { question: "متى نستخدم Generic؟", answer: "عندما تريد دالة أو مكون يعمل مع أي نوع بشكل آمن.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "استخدم optional parameters", description: "أضف ? قبل النقطتين: param?: type", type: "brain" },
+      { title: "استخدم constraints", description: "<T extends { id: number }> لتحديد الأنواع المسموح بها", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -101,7 +111,17 @@ const translations = {
       { term: "<T>", definition: "Generic type parameter" },
       { term: "function overload", definition: "Multiple type signatures" },
       { term: "typeof value === 'string'", definition: "Type guard" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "How do we define parameter and return types in functions?", answer: "function name(param: type): returnType { }", difficulty: "easy" },
+      { question: "What is Function Overloading?", answer: "Defining multiple signatures for a single function with different parameter types.", difficulty: "medium" },
+      { question: "What are Generics?", answer: "A type parameter that allows creating reusable components/functions with different types.", difficulty: "medium" },
+      { question: "When do we use Generics?", answer: "When you want a function or component to work with any type safely.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "Use optional parameters", description: "Add ? before the colon: param?: type", type: "brain" },
+      { title: "Use constraints", description: "<T extends { id: number }> to limit allowed types", type: "brain" }
+    ]
   },
   fr: {
     sections: [

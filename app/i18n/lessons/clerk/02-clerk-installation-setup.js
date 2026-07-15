@@ -85,7 +85,13 @@
         "dashboard/page.js → auth() + currentUser()",
         "page.js → <SignedIn> + <SignedOut>",
       ]},
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "كيف تُعد Clerk مع Next.js؟", a: "ثبّت clerk-sdk-webk، أضف middleware.ts، وأضف ClerkProvider.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "استخدم Clerk Dashboard", description: "لتفعيل مزودات تسجيل الدخول بدلاً من الكود", icon: "brain" },
+    ]
   },
   en: {
     sections: [
@@ -173,7 +179,13 @@
         "dashboard/page.js → auth() + currentUser()",
         "page.js → <SignedIn> + <SignedOut>",
       ]},
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "How do you set up Clerk with Next.js?", a: "Install @clerk/nextjs, add middleware.ts, and add ClerkProvider.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "Use Clerk Dashboard", description: "Enable sign-in providers from the dashboard instead of code", icon: "brain" },
+    ]
   },
   fr: {
     sections: [

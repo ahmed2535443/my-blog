@@ -40,6 +40,14 @@ const translations = {
       { heading: "مكون الخادم:", items: ['// الافتراضي في مجلد app/', 'async function ServerComponent() {', '  const data = await fetchData();', '  return <div>{data.title}</div>;', '}'] },
       { heading: "مكون العميل:", items: ['"use client";', 'import { useState } from "react";', 'function ClientComponent() {', '  const [count, setCount] = useState(0);', '}'] },
     ]},
+    interviewQuestions: [
+      { question: "متى تستخدم مكون الخادم؟", answer: "لجلب البيانات والوصول المباشر لقاعدة البيانات والاحتفاظ بالبيانات الحساسة على الخادم.", difficulty: "easy" },
+      { question: "كيف تجعل المكون مكون عميل؟", answer: "أضف التوجيه 'use client' في أعلى الملف.", difficulty: "easy" },
+      { question: "ما الفائدة الرئيسية لمكونات الخادم؟", answer: "تقليل حزمة JavaScript المُرسلة إلى العميل، مما يجعل التطبيق أسرع.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "لا تضع 'use client' في كل مكان", description: "الافتراض هو مكون الخادم. أضف 'use client' فقط لل components التي تحتاج تفاعل.", icon: "brain" },
+    ]
   },
   en: {
     sections: [
@@ -82,6 +90,14 @@ const translations = {
       { heading: "Server Component:", items: ['// Default in app/ directory', 'async function ServerComponent() {', '  const data = await fetchData();', '  return <div>{data.title}</div>;', '}'] },
       { heading: "Client Component:", items: ['"use client";', 'import { useState } from "react";', 'function ClientComponent() {', '  const [count, setCount] = useState(0);', '}'] },
     ]},
+    interviewQuestions: [
+      { question: "When do you use a Server Component?", answer: "For fetching data, direct database access, and keeping sensitive data on the server.", difficulty: "easy" },
+      { question: "How do you make a component a Client Component?", answer: "Add the 'use client' directive at the top of the file.", difficulty: "easy" },
+      { question: "What is the main benefit of Server Components?", answer: "Reducing the JavaScript bundle sent to the client, making the app faster.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "Do not add 'use client' everywhere", description: "The default is Server Components. Only add 'use client' to components that need interactivity.", icon: "brain" },
+    ]
   },
   fr: {
     sections: [

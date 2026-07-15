@@ -9,6 +9,7 @@ import LessonNavigation from "@/components/LessonNavigation";
 import Quiz from "@/components/Quiz";
 import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
+import LessonExtras from "@/components/LessonExtras";
 import { getLessonBySlug } from "@/data/curriculum";
 
 const correctAnswers = { en: [1, 1, 1, 1, 1], fr: [1, 1, 1, 1, 1], de: [1, 1, 1, 1, 1], ar: [1, 1, 1, 1, 1] };
@@ -407,6 +408,7 @@ export default function ImagesFontsMetadata() {
         {content.quiz && content.quiz.map((q, i) => (<Quiz key={i} question={q.question} options={q.options} correctAnswer={answers[i]} explanation={q.explanation} />))}
         {content.challenge && (<Challenge title={content.challenge.title} description={<p>{content.challenge.description}</p>}>{challengeCode && <CodeBlock language="tsx" code={challengeCode} />}</Challenge>)}
         <CheatSheet title={cs.title}><div className="grid grid-cols-1 md:grid-cols-2 gap-4">{cs.columns.map((col, i) => (<div key={i}><p className="font-bold mb-2" style={{color:"var(--primary)"}}>{col.heading}</p>{col.items && <ul className="text-sm space-y-1">{col.items.map((item, j) => <li key={j} dangerouslySetInnerHTML={{__html:item}}/>)}</ul>}{col.code && <CodeBlock language={col.codeLanguage || "tsx"} code={col.code}/>}</div>))}</div></CheatSheet>
+        <LessonExtras content={content} />
         <LessonNavigation prevLesson={lessonInfo.prevLesson} prevStage={lessonInfo.prevLessonStage} nextLesson={lessonInfo.nextLesson} nextStage={lessonInfo.nextLessonStage} />
       </div>
     </div>

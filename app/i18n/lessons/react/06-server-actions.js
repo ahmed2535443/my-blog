@@ -38,6 +38,13 @@ const translations = {
       { heading: "إجراء خادم أساسي:", items: ['"use server";', 'async function saveData(formData) {', '  const name = formData.get("name");', '  await db.insert(name);', '}'] },
       { heading: "في النموذج:", items: ['<form action={saveData}>', '  <input name="name" />', '  <button type="submit">Save</button>', '</form>'] },
     ]},
+    interviewQuestions: [
+      { question: "كيف تحدد إجراء خادم؟", answer: "أضف 'use server' في أعلى الملف أو داخل الدالة.", difficulty: "easy" },
+      { question: "من يمكنه استدعاء إجراءات الخادم؟", answer: "مكونات العميل، النماذج، وحتى مكونات الخادم.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "استخدم useActionState للنماذج", description: "useActionState في React 19 يدير حالة النموذج تلقائياً مع Server Actions", icon: "brain" },
+    ]
   },
   en: {
     sections: [
@@ -78,6 +85,13 @@ const translations = {
       { heading: "Basic Server Action:", items: ['"use server";', 'async function saveData(formData) {', '  const name = formData.get("name");', '  await db.insert(name);', '}'] },
       { heading: "In Form:", items: ['<form action={saveData}>', '  <input name="name" />', '  <button type="submit">Save</button>', '</form>'] },
     ]},
+    interviewQuestions: [
+      { question: "How do you define a Server Action?", answer: "Add 'use server' at the top of the file or inside the function.", difficulty: "easy" },
+      { question: "Who can call Server Actions?", answer: "Client Components, forms, and even Server Components.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "Use useActionState for forms", description: "useActionState in React 19 manages form state automatically with Server Actions", icon: "brain" },
+    ]
   },
   fr: {
     sections: [

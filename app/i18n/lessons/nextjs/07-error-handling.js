@@ -35,7 +35,26 @@
       { term: "not-found.js", definition: "معالج صفحة 404" },
       { term: "reset()", definition: "إعادة محاولة العرض بعد الخطأ" },
       { term: "notFound()", definition: "تشغيل صفحة 404 يدوياً" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "كيف تتعامل مع الأخطاء في Next.js؟",
+        answer: "أنشئ error.js في أي مجلد لالتقاط أخطاء هذا المجلد وأطفاله.",
+        difficulty: "easy"
+      },
+      {
+        question: "ما الفرق بين error.js و not-found.js؟",
+        answer: "error.js للأخطاء العامة. not-found.js للصفحات غير الموجودة.",
+        difficulty: "easy"
+      }
+    ],
+    tricks: [
+      {
+        title: "استخدم error boundary",
+        description: "error.js يعمل كـ React Error Boundary تلقائياً",
+        icon: "brain"
+      }
+    ]
   },
   en: {
     sections: [
@@ -73,7 +92,26 @@
       { term: "not-found.js", definition: "404 page handler" },
       { term: "reset()", definition: "Retry rendering after error" },
       { term: "notFound()", definition: "Trigger 404 page manually" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "How do you handle errors in Next.js?",
+        answer: "Create error.js in any folder to catch errors in that folder and its children.",
+        difficulty: "easy"
+      },
+      {
+        question: "What is the difference between error.js and not-found.js?",
+        answer: "error.js for general errors. not-found.js for missing pages.",
+        difficulty: "easy"
+      }
+    ],
+    tricks: [
+      {
+        title: "Use error boundary",
+        description: "error.js works as a React Error Boundary automatically",
+        icon: "brain"
+      }
+    ]
   },
   fr: {
     sections: [

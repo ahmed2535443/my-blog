@@ -34,7 +34,26 @@
       { term: "GET/POST/PUT/DELETE", definition: "تصديرات طرق HTTP" },
       { term: "NextResponse.json()", definition: "إعادة استجابة JSON" },
       { term: "proxy.ts", definition: "بديل الـ Middleware الجديد" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "ما هو route handler؟",
+        answer: "ملف route.js في مجلد app يوفر API endpoint.",
+        difficulty: "easy"
+      },
+      {
+        question: "كيف تحمي route؟",
+        answer: "استخدم middleware.ts أو تحقق من Session في Route Handler.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "استخدم middleware",
+        description: "للحماية التلقائية للمسارات قبل الوصول لها",
+        icon: "brain"
+      }
+    ]
   },
   en: {
     sections: [
@@ -71,7 +90,26 @@
       { term: "GET/POST/PUT/DELETE", definition: "HTTP method exports" },
       { term: "NextResponse.json()", definition: "Return JSON response" },
       { term: "proxy.ts", definition: "New middleware replacement" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "What is a route handler?",
+        answer: "A route.js file in an app folder that provides an API endpoint.",
+        difficulty: "easy"
+      },
+      {
+        question: "How do you protect a route?",
+        answer: "Use middleware.ts or check session in Route Handler.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "Use middleware",
+        description: "For automatic protection of routes before they are accessed",
+        icon: "brain"
+      }
+    ]
   },
   fr: {
     sections: [

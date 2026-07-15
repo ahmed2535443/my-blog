@@ -9,6 +9,7 @@ import LessonNavigation from "@/components/LessonNavigation";
 import Quiz from "@/components/Quiz";
 import Challenge from "@/components/Challenge";
 import CheatSheet from "@/components/CheatSheet";
+import LessonExtras from "@/components/LessonExtras";
 import { getLessonBySlug } from "@/data/curriculum";
 
 const correctAnswers = { en: [2], fr: [2], de: [2], ar: [2] };
@@ -211,6 +212,8 @@ export default function DatabaseDesign() {
             ))}
           </div>
         </CheatSheet>
+
+        <LessonExtras content={content} />
 
         <LessonNavigation
           prevLesson={lessonInfo.prevLesson}

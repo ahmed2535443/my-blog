@@ -38,7 +38,14 @@
       { term: "Secret Key", definition: "مفتاح جانب الخادم (أبقه سراً)" },
       { term: "Dashboard", definition: "إدارة المستخدمين والإعدادات" },
       { term: "Providers", definition: "طرق المصادقة (البريد الإلكتروني، Google، إلخ)" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "ما هو Clerk؟", a: "خدمة مصادقة جاهزة توفر تسجيل دخول/خروج وحماية مسارات.", difficulty: "easy" },
+      { q: "لماذا Clerk بدلاً من Firebase Auth؟", a: "واجهة أبسط و React components جاهزة و pricing ممتاز.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "استخدم Clerk Components", description: "comps جاهزة للـ UserButton و SignIn و SignUp", icon: "rocket" },
+    ]
   },
   en: {
     sections: [
@@ -79,7 +86,14 @@
       { term: "Secret Key", definition: "Server-side key (keep secret)" },
       { term: "Dashboard", definition: "Manage users and settings" },
       { term: "Providers", definition: "Auth methods (Email, Google, etc.)" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "What is Clerk?", a: "A ready-made authentication service providing sign-in/out and route protection.", difficulty: "easy" },
+      { q: "Why Clerk instead of Firebase Auth?", a: "Simpler UI, ready-made React components, and excellent pricing.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "Use Clerk Components", description: "Ready-made components for UserButton, SignIn, and SignUp", icon: "rocket" },
+    ]
   },
   fr: {
     sections: [

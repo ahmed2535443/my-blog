@@ -37,7 +37,13 @@
       { term: "RLS", definition: "الأمان على مستوى الصف" },
       { term: "CREATE POLICY", definition: "تحديد قواعد الوصول" },
       { term: "ENABLE ROW LEVEL SECURITY", definition: "تشغيل RLS للجدول" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "كيف ترفع ملفات في Supabase؟", a: "استخدم Supabase Storage API مع buckets منظمة.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "استخدم buckets منظمة", description: "افصل الصور والملفات في buckets مختلفة", icon: "brain" },
+    ]
   },
   en: {
     sections: [
@@ -77,7 +83,13 @@
       { term: "RLS", definition: "Row Level Security" },
       { term: "CREATE POLICY", definition: "Define access rules" },
       { term: "ENABLE ROW LEVEL SECURITY", definition: "Turn on RLS for table" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "How do you upload files in Supabase?", a: "Use Supabase Storage API with organized buckets.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "Use organized buckets", description: "Separate images and files into different buckets", icon: "brain" },
+    ]
   },
   fr: {
     sections: [

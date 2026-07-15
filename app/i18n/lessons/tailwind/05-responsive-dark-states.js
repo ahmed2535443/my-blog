@@ -60,7 +60,13 @@ const translations = {
       { term: "peer-checked:", definition: "شريك محدد" },
       { term: "first: / last:", definition: "محددات الابن الأول/الأخير" },
       { term: "transition-colors", definition: "انتقال سلس للألوان" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "كيف تُخصّص Tailwind؟", answer: "أنشئ ملف tailwind.config.js واضف الألوان والخطوط والمسافات.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "استخدم Theme variables", description: "لربط التخصيصات مع CSS variables", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -123,7 +129,13 @@ const translations = {
       { term: "peer-checked:", definition: "Sibling checkbox checked" },
       { term: "first: / last:", definition: "First/last child selectors" },
       { term: "transition-colors", definition: "Smooth color transitions" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "How do you customize Tailwind?", answer: "Create a tailwind.config.js file and add colors, fonts, and spacing.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "Use Theme variables", description: "To link customizations with CSS variables", type: "brain" }
+    ]
   },
   fr: {
     sections: [

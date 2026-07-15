@@ -55,7 +55,15 @@
       { title: "vercel.json", content: "الرؤوس للأمان، إعادة التوجيه/إعادة الكتابة للعناوين" },
       { title: "التحسين", content: "next/image، next/font، التخزين المؤقت، الاستيراد الديناميكي" },
       { title: "CI/CD", content: "GitHub Actions للاختبار والنشر التلقائي" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "كيف تدير أخطاء المشروع؟", answer: "اكتب اختبارات، استخدم linting، و راجع الكود باستمرار.", difficulty: "medium" },
+      { question: "كيف تُحسّن أداء المشروع؟", answer: "قلل الـ bundle size، استخدم lazy loading، وحسّن الصور.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "استخدم Git branches", description: "افصل كل ميزة في branch منفصل", type: "brain" },
+      { title: "اكتب tests", description: "لا تنشر ميزة بدون اختبارات", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -113,7 +121,15 @@
       { title: "vercel.json", content: "headers for security, redirects/rewrites for URLs" },
       { title: "Optimization", content: "next/image, next/font, caching, dynamic imports" },
       { title: "CI/CD", content: "GitHub Actions for automated testing and deployment" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "How do you manage project errors?", answer: "Write tests, use linting, and review code regularly.", difficulty: "medium" },
+      { question: "How do you improve project performance?", answer: "Reduce bundle size, use lazy loading, and optimize images.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "Use Git branches", description: "Separate each feature in its own branch", type: "brain" },
+      { title: "Write tests", description: "Never deploy a feature without tests", type: "brain" }
+    ]
   },
   fr: {
     sections: [

@@ -69,7 +69,13 @@ const translations = {
         "استخدم JSDoc للدوال العامة",
         "حدّث التعليقات مع الكود",
       ]},
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "كيف تطبق Clean Code في مشروع حقيقي؟", answer: "ابدأ بأسماء واضحة، ثم دوال صغيرة، ثم اختبارات، ثم refactor.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "استخدم linting", description: "ESLint + Prettier يُلقنان الكود تلقائياً", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -141,7 +147,13 @@ const translations = {
         "Use JSDoc for public functions",
         "Update comments with code",
       ]},
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "How do you apply Clean Code in a real project?", answer: "Start with clear names, then small functions, then tests, then refactor.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "Use linting", description: "ESLint + Prettier automatically enforce code quality", type: "brain" }
+    ]
   },
   fr: {
     sections: [

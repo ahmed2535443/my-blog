@@ -45,6 +45,14 @@ const translations = {
       { heading: "توفير Context:", items: ['<ThemeContext.Provider value={theme}>', '  {children}', '</ThemeContext.Provider>'] },
       { heading: "استهلاك Context:", items: ['const theme = useContext(ThemeContext);'] },
     ]},
+    interviewQuestions: [
+      { question: "متى تستخدم Context بدلاً من Props العادية؟", answer: "عندما تحتاج لتمرير بيانات عبر العديد من مستويات المكونات.", difficulty: "medium" },
+      { question: "ما هو prop drilling؟", answer: "تمرير Props عبر مكونات لا تحتاجها فقط لتوصيلها بمكون أعمق.", difficulty: "easy" },
+      { question: "متى لا تستخدم Context؟", answer: "للحالة المتغيرة بسرعة — يسبب إعادة عرض غير ضرورية.", difficulty: "hard" },
+    ],
+    tricks: [
+      { title: "افصل السياقات", description: "لا تضع كل شيء في سياق واحد. افصل بين السمة والمصادقة والترجمة.", icon: "brain" },
+    ]
   },
   en: {
     sections: [
@@ -92,6 +100,14 @@ const translations = {
       { heading: "Provide Context:", items: ['<ThemeContext.Provider value={theme}>', '  {children}', '</ThemeContext.Provider>'] },
       { heading: "Consume Context:", items: ['const theme = useContext(ThemeContext);'] },
     ]},
+    interviewQuestions: [
+      { question: "When do you use Context instead of regular Props?", answer: "When you need to pass data through many levels of components.", difficulty: "medium" },
+      { question: "What is prop drilling?", answer: "Passing Props through components that do not need them just to reach a deeper component.", difficulty: "easy" },
+      { question: "When should you not use Context?", answer: "For rapidly changing state — it causes unnecessary re-renders.", difficulty: "hard" },
+    ],
+    tricks: [
+      { title: "Separate your contexts", description: "Do not put everything in one context. Separate theme, authentication, and translation.", icon: "brain" },
+    ]
   },
   fr: {
     sections: [

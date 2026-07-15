@@ -48,7 +48,14 @@
       { term: "Project URL", definition: "نقطة نهاية API الخاصة بك (https://xxx.supabase.co)" },
       { term: "Anon Key", definition: "مفتاح API عام لجانب العميل" },
       { term: "Service Role Key", definition: "مفتاح وصول كامل (أبقه سراً)" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "ما هو Supabase؟", a: "بديل مفتوح المصدر لـ Firebase. يوفر قاعدة بيانات PostgreSQL ومصادقة وتخزين.", difficulty: "easy" },
+      { q: "لماذا Supabase بدلاً من Firebase؟", a: "مفتوح المصدر، PostgreSQL حقيقي، و pricing أفضل.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "ابدأ بـ Dashboard", description: "إنشاء مشروع من Supabase Dashboard هو أسرع طريقة للبدء", icon: "rocket" },
+    ]
   },
   en: {
     sections: [
@@ -99,7 +106,14 @@
       { term: "Project URL", definition: "Your API endpoint (https://xxx.supabase.co)" },
       { term: "Anon Key", definition: "Public API key for client-side" },
       { term: "Service Role Key", definition: "Full access key (keep secret)" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "What is Supabase?", a: "An open-source Firebase alternative. Provides PostgreSQL database, authentication, and storage.", difficulty: "easy" },
+      { q: "Why Supabase instead of Firebase?", a: "Open source, real PostgreSQL, and better pricing.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "Start with Dashboard", description: "Creating a project from Supabase Dashboard is the fastest way to get started", icon: "rocket" },
+    ]
   },
   fr: {
     sections: [

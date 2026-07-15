@@ -41,7 +41,13 @@ const translations = {
         '<strong style={{ color: "var(--accent)" }}>إعادة تسمية المتغير</strong> - حسّن أسماء المتغيرات والدوال',
         '<strong style={{ color: "var(--secondary)" }}>استبدال الشرط</strong> - استبدل الشروط بالتعدد الأشكال أو الكائنات',
       ]},
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "ما هي Code Smells الشائعة؟", answer: "Duplicated code, long methods, large classes, magic numbers.", difficulty: "easy" }
+    ],
+    tricks: [
+      { title: "استخدم Extract Method", description: "عندما تكون الدالة طويلة، افصل المنطق إلى دوال أصغر", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -85,7 +91,13 @@ const translations = {
         '<strong style={{ color: "var(--accent)" }}>Rename Variable</strong> - Improve variable and function names',
         '<strong style={{ color: "var(--secondary)" }}>Replace Conditional</strong> - Replace conditionals with polymorphism or objects',
       ]},
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "What are common Code Smells?", answer: "Duplicated code, long methods, large classes, magic numbers.", difficulty: "easy" }
+    ],
+    tricks: [
+      { title: "Use Extract Method", description: "When a function is long, split the logic into smaller functions", type: "brain" }
+    ]
   },
   fr: {
     sections: [

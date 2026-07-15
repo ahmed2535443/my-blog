@@ -70,6 +70,15 @@ const translations = {
       { heading: "useState الأساسي:", items: ['<code>const [count, setCount] = useState(0)</code>'] },
       { heading: "تحديث الحالة:", code: "// قيمة مباشرة\nsetCount(5);\n// دالة تحديث\nsetCount(prev => prev + 1);" },
     ]},
+    interviewQuestions: [
+      { question: "لماذا نستخدم دالة التحديث بدلاً من القيمة المباشرة؟", answer: "لأن التحديثات قد تكون مجمّعة. دالة التحديث تضمن أنك تعمل مع أحدث قيمة.", difficulty: "medium" },
+      { question: "متى يُعاد تشغيل المكون عند تغيير الحالة؟", answer: "فقط عندما تستدعي setter. إذا وضعت القيمة نفسها، React يتجاهل التحديث.", difficulty: "hard" },
+      { question: "ما هي قواعد الخطافات؟", answer: "لا تستدعي الخطافات داخل الحلقات أو الشروط أو الدوال المتداخلة. فقط في المستوى الأعلى.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "استخدم updater function دائماً", description: "setCount(prev => prev + 1) أفضل من setCount(count + 1) لضمان صحة القيم", icon: "brain" },
+      { title: "لا تضع الحالة المركبة", description: "بدلاً من state = {name: '', age: 0}، استخدم حالتين منفصلتين", icon: "zap" },
+    ]
   },
   en: {
     sections: [
@@ -141,6 +150,15 @@ const translations = {
       { heading: "Basic useState:", items: ['<code>const [count, setCount] = useState(0)</code>'] },
       { heading: "Update State:", code: "// Direct value\nsetCount(5);\n// Updater function\nsetCount(prev => prev + 1);" },
     ]},
+    interviewQuestions: [
+      { question: "Why do we use the updater function instead of the direct value?", answer: "Because updates may be batched. The updater function ensures you are working with the latest value.", difficulty: "medium" },
+      { question: "When is the component re-rendered when state changes?", answer: "Only when you call the setter. If you set the same value, React ignores the update.", difficulty: "hard" },
+      { question: "What are the Rules of Hooks?", answer: "Do not call Hooks inside loops, conditions, or nested functions. Only at the top level.", difficulty: "easy" },
+    ],
+    tricks: [
+      { title: "Always use updater function", description: "setCount(prev => prev + 1) is better than setCount(count + 1) to ensure correct values", icon: "brain" },
+      { title: "Do not put complex state", description: "Instead of state = {name: '', age: 0}, use two separate useState calls", icon: "zap" },
+    ]
   },
   fr: {
     sections: [

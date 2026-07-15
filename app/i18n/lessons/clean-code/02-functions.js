@@ -65,7 +65,13 @@ const translations = {
       { term: "Structure", definition: "Name → Arguments → Body → Return value" },
       { term: "Arrow Functions", definition: "Good for callbacks, shorter syntax" },
       { term: "Hoisting", definition: "Function declarations can be used before definition" },
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "How do you choose variable names?", answer: "Use descriptive names, avoid abbreviations, use camelCase.", difficulty: "easy" }
+    ],
+    tricks: [
+      { title: "Use names that reveal intent", description: "Instead of i, j, x, use userCount, totalPrice", type: "brain" }
+    ]
   },
   fr: {
     sections: [

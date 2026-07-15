@@ -52,7 +52,15 @@
       { title: "Tailwind المتجاوب", content: "Mobile First: sm: 640px، md: 768px، lg: 1024px، xl: 1280px" },
       { title: "next/image", content: "priority، sizes، placeholder='blur'، تحويل الصيغة" },
       { title: "ملفات SEO", content: "sitemap.js، robots.js، JSON-LD بيانات منظمة" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "كيف تدير أخطاء المشروع؟", answer: "اكتب اختبارات، استخدم linting، و راجع الكود باستمرار.", difficulty: "medium" },
+      { question: "كيف تُحسّن أداء المشروع؟", answer: "قلل الـ bundle size، استخدم lazy loading، وحسّن الصور.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "استخدم Git branches", description: "افصل كل ميزة في branch منفصل", type: "brain" },
+      { title: "اكتب tests", description: "لا تنشر ميزة بدون اختبارات", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -107,7 +115,15 @@
       { title: "Tailwind Responsive", content: "Mobile First: sm: 640px, md: 768px, lg: 1024px, xl: 1280px" },
       { title: "next/image", content: "priority, sizes, placeholder='blur', format conversion" },
       { title: "SEO Files", content: "sitemap.js, robots.js, JSON-LD structured data" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "How do you manage project errors?", answer: "Write tests, use linting, and review code regularly.", difficulty: "medium" },
+      { question: "How do you improve project performance?", answer: "Reduce bundle size, use lazy loading, and optimize images.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "Use Git branches", description: "Separate each feature in its own branch", type: "brain" },
+      { title: "Write tests", description: "Never deploy a feature without tests", type: "brain" }
+    ]
   },
   fr: {
     sections: [

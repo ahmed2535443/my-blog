@@ -60,7 +60,13 @@
       { term: ".getPublicUrl('path')", definition: "الحصول على رابط الملف" },
       { term: "RLS + Policies", definition: "الأمان على مستوى الصف" },
       { term: ".env.local", definition: "تخزين متغيرات البيئة" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "كيف تبني تطبيق كامل بـ Supabase؟", a: "قاعدة البيانات → المصادقة → Storage → Realtime → الواجهة.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "استخدم Edge Functions", description: "للعمليات المعقدة التي تحتاج server-side logic", icon: "brain" },
+    ]
   },
   en: {
     sections: [
@@ -123,7 +129,13 @@
       { term: ".getPublicUrl('path')", definition: "Get file URL" },
       { term: "RLS + Policies", definition: "Row Level Security" },
       { term: ".env.local", definition: "Store environment variables" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "How do you build a full app with Supabase?", a: "Database → Authentication → Storage → Realtime → Frontend.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "Use Edge Functions", description: "For complex operations that need server-side logic", icon: "brain" },
+    ]
   },
   fr: {
     sections: [

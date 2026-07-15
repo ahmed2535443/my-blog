@@ -48,7 +48,15 @@
       { term: "loading.js", definition: "واجهة التحميل" },
       { term: "route.js", definition: "نقطة نهاية API" },
       { term: "proxy.ts", definition: "بديل الـ Middleware" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "كيف تبني مشروع Next.js كامل؟",
+        answer: "ابدأ بالتخطيط، ثم الإعداد، ثم قاعدة البيانات، ثم المصادقة، ثم CRUD.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: []
   },
   en: {
     sections: [
@@ -99,7 +107,15 @@
       { term: "loading.js", definition: "Loading UI" },
       { term: "route.js", definition: "API endpoint" },
       { term: "proxy.ts", definition: "Middleware replacement" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "How do you build a complete Next.js project?",
+        answer: "Start with planning, then setup, database, authentication, then CRUD.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: []
   },
   fr: {
     sections: [

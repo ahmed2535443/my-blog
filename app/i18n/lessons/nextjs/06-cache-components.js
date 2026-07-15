@@ -28,7 +28,26 @@
       { term: "'use cache'", definition: "تمكين التخزين المؤقت للدالة/المكون" },
       { term: "بدون تعليمة", definition: "دائماً طازج (الافتراضي)" },
       { term: "tags", definition: "إبطال التخزين المؤقت المستهدف" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "كيف يعمل caching في Next.js؟",
+        answer: "يُخزن نتائج fetch تلقائياً. استخدم revalidate للتحديث.",
+        difficulty: "medium"
+      },
+      {
+        question: "ما هو revalidation؟",
+        answer: "تحديث البيانات المخزنة بعد فترة أو عند الطلب.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "استخدم unstable_cache",
+        description: "لتخزين نتائج دوال مكلفة",
+        icon: "brain"
+      }
+    ]
   },
   en: {
     sections: [
@@ -59,7 +78,26 @@
       { term: "'use cache'", definition: "Enable caching for function/component" },
       { term: "No directive", definition: "Always fresh (default)" },
       { term: "tags", definition: "Targeted cache invalidation" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "How does caching work in Next.js?",
+        answer: "It caches fetch results automatically. Use revalidate to update.",
+        difficulty: "medium"
+      },
+      {
+        question: "What is revalidation?",
+        answer: "Updating cached data after a period or on demand.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "Use unstable_cache",
+        description: "To cache results of expensive functions",
+        icon: "brain"
+      }
+    ]
   },
   fr: {
     sections: [

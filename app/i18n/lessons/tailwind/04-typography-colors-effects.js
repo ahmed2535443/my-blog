@@ -63,7 +63,13 @@ const translations = {
       { term: "bg-gradient-to-r", definition: "تدرج من اليسار إلى اليمين" },
       { term: "transition-colors", definition: "انتقال الألوان" },
       { term: "animate-spin", definition: "دوران مستمر" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "كيف تنشئ مكونات قابلة لإعادة الاستخدام بـ Tailwind؟", answer: "استخدم clsx أو cva لإدارة الفئات الشرطية.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "استخدم cva", description: "class-variance-authority لإنشاء مكونات بـ variants مختلفة", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -129,7 +135,13 @@ const translations = {
       { term: "bg-gradient-to-r", definition: "Left-to-right gradient" },
       { term: "transition-colors", definition: "Color transition" },
       { term: "animate-spin", definition: "Continuous rotation" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "How do you create reusable components with Tailwind?", answer: "Use clsx or cva for conditional class management.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "Use cva", description: "class-variance-authority for creating components with different variants", type: "brain" }
+    ]
   },
   fr: {
     sections: [

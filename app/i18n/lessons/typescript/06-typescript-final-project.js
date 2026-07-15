@@ -49,7 +49,13 @@ const translations = {
       { term: "useReducer<Task[], TaskAction>", definition: "محّffel آمن النوع" },
       { term: "Partial<Task>", definition: "لإدخال التحقق" },
       { term: "string[]", definition: "نوع الإرجاع لأخطاء التحقق" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "كيف تُصمم مشروع TypeScript كامل؟", answer: "ابدأ بالـ types أولاً، ثم الدوال، ثم الاختبارات.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "استخدم type-safe API", description: "عرّف types للـ API responses في ملف منفصل", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -101,7 +107,13 @@ const translations = {
       { term: "useReducer<Task[], TaskAction>", definition: "Type-safe reducer" },
       { term: "Partial<Task>", definition: "For validation input" },
       { term: "string[]", definition: "Return type for validation errors" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "How do you design a complete TypeScript project?", answer: "Start with types first, then functions, then tests.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "Use type-safe API", description: "Define types for API responses in a separate file", type: "brain" }
+    ]
   },
   fr: {
     sections: [

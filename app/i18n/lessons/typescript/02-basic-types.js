@@ -49,7 +49,14 @@ const translations = {
       { term: "A | B", definition: "نوع اتحاد — A أو B" },
       { term: "?:", definition: "خاصية اختيارية" },
       { term: "استنتاج الأنواع", definition: "كشف تلقائي للنوع" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "ما الفرق بين any و unknown؟", answer: "any يلغي الـ type checking. unknown آمن — يجب تحويل نوعه قبل الاستخدام.", difficulty: "medium" },
+      { question: "متى نستخدم Union Types؟", answer: "عندما يكون المتغير أكثر من نوع واحد. مثلاً: string | number", difficulty: "easy" }
+    ],
+    tricks: [
+      { title: "استخدم readonly", description: "لمنع تعديل المصفوفات والكائنات", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -101,7 +108,14 @@ const translations = {
       { term: "A | B", definition: "Union type — A or B" },
       { term: "?:", definition: "Optional property" },
       { term: "type inference", definition: "Automatic type detection" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "What is the difference between any and unknown?", answer: "any disables type checking. unknown is safe — you must narrow its type before using it.", difficulty: "medium" },
+      { question: "When do we use Union Types?", answer: "When a variable can be more than one type. For example: string | number", difficulty: "easy" }
+    ],
+    tricks: [
+      { title: "Use readonly", description: "To prevent modification of arrays and objects", type: "brain" }
+    ]
   },
   fr: {
     sections: [

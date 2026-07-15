@@ -51,7 +51,26 @@
       { term: "<Link href='/about'>", definition: "رابط التنقل" },
       { term: "router.push()", definition: "تنقل برمجي" },
       { term: "generateStaticParams", definition: "إنشاء مسارات ثابتة" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "كيف يعمل routing في Next.js 13+؟",
+        answer: "بناءً على الملفات في مجلد app/. كل مجلد route.",
+        difficulty: "easy"
+      },
+      {
+        question: "ما هو layout؟",
+        answer: "مكون يلف عدة صفحات ويحتفظ بالحالة عند التنقل بينها.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "استخدم loading.js",
+        description: "أنشئ ملف loading.js في أي مجلد لعرض loading spinner تلقائياً",
+        icon: "rocket"
+      }
+    ]
   },
   en: {
     sections: [
@@ -105,7 +124,26 @@
       { term: "<Link href='/about'>", definition: "Navigation link" },
       { term: "router.push()", definition: "Programmatic navigation" },
       { term: "generateStaticParams", definition: "Generate static routes" }
-    ]}
+    ]},
+    interviewQuestions: [
+      {
+        question: "How does routing work in Next.js 13+?",
+        answer: "Based on files in the app/ directory. Each folder is a route.",
+        difficulty: "easy"
+      },
+      {
+        question: "What is a layout?",
+        answer: "A component that wraps multiple pages and preserves state when navigating between them.",
+        difficulty: "medium"
+      }
+    ],
+    tricks: [
+      {
+        title: "Use loading.js",
+        description: "Create a loading.js file in any folder to show a loading spinner automatically",
+        icon: "rocket"
+      }
+    ]
   },
   fr: {
     sections: [

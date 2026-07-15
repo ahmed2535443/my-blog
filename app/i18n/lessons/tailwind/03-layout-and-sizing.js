@@ -63,7 +63,14 @@ const translations = {
       { term: "h-screen", definition: "height: 100vh" },
       { term: "sticky top-0", definition: "تثبيت في الأعلى" },
       { term: "z-10", definition: "z-index: 10" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "كيف تنشئ Flexbox layout بـ Tailwind؟", answer: "أضف flex و justify-between و items-center مثلاً.", difficulty: "easy" },
+      { question: "ما الفرق بين Flex و Grid في Tailwind؟", answer: "Flex for 1D layouts, Grid for 2D layouts.", difficulty: "easy" }
+    ],
+    tricks: [
+      { title: "استخدم Grid template", description: "grid-cols-3 gap-4 لإنشاء شبكة أعمدة", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -129,7 +136,14 @@ const translations = {
       { term: "h-screen", definition: "height: 100vh" },
       { term: "sticky top-0", definition: "Sticky positioning at top" },
       { term: "z-10", definition: "z-index: 10" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { question: "How do you create a Flexbox layout with Tailwind?", answer: "Add flex and justify-between and items-center for example.", difficulty: "easy" },
+      { question: "What is the difference between Flex and Grid in Tailwind?", answer: "Flex for 1D layouts, Grid for 2D layouts.", difficulty: "easy" }
+    ],
+    tricks: [
+      { title: "Use Grid template", description: "grid-cols-3 gap-4 to create a column grid", type: "brain" }
+    ]
   },
   fr: {
     sections: [

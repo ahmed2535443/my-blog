@@ -37,7 +37,13 @@
       { term: "MFA", definition: "المصادقة متعددة العوامل" },
       { term: "SMS Code", definition: "تحقق بالهاتف" },
       { term: "Authenticator App", definition: "تحقق مبني على TOTP" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "كيف تخصص نماذج تسجيل الدخول؟", a: "استخدم خصائص appearance و localization في Clerk components.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "أضف多种 language support", description: "Clerk يدعم الترجمة التلقائية لأكثر من 30 لغة", icon: "brain" },
+    ]
   },
   en: {
     sections: [
@@ -77,7 +83,13 @@
       { term: "MFA", definition: "Multi-Factor Authentication" },
       { term: "SMS Code", definition: "Phone verification" },
       { term: "Authenticator App", definition: "TOTP-based verification" }
-    ]}
+    ]},
+    interviewQuestions: [
+      { q: "How do you customize sign-in forms?", a: "Use the appearance and localization properties in Clerk components.", difficulty: "medium" },
+    ],
+    tricks: [
+      { title: "Add multi-language support", description: "Clerk supports automatic translation for over 30 languages", icon: "brain" },
+    ]
   },
   fr: {
     sections: [

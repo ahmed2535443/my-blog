@@ -115,7 +115,14 @@ const translations = {
         { term: "transition-colors", definition: "انتقال سلس للألوان" },
         { term: "md: / lg:", definition: "نقاط توقف متجاوبة" }
       ]
-    }
+    },
+    interviewQuestions: [
+      { question: "ما هو Tailwind CSS؟", answer: "مكتبة CSS utility-first تسمح بتنسيق العناصر مباشرة في HTML/JSX.", difficulty: "easy" },
+      { question: "لماذا Tailwind بدلاً من CSS عادي؟", answer: "أسرع في التطوير، أصغر حجماً عند الإنتاج، و Consistent.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "استخدم VS Code Extension", description: "Tailwind CSS IntelliSense يُكمل الأسماء تلقائياً", type: "brain" }
+    ]
   },
   en: {
     sections: [
@@ -233,7 +240,14 @@ const translations = {
         { term: "transition-colors", definition: "Smooth color transition" },
         { term: "md: / lg:", definition: "Responsive breakpoints" }
       ]
-    }
+    },
+    interviewQuestions: [
+      { question: "What is Tailwind CSS?", answer: "A utility-first CSS library that allows styling elements directly in HTML/JSX.", difficulty: "easy" },
+      { question: "Why use Tailwind instead of plain CSS?", answer: "Faster development, smaller bundle size in production, and consistent design.", difficulty: "medium" }
+    ],
+    tricks: [
+      { title: "Use VS Code Extension", description: "Tailwind CSS IntelliSense auto-completes class names", type: "brain" }
+    ]
   },
   fr: {
     sections: [
